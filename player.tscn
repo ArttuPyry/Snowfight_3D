@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://def8ntasw0w85"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
+[ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
+[ext_resource type="Script" path="res://scripts/player/player_idle_state.gd" id="2_oavoq"]
+[ext_resource type="Script" path="res://scripts/player/player_run_state.gd" id="3_1dvix"]
+[ext_resource type="Script" path="res://scripts/player/player_reload_state.gd" id="4_3n4r1"]
+[ext_resource type="Script" path="res://scripts/player/player_fall_state.gd" id="5_2tupi"]
+[ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lw7ps"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sjs56"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_0katy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_lw7ps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_sjs56")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="PlayerFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_0mk6b")
+initial_state = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("2_oavoq")
+
+[node name="PlayerRunState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("3_1dvix")
+
+[node name="PlayerFallState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("5_2tupi")
+
+[node name="PlayerAttackState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("5_t6r3v")
+
+[node name="PlayerReloadState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("4_3n4r1")
