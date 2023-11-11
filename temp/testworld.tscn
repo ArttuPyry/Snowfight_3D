@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckdi3myxfa0w0"]
+[gd_scene load_steps=8 format=3 uid="uid://ckdi3myxfa0w0"]
 
+[ext_resource type="PackedScene" uid="uid://bymmthfacjw6x" path="res://enemy.tscn" id="1_44f8b"]
 [ext_resource type="MeshLibrary" uid="uid://cykdqgmyxk6xw" path="res://temp/temp_tileset.tres" id="1_tms40"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://player.tscn" id="2_77a1h"]
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://temp/croshair.png" id="3_rhcu6"]
@@ -18,6 +19,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="World" type="Node3D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_44f8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2bqjs")
