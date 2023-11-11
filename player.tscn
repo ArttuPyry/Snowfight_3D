@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=11 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
+[ext_resource type="Script" path="res://test_aim.gd" id="2_bdf8b"]
 [ext_resource type="Script" path="res://scripts/player/player_idle_state.gd" id="2_oavoq"]
 [ext_resource type="Script" path="res://scripts/player/player_run_state.gd" id="3_1dvix"]
 [ext_resource type="Script" path="res://scripts/player/player_reload_state.gd" id="4_3n4r1"]
@@ -15,6 +16,8 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_0katy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -25,6 +28,10 @@ shape = SubResource("ConvexPolygonShape3D_sjs56")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="ShootSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.4, -0.6)
+script = ExtResource("2_bdf8b")
 
 [node name="PlayerFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_0mk6b")

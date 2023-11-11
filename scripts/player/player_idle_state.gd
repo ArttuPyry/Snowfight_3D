@@ -3,6 +3,7 @@ extends PlayerState
 
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
+@onready var shoot_spot = $"../../ShootSpot"
 
 var cent_crosshair_x
 var cent_crosshair_y
@@ -53,6 +54,9 @@ func _process(_delta) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	elif player.crosshair.position.y < 0 and not Input.is_action_pressed("look_down"):
 		player.crosshair.position.y += 5
+	
+	if Input.is_action_just_pressed("attack"):
+		state_transition.emit(self, "PlayerAttackState")
 	
 	if Input.is_action_just_pressed("reload"):
 		state_transition.emit(self, "PlayerReloadState")
