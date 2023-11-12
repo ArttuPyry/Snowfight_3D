@@ -30,26 +30,35 @@ func _process(_delta) -> void:
 		state_transition.emit(self, "PlayerRunState")
 	
 	if Input.is_action_pressed("look_left"):
-		player.crosshair.position.x += 2
+		var max_offset_left = get_viewport().get_visible_rect().size.x / 2 * 0.3
+		if player.crosshair.position.x < max_offset_left:
+			player.crosshair.position.x += 2
 		player.rotate_y(0.03)
 	elif player.crosshair.position.x > 0 and not Input.is_action_pressed("look_left"):
 		player.crosshair.position.x -= 5
 	
 	if Input.is_action_pressed("look_right"):
-		player.crosshair.position.x -= 2
+		var max_offset_right = get_viewport().get_visible_rect().size.x / 2 * 0.3
+		if player.crosshair.position.x > -max_offset_right:
+			player.crosshair.position.x -= 2
 		player.rotate_y(-0.03)
 	elif player.crosshair.position.x < 0 and not Input.is_action_pressed("look_right"):
 		player.crosshair.position.x += 5
 	
 	if Input.is_action_pressed("look_up"):
-		player.crosshair.position.y += 2
+		var max_offset_up = get_viewport().get_visible_rect().size.y / 2 * 0.3
+		if player.crosshair.position.y < max_offset_up:
+			player.crosshair.position.y += 2
 		camera.rotate_x(0.02)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	elif player.crosshair.position.y > 0 and not Input.is_action_pressed("look_up"):
 		player.crosshair.position.y -= 5
 	
 	if Input.is_action_pressed("look_down"):
-		player.crosshair.position.y -= 2
+		var max_offset_down = get_viewport().get_visible_rect().size.y / 2 * 0.3
+		if player.crosshair.position.y > -max_offset_down:
+			player.crosshair.position.y -= 2
+		
 		camera.rotate_x(-0.02)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	elif player.crosshair.position.y < 0 and not Input.is_action_pressed("look_down"):

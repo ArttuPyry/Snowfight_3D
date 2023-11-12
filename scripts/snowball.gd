@@ -1,6 +1,7 @@
+class_name Snowball
 extends RigidBody3D
 
-const DAMAGE = 1
+@export var damage = 1
 const SPEED = 2
 
 func _ready() -> void:
@@ -8,13 +9,12 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 1
 	
-	
+	# If snowball doesn't hit anything or goes out og bounds destory in 30 sec to prevent unnecessary objects
 	await get_tree().create_timer(30, false).timeout
 	queue_free()
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
-		print("hit enemy")
 		queue_free()
 	else:
 		queue_free()
