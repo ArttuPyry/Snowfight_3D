@@ -1,16 +1,12 @@
 extends Node3D
 
 @onready var current_actor = $"../.."
-var player : Node3D
-var player_point
 
 func _process(_delta) -> void:
-	player = get_tree().get_first_node_in_group("player")
-	player_point = player.global_transform.origin
-	if _in_vision_range(player_point) and _has_line_of_sight(player_point):
+	
+	if _in_vision_range(current_actor.player.global_transform.origin) and _has_line_of_sight(current_actor.player.global_transform.origin):
 		current_actor.seen_player = true
 		current_actor.is_patrolling = false
-		current_actor.current_target = player
 		self.set_process(false)
 
 # Vision cone

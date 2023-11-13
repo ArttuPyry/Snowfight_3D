@@ -8,9 +8,7 @@ func _ready():
 	current_energy = actor.max_energy
 
 func inflict_damage(damage):
-	print("take dmg")
 	current_energy -= damage
 	
 	if current_energy <= 0:
-		print("BRO NO ENERGY LULE")
-		pass
+		actor.dead()

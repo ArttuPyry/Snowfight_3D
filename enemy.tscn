@@ -34,6 +34,8 @@ script = ExtResource("1_cejq6")
 vision_arc = 90.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = -0.5
+avoidance_enabled = true
 
 [node name="EnergyComponent" type="Node3D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("1_iyb6k")
@@ -45,6 +47,9 @@ mesh = SubResource("CapsuleMesh_w82fl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_xolu2")
 
+[node name="ShootSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, -0.000117391, 0.283064, -0.971933)
+
 [node name="Face" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.466, -0.415)
 mesh = SubResource("CapsuleMesh_r0p0q")
@@ -53,17 +58,19 @@ mesh = SubResource("CapsuleMesh_r0p0q")
 transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -0.415, 2.22928e-09, 0.466)
 script = ExtResource("3_dq5an")
 
-[node name="HurtboxComponent" type="Area3D" parent="." node_paths=PackedStringArray("energy_component")]
+[node name="HurtboxComponent" type="Area3D" parent="." node_paths=PackedStringArray("energy_component", "current_actor")]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_o7c67")
 energy_component = NodePath("../EnergyComponent")
+current_actor = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
 shape = SubResource("CapsuleShape3D_fqfph")
 
-[node name="EnemyFiniteStateMachine" type="Node" parent="."]
+[node name="EnemyFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_x3nni")
+initial_state = NodePath("EnemyIdleState")
 
 [node name="EnemyIdleState" type="Node" parent="EnemyFiniteStateMachine"]
 script = ExtResource("6_75f5o")

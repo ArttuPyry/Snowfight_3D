@@ -13,6 +13,7 @@ func _enter_state() -> void:
 	set_physics_process(true)
 	print("Enter ATTACK state")
 	var _snowball = Snowball.instantiate()
+	_snowball.attacking_actor = "player"
 	shoot_spot.add_child(_snowball)
 	_snowball.apply_central_force(-shoot_spot.global_transform.basis.z * 200)
 	await get_tree().create_timer(0.1, false).timeout

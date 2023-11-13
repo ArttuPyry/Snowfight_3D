@@ -4,6 +4,8 @@ extends RigidBody3D
 @export var damage = 1
 const SPEED = 2
 
+var attacking_actor : String
+
 func _ready() -> void:
 	top_level = true
 	contact_monitor = true
@@ -14,8 +16,8 @@ func _ready() -> void:
 	queue_free()
 
 func _on_body_entered(body):
-	if body.is_in_group("enemy"):
-		queue_free()
+	if body.is_in_group(attacking_actor):
+		pass
 	else:
 		queue_free()
 	

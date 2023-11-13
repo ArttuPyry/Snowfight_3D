@@ -38,31 +38,7 @@ func _physics_process(delta) -> void:
 	player.move_and_slide()
 
 func _process(_delta):
-	if Input.is_action_pressed("look_left"):
-		player.crosshair.position.x += 2
-		player.rotate_y(0.03)
-	elif player.crosshair.position.x > 0 and not Input.is_action_pressed("look_left"):
-		player.crosshair.position.x -= 5
-	
-	if Input.is_action_pressed("look_right"):
-		player.crosshair.position.x -= 2
-		player.rotate_y(-0.03)
-	elif player.crosshair.position.x < 0 and not Input.is_action_pressed("look_right"):
-		player.crosshair.position.x += 5
-	
-	if Input.is_action_pressed("look_up"):
-		player.crosshair.position.y += 2
-		camera.rotate_x(0.02)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	elif player.crosshair.position.y > 0 and not Input.is_action_pressed("look_up"):
-		player.crosshair.position.y -= 5
-	
-	if Input.is_action_pressed("look_down"):
-		player.crosshair.position.y -= 2
-		camera.rotate_x(-0.02)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	elif player.crosshair.position.y < 0 and not Input.is_action_pressed("look_down"):
-		player.crosshair.position.y += 5
+	player.aim_and_rotate()
 	
 	if Input.is_action_just_pressed("attack"):
 		state_transition.emit(self, "PlayerAttackState")
