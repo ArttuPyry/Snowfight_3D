@@ -60,9 +60,9 @@ player = NodePath("../Player")
 
 [node name="Enemy5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_44f8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 35)
-attack_range = 40.0
 player_path = NodePath("../Player")
 player = NodePath("../Player")
+attack_type = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2bqjs")

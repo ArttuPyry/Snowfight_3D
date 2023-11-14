@@ -25,10 +25,11 @@ mesh = SubResource("SphereMesh_4x3x4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_hptpw")
 
-[node name="HitboxComponent" type="Area3D" parent="."]
+[node name="HitboxComponent" type="Area3D" parent="." node_paths=PackedStringArray("attack")]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("2_etaij")
+attack = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
 shape = SubResource("SphereShape3D_i3it1")

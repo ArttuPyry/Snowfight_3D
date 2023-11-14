@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bymmthfacjw6x"]
+[gd_scene load_steps=23 format=3 uid="uid://bymmthfacjw6x"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_cejq6"]
 [ext_resource type="Script" path="res://scripts/actor componenets/energy_component.gd" id="1_iyb6k"]
+[ext_resource type="Script" path="res://scripts/actor componenets/hitbox_component.gd" id="3_cg5tg"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_vision.gd" id="3_dq5an"]
+[ext_resource type="Script" path="res://shovel_attack.gd" id="3_lt02x"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="3_o7c67"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_finite_state_machine.gd" id="4_x3nni"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_idle_state.gd" id="6_75f5o"]
@@ -10,6 +12,67 @@
 [ext_resource type="Script" path="res://scripts/enemy/enemy_chase_state.gd" id="8_b4f44"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_attack_state.gd" id="9_5dtut"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_stunned_state.gd" id="10_3mccy"]
+
+[sub_resource type="Animation" id="Animation_mdnx0"]
+resource_name = "temp_attack"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShovelAttack/HitboxComponent/CollisionShape3D2:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShovelAttack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_redif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShovelAttack/HitboxComponent/CollisionShape3D2:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShovelAttack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xj4hv"]
+_data = {
+"RESET": SubResource("Animation_redif"),
+"temp_attack": SubResource("Animation_mdnx0")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37c6i"]
 albedo_color = Color(1, 0, 0, 1)
@@ -19,6 +82,12 @@ material = SubResource("StandardMaterial3D_37c6i")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xolu2"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="PrismMesh" id="PrismMesh_4efrs"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mqemb"]
+points = PackedVector3Array(-0.011215, 0.716355, 0.481398, -0.49606, -0.738179, -0.49606, 0.127839, -0.744188, -0.5, 0.10464, -0.744188, 0.5, -0.511905, -0.690315, 0.511905, -0.011215, 0.716355, -0.481398, 0.511905, -0.690464, 0.511905, 0.511905, -0.690464, -0.511905, -0.511905, -0.690315, -0.511905, 0.011125, 0.716625, 0.48158, 0.496155, -0.738466, 0.496155, 0.011125, 0.716625, -0.48158, -0.49606, -0.738179, 0.49606, 0.496155, -0.738466, -0.496155, 0.105457, -0.75, -0.0584996)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_r0p0q"]
 radius = 0.2
@@ -32,6 +101,11 @@ collision_layer = 9
 collision_mask = 0
 script = ExtResource("1_cejq6")
 vision_arc = 90.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xj4hv")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = -0.5
@@ -49,6 +123,22 @@ shape = SubResource("ConvexPolygonShape3D_xolu2")
 
 [node name="ShootSpot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000117391, 0.283064, -0.971933)
+
+[node name="ShovelAttack" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 0, 0, -1.84889)
+visible = false
+mesh = SubResource("PrismMesh_4efrs")
+script = ExtResource("3_lt02x")
+
+[node name="HitboxComponent" type="Area3D" parent="ShovelAttack" node_paths=PackedStringArray("attack")]
+transform = Transform3D(1, 0, 8.35187e-23, 0, 1, 0, 8.35187e-23, 0, 1, 0, 0, 0)
+script = ExtResource("3_cg5tg")
+attack = NodePath("..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ShovelAttack/HitboxComponent"]
+transform = Transform3D(1, 0, 8.35187e-23, 0, 1, 0, 8.35187e-23, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mqemb")
+disabled = true
 
 [node name="Face" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.466, -0.415)

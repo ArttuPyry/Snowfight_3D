@@ -13,5 +13,8 @@ var seen_player : bool = false
 @export var player_path : NodePath
 @export var player : Node3D
 
+enum AttackType {snowball, shovel}
+@export var attack_type  :  AttackType
+
 func target_in_range():
 	return self.global_position.distance_to(player.global_position) < attack_range

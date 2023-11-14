@@ -4,21 +4,29 @@ extends EnemyState
 const Snowball = preload("res://snowball.tscn")
 @onready var current_actor = $"../.."
 @onready var shoot_spot = $"../../ShootSpot"
+@onready var animation_player = $"../../AnimationPlayer"
+@onready var shovel_attack = $"../../ShovelAttack"
+
 
 var NUM_OF_ITERATIONS = 5
 
 var speedy = 10
 
 func _ready():
+	shovel_attack.attacking_actor = "enemy"
 	set_process(false)
 
 func _enter_state() -> void:
 	set_process(true)
 	print("me attack")
 	
-	_throw_snowball()
-	await get_tree().create_timer(1, false).timeout
+	# 0 = snowball, 1 = shovel
+	if current_actor.attack_type == 0:
+		_throw_snowball()
+	elif current_actor.attack_type == 1:
+		_shovel_snow()
 	
+	await get_tree().create_timer(1, false).timeout
 	state_transition.emit(self, "EnemyChaseState")
 
 func _throw_snowball():
@@ -72,7 +80,8 @@ func _get_angle_to_target_point(distance, height, SPEED, GRAVITY):
 	return min(angle_optimal, angle_long)
 
 func _shovel_snow() -> void:
-	pass
+	animation_player.play("temp_attack")
+	await animation_player.animation_finished
 
 func _process(_delta):
 	current_actor.look_at(Vector3(current_actor.player.global_position.x, current_actor.global_position.y, current_actor.player.global_position.z), Vector3.UP)
