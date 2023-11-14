@@ -2,8 +2,6 @@ class_name Snowball
 extends RigidBody3D
 
 @export var damage = 1
-const SPEED = 2
-
 var attacking_actor : String
 
 func _ready() -> void:

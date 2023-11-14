@@ -48,7 +48,7 @@ mesh = SubResource("CapsuleMesh_w82fl")
 shape = SubResource("ConvexPolygonShape3D_xolu2")
 
 [node name="ShootSpot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, -0.000117391, 0.283064, -0.971933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000117391, 0.283064, -0.971933)
 
 [node name="Face" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.466, -0.415)
