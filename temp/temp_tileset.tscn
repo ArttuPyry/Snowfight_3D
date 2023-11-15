@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbvgm7qyeg8sn"]
-
-[ext_resource type="PackedScene" uid="uid://c6ecr1emxmkv0" path="res://temp/temp_walls_floors.blend" id="1_4y4s3"]
-
-[node name="temp_walls_floors" instance=ExtResource("1_4y4s3")]
