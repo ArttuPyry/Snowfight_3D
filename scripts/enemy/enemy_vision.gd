@@ -6,7 +6,7 @@ func _process(_delta) -> void:
 	
 	if _in_vision_range(current_actor.player.global_transform.origin) and _has_line_of_sight(current_actor.player.global_transform.origin):
 		current_actor.seen_player = true
-		current_actor.is_patrolling = false
+		current_actor.patrolling = false
 		self.set_process(false)
 
 # Vision cone

@@ -17,6 +17,7 @@ func _ready():
 	set_process(false)
 
 func _enter_state() -> void:
+	print(current_actor.current_snowball_count)
 	set_process(true)
 	print("me attack")
 	
@@ -55,7 +56,8 @@ func _throw_snowball():
 	var predictive_dir = Vector3.FORWARD.rotated(Vector3.RIGHT, final_angle).rotated(Vector3.UP, y_rotation)
 	
 	print(projectile_start_pos + predictive_dir * 20.0)
-
+	
+	current_actor.current_snowball_count -= 1
 	_snowball.apply_central_force(projectile_start_pos + predictive_dir * 20.0 * 21)
 
 func _get_angle_to_target_point(distance, height, SPEED, GRAVITY):
@@ -84,4 +86,7 @@ func _shovel_snow() -> void:
 	await animation_player.animation_finished
 
 func _process(_delta):
-	current_actor.look_at(Vector3(current_actor.player.global_position.x, current_actor.global_position.y, current_actor.player.global_position.z), Vector3.UP)
+	if current_actor.current_snowball_count > 0:
+		current_actor.look_at(Vector3(current_actor.player.global_position.x, current_actor.global_position.y, current_actor.player.global_position.z), Vector3.UP)
+	else:
+		state_transition.emit(self, "EnemyReloadState")

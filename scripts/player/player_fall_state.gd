@@ -1,7 +1,7 @@
 class_name PlayerFallState
 extends PlayerState
 
-const SPEED = 5.0
+const SPEED = 2.0
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
 
@@ -14,12 +14,12 @@ func _ready() -> void:
 func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
-	print("Enter Fall state")
 
 func _exit_state() -> void:
 	set_process(false)
 	set_physics_process(false)
 
+# let's player move on air
 func _physics_process(delta) -> void:
 	if not player.is_on_floor():
 		player.velocity.y -= gravity * delta

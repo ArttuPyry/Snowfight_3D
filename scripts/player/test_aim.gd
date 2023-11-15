@@ -4,6 +4,7 @@ extends Node3D
 @onready var camera = $"../Camera3D"
 
 func _process(_delta) -> void:
+	# Makes hand / shoot spot always aim at crosshair
 	var add_screen_size = get_viewport().get_visible_rect().size.x / 2 * 0.05
 	var crosshair_position = player.crosshair.get_global_transform().get_origin() + Vector2(32 + add_screen_size , 32)
 	

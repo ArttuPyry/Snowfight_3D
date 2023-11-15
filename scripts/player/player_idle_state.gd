@@ -16,7 +16,6 @@ func _ready() -> void:
 func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
-	print("Enter IDLE state")
 
 func _exit_state() -> void:
 	set_process(false)
@@ -34,7 +33,7 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("attack"):
 		state_transition.emit(self, "PlayerAttackState")
 	
-	if Input.is_action_just_pressed("reload"):
+	if Input.is_action_just_pressed("reload") and player.current_snowball_count < player.max_snowball_count:
 		state_transition.emit(self, "PlayerReloadState")
 
 func _physics_process(_delta) -> void:

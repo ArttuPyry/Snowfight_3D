@@ -7,6 +7,10 @@ extends CharacterBody3D
 @export_category("Player stats")
 @export var max_energy : int = 20
 @export var max_snowball_count : int = 9
+var current_snowball_count : int
+
+func _ready():
+	current_snowball_count = max_snowball_count
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("escape"):

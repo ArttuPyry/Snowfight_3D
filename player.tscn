@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
-[ext_resource type="Script" path="res://test_aim.gd" id="2_bdf8b"]
 [ext_resource type="Script" path="res://scripts/player/player_idle_state.gd" id="2_oavoq"]
 [ext_resource type="Script" path="res://scripts/actor componenets/energy_component.gd" id="2_t0c2o"]
 [ext_resource type="Script" path="res://scripts/player/player_run_state.gd" id="3_1dvix"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="3_4vy8l"]
 [ext_resource type="Script" path="res://scripts/player/player_reload_state.gd" id="4_3n4r1"]
+[ext_resource type="Script" path="res://scripts/player/test_aim.gd" id="4_ujtbn"]
 [ext_resource type="Script" path="res://scripts/player/player_fall_state.gd" id="5_2tupi"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
 
@@ -22,6 +22,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 10
 script = ExtResource("1_0katy")
+max_snowball_count = 6
 
 [node name="EnergyComponent" type="Node3D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_t0c2o")
@@ -48,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 
 [node name="ShootSpot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.4, -0.6)
-script = ExtResource("2_bdf8b")
+script = ExtResource("4_ujtbn")
 
 [node name="PlayerFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_0mk6b")

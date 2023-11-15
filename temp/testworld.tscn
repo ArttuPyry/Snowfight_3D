@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://temp/croshair.png" id="3_rhcu6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qv16l"]
-vertices = PackedVector3Array(-38, 0.5, 29.25, -38, 0.5, 38, -28.25, 0.5, 38, 30.25, 0.5, 38, 40, 0.5, 38, 40, 0.5, 29.25, 40, 0.5, -23.25, 40, 0.5, -32, 30.25, 0.5, -32, -28.25, 0.5, -32, -38, 0.5, -32, -38, 0.5, -23.25, -38, 0.5, 20.5, -38, 0.5, 29.25, -28.25, 0.5, 38, 30.25, 0.5, 38, 40, 0.5, 29.25, 40, 0.5, 20.5, 20.5, 0.5, 38, 40, 0.5, -14.5, 40, 0.5, -23.25, 30.25, 0.5, -32, -28.25, 0.5, -32, -38, 0.5, -23.25, -38, 0.5, -14.5, -18.5, 0.5, -32, -38, 0.5, 20.5, -28.25, 0.5, 38, -18.5, 0.5, 38, -38, 0.5, 11.75, 40, 0.5, -5.75, 20.5, 0.5, -32, 10.75, 0.5, -32, 40, 0.5, 3, 40, 0.5, -14.5, 30.25, 0.5, -32, 20.5, 0.5, -32, 40, 0.5, -5.75, -8.75, 0.5, -32, -38, 0.5, -5.75, -38, 0.5, 3, 1, 0.5, -32, 1, 0.5, -32, -38, 0.5, 3, -8.75, 0.5, 38, 1, 0.5, 38, 40, 0.5, 3, 10.75, 0.5, -32, 20.5, 0.5, 38, 40, 0.5, 20.5, 40, 0.5, 11.75, 10.75, 0.5, 38, 10.75, 0.5, 38, 40, 0.5, 11.75, 40, 0.5, 3, 1, 0.5, 38, -18.5, 0.5, -32, -38, 0.5, -14.5, -38, 0.5, -5.75, -8.75, 0.5, -32, -38, 0.5, 11.75, -18.5, 0.5, 38, -8.75, 0.5, 38, -38, 0.5, 3)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(30, 33, 31), PackedInt32Array(31, 33, 32), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(47, 46, 42), PackedInt32Array(42, 46, 45), PackedInt32Array(42, 45, 44), PackedInt32Array(42, 44, 43), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 51), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(60, 63, 61), PackedInt32Array(61, 63, 62)]
+vertices = PackedVector3Array(-76.5, 0.5, -66, -88, 0.5, -66, -88, 0.5, -57.25, -88, 0.5, 67, -88, 0.5, 76, -76.5, 0.5, 76, 98, 0.5, -57.25, 98, 0.5, -66, 86.25, 0.5, -66, 86.25, 0.5, 76, 98, 0.5, 76, 98, 0.5, 67, -88, 0.5, 58.25, -88, 0.5, 67, -76.5, 0.5, 76, -76.5, 0.5, -66, -88, 0.5, -57.25, -88, 0.5, -48.25, 86.25, 0.5, 76, 98, 0.5, 67, 98, 0.5, 58.25, 98, 0.5, -48.25, 98, 0.5, -57.25, 86.25, 0.5, -66, -76.5, 0.5, -66, -88, 0.5, -48.25, -88, 0.5, -39.5, 98, 0.5, -39.5, 98, 0.5, -48.25, 86.25, 0.5, -66, -88, 0.5, 49.25, -88, 0.5, 58.25, -76.5, 0.5, 76, 86.25, 0.5, 76, 98, 0.5, 58.25, 98, 0.5, 49.25, 98, 0.5, -39.5, 86.25, 0.5, -66, 74.75, 0.5, -66, 98, 0.5, -30.5, -64.75, 0.5, -66, -76.5, 0.5, -66, -88, 0.5, -39.5, -88, 0.5, -30.5, -88, 0.5, 49.25, -76.5, 0.5, 76, -64.75, 0.5, 76, -88, 0.5, 40.5, 74.75, 0.5, 76, 86.25, 0.5, 76, 98, 0.5, 49.25, 98, 0.5, 40.5, 5, 0.5, 76, 16.5, 0.5, 76, 98, 0.5, 5, 98, 0.5, 5, 28.25, 0.5, -66, 16.5, 0.5, -66, 5, 0.5, -66, -6.75, 0.5, -66, -88, 0.5, 5, -41.5, 0.5, -66, -88, 0.5, -4, -88, 0.5, 5, -30, 0.5, -66, -88, 0.5, 40.5, -64.75, 0.5, 76, -53.25, 0.5, 76, -88, 0.5, 31.5, -53.25, 0.5, -66, -64.75, 0.5, -66, -88, 0.5, -30.5, -88, 0.5, -21.75, 63, 0.5, 76, 74.75, 0.5, 76, 98, 0.5, 40.5, 98, 0.5, 31.5, 98, 0.5, -30.5, 74.75, 0.5, -66, 63, 0.5, -66, 98, 0.5, -21.75, 5, 0.5, -66, -88, 0.5, 5, -6.75, 0.5, 76, 5, 0.5, 76, 98, 0.5, 5, 16.5, 0.5, -66, 28.25, 0.5, 76, 39.75, 0.5, 76, 98, 0.5, 5, -88, 0.5, 5, -30, 0.5, 76, -18.25, 0.5, 76, 98, 0.5, 5, 39.75, 0.5, -66, 28.25, 0.5, -66, -88, 0.5, 22.75, -88, 0.5, 31.5, -53.25, 0.5, 76, -53.25, 0.5, -66, -88, 0.5, -21.75, -88, 0.5, -12.75, 63, 0.5, 76, 98, 0.5, 31.5, 98, 0.5, 22.75, 98, 0.5, -12.75, 98, 0.5, -21.75, 63, 0.5, -66, -88, 0.5, 22.75, -53.25, 0.5, 76, -41.5, 0.5, 76, -88, 0.5, 13.75, 51.5, 0.5, 76, 63, 0.5, 76, 98, 0.5, 22.75, 98, 0.5, 13.75, 98, 0.5, -12.75, 63, 0.5, -66, 51.5, 0.5, -66, 98, 0.5, -4, -41.5, 0.5, -66, -53.25, 0.5, -66, -88, 0.5, -12.75, -88, 0.5, -4, -88, 0.5, 5, -18.25, 0.5, 76, -6.75, 0.5, 76, -18.25, 0.5, -66, -30, 0.5, -66, -88, 0.5, 5, 16.5, 0.5, 76, 28.25, 0.5, 76, 98, 0.5, 5, -6.75, 0.5, -66, -18.25, 0.5, -66, -88, 0.5, 5, -88, 0.5, 5, -88, 0.5, 13.75, -41.5, 0.5, 76, -30, 0.5, 76, 51.5, 0.5, 76, 98, 0.5, 13.75, 98, 0.5, 5, 39.75, 0.5, 76, 98, 0.5, 5, 98, 0.5, -4, 51.5, 0.5, -66, 39.75, 0.5, -66)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(29, 28, 27), PackedInt32Array(32, 31, 30), PackedInt32Array(35, 34, 33), PackedInt32Array(36, 39, 37), PackedInt32Array(37, 39, 38), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 40), PackedInt32Array(44, 47, 45), PackedInt32Array(45, 47, 46), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 48), PackedInt32Array(54, 53, 52), PackedInt32Array(57, 56, 55), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(65, 68, 66), PackedInt32Array(66, 68, 67), PackedInt32Array(71, 70, 72), PackedInt32Array(72, 70, 69), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 73), PackedInt32Array(77, 80, 78), PackedInt32Array(78, 80, 79), PackedInt32Array(86, 85, 81), PackedInt32Array(81, 85, 84), PackedInt32Array(81, 84, 83), PackedInt32Array(81, 83, 82), PackedInt32Array(89, 88, 87), PackedInt32Array(92, 91, 90), PackedInt32Array(95, 94, 93), PackedInt32Array(98, 97, 96), PackedInt32Array(101, 100, 99), PackedInt32Array(104, 103, 102), PackedInt32Array(107, 106, 105), PackedInt32Array(108, 111, 109), PackedInt32Array(109, 111, 110), PackedInt32Array(114, 113, 115), PackedInt32Array(115, 113, 112), PackedInt32Array(116, 119, 117), PackedInt32Array(117, 119, 118), PackedInt32Array(122, 121, 123), PackedInt32Array(123, 121, 120), PackedInt32Array(126, 125, 124), PackedInt32Array(129, 128, 127), PackedInt32Array(132, 131, 130), PackedInt32Array(135, 134, 133), PackedInt32Array(137, 136, 138), PackedInt32Array(138, 136, 139), PackedInt32Array(141, 140, 142), PackedInt32Array(142, 140, 143), PackedInt32Array(145, 144, 146), PackedInt32Array(146, 144, 147)]
 agent_radius = 2.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ub3k"]
@@ -25,6 +25,18 @@ glow_enabled = true
 
 [node name="World" type="Node3D"]
 
+[node name="1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23707, 1, 47)
+
+[node name="2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 47)
+
+[node name="3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.76293, 1, 38)
+
+[node name="4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.23707, 1, 38)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_qv16l")
 
@@ -36,7 +48,7 @@ data = {
 }
 
 [node name="Player" parent="." instance=ExtResource("2_77a1h")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1, 6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 1, 30)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_44f8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -31)
@@ -58,11 +70,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -17)
 player_path = NodePath("../Player")
 player = NodePath("../Player")
 
-[node name="Enemy5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_44f8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 35)
+[node name="Enemy5" parent="." node_paths=PackedStringArray("enemy_patrol_waypoints", "player") instance=ExtResource("1_44f8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 52)
+attack_range = 20.0
+enemy_patrol_waypoints = [NodePath("../1"), NodePath("../2"), NodePath("../3"), NodePath("../4")]
+patrolling = true
 player_path = NodePath("../Player")
 player = NodePath("../Player")
-attack_type = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2bqjs")
