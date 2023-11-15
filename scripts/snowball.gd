@@ -3,6 +3,7 @@ extends RigidBody3D
 
 @export var damage = 1
 var attacking_actor : String
+@onready var snowball_mesh = $snowball
 
 func _ready() -> void:
 	top_level = true
@@ -18,4 +19,7 @@ func _on_body_entered(body):
 		pass
 	else:
 		queue_free()
-	
+
+# Makes mesh spin, looks much nicer when ball is thrown
+func _process(_delta):
+	snowball_mesh.rotate_x(-0.1)
