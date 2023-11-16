@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtxdlmmen2iah"
-path="res://.godot/imported/teste.blend-f86eb46b87ee587730d345c2425aaebe.scn"
+uid="uid://dg0p8xxamssnt"
+path="res://.godot/imported/snowball.blend-67d2bc92b001bd0219d1efa5d1380576.scn"
 
 [deps]
 
-source_file="res://temp/teste.blend"
-dest_files=["res://.godot/imported/teste.blend-f86eb46b87ee587730d345c2425aaebe.scn"]
+source_file="res://weapons and ammo/meshes/snowball.blend"
+dest_files=["res://.godot/imported/snowball.blend-67d2bc92b001bd0219d1efa5d1380576.scn"]
 
 [params]
 

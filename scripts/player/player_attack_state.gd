@@ -1,7 +1,7 @@
 class_name PlayerAttackState
 extends PlayerState
 
-const Snowball = preload("res://snowball.tscn")
+const Snowball = preload("res://weapons and ammo/snowball.tscn")
 @onready var shoot_spot = $"../../ShootSpot"
 @onready var player = $"../.."
 

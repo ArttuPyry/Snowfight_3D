@@ -8,6 +8,8 @@ var current_snowball_count : int
 @export var speed = 2.0
 @export var attack_range = 2.5
 
+var is_stunned = false
+
 @export_category("Enemy patrolling and chasing")
 var seen_player : bool = false
 @export var enemy_patrol_waypoints : Array[Node3D]
@@ -21,5 +23,8 @@ enum AttackType {snowball, shovel}
 func _ready() -> void:
 	current_snowball_count = max_snowball_count
 
-func target_in_range():
+func target_in_range() -> bool:
 	return self.global_position.distance_to(player.global_position) < attack_range
+
+func no_health() -> void:
+	is_stunned = true

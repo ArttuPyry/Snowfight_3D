@@ -52,5 +52,5 @@ func aim_and_rotate() -> void:
 	elif crosshair.position.y > 0 and not Input.is_action_pressed("look_down"):
 		crosshair.position.y -= 5
 
-func dead():
+func no_health():
 	get_tree().quit()

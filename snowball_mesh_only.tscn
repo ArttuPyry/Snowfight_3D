@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo1b5elmja8fj"]
+
+[ext_resource type="PackedScene" uid="uid://dg0p8xxamssnt" path="res://weapons and ammo/meshes/snowball.blend" id="1_uvxn3"]
+
+[node name="snowball" instance=ExtResource("1_uvxn3")]

@@ -3,19 +3,21 @@ extends EnemyState
 
 @onready var navigation_agent = $"../../NavigationAgent3D"
 @onready var current_actor = $"../.."
+@onready var animation_player = $"../../AnimationPlayer"
 
 func _ready():
 	set_process(false)
 
 func _enter_state() -> void:
 	set_process(true)
+	animation_player.play("running")
 
 func _exit_state() -> void:
 	set_process(false)
 
 func _process(_delta):
-	if current_actor.seen_player:
-		state_transition.emit(self, "EnemyChaseState")
+	if current_actor.is_stunned:
+		state_transition.emit(self, "EnemyStunnedState")
 	
 	current_actor.velocity = Vector3.ZERO
 	

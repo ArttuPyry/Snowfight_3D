@@ -11,4 +11,4 @@ func inflict_damage(damage):
 	current_energy -= damage
 	
 	if current_energy <= 0:
-		actor.dead()
+		actor.no_health()

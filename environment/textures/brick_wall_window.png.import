@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1r4lywmfj7ie"
-path="res://.godot/imported/teste_texture.png-4a55428e127314e397eb1172634995ef.ctex"
+uid="uid://du4un2h506gl0"
+path="res://.godot/imported/brick_wall_window.png-5c3c45b637e69760ee8a9d57de6f09d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/teste_texture.png"
-dest_files=["res://.godot/imported/teste_texture.png-4a55428e127314e397eb1172634995ef.ctex"]
+source_file="res://environment/textures/brick_wall_window.png"
+dest_files=["res://.godot/imported/brick_wall_window.png-5c3c45b637e69760ee8a9d57de6f09d9.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,6 +1,7 @@
 extends Node3D
 
-@onready var current_actor = $"../.."
+@onready var current_actor = $".."
+
 
 func _process(_delta) -> void:
 	
