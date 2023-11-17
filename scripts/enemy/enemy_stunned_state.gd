@@ -10,6 +10,8 @@ func _enter_state() -> void:
 	await animation_player.animation_finished
 	animation_player.play("stunned")
 	await get_tree().create_timer(5, false).timeout
+	animation_player.play("stunned_end")
+	await animation_player.animation_finished
 	current_actor.is_stunned = false
 	energy_component.current_energy = current_actor.max_energy
 	if current_actor.current_snowball_count > 0:

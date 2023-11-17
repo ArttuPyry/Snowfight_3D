@@ -8,6 +8,9 @@ func _ready():
 	current_energy = actor.max_energy
 
 func inflict_damage(damage):
+	if actor.is_in_group("enemy") and not actor.seen_player:
+		damage = damage * 2
+	
 	current_energy -= damage
 	
 	if current_energy <= 0:

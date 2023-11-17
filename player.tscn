@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=13 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_reload_state.gd" id="4_3n4r1"]
 [ext_resource type="Script" path="res://scripts/player/test_aim.gd" id="4_ujtbn"]
 [ext_resource type="Script" path="res://scripts/player/player_fall_state.gd" id="5_2tupi"]
+[ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwt62"]
@@ -46,6 +47,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0172784, 0)
 [node name="ShootSpot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.129122, -0.6)
 script = ExtResource("4_ujtbn")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("Shadow")
+update_rotation = false
+update_scale = false
+
+[node name="Shadow" type="Sprite3D" parent="RemoteTransform3D"]
+transform = Transform3D(1.4, 0, 0, 0, -6.11959e-08, -1.4, 0, 1.4, -6.11959e-08, 0, -0.99, -0.074)
+layers = 512
+texture = ExtResource("5_f3exl")
 
 [node name="PlayerFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_0mk6b")

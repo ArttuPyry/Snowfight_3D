@@ -22,4 +22,4 @@ func _on_body_entered(body):
 
 # Makes mesh spin, looks much nicer when ball is thrown
 func _process(_delta):
-	snowball_mesh.rotate_x(-0.1)
+	snowball_mesh.rotate_x(-0.5)

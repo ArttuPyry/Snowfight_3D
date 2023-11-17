@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du4un2h506gl0"
-path="res://.godot/imported/brick_wall_window.png-5c3c45b637e69760ee8a9d57de6f09d9.ctex"
+uid="uid://cx74382ue1gk8"
+path="res://.godot/imported/roof_black.png-1e6ec9edd5a3c0409288890a0b8df851.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/textures/brick_wall_window.png"
-dest_files=["res://.godot/imported/brick_wall_window.png-5c3c45b637e69760ee8a9d57de6f09d9.ctex"]
+source_file="res://environment/textures/roof_black.png"
+dest_files=["res://.godot/imported/roof_black.png-1e6ec9edd5a3c0409288890a0b8df851.ctex"]
 
 [params]
 
