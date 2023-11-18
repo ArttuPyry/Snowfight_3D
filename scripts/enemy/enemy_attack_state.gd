@@ -19,7 +19,6 @@ func _ready():
 	set_process(false)
 
 func _enter_state() -> void:
-	print(current_actor.current_snowball_count)
 	set_process(true)
 	
 	# 0 = snowball, 1 = shovel
@@ -88,19 +87,22 @@ func _get_angle_to_target_point(distance, height, SPEED, GRAVITY):
 	return min(angle_optimal, angle_long)
 
 func _shovel_snow() -> void:
-	animation_player.play("temp_attack")
+	animation_player.play("shovel_attack")
 	await animation_player.animation_finished
+	state_transition.emit(self, "EnemyChaseState")
+	
 
 func _process(_delta):
 	if current_actor.is_stunned:
 		state_transition.emit(self, "EnemyStunnedState")
 		
-	if current_actor.current_snowball_count > 0 and is_attcking == false:
-		current_actor.look_at(Vector3(current_actor.player.global_position.x, current_actor.global_position.y, current_actor.player.global_position.z), Vector3.UP)
-		_throw_snowball()
-	
-	if current_actor.current_snowball_count <= 0:
-		state_transition.emit(self, "EnemyReloadState")
-	
-	if current_actor.current_snowball_count > 0 and not current_actor.target_in_range():
-		state_transition.emit(self, "EnemyChaseState")
+	if current_actor.attack_type == 0:
+		if current_actor.current_snowball_count > 0 and is_attcking == false:
+			current_actor.look_at(Vector3(current_actor.player.global_position.x, current_actor.global_position.y, current_actor.player.global_position.z), Vector3.UP)
+			_throw_snowball()
+		
+		if current_actor.current_snowball_count <= 0:
+			state_transition.emit(self, "EnemyReloadState")
+		
+		if current_actor.current_snowball_count > 0 and not current_actor.target_in_range():
+			state_transition.emit(self, "EnemyChaseState")

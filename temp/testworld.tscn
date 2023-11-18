@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckdi3myxfa0w0"]
+[gd_scene load_steps=10 format=3 uid="uid://ckdi3myxfa0w0"]
 
 [ext_resource type="MeshLibrary" uid="uid://c1longh4ofg5u" path="res://environment/environment.tres" id="2_76oo2"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://player.tscn" id="2_77a1h"]
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://temp/croshair.png" id="3_rhcu6"]
 [ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="4_oa0vr"]
+[ext_resource type="PackedScene" uid="uid://bnxloy30l5bnp" path="res://characters/enemy_with_shovel.tscn" id="5_rs8k7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m7s0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -64,7 +65,7 @@ data = {
 [node name="Player" parent="." instance=ExtResource("2_77a1h")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 7, -6)
 
-[node name="enemy_basic" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -26)
 max_energy = 3
 attack_range = 10.0
@@ -97,3 +98,8 @@ grow_vertical = 2
 [node name="Crosshair" type="TextureRect" parent="UserInterface/CenterContainer"]
 layout_mode = 2
 texture = ExtResource("3_rhcu6")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_rs8k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57635, 4.76837e-07, -9.82003)
+player_path = NodePath("../Player")
+player = NodePath("../Player")
