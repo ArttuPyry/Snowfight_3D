@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=17 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_run_state.gd" id="3_1dvix"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="3_4vy8l"]
 [ext_resource type="Script" path="res://scripts/player/player_reload_state.gd" id="4_3n4r1"]
+[ext_resource type="Texture2D" uid="uid://ckph4ytbs30b6" path="res://environment/textures/snowfall.png" id="4_e5aie"]
 [ext_resource type="Script" path="res://scripts/player/test_aim.gd" id="4_ujtbn"]
 [ext_resource type="Script" path="res://scripts/player/player_fall_state.gd" id="5_2tupi"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
@@ -15,6 +16,22 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwt62"]
 radius = 0.260356
 height = 1.26419
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxxww"]
+emission_shape = 3
+emission_box_extents = Vector3(35, 1, 35)
+direction = Vector3(5, 0, 5)
+gravity = Vector3(0, -1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gpav"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("4_e5aie")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kvxm8"]
+material = SubResource("StandardMaterial3D_2gpav")
+size = Vector2(0.15, 0.15)
+orientation = 0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -43,6 +60,15 @@ shape = SubResource("CapsuleShape3D_dwt62")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0172784, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, 0)
+amount = 60000
+lifetime = 7.0
+preprocess = 5.0
+visibility_aabb = AABB(-11, -6, -13, 22, 12, 26)
+process_material = SubResource("ParticleProcessMaterial_cxxww")
+draw_pass_1 = SubResource("PlaneMesh_kvxm8")
 
 [node name="ShootSpot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.129122, -0.6)

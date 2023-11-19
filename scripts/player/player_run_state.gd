@@ -30,8 +30,8 @@ func _physics_process(delta) -> void:
 		player.velocity.x = direction.x * SPEED
 		player.velocity.z = direction.z * SPEED
 	else:
-		player.velocity.x = lerp(player.velocity.x, direction.x * SPEED, delta * 2.0)
-		player.velocity.z = lerp(player.velocity.z, direction.z * SPEED, delta * 2.0)
+		player.velocity.x = lerp(player.velocity.x, direction.x * SPEED, delta * 3.5)
+		player.velocity.z = lerp(player.velocity.z, direction.z * SPEED, delta * 3.5)
 		if player.velocity.x == 0 and player.velocity.z == 0:
 			state_transition.emit(self, "PlayerIdleState")
 	
