@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var max_snowball_count : int = 3
 var current_snowball_count : int
 @export var vision_arc = 60.0
-@export var speed = 2.0
+@export var speed = 5.0
 @export var attack_range = 2.5
 
 var is_stunned = false

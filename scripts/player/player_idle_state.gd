@@ -3,7 +3,7 @@ extends PlayerState
 
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
-@onready var shoot_spot = $"../../ShootSpot"
+@onready var shoot_spot = $"../../SnowballThrowSpot"
 
 var cent_crosshair_x
 var cent_crosshair_y

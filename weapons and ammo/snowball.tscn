@@ -67,6 +67,9 @@ points = PackedVector3Array(-0.0108979, -0.0544964, -0.0348695, 0.00435623, 0.06
 collision_layer = 0
 collision_mask = 15
 mass = 0.2
+continuous_cd = true
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_6kipd")
 
 [node name="snowball" type="MeshInstance3D" parent="."]
@@ -86,6 +89,8 @@ script = ExtResource("3_3etox")
 attack = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_g54kn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

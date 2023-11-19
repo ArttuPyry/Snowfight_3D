@@ -70,7 +70,7 @@ visibility_aabb = AABB(-11, -6, -13, 22, 12, 26)
 process_material = SubResource("ParticleProcessMaterial_cxxww")
 draw_pass_1 = SubResource("PlaneMesh_kvxm8")
 
-[node name="ShootSpot" type="Node3D" parent="."]
+[node name="SnowballThrowSpot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.129122, -0.6)
 script = ExtResource("4_ujtbn")
 

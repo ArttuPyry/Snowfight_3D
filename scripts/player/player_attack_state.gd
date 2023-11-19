@@ -2,7 +2,7 @@ class_name PlayerAttackState
 extends PlayerState
 
 const Snowball = preload("res://weapons and ammo/snowball.tscn")
-@onready var shoot_spot = $"../../ShootSpot"
+@onready var shoot_spot = $"../../SnowballThrowSpot"
 @onready var player = $"../.."
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _enter_state() -> void:
 		var _snowball = Snowball.instantiate()
 		_snowball.attacking_actor = "player"
 		shoot_spot.add_child(_snowball)
-		_snowball.apply_central_force(-shoot_spot.global_transform.basis.z * 200)
+		_snowball.apply_central_force(-shoot_spot.global_transform.basis.z * 150)
 		player.current_snowball_count -= 1
 	await get_tree().create_timer(0.1, false).timeout
 	state_transition.emit(self, "PlayerIdleState")
