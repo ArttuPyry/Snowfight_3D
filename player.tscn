@@ -22,6 +22,7 @@ emission_shape = 3
 emission_box_extents = Vector3(35, 1, 35)
 direction = Vector3(5, 0, 5)
 gravity = Vector3(0, -1, 0)
+collision_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gpav"]
 transparency = 1

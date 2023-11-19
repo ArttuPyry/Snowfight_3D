@@ -12,8 +12,6 @@ var next_spot
 func _ready():
 	set_process(false)
 	patrol_points = current_actor.enemy_patrol_waypoints
-	print(current_actor.enemy_patrol_waypoints)
-	print(patrol_points)
 
 func _enter_state() -> void:
 	current_waypoint_index += 1

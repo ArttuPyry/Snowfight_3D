@@ -14,7 +14,6 @@ func _ready() -> void:
 func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
-	print("Enter RUN state")
 
 func _exit_state() -> void:
 	set_process(false)
