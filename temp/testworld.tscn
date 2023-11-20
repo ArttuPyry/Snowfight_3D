@@ -204,7 +204,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_77a1h")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 7, -6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 7, -11)
 max_snowball_count = 999
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]

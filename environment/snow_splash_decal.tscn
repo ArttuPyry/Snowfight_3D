@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://c88llkumbrfcx" path="res://environment/textures/snow_splash.png" id="1_uweyo"]
 [ext_resource type="Script" path="res://scripts/environment/snow_decal.gd" id="2_lkw7p"]
 
-[node name="Decal" type="Decal"]
+[node name="SnowSplashDecal" type="Decal"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 size = Vector3(0.5, 0.5, 0.5)
 texture_albedo = ExtResource("1_uweyo")
+emission_energy = 0.0
 script = ExtResource("2_lkw7p")
