@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=18 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_fall_state.gd" id="5_2tupi"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
+[ext_resource type="Script" path="res://scripts/player/player_climb_state.gd" id="13_j1gxg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwt62"]
 radius = 0.260356
@@ -39,6 +40,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 10
 script = ExtResource("1_0katy")
 max_snowball_count = 6
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 0, -0.876678, 0)
+target_position = Vector3(0, -2, 0)
 
 [node name="EnergyComponent" type="Node3D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_t0c2o")
@@ -103,5 +108,8 @@ script = ExtResource("5_t6r3v")
 
 [node name="PlayerReloadState" type="Node" parent="PlayerFiniteStateMachine"]
 script = ExtResource("4_3n4r1")
+
+[node name="PlayerClimbState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("13_j1gxg")
 
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]

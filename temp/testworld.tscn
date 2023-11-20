@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckdi3myxfa0w0"]
+[gd_scene load_steps=22 format=3 uid="uid://ckdi3myxfa0w0"]
 
 [ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="2_76oo2"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://player.tscn" id="2_77a1h"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnxloy30l5bnp" path="res://characters/enemy_with_shovel.tscn" id="5_rs8k7"]
 [ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="6_6kmmr"]
 [ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="7_6pwac"]
+[ext_resource type="Script" path="res://temp/ladder_test.gd" id="8_dmchq"]
 
 [sub_resource type="Shader" id="Shader_4yrp5"]
 code = "
@@ -156,6 +157,19 @@ vertices = PackedVector3Array(-14, 0.403884, -11, -9.75, 0.403884, -10.75, -9.75
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(27, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 33), PackedInt32Array(30, 33, 32), PackedInt32Array(30, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(41, 42, 38), PackedInt32Array(41, 38, 37), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 43), PackedInt32Array(47, 49, 48), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 54), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(62, 59, 64), PackedInt32Array(62, 64, 63), PackedInt32Array(65, 67, 66), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(72, 74, 73), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 78), PackedInt32Array(81, 80, 79), PackedInt32Array(83, 82, 84), PackedInt32Array(84, 82, 85), PackedInt32Array(87, 86, 88), PackedInt32Array(88, 86, 89), PackedInt32Array(89, 86, 90), PackedInt32Array(90, 86, 91), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(99, 98, 96), PackedInt32Array(96, 98, 97), PackedInt32Array(102, 101, 103), PackedInt32Array(103, 101, 100), PackedInt32Array(107, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(113, 112, 108), PackedInt32Array(108, 112, 111), PackedInt32Array(108, 111, 110), PackedInt32Array(108, 110, 109), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(121, 120, 118), PackedInt32Array(118, 120, 119), PackedInt32Array(126, 125, 122), PackedInt32Array(122, 125, 124), PackedInt32Array(122, 124, 123), PackedInt32Array(131, 130, 127), PackedInt32Array(127, 130, 129), PackedInt32Array(127, 129, 128), PackedInt32Array(133, 132, 134), PackedInt32Array(134, 132, 136), PackedInt32Array(134, 136, 135), PackedInt32Array(139, 138, 137), PackedInt32Array(142, 141, 140), PackedInt32Array(145, 144, 143), PackedInt32Array(149, 148, 150), PackedInt32Array(150, 148, 146), PackedInt32Array(146, 148, 147), PackedInt32Array(153, 152, 154), PackedInt32Array(154, 152, 155), PackedInt32Array(155, 152, 151), PackedInt32Array(159, 158, 156), PackedInt32Array(156, 158, 157), PackedInt32Array(162, 161, 160), PackedInt32Array(165, 164, 163), PackedInt32Array(168, 167, 166), PackedInt32Array(171, 170, 169), PackedInt32Array(173, 172, 174), PackedInt32Array(174, 172, 175), PackedInt32Array(175, 172, 176), PackedInt32Array(180, 179, 177), PackedInt32Array(177, 179, 178), PackedInt32Array(184, 183, 181), PackedInt32Array(181, 183, 182), PackedInt32Array(188, 187, 185), PackedInt32Array(185, 187, 186), PackedInt32Array(192, 191, 189), PackedInt32Array(189, 191, 190)]
 agent_radius = 0.7
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp5sm"]
+albedo_color = Color(0.341176, 0.129412, 0.0941176, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1dbsg"]
+material = SubResource("StandardMaterial3D_qp5sm")
+size = Vector3(0.2, 3, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_apmqk"]
+points = PackedVector3Array(-0.12381, -1.52351, -0.52381, 0.114286, 1.52351, 0.52381, -0.12381, 1.52351, 0.52381, 0.114286, -1.52351, 0.52381, 0.114286, 1.52351, -0.52381, -0.12381, 1.52351, -0.52381, -0.12381, -1.52351, 0.52381, 0.114286, -1.52351, -0.52381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kldos"]
+size = Vector3(2, 0.4, 2)
+
 [node name="World" type="Node3D" groups=["world"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -204,7 +218,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_77a1h")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 7, -11)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5075, 7, -3.98143)
 max_snowball_count = 999
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]
@@ -252,3 +266,39 @@ transform = Transform3D(0.443947, 0, 0.896053, 0, 1, 0, -0.896053, 0, 0.443947, 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5011, 3.1993, -7.51254)
 size = Vector3(3, 0.3, 15)
+
+[node name="Ladder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95405, 0, -4.10486)
+script = ExtResource("8_dmchq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ladder" groups=["ladder_mesh"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48523, 0)
+mesh = SubResource("BoxMesh_1dbsg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladder/MeshInstance3D" groups=["ladder_mesh"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladder/MeshInstance3D/StaticBody3D" groups=["ladder_mesh"]]
+shape = SubResource("ConvexPolygonShape3D_apmqk")
+
+[node name="down" type="Area3D" parent="Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.975792, 0.825245, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladder/down" groups=["ladder_spot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.488533, -0.614681, 0)
+shape = SubResource("BoxShape3D_kldos")
+
+[node name="Up" type="Area3D" parent="Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.830866, 3.07479, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladder/Up" groups=["ladder_spot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490911, 0.614264, 0)
+shape = SubResource("BoxShape3D_kldos")
+
+[connection signal="body_entered" from="Ladder/down" to="Ladder" method="_on_down_body_entered"]
+[connection signal="body_exited" from="Ladder/down" to="Ladder" method="_on_down_body_exited"]
+[connection signal="body_entered" from="Ladder/Up" to="Ladder" method="_on_up_body_entered"]
+[connection signal="body_exited" from="Ladder/Up" to="Ladder" method="_on_up_body_exited"]

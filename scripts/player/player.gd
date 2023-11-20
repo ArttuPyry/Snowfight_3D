@@ -9,6 +9,9 @@ extends CharacterBody3D
 @export var max_snowball_count : int = 9
 var current_snowball_count : int
 
+var teste
+var look
+
 func _ready():
 	current_snowball_count = max_snowball_count
 

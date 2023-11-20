@@ -31,7 +31,9 @@ func _physics_process(delta) -> void:
 	else:
 		player.velocity.x = lerp(player.velocity.x, direction.x * SPEED, delta * 3.5)
 		player.velocity.z = lerp(player.velocity.z, direction.z * SPEED, delta * 3.5)
-		if player.velocity.x == 0 and player.velocity.z == 0:
+		if player.velocity.x < 0.1 and player.velocity.z < 0.1:
+			player.velocity.x = 0
+			player.velocity.z = 0
 			state_transition.emit(self, "PlayerIdleState")
 	
 	player.move_and_slide()

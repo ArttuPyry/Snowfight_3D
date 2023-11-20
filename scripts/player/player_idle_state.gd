@@ -22,6 +22,12 @@ func _exit_state() -> void:
 	set_physics_process(false)
 
 func _process(_delta) -> void:
+	if player.teste and Input.is_action_pressed("test_key"):
+		player.global_position.x = player.teste.x
+		player.global_position.z = player.teste.z
+		player.look_at(Vector3(player.look.x, player.global_position.y, player.look.z), Vector3.UP)
+		state_transition.emit(self, "PlayerClimbState")
+	
 	if Input.is_action_pressed("move_forward") \
 	or Input.is_action_pressed("move_backwards") \
 	or Input.is_action_pressed("move_left") \
