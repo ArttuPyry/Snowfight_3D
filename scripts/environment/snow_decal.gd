@@ -1,4 +1,6 @@
-extends Decal
+extends Node3D
+
+@onready var snowball = $snowball
 
 func _ready():
 	set_process(false)
@@ -6,7 +8,7 @@ func _ready():
 	set_process(true)
 
 func _process(_delta):
-	if self.modulate.a > 0:
-		self.modulate.a -= 0.01
+	if snowball.transparency < 1:
+		snowball.transparency += 0.007
 	else:
 		queue_free()

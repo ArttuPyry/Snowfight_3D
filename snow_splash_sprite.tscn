@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://db32xhvlr2eyw"]
+
+[ext_resource type="Texture2D" uid="uid://c88llkumbrfcx" path="res://environment/textures/snow_splash.png" id="1_x8xjf"]
+
+[node name="SnowSplashSprite" type="Sprite3D"]
+cast_shadow = 0
+shaded = true
+texture = ExtResource("1_x8xjf")

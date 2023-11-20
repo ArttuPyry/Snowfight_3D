@@ -5,7 +5,7 @@ extends RigidBody3D
 var attacking_actor : String
 @onready var snowball_mesh = $snowball
 
-@export var decal = preload("res://environment/snow_splash_decal.tscn")
+@export var decal = preload("res://snowball_mesh_test.tscn")
 
 func _ready() -> void:
 	top_level = true

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddw7on0lkf0ee"]
+
+[ext_resource type="PackedScene" uid="uid://dg0p8xxamssnt" path="res://weapons and ammo/meshes/snowball.blend" id="1_rn683"]
+[ext_resource type="Script" path="res://scripts/environment/snow_decal.gd" id="2_p4qtt"]
+
+[node name="snowball" instance=ExtResource("1_rn683")]
+script = ExtResource("2_p4qtt")
+
+[node name="snowball" parent="." index="0"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+visibility_range_fade_mode = 1
