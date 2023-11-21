@@ -5,7 +5,7 @@ extends RigidBody3D
 var attacking_actor : String
 @onready var snowball_mesh = $snowball
 
-@export var decal = preload("res://snowball_mesh_test.tscn")
+@export var snow_splash = preload("res://snow_splash_sprite.tscn")
 
 func _ready() -> void:
 	top_level = true
@@ -17,9 +17,9 @@ func _ready() -> void:
 	queue_free()
 
 func _on_body_entered(body):
-	var ins_decal = decal.instantiate()
-	body.add_child(ins_decal)
-	ins_decal.global_transform.origin = self.global_transform.origin
+	var ins_snow_splash = snow_splash.instantiate()
+	body.add_child(ins_snow_splash)
+	ins_snow_splash.global_transform.origin = self.global_transform.origin
 	
 	if body.is_in_group(attacking_actor):
 		pass

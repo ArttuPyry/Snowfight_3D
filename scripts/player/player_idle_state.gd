@@ -14,6 +14,7 @@ func _ready() -> void:
 	set_physics_process(false)
 
 func _enter_state() -> void:
+	print("naada")
 	set_process(true)
 	set_physics_process(true)
 
@@ -22,10 +23,10 @@ func _exit_state() -> void:
 	set_physics_process(false)
 
 func _process(_delta) -> void:
-	if player.teste and Input.is_action_pressed("test_key"):
-		player.global_position.x = player.teste.x
-		player.global_position.z = player.teste.z
-		player.look_at(Vector3(player.look.x, player.global_position.y, player.look.z), Vector3.UP)
+	if player.ladder_position and Input.is_action_pressed("test_key"):
+		player.global_position.x = player.ladder_position.x
+		player.global_position.z = player.ladder_position.z
+		player.look_at(Vector3(player.ladder_look_at.x, player.global_position.y, player.ladder_look_at.z), Vector3.UP)
 		state_transition.emit(self, "PlayerClimbState")
 	
 	if Input.is_action_pressed("move_forward") \

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnwexn7i0052w"]
-
-[ext_resource type="Texture2D" uid="uid://nbqp4s50wex7" path="res://temp/temp_ladder.png" id="1_mt66y"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-shaded = true
-texture = ExtResource("1_mt66y")

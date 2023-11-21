@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://db32xhvlr2eyw"]
+[gd_scene load_steps=3 format=3 uid="uid://db32xhvlr2eyw"]
 
-[ext_resource type="Texture2D" uid="uid://c88llkumbrfcx" path="res://environment/textures/snow_splash.png" id="1_x8xjf"]
+[ext_resource type="Script" path="res://scripts/environment/snow_decal.gd" id="1_pe36u"]
+[ext_resource type="Texture2D" uid="uid://c88llkumbrfcx" path="res://environment/textures/snow_splash.png" id="1_rnkvt"]
 
-[node name="SnowSplashSprite" type="Sprite3D"]
-cast_shadow = 0
+[node name="SnowSplash" type="Node3D"]
+script = ExtResource("1_pe36u")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+billboard = 1
 shaded = true
-texture = ExtResource("1_x8xjf")
+double_sided = false
+texture = ExtResource("1_rnkvt")

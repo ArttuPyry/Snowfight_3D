@@ -1,14 +1,14 @@
 extends Node3D
 
-@onready var snowball = $snowball
+@onready var sprite = $Sprite3D
 
 func _ready():
 	set_process(false)
-	await get_tree().create_timer(3, false).timeout
+	await get_tree().create_timer(0.5, false).timeout
 	set_process(true)
 
 func _process(_delta):
-	if snowball.transparency < 1:
-		snowball.transparency += 0.007
+	if sprite.modulate.a > 0:
+		sprite.modulate.a -= 0.3
 	else:
 		queue_free()

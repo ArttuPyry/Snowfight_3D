@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbdrukjj51yvb"
-path.s3tc="res://.godot/imported/snowball.png-68619f1364056126684274346092563b.s3tc.ctex"
+uid="uid://buxypli0mmajb"
+path="res://.godot/imported/ladder.png-e4abab0e3e079a10f5bdd8c5d865f393.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp/snowball.png"
-dest_files=["res://.godot/imported/snowball.png-68619f1364056126684274346092563b.s3tc.ctex"]
+source_file="res://environment/textures/ladder.png"
+dest_files=["res://.godot/imported/ladder.png-e4abab0e3e079a10f5bdd8c5d865f393.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

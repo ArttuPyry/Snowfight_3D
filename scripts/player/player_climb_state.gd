@@ -10,6 +10,7 @@ func _ready() -> void:
 	set_physics_process(false)
 
 func _enter_state() -> void:
+	print("vitviu")
 	set_process(true)
 	set_physics_process(true)
 
@@ -36,6 +37,8 @@ func _physics_process(_delta):
 				state_transition.emit(self, "PlayerRunState")
 		else:
 			state_transition.emit(self, "PlayerRunState")
+	else:
+		state_transition.emit(self, "PlayerRunState")
 
 func _process(_delta):
 	player.aim_and_rotate()
