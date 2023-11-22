@@ -20,5 +20,8 @@ _surfaces = [{
 
 [node name="player_hand" instance=ExtResource("1_bgn4w")]
 
+[node name="player_hand" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.149647, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player_hand" index="0"]
 mesh = SubResource("ArrayMesh_sw2up")

@@ -2058,19 +2058,19 @@ script = ExtResource("5_1ryn2")
 attacking_actor = "enemy"
 
 [node name="SSH mid" parent="ShovelAttack" node_paths=PackedStringArray("attack") instance=ExtResource("6_5wblg")]
-transform = Transform3D(0.2, 0, 0, 0, 0.192035, 0.0558787, 0, -0.0558787, 0.192035, 0.2199, 0.1341, -0.730751)
+transform = Transform3D(0.2, 0, 0, 0, 0.192035, 0.0558786, 0, -0.0558786, 0.192035, 0.2199, 0.1341, -0.730751)
 visible = false
 monitorable = false
 attack = NodePath("..")
 
 [node name="SSH right" parent="ShovelAttack" node_paths=PackedStringArray("attack") instance=ExtResource("6_5wblg")]
-transform = Transform3D(0.187939, -0.0190841, 0.065688, 0, 0.192059, 0.0557982, -0.068404, -0.0524332, 0.180476, 0.16645, 0.1341, -0.730751)
+transform = Transform3D(0.187939, -0.0190841, 0.065688, 0, 0.192059, 0.0557982, -0.0684041, -0.0524331, 0.180476, 0.16645, 0.1341, -0.730751)
 visible = false
 monitorable = false
 attack = NodePath("..")
 
 [node name="SSH left" parent="ShovelAttack" node_paths=PackedStringArray("attack") instance=ExtResource("6_5wblg")]
-transform = Transform3D(0.187939, 0.0190841, -0.065688, 0, 0.192059, 0.0557982, 0.068404, -0.0524332, 0.180476, 0.254365, 0.1341, -0.730751)
+transform = Transform3D(0.187939, 0.0190841, -0.065688, 0, 0.192059, 0.0557982, 0.0684041, -0.0524331, 0.180476, 0.254365, 0.1341, -0.730751)
 visible = false
 monitorable = false
 attack = NodePath("..")

@@ -71,6 +71,7 @@ func aim_and_rotate() -> void:
 #	if crosshair.position.y > 0 and not Input.get_last_mouse_velocity().y > 0:
 #		crosshair.position.y -= 5
 
+@onready var ladder_hands = $Camera3D/LadderHands
 
 func _unhandled_input(event):
 	if mouse_enabled and event is InputEventMouseMotion:
@@ -80,6 +81,8 @@ func _unhandled_input(event):
 		self.rotate_y(-event.relative.x * sensitivity)
 		camera.rotate_x(-event.relative.y * sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		
+		ladder_hands.rotate_y(event.relative.x * sensitivity)
 		
 #		if event.relative.x < 0:
 #			if crosshair.position.x > -max_offset_hor:

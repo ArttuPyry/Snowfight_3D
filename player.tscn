@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=24 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -13,7 +13,123 @@
 [ext_resource type="Script" path="res://scripts/player/aim.gd" id="5_bjqnv"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
+[ext_resource type="PackedScene" uid="uid://clioeqkgwpgop" path="res://characters/meshes/player_hand_left.tscn" id="7_xv760"]
 [ext_resource type="Script" path="res://scripts/player/player_climb_state.gd" id="13_j1gxg"]
+
+[sub_resource type="Animation" id="Animation_7asd4"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/PlayerHandThrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/PlayerHandThrow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.574109, 3.14159, 5.65433e-08), Vector3(0.458725, 3.14159, -8.8076e-08), Vector3(1.36759, 3.14159, -6.78257e-07), Vector3(1.13956, 3.03125e-07, -3.14159)]
+}
+
+[sub_resource type="Animation" id="Animation_w6sbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/PlayerHandThrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.111295, -0.475872, -0.256356)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/PlayerHandThrow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.618719, -3.14159, -6.2243e-08)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/LadderHands/RightHandLadder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.34354e-08, -2.18014, 1.53535)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D/LadderHands/LeftHandLadder:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.35585e-08, 2.05687, -1.53535)]
+}
+
+[sub_resource type="Animation" id="Animation_r045y"]
+resource_name = "climb"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/LadderHands/RightHandLadder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.324455, -2.09612, 1.03253), Vector3(4.34354e-08, -2.18014, 1.53535), Vector3(0.26992, -2.12403, 1.94295), Vector3(4.34354e-08, -2.18014, 1.53535), Vector3(-0.324455, -2.09612, 1.03253)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/LadderHands/LeftHandLadder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.212608, 2.01129, -1.95623), Vector3(4.35585e-08, 2.05687, -1.53535), Vector3(-0.302772, 1.9571, -0.902774), Vector3(4.35585e-08, 2.05687, -1.53535), Vector3(0.212608, 2.01129, -1.95623)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0asdr"]
+_data = {
+"RESET": SubResource("Animation_w6sbb"),
+"attack": SubResource("Animation_7asd4"),
+"climb": SubResource("Animation_r045y")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwt62"]
 radius = 0.260356
@@ -42,7 +158,12 @@ collision_layer = 10
 script = ExtResource("1_0katy")
 max_snowball_count = 6
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0asdr")
+}
+
+[node name="LadderRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 0, -0.876678, 0)
 target_position = Vector3(0, -2, 0)
 collision_mask = 8
@@ -62,7 +183,7 @@ current_actor = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360641, 0)
 shape = SubResource("CapsuleShape3D_dwt62")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361438, 0)
 shape = SubResource("CapsuleShape3D_dwt62")
 
@@ -79,12 +200,24 @@ visibility_aabb = AABB(-11, -6, -13, 22, 12, 26)
 process_material = SubResource("ParticleProcessMaterial_cxxww")
 draw_pass_1 = SubResource("PlaneMesh_kvxm8")
 
-[node name="player_hand" parent="Camera3D" instance=ExtResource("2_sgavc")]
-transform = Transform3D(0.699598, -0.396243, -0.594604, 0.687126, 0.144798, 0.711963, -0.196013, -0.906656, 0.373569, 0.299291, -0.243447, 0.0389372)
+[node name="PlayerHandThrow" parent="Camera3D" instance=ExtResource("2_sgavc")]
+transform = Transform3D(-1, 2.53334e-08, -1.23004e-07, -5.07046e-08, 0.814622, 0.579992, 1.14895e-07, 0.579992, -0.814622, 0.111295, -0.475872, -0.256356)
 
-[node name="SnowballThrowSpot" type="Node3D" parent="Camera3D/player_hand/player_hand" index="1"]
+[node name="player_hand" parent="Camera3D/PlayerHandThrow" index="0"]
+transform = Transform3D(1, 2.98023e-08, 1.49012e-08, 0, 1, -2.98023e-08, -1.49012e-08, 0, 1, 0, -0.1, 0)
+
+[node name="SnowballThrowSpot" type="Node3D" parent="Camera3D/PlayerHandThrow/player_hand" index="1"]
 transform = Transform3D(0.699598, 0.687126, -0.196013, -0.396243, 0.144798, -0.906656, -0.594604, 0.711963, 0.373569, 0.0140806, 0.467573, 0.0506294)
 script = ExtResource("5_bjqnv")
+
+[node name="LadderHands" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0172784, 0)
+
+[node name="RightHandLadder" parent="Camera3D/LadderHands" instance=ExtResource("2_sgavc")]
+transform = Transform3D(-0.0202836, 0.571973, -0.820022, 0.999372, 0.0354403, -4.34354e-08, 0.0290618, -0.819507, -0.572332, 0.244009, -0.331325, -0.299089)
+
+[node name="LeftHandLadder" parent="Camera3D/LadderHands" instance=ExtResource("7_xv760")]
+transform = Transform3D(-0.0165562, -0.466865, 0.884174, -0.999372, 0.0354403, -4.35585e-08, -0.0313353, -0.883618, -0.467158, -0.23499, -0.289747, -0.270079)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
 remote_path = NodePath("Shadow")
@@ -120,4 +253,4 @@ script = ExtResource("13_j1gxg")
 
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
 
-[editable path="Camera3D/player_hand"]
+[editable path="Camera3D/PlayerHandThrow"]

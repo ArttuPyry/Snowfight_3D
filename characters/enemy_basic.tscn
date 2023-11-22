@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cm0gdroi5jb8a"]
+[gd_scene load_steps=29 format=3 uid="uid://cm0gdroi5jb8a"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_ritve"]
 [ext_resource type="Material" uid="uid://ut7kls6cn6jp" path="res://characters/material00.tres" id="2_8niek"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/enemy/enemy_vision.gd" id="4_nndq0"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="5_htq7q"]
 [ext_resource type="Script" path="res://scripts/enemy/shovel_attack.gd" id="6_dh418"]
-[ext_resource type="Script" path="res://scripts/actor componenets/hitbox_component.gd" id="7_cdcym"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_finite_state_machine.gd" id="8_ffd1m"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_idle_state.gd" id="9_aua4v"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="9_ir5w2"]
@@ -1237,12 +1236,6 @@ _data = {
 radius = 0.228437
 height = 1.26478
 
-[sub_resource type="PrismMesh" id="PrismMesh_ws8nj"]
-size = Vector3(1, 1.5, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lmjnn"]
-points = PackedVector3Array(-0.011215, 0.716355, 0.481398, -0.49606, -0.738179, -0.49606, 0.127839, -0.744188, -0.5, 0.10464, -0.744188, 0.5, -0.511905, -0.690315, 0.511905, -0.011215, 0.716355, -0.481398, 0.511905, -0.690464, 0.511905, 0.511905, -0.690464, -0.511905, -0.511905, -0.690315, -0.511905, 0.011125, 0.716625, 0.48158, 0.496155, -0.738466, 0.496155, 0.011125, 0.716625, -0.48158, -0.49606, -0.738179, 0.49606, 0.496155, -0.738466, -0.496155, 0.105457, -0.75, -0.0584996)
-
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_ritve")
 
@@ -1428,20 +1421,9 @@ current_actor = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616178, -0.0938117)
 shape = SubResource("CapsuleShape3D_s23b2")
 
-[node name="ShovelAttack" type="MeshInstance3D" parent="."]
+[node name="ShovelAttack" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 0, 0, -1.84889)
-mesh = SubResource("PrismMesh_ws8nj")
 script = ExtResource("6_dh418")
-
-[node name="HitboxComponent" type="Area3D" parent="ShovelAttack" node_paths=PackedStringArray("attack")]
-transform = Transform3D(1, 0, 8.35187e-23, 0, 1, 0, 8.35187e-23, 0, 1, 0, 0, 0)
-script = ExtResource("7_cdcym")
-attack = NodePath("..")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ShovelAttack/HitboxComponent"]
-transform = Transform3D(1, 0, 8.35187e-23, 0, 1, 0, 8.35187e-23, 0, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_lmjnn")
-disabled = true
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(1.6, 0, 0, 0, -6.99382e-08, -1.6, 0, 1.6, -6.99382e-08, -2.77556e-17, 0.01, -0.074)
