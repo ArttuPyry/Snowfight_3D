@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://dh2ppcl37pcmh"]
+
+[ext_resource type="Texture2D" uid="uid://b3f8irm1mnrmt" path="res://ui/textures/menu_button_00.png" id="1_cd52m"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_ek75j"]
+[ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_cr0o5"]
+[ext_resource type="Texture2D" uid="uid://bx1v7ke6n4krw" path="res://ui/textures/menu_button_02_hover.png" id="3_kvv4l"]
+[ext_resource type="Texture2D" uid="uid://dr5pcj1i6inrq" path="res://ui/textures/menu_button_00_hover.png" id="3_l2ofk"]
+[ext_resource type="Texture2D" uid="uid://b83r3m6la7v2v" path="res://ui/textures/menu_button_01.png" id="4_suvae"]
+[ext_resource type="Texture2D" uid="uid://dlf2yqcstwbag" path="res://ui/textures/menu_button_01_hover.png" id="5_yeu10"]
+[ext_resource type="Texture2D" uid="uid://s6h4fdu4ccj3" path="res://ui/textures/menu_button_03.png" id="6_j5844"]
+[ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="7_ntw8b"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ek75j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -102.0
+offset_right = -118.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 70)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Continue" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_cr0o5")
+texture_hover = ExtResource("3_kvv4l")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Options" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_suvae")
+texture_hover = ExtResource("5_yeu10")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Credits" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_j5844")
+texture_hover = ExtResource("7_ntw8b")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Quit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_cd52m")
+texture_hover = ExtResource("3_l2ofk")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 146.0
+offset_top = 55.0
+offset_right = 286.0
+offset_bottom = 81.0
+size_flags_horizontal = 4
+text = "Game title here!"
+uppercase = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cglfvs0avblra"
-path="res://.godot/imported/croshair.png-e3a126591ccc67cad71c95f715a450d3.ctex"
+uid="uid://dr5pcj1i6inrq"
+path="res://.godot/imported/menu_button_00_hover.png-8df5537adfdbe81199eac91c09972f2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/croshair.png"
-dest_files=["res://.godot/imported/croshair.png-e3a126591ccc67cad71c95f715a450d3.ctex"]
+source_file="res://ui/textures/menu_button_00_hover.png"
+dest_files=["res://.godot/imported/menu_button_00_hover.png-8df5537adfdbe81199eac91c09972f2a.ctex"]
 
 [params]
 

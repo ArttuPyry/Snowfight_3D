@@ -5,22 +5,23 @@ const SPEED = 3
 @onready var player = $"../.."
 @onready var ray_cast = $"../../LadderRayCast"
 @onready var animation_player = $"../../AnimationPlayer"
-@onready var ladder_hands = $"../../Camera3D/LadderHands"
+@onready var hands = $"../../Camera3D/Hands"
 
 
 func _ready() -> void:
-	ladder_hands.visible = false
+	hands.visible = false
 	set_process(false)
 	set_physics_process(false)
 
 func _enter_state() -> void:
-	ladder_hands.rotation.y = 0
-	ladder_hands.visible = true
+	hands.rotation.y = 0
+	hands.visible = true
 	set_process(true)
 	set_physics_process(true)
 
 func _exit_state() -> void:
-	ladder_hands.visible = false
+	hands.rotation.y = 0
+	hands.visible = false
 	animation_player.stop(true)
 	set_process(false)
 	set_physics_process(false)
@@ -39,6 +40,9 @@ func _physics_process(_delta):
 				player.move_and_slide()
 			else:
 				animation_player.pause()
+			
+			if Input.is_action_pressed("move_backwards") and player.is_on_floor():
+				state_transition.emit(self, "PlayerRunState")
 			
 			if Input.is_action_pressed("move_left"):
 				state_transition.emit(self, "PlayerRunState")

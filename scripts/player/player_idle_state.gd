@@ -21,10 +21,16 @@ func _exit_state() -> void:
 	set_physics_process(false)
 
 func _process(_delta) -> void:
-	if player.ladder_position and Input.is_action_pressed("test_key"):
-		player.global_position.x = player.ladder_position.x
-		player.global_position.z = player.ladder_position.z
-		player.look_at(Vector3(player.ladder_look_at.x, player.global_position.y, player.ladder_look_at.z), Vector3.UP)
+	if player.interactable and player.interactable_group == "snowman" and Input.is_action_pressed("interact"):
+		player.global_position.x = player.interactable.global_position.x
+		player.global_position.z = player.interactable.global_position.z
+		player.look_at(Vector3(player.interact_look_at.x, player.global_position.y, player.interact_look_at.z), Vector3.UP)
+		state_transition.emit(self, "PlayerDestroySnowmanState")
+	
+	if player.interactable and player.interactable_group == "ladder" and Input.is_action_pressed("interact"):
+		player.global_position.x = player.interactable.global_position.x
+		player.global_position.z = player.interactable.global_position.z
+		player.look_at(Vector3(player.interact_look_at.x, player.global_position.y, player.interact_look_at.z), Vector3.UP)
 		state_transition.emit(self, "PlayerClimbState")
 	
 	if Input.is_action_pressed("move_forward") \

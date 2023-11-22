@@ -41,6 +41,22 @@ func _physics_process(delta) -> void:
 func _process(_delta):
 	player.aim_and_rotate()
 	
+	if player.interactable and player.interactable_group == "snowman" and Input.is_action_pressed("interact"):
+		player.velocity.x = 0
+		player.velocity.z = 0
+		player.global_position.x = player.interactable.global_position.x
+		player.global_position.z = player.interactable.global_position.z
+		player.look_at(Vector3(player.interact_look_at.x, player.global_position.y, player.interact_look_at.z), Vector3.UP)
+		state_transition.emit(self, "PlayerDestroySnowmanState")
+	
+	if player.interactable and player.interactable_group == "ladder" and Input.is_action_pressed("interact"):
+		player.velocity.x = 0
+		player.velocity.z = 0
+		player.global_position.x = player.interactable.global_position.x
+		player.global_position.z = player.interactable.global_position.z
+		player.look_at(Vector3(player.interact_look_at.x, player.global_position.y, player.interact_look_at.z), Vector3.UP)
+		state_transition.emit(self, "PlayerClimbState")
+	
 	if Input.is_action_just_pressed("attack"):
 		state_transition.emit(self, "PlayerAttackState")
 	
