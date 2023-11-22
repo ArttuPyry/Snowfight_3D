@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbdrukjj51yvb"
-path="res://.godot/imported/snowball.png-8b28e8b25faee7a01cd86751ac0d814f.ctex"
+uid="uid://d0e2jadlr4l7o"
+path="res://.godot/imported/enemy_04.png-a336bfe3a52ade8c824a92a4641b362e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons and ammo/textures/snowball.png"
-dest_files=["res://.godot/imported/snowball.png-8b28e8b25faee7a01cd86751ac0d814f.ctex"]
+source_file="res://characters/textures/enemy_04.png"
+dest_files=["res://.godot/imported/enemy_04.png-a336bfe3a52ade8c824a92a4641b362e.ctex"]
 
 [params]
 

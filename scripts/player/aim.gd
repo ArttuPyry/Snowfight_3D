@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var player = $".."
-@onready var camera = $"../Camera3D"
+@onready var camera = $"../../.."
+@onready var player = $"../../../.."
 
 func _process(_delta) -> void:
 	# Makes hand / shoot spot always aim at crosshair

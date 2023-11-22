@@ -12,7 +12,6 @@ func _ready() -> void:
 	set_physics_process(false)
 
 func _enter_state() -> void:
-	print("deze nutter")
 	set_process(true)
 	set_physics_process(true)
 

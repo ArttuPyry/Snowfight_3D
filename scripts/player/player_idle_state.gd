@@ -3,18 +3,16 @@ extends PlayerState
 
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
-@onready var shoot_spot = $"../../SnowballThrowSpot"
+@onready var snowball_throw_spot = $"../../Camera3D/player_hand/player_hand/SnowballThrowSpot"
 
 var cent_crosshair_x
 var cent_crosshair_y
 
 func _ready() -> void:
-
 	set_process(false)
 	set_physics_process(false)
 
 func _enter_state() -> void:
-	print("naada")
 	set_process(true)
 	set_physics_process(true)
 

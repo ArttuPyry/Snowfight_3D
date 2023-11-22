@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func _enter_state() -> void:
 	set_process(true)
+	player.mouse_enabled = false
 	while player.current_snowball_count < player.max_snowball_count:
 		# Reset crosshair
 		player.crosshair.position.x = 0
@@ -22,3 +23,4 @@ func _enter_state() -> void:
 
 func _exit_state() -> void:
 	set_process(false)
+	player.mouse_enabled = true
