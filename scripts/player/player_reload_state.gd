@@ -18,6 +18,7 @@ func _enter_state() -> void:
 		await get_tree().create_timer(1, false).timeout
 		
 		player.current_snowball_count += 1
+		player.update_ammo_count()
 	await get_tree().create_timer(0.01, false).timeout
 	state_transition.emit(self, "PlayerIdleState")
 

@@ -22,6 +22,7 @@ func _enter_state() -> void:
 		snowball_throw_spot.add_child(_snowball)
 		_snowball.apply_central_force(-snowball_throw_spot.global_transform.basis.z * 150)
 		player.current_snowball_count -= 1
+		player.update_ammo_count()
 	await get_tree().create_timer(0.5, false).timeout
 	state_transition.emit(self, "PlayerIdleState")
 

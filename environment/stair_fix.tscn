@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4j3icq8jyte1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvea1"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jjgmf"]
+material = SubResource("StandardMaterial3D_rvea1")
+top_radius = 0.2
+bottom_radius = 0.2
+
+[node name="StairFix" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94606, 0, -8.99311)
+visible = false
+mesh = SubResource("CylinderMesh_jjgmf")

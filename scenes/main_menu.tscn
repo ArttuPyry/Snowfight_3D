@@ -1,122 +1,223 @@
-[gd_scene load_steps=10 format=3 uid="uid://dh2ppcl37pcmh"]
+[gd_scene load_steps=19 format=3 uid="uid://dhwa8rnrx5rif"]
 
-[ext_resource type="Texture2D" uid="uid://b3f8irm1mnrmt" path="res://ui/textures/menu_button_00.png" id="1_cd52m"]
-[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_ek75j"]
-[ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_cr0o5"]
-[ext_resource type="Texture2D" uid="uid://bx1v7ke6n4krw" path="res://ui/textures/menu_button_02_hover.png" id="3_kvv4l"]
-[ext_resource type="Texture2D" uid="uid://dr5pcj1i6inrq" path="res://ui/textures/menu_button_00_hover.png" id="3_l2ofk"]
-[ext_resource type="Texture2D" uid="uid://b83r3m6la7v2v" path="res://ui/textures/menu_button_01.png" id="4_suvae"]
-[ext_resource type="Texture2D" uid="uid://dlf2yqcstwbag" path="res://ui/textures/menu_button_01_hover.png" id="5_yeu10"]
-[ext_resource type="Texture2D" uid="uid://s6h4fdu4ccj3" path="res://ui/textures/menu_button_03.png" id="6_j5844"]
-[ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="7_ntw8b"]
+[ext_resource type="PackedScene" uid="uid://dh2ppcl37pcmh" path="res://ui/main_menu_control.tscn" id="1_via2y"]
+[ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="2_3ng6g"]
+[ext_resource type="Texture2D" uid="uid://ckph4ytbs30b6" path="res://environment/textures/snowfall.png" id="2_3460b"]
+[ext_resource type="PackedScene" uid="uid://dts04t6jmdoi3" path="res://environment/snowman_destroyed.tscn" id="3_ajr8c"]
+[ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="4_387tq"]
+[ext_resource type="PackedScene" uid="uid://bfxhugxhmbc6y" path="res://characters/enemy_with_shovel_dummy.tscn" id="6_l2vq7"]
+[ext_resource type="PackedScene" uid="uid://cjay0ru4omu24" path="res://characters/enemy_basic_dummy.tscn" id="7_cvxvx"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_ek75j")
+[sub_resource type="Shader" id="Shader_4yrp5"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's ProceduralSkyMaterial.
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -262.0
-offset_top = -102.0
-offset_right = -118.0
-offset_bottom = 102.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(64, 70)
+shader_type sky;
+render_mode use_debanding;
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
 
-[node name="Continue" type="TextureButton" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_cr0o5")
-texture_hover = ExtResource("3_kvv4l")
+uniform sampler2D cloud_texture00;
+uniform sampler2D cloud_texture01;
+uniform vec2 cloud_direction00;
+uniform vec2 cloud_direction01;
+uniform vec2 cloud_scale;
+uniform vec2 cloud_distance;
+uniform float cloud_speed00;
+uniform float cloud_speed01;
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Continue"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Continue"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+void sky() {
+	float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+	float c = (1.0 - v_angle / (PI * 0.5));
+	vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+	sky *= sky_energy;
 
-[node name="Options" type="TextureButton" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_suvae")
-texture_hover = ExtResource("5_yeu10")
+	if (LIGHT0_ENABLED) {
+		float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT0_SIZE) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+			sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Options"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+	if (LIGHT1_ENABLED) {
+		float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT1_SIZE) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+			sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
 
-[node name="Credits" type="TextureButton" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("6_j5844")
-texture_hover = ExtResource("7_ntw8b")
+	if (LIGHT2_ENABLED) {
+		float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT2_SIZE) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+			sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Credits"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Credits"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+	if (LIGHT3_ENABLED) {
+		float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT3_SIZE) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+			sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
 
-[node name="Quit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_cd52m")
-texture_hover = ExtResource("3_l2ofk")
+	vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+	sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Quit"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+	c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+	vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+	ground *= ground_energy;
+	
+	vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+	vec3 clouds = texture(cloud_texture00, (sky_uv * cloud_scale) + (TIME * cloud_direction00 * cloud_speed00 * 0.001)).rgb - texture(cloud_texture01, (sky_uv * cloud_scale) + (TIME * cloud_direction01 * cloud_speed01 * 0.01)).rgb;
+	clouds = clamp(clouds, 0.05, 1);
+	sky += clouds;
+	
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y));
+}
+"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-offset_left = 146.0
-offset_top = 55.0
-offset_right = 286.0
-offset_bottom = 81.0
-size_flags_horizontal = 4
-text = "Game title here!"
-uppercase = true
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4wfua"]
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jrnty"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_4wfua")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3mxvt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gbkce"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_3mxvt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2igtg"]
+shader = SubResource("Shader_4yrp5")
+shader_parameter/sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
+shader_parameter/sky_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/sky_curve = 0.15
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.772549, 0.85098, 0.894118, 1)
+shader_parameter/ground_horizon_color = Color(0.6463, 0.6558, 0.6708, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 0.523599
+shader_parameter/sun_curve = 0.15
+shader_parameter/cloud_direction00 = Vector2(-1, 1)
+shader_parameter/cloud_direction01 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.1, 0.1)
+shader_parameter/cloud_distance = Vector2(0.1, 0.1)
+shader_parameter/cloud_speed00 = 0.1
+shader_parameter/cloud_speed01 = 1.0
+shader_parameter/cloud_texture00 = SubResource("NoiseTexture2D_jrnty")
+shader_parameter/cloud_texture01 = SubResource("NoiseTexture2D_gbkce")
+
+[sub_resource type="Sky" id="Sky_dgl4w"]
+sky_material = SubResource("ShaderMaterial_2igtg")
+
+[sub_resource type="Environment" id="Environment_nbrck"]
+background_mode = 2
+sky = SubResource("Sky_dgl4w")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_density = 0.003
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m1x4y"]
+emission_shape = 3
+emission_box_extents = Vector3(35, 1, 35)
+direction = Vector3(5, 0, 5)
+gravity = Vector3(0, -1, 0)
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gpav"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_3460b")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2fn0o"]
+material = SubResource("StandardMaterial3D_2gpav")
+size = Vector2(0.15, 0.15)
+orientation = 0
+
+[node name="MainMenuWorld" type="Node3D"]
+
+[node name="MainMenuControl" parent="." instance=ExtResource("1_via2y")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nbrck")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.897536, -0.0709389, -0.435198, 0, 0.986974, -0.16088, 0.440942, 0.144396, 0.885844, -2.33055, 0.44628, -2.72737)
+fov = 45.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(-2.98023e-08, -7.45058e-09, 1, 0, 1, 0, -1, 1.49012e-08, 0, 0, 4, 2.38419e-07)
+amount = 60000
+lifetime = 7.0
+preprocess = 5.0
+visibility_aabb = AABB(-11, -6, -13, 22, 12, 26)
+process_material = SubResource("ParticleProcessMaterial_m1x4y")
+draw_pass_1 = SubResource("PlaneMesh_2fn0o")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_3ng6g")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65528, 65525, 2, 65528, 65526, 2, 65528, 65527, 2, 65528, 65528, 2, 65528, 65529, 2, 65528, 65530, 2, 65528, 65531, 2, 65528, 65532, 2, 65528, 65533, 2, 65528, 65534, 2, 65528, 65535, 2, 65528, 0, 2, 65528, 1, 2, 65528, 2, 2, 65528, 3, 2, 65528, 4, 2, 65528, 5, 2, 65528, 6, 2, 65528, 7, 2, 65528, 8, 2, 65529, 65525, 2, 65529, 65526, 2, 65529, 65527, 2, 65529, 65528, 2, 65529, 65529, 2, 65529, 65530, 2, 65529, 65531, 2, 65529, 65532, 2, 65529, 65533, 2, 65529, 65534, 2, 65529, 65535, 2, 65529, 0, 2, 65529, 1, 2, 65529, 2, 2, 65529, 3, 2, 65529, 4, 2, 65529, 5, 2, 65529, 6, 2, 65529, 7, 2, 65529, 8, 2, 65530, 65525, 2, 65530, 65526, 2, 65530, 65527, 2, 65530, 65528, 2, 65530, 65529, 2, 65530, 65530, 2, 65530, 65531, 2, 65530, 65532, 2, 65530, 65533, 2, 65530, 65534, 2, 65530, 65535, 2, 65530, 0, 2, 65530, 1, 2, 65530, 2, 2, 65530, 3, 2, 65530, 4, 2, 65530, 5, 2, 65530, 6, 2, 65530, 7, 2, 65530, 8, 2, 65531, 65525, 2, 65531, 65526, 2, 65531, 65527, 2, 65531, 65528, 2, 65531, 65529, 2, 65531, 65530, 2, 65531, 65531, 2, 65531, 65532, 2, 65531, 65533, 2, 65531, 65534, 2, 65531, 65535, 2, 65531, 0, 2, 65531, 1, 2, 65531, 2, 2, 65531, 3, 2, 65531, 4, 2, 65531, 5, 2, 65531, 6, 2, 65531, 7, 2, 65531, 8, 2, 65532, 65525, 2, 65532, 65526, 2, 65532, 65527, 2, 65532, 65528, 2, 65532, 65529, 2, 65532, 65530, 2, 65532, 65531, 2, 65532, 65532, 2, 65532, 65533, 2, 65532, 65534, 2, 65532, 65535, 2, 65532, 0, 2, 65532, 1, 2, 65532, 2, 2, 65532, 3, 2, 65532, 4, 2, 65532, 5, 2, 65532, 6, 2, 65532, 7, 2, 65532, 8, 2, 65533, 65525, 2, 65533, 65526, 2, 65533, 65527, 2, 65533, 65528, 2, 65533, 65529, 2, 65533, 65530, 2, 65533, 65531, 2, 65533, 65532, 2, 65533, 65533, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 0, 2, 65533, 1, 2, 65533, 2, 2, 65533, 3, 2, 65533, 4, 2, 65533, 5, 2, 65533, 6, 2, 65533, 7, 2, 65533, 8, 2, 65534, 65525, 2, 65534, 65526, 2, 65534, 65527, 2, 65534, 65528, 2, 65534, 65529, 2, 65534, 65530, 1441795, 65534, 65531, 2, 65534, 65532, 2, 65534, 65533, 2, 65534, 65534, 2, 65534, 65535, 2, 65534, 0, 2, 65534, 1, 2, 65534, 2, 2, 65534, 3, 2, 65534, 4, 2, 65534, 5, 2, 65534, 6, 2, 65534, 7, 2, 65534, 8, 2, 65535, 65525, 2, 65535, 65526, 2, 65535, 65527, 2, 65535, 65528, 2, 65535, 65529, 2, 65535, 65530, 1048579, 65535, 65531, 2, 65535, 65532, 2, 65535, 65533, 2, 65535, 65534, 2, 65535, 65535, 2, 65535, 0, 2, 65535, 1, 2, 65535, 2, 2, 65535, 3, 2, 65535, 4, 2, 65535, 5, 2, 65535, 6, 2, 65535, 7, 2, 65535, 8, 2, 0, 65525, 2, 0, 65526, 2, 0, 65527, 2, 0, 65528, 2, 0, 65529, 2, 0, 65530, 1441795, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 8, 2, 1, 65525, 2, 1, 65526, 2, 1, 65527, 2, 1, 65528, 2, 1, 65529, 2, 1, 65530, 655363, 1, 65531, 2, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 1, 1, 2, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 2, 1, 6, 2, 1, 7, 2, 1, 8, 2, 2, 65525, 2, 2, 65526, 2, 2, 65527, 2, 2, 65528, 2, 2, 65529, 2, 2, 65530, 1441795, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 5, 2, 2, 6, 2, 2, 7, 2, 2, 8, 2, 3, 65525, 2, 3, 65526, 2, 3, 65527, 2, 3, 65528, 2, 3, 65529, 2, 3, 65530, 1441796, 3, 65531, 1441796, 3, 65532, 655363, 3, 65533, 2, 3, 65534, 2, 3, 65535, 2, 3, 0, 2, 3, 1, 2, 3, 2, 2, 3, 3, 2, 3, 4, 2, 3, 5, 2, 3, 6, 2, 3, 7, 2, 3, 8, 2, 4, 65525, 2, 4, 65526, 2, 4, 65527, 2, 4, 65528, 2, 4, 65529, 2, 4, 65530, 2, 4, 65531, 2, 4, 65532, 2, 4, 65533, 2, 4, 65534, 2, 4, 65535, 2, 4, 0, 2, 4, 1, 2, 4, 2, 2, 4, 3, 2, 4, 4, 2, 4, 5, 2, 4, 6, 2, 4, 7, 2, 4, 8, 2, 5, 65525, 2, 5, 65526, 2, 5, 65527, 2, 5, 65528, 2, 5, 65529, 2, 5, 65530, 2, 5, 65531, 2, 5, 65532, 2, 5, 65533, 2, 5, 65534, 2, 5, 65535, 2, 5, 0, 2, 5, 1, 2, 5, 2, 2, 5, 3, 2, 5, 4, 2, 5, 5, 2, 5, 6, 2, 5, 7, 2, 5, 8, 2, 6, 65525, 2, 6, 65526, 2, 6, 65527, 2, 6, 65528, 2, 6, 65529, 2, 6, 65530, 2, 6, 65531, 2, 6, 65532, 2, 6, 65533, 2, 6, 65534, 2, 6, 65535, 2, 6, 0, 2, 6, 1, 2, 6, 2, 2, 6, 3, 2, 6, 4, 2, 6, 5, 2, 6, 6, 2, 6, 7, 2, 6, 8, 2, 131070, 65530, 655366, 131071, 65530, 655366, 65536, 65530, 655366, 65537, 65530, 655366, 65538, 65530, 655366, 65539, 65530, 1441795, 65540, 65530, 655364, 65540, 65529, 655364, 65539, 65529, 655364, 131070, 65529, 655364, 131071, 65529, 655364, 65536, 65529, 655364, 65537, 65529, 655364, 65538, 65529, 655364, 65539, 65531, 1048582, 65539, 65532, 1048582, 196606, 65529, 5, 196607, 65529, 5, 131072, 65529, 5, 131073, 65529, 5, 131074, 65529, 5, 131075, 65530, 1441796, 131076, 65530, 1441795, 131075, 65529, 1441796, 131076, 65529, 1441796, 196611, 65529, 1048582, 196611, 65530, 1048582, 196612, 65529, 1441798, 196612, 65530, 1441798)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="snowman_destroyed" parent="." instance=ExtResource("3_ajr8c")]
+transform = Transform3D(0.535458, 0, -0.844562, 0, 1, 0, 0.844562, 0, 0.535458, -1.99945, 0, -12.4771)
+
+[node name="snowman_destroyed2" parent="." instance=ExtResource("3_ajr8c")]
+transform = Transform3D(-0.848658, 0, -0.528942, 0, 1, 0, 0.528942, 0, -0.848658, 7.49294, 0, -10.8563)
+
+[node name="Snowman" parent="." instance=ExtResource("4_387tq")]
+transform = Transform3D(0.0954288, 0, -0.995436, 0, 1, 0, 0.995436, 0, 0.0954288, 2.68104, 0, -14.434)
+
+[node name="EnemyDummy" parent="." instance=ExtResource("7_cvxvx")]
+transform = Transform3D(-0.842358, 0, 0.538918, 0, 1, 0, -0.538918, 0, -0.842358, -0.0892906, 0, -5.41181)
+randomize_skin = true
+skin = 5
+
+[node name="EnemyDummy2" parent="." instance=ExtResource("7_cvxvx")]
+transform = Transform3D(-0.915712, 0, 0.401836, 0, 1, 0, -0.401836, 0, -0.915712, 0.800063, 0, -5.7028)
+randomize_skin = true
+skin = 3
+
+[node name="EnemyShovelDummy" parent="." instance=ExtResource("6_l2vq7")]
+transform = Transform3D(-0.749672, 0, 0.661809, 0, 1, 0, -0.661809, 0, -0.749672, -0.362153, 0, -5.99828)
+randomize_skin = true
+skin = 4

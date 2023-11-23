@@ -1,0 +1,248 @@
+[gd_scene load_steps=12 format=3 uid="uid://dh2ppcl37pcmh"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_87cli"]
+[ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_7qt1i"]
+[ext_resource type="Texture2D" uid="uid://bx1v7ke6n4krw" path="res://ui/textures/menu_button_02_hover.png" id="3_a2e86"]
+[ext_resource type="Theme" uid="uid://bu27hh1ndhvp5" path="res://ui/default_font.tres" id="4_lvk54"]
+[ext_resource type="Texture2D" uid="uid://b83r3m6la7v2v" path="res://ui/textures/menu_button_01.png" id="4_yaqnk"]
+[ext_resource type="Texture2D" uid="uid://dlf2yqcstwbag" path="res://ui/textures/menu_button_01_hover.png" id="5_5jnq4"]
+[ext_resource type="Texture2D" uid="uid://s6h4fdu4ccj3" path="res://ui/textures/menu_button_03.png" id="6_e05vf"]
+[ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="7_kpbvr"]
+[ext_resource type="Texture2D" uid="uid://b3f8irm1mnrmt" path="res://ui/textures/menu_button_00.png" id="8_fnnfm"]
+[ext_resource type="Texture2D" uid="uid://dr5pcj1i6inrq" path="res://ui/textures/menu_button_00_hover.png" id="9_57mo3"]
+[ext_resource type="Script" path="res://ui/graphics.gd" id="11_4203m"]
+
+[node name="MainMenuControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_87cli")
+
+[node name="MainButtons" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = -102.0
+offset_right = 269.0
+offset_bottom = 102.0
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(64, 70)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainButtons"]
+layout_mode = 2
+
+[node name="Continue" type="TextureButton" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_7qt1i")
+texture_hover = ExtResource("3_a2e86")
+
+[node name="Label" type="Label" parent="MainButtons/VBoxContainer/Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Options" type="TextureButton" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_yaqnk")
+texture_hover = ExtResource("5_5jnq4")
+
+[node name="Label" type="Label" parent="MainButtons/VBoxContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Credits" type="TextureButton" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_e05vf")
+texture_hover = ExtResource("7_kpbvr")
+
+[node name="Label" type="Label" parent="MainButtons/VBoxContainer/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Quit" type="TextureButton" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_fnnfm")
+texture_hover = ExtResource("9_57mo3")
+
+[node name="Label" type="Label" parent="MainButtons/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Options" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -300.0
+offset_right = 410.0
+offset_bottom = 300.0
+grow_vertical = 2
+pivot_offset = Vector2(205, 300)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+
+[node name="Graphics" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+layout_mode = 2
+script = ExtResource("11_4203m")
+
+[node name="WindowMode" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 45.0
+offset_right = 232.0
+offset_bottom = 78.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="WindowModeLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Window mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindowModeButton" type="OptionButton" parent="Options/VBoxContainer/TabContainer/Graphics/WindowMode"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 15
+
+[node name="Resolution" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 90.0
+offset_right = 232.0
+offset_bottom = 123.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ResolutionLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Window mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResolutionButton" type="OptionButton" parent="Options/VBoxContainer/TabContainer/Graphics/Resolution"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 15
+
+[node name="Gameplay" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ExitOptionsMenu" type="TextureButton" parent="Options/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("8_fnnfm")
+texture_hover = ExtResource("9_57mo3")
+
+[node name="ExitOptionsMenuLabel" type="Label" parent="Options/VBoxContainer/ExitOptionsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 20
+text = "Exit menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsLabel" type="Label" parent="Options/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
+text = "Options
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainButtons/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/ExitOptionsMenu" to="." method="_on_exit_options_menu_pressed"]

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var user_interface = $"../UserInterface"
-@onready var crosshair = $"../UserInterface/CenterContainer/Crosshair"
+var crosshair
 @onready var camera = $Camera3D
 
 @export_category("Player stats")
@@ -21,7 +21,13 @@ var interact_look_at
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	current_snowball_count = max_snowball_count
-	
+	user_interface.setup_ui(max_energy, max_snowball_count)
+
+func update_health_bar(damage) -> void:
+	user_interface.update_energy(damage)
+
+func update_ammo_count() -> void:
+	user_interface.update_ammo()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("escape"):
@@ -54,6 +60,7 @@ func aim_and_rotate() -> void:
 		camera.rotate_x(0.02)
 		hands.rotate_x(-0.02)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		hands.rotation.x = clamp(hands.rotation.x, deg_to_rad(-40), deg_to_rad(40))
 	elif crosshair.position.y < 0 and not Input.is_action_pressed("look_up"):
 		crosshair.position.y += 5
 	
@@ -61,8 +68,9 @@ func aim_and_rotate() -> void:
 		if crosshair.position.y < max_offset_ver:
 			crosshair.position.y += get_viewport().get_visible_rect().size.y / 2 * 0.003
 		camera.rotate_x(-0.02)
-		hands.rotate_x(0.02)
+		hands.rotate_x(0.04)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		hands.rotation.x = clamp(hands.rotation.x, deg_to_rad(-40), deg_to_rad(40))
 	elif crosshair.position.y > 0 and not Input.is_action_pressed("look_down"):
 		crosshair.position.y -= 5
 

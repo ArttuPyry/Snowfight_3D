@@ -15,12 +15,16 @@ func _ready() -> void:
 
 func _enter_state() -> void:
 	hands.rotation.y = 0
+	hands.rotation.x = 0
+	hands.rotation.z = 0
 	hands.visible = true
 	set_process(true)
 	set_physics_process(true)
 
 func _exit_state() -> void:
 	hands.rotation.y = 0
+	hands.rotation.x = 0
+	hands.rotation.z = 0
 	hands.visible = false
 	animation_player.stop(true)
 	set_process(false)

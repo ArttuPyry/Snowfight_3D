@@ -268,13 +268,13 @@ direction = Vector3(5, 0, 5)
 gravity = Vector3(0, -1, 0)
 collision_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gpav"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hq7h"]
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("4_e5aie")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvxm8"]
-material = SubResource("StandardMaterial3D_2gpav")
+material = SubResource("StandardMaterial3D_3hq7h")
 size = Vector2(0.15, 0.15)
 orientation = 0
 
@@ -340,7 +340,7 @@ script = ExtResource("5_bjqnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0172784, 0)
 
 [node name="RightHand" parent="Camera3D/Hands" instance=ExtResource("2_sgavc")]
-transform = Transform3D(-0.0202828, 0.57197, -0.820024, 0.999372, 0.0354389, -4.34354e-08, 0.0290607, -0.819509, -0.572329, 0.244009, -0.331325, -0.299089)
+transform = Transform3D(-0.0202828, 0.57197, -0.820024, 0.999372, 0.0354389, -4.34354e-08, 0.0290608, -0.819509, -0.572329, 0.244009, -0.331325, -0.299089)
 
 [node name="LeftHand" parent="Camera3D/Hands" instance=ExtResource("7_xv760")]
 transform = Transform3D(-0.0165556, -0.466864, 0.884174, -0.999372, 0.0354389, -4.35585e-08, -0.0313342, -0.883618, -0.467158, -0.23499, -0.289747, -0.270079)
