@@ -112,6 +112,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Options" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -191,6 +192,7 @@ theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 15
 
 [node name="Gameplay" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]

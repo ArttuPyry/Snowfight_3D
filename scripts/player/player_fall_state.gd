@@ -38,17 +38,4 @@ func _physics_process(delta) -> void:
 	player.move_and_slide()
 
 func _process(_delta):
-	if Input.is_action_pressed("look_left"):
-		player.rotate_y(0.03)
-	
-	if Input.is_action_pressed("look_right"):
-		player.rotate_y(-0.03)
-	
-	if Input.is_action_pressed("look_up"):
-		camera.rotate_x(0.02)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	
-	if Input.is_action_pressed("look_down"):
-		camera.rotate_x(-0.02)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-
+	player.aim_and_rotate()

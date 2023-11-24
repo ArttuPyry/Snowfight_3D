@@ -11,16 +11,18 @@ const WINDOW_MODE_ARRAY : Array[String] = [
 ]
 
 const RESOLUTION_DICTIONARY : Dictionary = {
-	"3840x2160":Vector2i(3840, 2160),
-	"2560x1440":Vector2i(2560, 1440),
-	"1920x1080":Vector2i(1920, 1080),
-	"1366x768":Vector2i(1466, 768),
-	"1536x864":Vector2i(1536, 864),
-	"1280x720":Vector2i(1280, 720),
-	"1440x900":Vector2i(1440, 900),
-	"1600x900":Vector2i(1600, 900),
-	"1024x600":Vector2i(1024, 600),
-	"800x600":Vector2i(800,600)
+	"3840x2160 (16:9)":Vector2(3840, 2160),
+	"2560x1440  (16:9)":Vector2(2560, 1440),
+	"2048x1152 (16:9)":Vector2(2048, 1152),
+	"1920x1080 (16:9)":Vector2(1920, 1080),
+	"1280x720 (16:9)":Vector2(1280, 720),
+	"6404x360 (16:9)":Vector2(640, 360),
+	"4096x3072 (4:3)":Vector2(4096, 3072),
+	"3200x2400 (4:3)":Vector2(3200, 2400),
+	"2048x1536 (4:3)":Vector2(2048, 1536),
+	"1440x1080 (4:3)":Vector2(1440, 1080),
+	"1024x768 (4:3)":Vector2(1024, 768),
+	"800x600 (4:3)":Vector2(800,600)
 }
 
 func _ready() -> void:
@@ -53,14 +55,28 @@ func _on_window_mode_selected(index : int) -> void:
 ############################## RESOLUTION ###################################################
 
 func _add_resolution_items() -> void:
+	var current_resolution = get_viewport().get_visible_rect().size
+	var index = 0
+	
 	for resolution in RESOLUTION_DICTIONARY:
 		resolution_button.add_item(resolution)
+		if RESOLUTION_DICTIONARY[resolution] == current_resolution:
+			resolution_button.select(index)
+		index += 1
 
 func _on_resolution_selected(index : int) -> void:
+	# Save window mode
+#	var mode = DisplayServer.window_get_mode()
+#	var flag = DisplayServer.window_get_flag(0)
+#
+#	# Set mode to windowed so resolution change works
+#	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+#	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+	
 	DisplayServer.window_set_size(RESOLUTION_DICTIONARY.values()[index])
 	
-	# Bad fix for resetting
-#	if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
-#		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-#	else:
-#		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	# Set mode back to saved mode
+#	DisplayServer.window_set_mode(mode)
+#	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, flag)
+	print(DisplayServer.window_get_size())
+	

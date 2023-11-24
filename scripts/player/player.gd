@@ -10,8 +10,7 @@ var crosshair
 var current_snowball_count : int
 
 @export var mouse_enabled = true
-var sensitivity = 0.01
-
+@export var sensitivity : float = 5.0
 @onready var hands = $Camera3D/Hands
 
 var interactable
@@ -41,7 +40,7 @@ func aim_and_rotate() -> void:
 	if Input.is_action_pressed("look_left"):
 		if crosshair.position.x > -max_offset_hor:
 			crosshair.position.x -= get_viewport().get_visible_rect().size.x / 2 * 0.003
-		self.rotate_y(0.03)
+		self.rotate_y(sensitivity / 1000)
 		hands.rotate_y(-0.03)
 	elif crosshair.position.x < 0 and not Input.is_action_pressed("look_left"):
 		crosshair.position.x += 5
@@ -49,7 +48,7 @@ func aim_and_rotate() -> void:
 	if Input.is_action_pressed("look_right"):
 		if crosshair.position.x < max_offset_hor:
 			crosshair.position.x += get_viewport().get_visible_rect().size.x / 2 * 0.003
-		self.rotate_y(-0.03)
+		self.rotate_y(-sensitivity / 1000)
 		hands.rotate_y(0.03)
 	elif crosshair.position.x > 0 and not Input.is_action_pressed("look_right"):
 		crosshair.position.x -= 5
@@ -57,7 +56,7 @@ func aim_and_rotate() -> void:
 	if Input.is_action_pressed("look_up"):
 		if crosshair.position.y > -max_offset_ver:
 			crosshair.position.y -= get_viewport().get_visible_rect().size.y / 2 * 0.003
-		camera.rotate_x(0.02)
+		camera.rotate_x(sensitivity / 2000)
 		hands.rotate_x(-0.02)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		hands.rotation.x = clamp(hands.rotation.x, deg_to_rad(-40), deg_to_rad(40))
@@ -67,7 +66,7 @@ func aim_and_rotate() -> void:
 	if Input.is_action_pressed("look_down"):
 		if crosshair.position.y < max_offset_ver:
 			crosshair.position.y += get_viewport().get_visible_rect().size.y / 2 * 0.003
-		camera.rotate_x(-0.02)
+		camera.rotate_x(-sensitivity / 2000)
 		hands.rotate_x(0.04)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		hands.rotation.x = clamp(hands.rotation.x, deg_to_rad(-40), deg_to_rad(40))
