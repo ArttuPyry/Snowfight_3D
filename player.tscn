@@ -118,7 +118,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_7asd4"]
 resource_name = "attack"
-length = 0.4
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,10 +126,10 @@ tracks/0/path = NodePath("Camera3D/PlayerHandThrow:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026)]
+"values": [Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, -0.187026), Vector3(0.22811, -0.393726, 0.11867)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -138,10 +138,10 @@ tracks/1/path = NodePath("Camera3D/PlayerHandThrow:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.574109, 3.14159, 5.65433e-08), Vector3(0.458725, 3.14159, -8.8076e-08), Vector3(1.36759, 3.14159, -6.78257e-07), Vector3(1.13956, 3.03125e-07, -3.14159)]
+"values": [Vector3(-0.574109, 3.14159, 5.65433e-08), Vector3(0.458725, 3.14159, -8.8076e-08), Vector3(1.36759, 3.14159, -6.78257e-07), Vector3(1.13956, 3.03125e-07, -3.14159), Vector3(0.63406, 1.57275e-07, -3.14159)]
 }
 
 [sub_resource type="Animation" id="Animation_r045y"]
@@ -327,10 +327,10 @@ process_material = SubResource("ParticleProcessMaterial_cxxww")
 draw_pass_1 = SubResource("PlaneMesh_kvxm8")
 
 [node name="PlayerHandThrow" parent="Camera3D" instance=ExtResource("2_sgavc")]
-transform = Transform3D(-1, 1.40814e-06, -2.06521e-06, -5.07045e-08, 0.814622, 0.579992, 2.49908e-06, 0.579992, -0.814622, 0.111295, -0.475872, -0.256356)
+transform = Transform3D(-1, 1.40814e-06, -2.06521e-06, -5.07045e-08, 0.814622, 0.579992, 2.49908e-06, 0.579992, -0.814622, 0.215977, -0.475872, -0.20839)
 
 [node name="player_hand" parent="Camera3D/PlayerHandThrow" index="0"]
-transform = Transform3D(1, 2.98023e-08, 1.49012e-08, 0, 1, -2.98023e-08, -1.49012e-08, 0, 1, 0, -0.1, 0)
+transform = Transform3D(1, 2.98024e-08, 1.49012e-08, 0, 1, 2.98023e-08, -1.49014e-08, -2.98023e-08, 1, 2.38419e-07, -0.0493348, -0.0711613)
 
 [node name="SnowballThrowSpot" type="Node3D" parent="Camera3D/PlayerHandThrow/player_hand" index="1"]
 transform = Transform3D(0.699598, 0.687126, -0.196013, -0.396243, 0.144798, -0.906656, -0.594604, 0.711963, 0.373569, 0.0140806, 0.467573, 0.0506294)

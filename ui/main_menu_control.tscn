@@ -141,6 +141,7 @@ layout_mode = 2
 script = ExtResource("11_fd13h")
 
 [node name="MouseControlledCamera" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 25.0
 offset_right = 345.0
@@ -163,6 +164,7 @@ vertical_alignment = 2
 layout_mode = 2
 
 [node name="LeadingCrosshair" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 65.0
 offset_right = 345.0
@@ -184,7 +186,8 @@ vertical_alignment = 2
 [node name="LeadingCrosshairBox" type="CheckBox" parent="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair"]
 layout_mode = 2
 
-[node name="FOV" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+[node name="FieldOfView" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 105.0
 offset_right = 345.0
@@ -193,7 +196,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="FOVLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FOV"]
+[node name="FieldOfViewLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -203,27 +206,27 @@ text = "FOV"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="FOVSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/FOV"]
+[node name="FieldOfViewSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-min_value = 5.0
-max_value = 144.0
-value = 5.0
-rounded = true
+min_value = 50.0
+max_value = 110.0
+value = 50.0
 
-[node name="CurFOVLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FOV"]
+[node name="CurFieldOfViewLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 18
-text = "90
+text = "75
 "
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="SaveGraphics" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+[node name="SaveGameplay" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
 offset_top = 425.0
 offset_right = 293.0
 offset_bottom = 473.0
@@ -232,14 +235,14 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="SaveGameplaySettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics"]
+[node name="SaveGameplaySettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_7qt1i")
 texture_hover = ExtResource("3_a2e86")
 
-[node name="SaveGameplaySettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics/SaveGameplaySettingsButton"]
+[node name="SaveGameplaySettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -255,14 +258,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ClearGameplaySettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics"]
+[node name="ClearGameplaySettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("6_e05vf")
 texture_hover = ExtResource("7_kpbvr")
 
-[node name="ClearGameplaySettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics/ClearGameplaySettingsButton"]
+[node name="ClearGameplaySettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -487,9 +490,9 @@ vertical_alignment = 1
 [node name="Sound" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
-script = ExtResource("11_fd13h")
 
 [node name="Master" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 25.0
 offset_right = 345.0
@@ -527,6 +530,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="CharacterVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 65.0
 offset_right = 345.0
@@ -564,6 +568,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="EffectVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 105.0
 offset_right = 345.0
@@ -602,6 +607,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="EnvironmentVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 145.0
 offset_right = 345.0
@@ -639,6 +645,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="SaveGraphics" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+layout_mode = 0
 offset_top = 425.0
 offset_right = 293.0
 offset_bottom = 473.0
@@ -727,21 +734,15 @@ vertical_alignment = 1
 [connection signal="pressed" from="MainButtons/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera/MouseControlledCameraBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
-[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair/LeadingCrosshairBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
-[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/FOV/FOVSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
-[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/FOV/FOVSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera/MouseControlledCameraBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_controlled_camera_box_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair/LeadingCrosshairBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_leading_crosshair_box_toggled"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView/FieldOfViewSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_field_of_view_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView/FieldOfViewSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_field_of_view_slider_value_changed"]
+[connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_save_gameplay_settings_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_clear_gameplay_settings_button_pressed"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/VSync/VSyncCheckBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_save_graphics_settings_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_clear_graphics_settings_button_pressed"]
-[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/Master/MasterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
-[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/Master/MasterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
-[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/CharacterVolume/CharacterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
-[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/CharacterVolume/CharacterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
-[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/EffectVolume/EffectSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
-[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/EffectVolume/EffectSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
-[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume/EnvironmentSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
-[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume/EnvironmentSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
 [connection signal="pressed" from="Options/VBoxContainer/ExitOptionsMenu" to="." method="_on_exit_options_menu_pressed"]

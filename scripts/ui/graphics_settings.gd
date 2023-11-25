@@ -46,19 +46,19 @@ const ANTIALIASING_ARRAY : Array[String] = [
 
 ############################## SAVE ###################################################
 
-func _save_user_preferences(window_mode_index, resolution_index, vsync_bool,aa_index, fps_index) -> void:
+func _save_graphics_preferences(window_mode_index, resolution_index, vsync_bool,aa_index, fps_index) -> void:
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
 	
-	config.set_value("user_preferences", "wm_index", window_mode_index)
-	config.set_value("user_preferences", "res_index", resolution_index)
-	config.set_value("user_preferences", "vsync_bool", vsync_bool)
-	config.set_value("user_preferences", "aa_index", aa_index)
-	config.set_value("user_preferences", "fps_index", fps_index)
+	config.set_value("graphics_preferences", "wm_index", window_mode_index)
+	config.set_value("graphics_preferences", "res_index", resolution_index)
+	config.set_value("graphics_preferences", "vsync_bool", vsync_bool)
+	config.set_value("graphics_preferences", "aa_index", aa_index)
+	config.set_value("graphics_preferences", "fps_index", fps_index)
 	
 	config.save(CONFIG_SAVE_PATH)
 
-func _load(section):
+func _load_graphics_preferences(section):
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
 	
@@ -98,7 +98,7 @@ func _load(section):
 		fps_slider.set_value_no_signal(fps)
 
 func _on_save_graphics_settings_button_pressed():
-	_save_user_preferences(temp_wp_index, temp_res_index, temp_vsync_bool, temp_aa_index, temp_fps_index)
+	_save_graphics_preferences(temp_wp_index, temp_res_index, temp_vsync_bool, temp_aa_index, temp_fps_index)
 
 func _on_clear_graphics_settings_button_pressed():
 	var config : = ConfigFile.new()
@@ -116,7 +116,7 @@ func _ready() -> void:
 	resolution_button.item_selected.connect(_on_resolution_selected)
 	antialiasing_button.item_selected.connect(_on_antialiasing_selected)
 	
-	_load("user_preferences")
+	_load_graphics_preferences("graphics_preferences")
 
 ############################## WINDOW MODE ###################################################
 
@@ -190,12 +190,6 @@ func _on_v_sync_check_box_toggled(button_pressed) -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		temp_vsync_bool = false
-
-func _check_for_vsync() -> void:
-	if DisplayServer.window_get_vsync_mode() == 1:
-		v_sync_check_box.set_pressed_no_signal(true)
-	else:
-		v_sync_check_box.set_pressed_no_signal(false)
 
 ############################## ANTIALIASING ###################################################
 

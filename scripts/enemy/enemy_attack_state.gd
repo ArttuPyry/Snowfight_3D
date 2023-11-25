@@ -22,9 +22,12 @@ func _enter_state() -> void:
 	set_process(true)
 	
 	# 0 = snowball, 1 = shovel
-	if current_actor.attack_type == 0:
+	if current_actor.attack_type == 0 and current_actor.current_snowball_count > 0:
 		_throw_snowball()
-	elif current_actor.attack_type == 1:
+	elif current_actor.attack_type == 0 and current_actor.current_snowball_count <= 0: 
+		state_transition.emit(self, "EnemyReloadState")
+	
+	if current_actor.attack_type == 1:
 		_shovel_snow()
 
 func _exit_state() -> void:
@@ -61,6 +64,7 @@ func _throw_snowball():
 	var predictive_dir = Vector3.FORWARD.rotated(Vector3.RIGHT, final_angle).rotated(Vector3.UP, y_rotation)
 	
 	current_actor.current_snowball_count -= 1
+	print("THROW")
 	_snowball.apply_central_force(projectile_start_pos + predictive_dir * 20.0 * 21)
 	await animation_player.animation_finished
 	is_attcking = false
@@ -90,7 +94,6 @@ func _shovel_snow() -> void:
 	animation_player.play("shovel_attack")
 	await animation_player.animation_finished
 	state_transition.emit(self, "EnemyChaseState")
-	
 
 func _process(_delta):
 	if current_actor.is_stunned:

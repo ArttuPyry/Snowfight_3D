@@ -5,6 +5,7 @@ const Snowball = preload("res://weapons and ammo/snowball.tscn")
 @onready var player = $"../.."
 @onready var snowball_throw_spot = $"../../Camera3D/PlayerHandThrow/player_hand/SnowballThrowSpot"
 @onready var animation_player = $"../../AnimationPlayer"
+@onready var player_hand_throw = $"../../Camera3D/PlayerHandThrow"
 
 func _ready() -> void:
 	set_process(false)
