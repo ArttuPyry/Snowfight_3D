@@ -10,6 +10,7 @@ func _ready():
 func inflict_damage(damage):
 	if actor.is_in_group("enemy") and not actor.seen_player:
 		damage = damage * 2
+		actor.seen_player = true
 	
 	current_energy -= damage
 	

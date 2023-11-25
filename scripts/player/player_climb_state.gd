@@ -58,5 +58,5 @@ func _physics_process(_delta):
 	else:
 		state_transition.emit(self, "PlayerRunState")
 
-func _process(_delta):
-	player.aim_and_rotate()
+func _process(delta):
+	player.aim_and_rotate(delta)

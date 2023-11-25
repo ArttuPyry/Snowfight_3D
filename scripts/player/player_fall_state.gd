@@ -37,5 +37,5 @@ func _physics_process(delta) -> void:
 	
 	player.move_and_slide()
 
-func _process(_delta):
-	player.aim_and_rotate()
+func _process(delta):
+	player.aim_and_rotate(delta)

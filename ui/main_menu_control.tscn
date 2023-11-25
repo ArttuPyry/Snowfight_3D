@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh2ppcl37pcmh"]
+[gd_scene load_steps=13 format=3 uid="uid://dh2ppcl37pcmh"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_87cli"]
 [ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_7qt1i"]
@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="7_kpbvr"]
 [ext_resource type="Texture2D" uid="uid://b3f8irm1mnrmt" path="res://ui/textures/menu_button_00.png" id="8_fnnfm"]
 [ext_resource type="Texture2D" uid="uid://dr5pcj1i6inrq" path="res://ui/textures/menu_button_00_hover.png" id="9_57mo3"]
-[ext_resource type="Script" path="res://ui/graphics.gd" id="11_4203m"]
+[ext_resource type="Script" path="res://scripts/ui/gameplay_settings.gd" id="11_fd13h"]
+[ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="12_mkh4d"]
 
 [node name="MainMenuControl" type="Control"]
 layout_mode = 3
@@ -24,6 +25,7 @@ size_flags_vertical = 4
 script = ExtResource("1_87cli")
 
 [node name="MainButtons" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -112,7 +114,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Options" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -122,6 +123,10 @@ offset_right = 410.0
 offset_bottom = 300.0
 grow_vertical = 2
 pivot_offset = Vector2(205, 300)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 layout_mode = 2
@@ -131,16 +136,159 @@ layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
 
-[node name="Graphics" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+[node name="Gameplay" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
 layout_mode = 2
-script = ExtResource("11_4203m")
+script = ExtResource("11_fd13h")
+
+[node name="MouseControlledCamera" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 345.0
+offset_bottom = 58.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="MouseControlledCameraLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Mouse controlled camera"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MouseControlledCameraBox" type="CheckBox" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera"]
+layout_mode = 2
+
+[node name="LeadingCrosshair" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+offset_left = 30.0
+offset_top = 65.0
+offset_right = 345.0
+offset_bottom = 98.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LeadingCrosshairLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Leading crosshair"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LeadingCrosshairBox" type="CheckBox" parent="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair"]
+layout_mode = 2
+
+[node name="FOV" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+offset_left = 30.0
+offset_top = 105.0
+offset_right = 345.0
+offset_bottom = 138.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="FOVLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FOV"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "FOV"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FOVSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/FOV"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 144.0
+value = 5.0
+rounded = true
+
+[node name="CurFOVLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FOV"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "90
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="SaveGraphics" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+offset_top = 425.0
+offset_right = 293.0
+offset_bottom = 473.0
+scale = Vector2(1.27, 1.27)
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="SaveGameplaySettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_7qt1i")
+texture_hover = ExtResource("3_a2e86")
+
+[node name="SaveGameplaySettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics/SaveGameplaySettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "SAVE 
+GAMEPLAY SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ClearGameplaySettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_e05vf")
+texture_hover = ExtResource("7_kpbvr")
+
+[node name="ClearGameplaySettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/SaveGraphics/ClearGameplaySettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "CLEAR 
+GAMEPLAY SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Graphics" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+script = ExtResource("12_mkh4d")
 
 [node name="WindowMode" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 45.0
-offset_right = 232.0
-offset_bottom = 78.0
+offset_top = 25.0
+offset_right = 345.0
+offset_bottom = 58.0
 size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
@@ -153,12 +301,12 @@ theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 18
 text = "Window mode"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="WindowModeButton" type="OptionButton" parent="Options/VBoxContainer/TabContainer/Graphics/WindowMode"]
 clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 15
@@ -166,51 +314,383 @@ theme_override_font_sizes/font_size = 15
 [node name="Resolution" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 90.0
-offset_right = 232.0
-offset_bottom = 123.0
+offset_top = 65.0
+offset_right = 345.0
+offset_bottom = 98.0
 size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="ResolutionLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/Resolution"]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 18
-text = "Window mode"
+text = "Resolution"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="ResolutionButton" type="OptionButton" parent="Options/VBoxContainer/TabContainer/Graphics/Resolution"]
 clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 15
 
-[node name="Gameplay" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
-visible = false
+[node name="VSync" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 105.0
+offset_right = 345.0
+offset_bottom = 138.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="VSyncLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/VSync"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "VSync"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VSyncCheckBox" type="CheckBox" parent="Options/VBoxContainer/TabContainer/Graphics/VSync"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+[node name="Antialiasing" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 145.0
+offset_right = 345.0
+offset_bottom = 178.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="AntialiasingLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/Antialiasing"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Antialiasing"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AntialiasingButton" type="OptionButton" parent="Options/VBoxContainer/TabContainer/Graphics/Antialiasing"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 15
+
+[node name="FPS" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 185.0
+offset_right = 345.0
+offset_bottom = 218.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="FPSLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/FPS"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Max FPS"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FPSSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Graphics/FPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 144.0
+value = 5.0
+rounded = true
+
+[node name="CurFPSLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/FPS"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="SaveGraphics" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+offset_top = 425.0
+offset_right = 293.0
+offset_bottom = 473.0
+scale = Vector2(1.27, 1.27)
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="SaveGraphicsSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_7qt1i")
+texture_hover = ExtResource("3_a2e86")
+
+[node name="SaveGraphicsSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme = ExtResource("4_lvk54")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "SAVE 
+GRAPHICS SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay/MarginContainer"]
+[node name="ClearGraphicsSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics"]
 layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_e05vf")
+texture_hover = ExtResource("7_kpbvr")
+
+[node name="ClearGraphicsSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "CLEAR 
+GRAPHICS SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sound" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("11_fd13h")
+
+[node name="Master" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 345.0
+offset_bottom = 58.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="MasterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/Master"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Master volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+rounded = true
+
+[node name="CurMasterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/Master"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CharacterVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+offset_left = 30.0
+offset_top = 65.0
+offset_right = 345.0
+offset_bottom = 98.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/CharacterVolume"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Character volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CharacterSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/CharacterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+rounded = true
+
+[node name="CurCharacterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/CharacterVolume"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EffectVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+offset_left = 30.0
+offset_top = 105.0
+offset_right = 345.0
+offset_bottom = 138.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="EffectLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EffectVolume"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Effect volume
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EffectSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/EffectVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+rounded = true
+
+[node name="CurEffectLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EffectVolume"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EnvironmentVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+offset_left = 30.0
+offset_top = 145.0
+offset_right = 345.0
+offset_bottom = 178.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="EnvironmentLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Environment volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="EnvironmentSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+rounded = true
+
+[node name="CurEnvironmentLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="SaveGraphics" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+offset_top = 425.0
+offset_right = 293.0
+offset_bottom = 473.0
+scale = Vector2(1.27, 1.27)
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="SaveSoundSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_7qt1i")
+texture_hover = ExtResource("3_a2e86")
+
+[node name="SaveSoundSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics/SaveSoundSettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "SAVE 
+SOUND SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ClearSoundSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_e05vf")
+texture_hover = ExtResource("7_kpbvr")
+
+[node name="ClearSoundSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics/ClearSoundSettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "CLEAR 
+SOUND SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExitOptionsMenu" type="TextureButton" parent="Options/VBoxContainer"]
 layout_mode = 2
@@ -247,4 +727,21 @@ vertical_alignment = 1
 [connection signal="pressed" from="MainButtons/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera/MouseControlledCameraBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair/LeadingCrosshairBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/FOV/FOVSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/FOV/FOVSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/VSync/VSyncCheckBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_save_graphics_settings_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_clear_graphics_settings_button_pressed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/Master/MasterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/Master/MasterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/CharacterVolume/CharacterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/CharacterVolume/CharacterSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/EffectVolume/EffectSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/EffectVolume/EffectSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume/EnvironmentSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume/EnvironmentSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
 [connection signal="pressed" from="Options/VBoxContainer/ExitOptionsMenu" to="." method="_on_exit_options_menu_pressed"]

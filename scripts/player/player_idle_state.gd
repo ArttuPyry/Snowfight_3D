@@ -20,7 +20,7 @@ func _exit_state() -> void:
 	set_process(false)
 	set_physics_process(false)
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
 	if player.interactable and player.interactable_group == "snowman" and Input.is_action_pressed("interact"):
 		player.global_position.x = player.interactable.global_position.x
 		player.global_position.z = player.interactable.global_position.z
@@ -39,7 +39,7 @@ func _process(_delta) -> void:
 	or Input.is_action_pressed("move_right"):
 		state_transition.emit(self, "PlayerRunState")
 	
-	player.aim_and_rotate()
+	player.aim_and_rotate(delta)
 	
 	if Input.is_action_just_pressed("attack"):
 		state_transition.emit(self, "PlayerAttackState")
