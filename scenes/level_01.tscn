@@ -1,0 +1,233 @@
+[gd_scene load_steps=16 format=3 uid="uid://ditlfek3hdtik"]
+
+[ext_resource type="PackedScene" uid="uid://b4up88kqplgm" path="res://ui/user_interface.tscn" id="1_6aknq"]
+[ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_l074c"]
+[ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="3_wce7r"]
+[ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="5_tslbj"]
+[ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="6_hyf8h"]
+[ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_ejxbt"]
+
+[sub_resource type="Shader" id="Shader_yk8oj"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's ProceduralSkyMaterial.
+
+shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+
+uniform sampler2D cloud_texture00;
+uniform sampler2D cloud_texture01;
+uniform vec2 cloud_direction00;
+uniform vec2 cloud_direction01;
+uniform vec2 cloud_scale;
+uniform vec2 cloud_distance;
+uniform float cloud_speed00;
+uniform float cloud_speed01;
+
+void sky() {
+	float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+	float c = (1.0 - v_angle / (PI * 0.5));
+	vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+	sky *= sky_energy;
+
+	if (LIGHT0_ENABLED) {
+		float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT0_SIZE) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+			sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT1_ENABLED) {
+		float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT1_SIZE) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+			sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT2_ENABLED) {
+		float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT2_SIZE) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+			sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT3_ENABLED) {
+		float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT3_SIZE) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+			sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+	sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
+
+	c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+	vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+	ground *= ground_energy;
+	
+	vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+	vec3 clouds = texture(cloud_texture00, (sky_uv * cloud_scale) + (TIME * cloud_direction00 * cloud_speed00 * 0.001)).rgb - texture(cloud_texture01, (sky_uv * cloud_scale) + (TIME * cloud_direction01 * cloud_speed01 * 0.01)).rgb;
+	clouds = clamp(clouds, 0.05, 1);
+	sky += clouds;
+	
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y));
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5y50"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7r4xh"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_a5y50")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pueg1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yudgp"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_pueg1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afitd"]
+shader = SubResource("Shader_yk8oj")
+shader_parameter/sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
+shader_parameter/sky_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/sky_curve = 0.15
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.772549, 0.85098, 0.894118, 1)
+shader_parameter/ground_horizon_color = Color(0.6463, 0.6558, 0.6708, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 0.523599
+shader_parameter/sun_curve = 0.15
+shader_parameter/cloud_direction00 = Vector2(-1, 1)
+shader_parameter/cloud_direction01 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.1, 0.1)
+shader_parameter/cloud_distance = Vector2(0.1, 0.1)
+shader_parameter/cloud_speed00 = 0.1
+shader_parameter/cloud_speed01 = 1.0
+shader_parameter/cloud_texture00 = SubResource("NoiseTexture2D_7r4xh")
+shader_parameter/cloud_texture01 = SubResource("NoiseTexture2D_yudgp")
+
+[sub_resource type="Sky" id="Sky_sj3r5"]
+sky_material = SubResource("ShaderMaterial_afitd")
+
+[sub_resource type="Environment" id="Environment_0jtjn"]
+background_mode = 2
+sky = SubResource("Sky_sj3r5")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_density = 0.002
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2p0md"]
+vertices = PackedVector3Array(-0.25, 0.403884, -16.75, 0.5, 0.403884, -17, 0.5, 0.403884, -17.25, -2.25, 0.403884, -17.25, -22.25, 0.403884, -16, -22.5, 0.403884, -17.25, -23.25, 0.403884, -17.25, -23.25, 0.403884, -15.5, -3.5, 0.403884, -12.25, -4, 0.403884, -17.25, -12.5, 0.403884, -17.25, -22, 0.403884, -14, -15, 0.403884, -6.5, -8.5, 0.403884, -6.5, -22.25, 0.403884, -16, -23.25, 0.403884, -15.5, -21.75, 0.403884, -15.25, -21, 0.403884, -16, -0.25, 0.403884, -15.5, -2.5, 0.403884, -16.5, -3.75, 0.403884, -16.5, -3.5, 0.403884, -12.25, 0.5, 0.403884, -12.5, -19.5, 0.403884, -16.75, -20.75, 0.403884, -17.25, -21, 0.403884, -16, -19.25, 0.403884, -15.5, -19.5, 0.403884, -16.75, -21, 0.403884, -16, -21.75, 0.403884, -15.25, -22, 0.403884, -14, -12.5, 0.403884, -17.25, -18, 0.403884, -17, -17.75, 0.403884, -16, -17.75, 0.403884, -16, -19.25, 0.403884, -15.5, -22, 0.403884, -14, -12.5, 0.403884, -17.25, -0.25, 0.403884, -16.75, -2.25, 0.403884, -17.25, -2.5, 0.403884, -16.5, -0.25, 0.403884, -15.5, -22, 0.403884, -14, -23.25, 0.403884, -14, -23.25, 0.403884, -9, -22.5, 0.403884, -8.75, -23.25, 0.403884, -7.5, -23.25, 0.403884, -4.75, -21.5, 0.403884, -4.5, -21.25, 0.403884, -6.5, -22.5, 0.403884, -7.75, -12.5, 0.403884, -17.25, -20.75, 0.403884, -17.25, -18, 0.403884, -17, -8.5, 0.403884, -6.5, -8.25, 0.403884, -5.75, -3.5, 0.403884, -6, -3.5, 0.403884, -12.25, -22.5, 0.403884, -8.75, -22.5, 0.403884, -7.75, -21.25, 0.403884, -6.5, -15, 0.403884, -6.5, -22, 0.403884, -14, -20.75, 0.403884, -17.25, -19.5, 0.403884, -16.75, -18, 0.403884, -17, 0.5, 0.403884, -12.5, 0.5, 0.403884, -15.25, -0.25, 0.403884, -15.5, -3.5, 0.403884, -12.25, -3.75, 0.403884, -16.5, -4, 0.403884, -17.25, 0.5, 0.403884, -17.25, 0.5, 0.403884, -17, 1.25, 0.403884, -16.75, 3.25, 0.403884, -17.25, 5.5, 0.403884, -17.25, 4.75, 0.403884, -17.25, 4.5, 0.403884, -16, 5.5, 0.403884, -12.5, 1.25, 0.403884, -15.5, 0.5, 0.403884, -15.25, 0.5, 0.403884, -12.5, 5.5, 0.403884, -12.5, 4.5, 0.403884, -16, 3.5, 0.403884, -16, 3.5, 0.403884, -16, 3.25, 0.403884, -17.25, 1.25, 0.403884, -16.75, 1.25, 0.403884, -15.5, -2.5, 3.90388, -11.5, -2.5, 3.90388, -6.5, 5.5, 3.90388, -6.5, 5.5, 3.90388, -11.5, -2.5, 5.40388, -9, 5.5, 5.40388, -9, -6.75, 0.403884, 1.5, -6.75, 0.403884, 2.5, -5.5, 0.403884, 2.25, -5.25, 0.403884, 1.75, 5.5, 0.403884, -5.25, 4.25, 0.403884, -5, 4.5, 0.403884, -3.5, -8.25, 0.403884, 0, -7.75, 0.403884, 1.25, -6.75, 0.403884, 1.5, -6.75, 0.403884, 1.5, -5.25, 0.403884, 1.75, -4, 0.403884, 1.75, -8.25, 0.403884, 0, -6.75, 0.403884, 1.5, -4, 0.403884, 1.75, -3.25, 0.403884, -5.25, -3.5, 0.403884, -6, -8.25, 0.403884, -5.75, 5.5, 0.403884, 2.5, 5.5, 0.403884, -5.25, 4.5, 0.403884, -3.5, 3.25, 0.403884, -3.25, 3, 0.403884, -4.75, -3.25, 0.403884, -5.25, 5.5, 0.403884, 2.5, 4.5, 0.403884, -3.5, 3.25, 0.403884, -3.25, -3.25, 0.403884, -5.25, -4, 0.403884, 1.75, -3.75, 0.403884, 2.5, 5.5, 0.403884, 2.5, 3.25, 0.403884, -3.25, -3.25, 0.403884, -5.25, 3, 0.403884, -4.75, 4.25, 0.403884, -5, 5.5, 0.403884, -5.25, -3.25, 0.403884, -5.25, 4.25, 0.403884, -5, -20.5, 3.90388, -5.5, -20.5, 3.65388, -0.25, -9.5, 3.65388, -0.25, -9.5, 3.90388, -5.5, -20.5, 5.40388, -2.875, -9.5, 5.40388, -2.875, -7.75, 0.403884, 1.25, -8.25, 0.403884, 0, -8.75, 0.403884, 0.75, -9.25, 0.403884, 2.5, -7.75, 0.403884, 1.25, -8.75, 0.403884, 0.75, -15, 0.403884, 0.75, -15.75, 0.403884, 2.5, -21.25, 0.403884, 0.75, -21.5, 0.403884, -4.5, -23.25, 0.403884, -4.75, -23.25, 0.403884, 1.5, -22, 0.403884, 2.5, -21.25, 0.403884, 0.75, -22, 0.403884, 2.5, -15.75, 0.403884, 2.5, -15, 0.403884, 0.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 13), PackedInt32Array(10, 13, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 22), PackedInt32Array(25, 24, 23), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(33, 32, 31), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 42), PackedInt32Array(50, 49, 46), PackedInt32Array(46, 49, 47), PackedInt32Array(47, 49, 48), PackedInt32Array(51, 53, 52), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 62), PackedInt32Array(60, 62, 61), PackedInt32Array(63, 65, 64), PackedInt32Array(66, 68, 67), PackedInt32Array(71, 70, 69), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 75), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(80, 85, 81), PackedInt32Array(81, 85, 84), PackedInt32Array(81, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(87, 86, 88), PackedInt32Array(88, 86, 89), PackedInt32Array(93, 95, 90), PackedInt32Array(90, 95, 94), PackedInt32Array(94, 95, 92), PackedInt32Array(94, 92, 91), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 96), PackedInt32Array(102, 101, 100), PackedInt32Array(105, 104, 103), PackedInt32Array(108, 107, 106), PackedInt32Array(110, 109, 111), PackedInt32Array(111, 109, 112), PackedInt32Array(112, 109, 113), PackedInt32Array(113, 109, 114), PackedInt32Array(116, 115, 117), PackedInt32Array(120, 119, 118), PackedInt32Array(121, 123, 122), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 128), PackedInt32Array(126, 128, 127), PackedInt32Array(131, 130, 129), PackedInt32Array(134, 133, 132), PackedInt32Array(138, 140, 135), PackedInt32Array(135, 140, 139), PackedInt32Array(139, 140, 137), PackedInt32Array(139, 137, 136), PackedInt32Array(143, 142, 141), PackedInt32Array(145, 144, 146), PackedInt32Array(146, 144, 147), PackedInt32Array(147, 144, 148), PackedInt32Array(153, 152, 149), PackedInt32Array(149, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(157, 156, 154), PackedInt32Array(154, 156, 155)]
+
+[node name="LevelTemplate" type="Node3D"]
+
+[node name="UserInterface" parent="." instance=ExtResource("1_6aknq")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0jtjn")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_2p0md")
+
+[node name="Spruce" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78936, 0, -4.16279)
+
+[node name="Spruce2" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67636, 0, 2.4955)
+
+[node name="Spruce3" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56902, 0, 1.97442)
+
+[node name="Spruce4" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6969, 0, -16.2891)
+
+[node name="Spruce5" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5895, 0, -16.8102)
+
+[node name="Spruce6" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5991, 0, -14.7776)
+
+[node name="Spruce7" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97203, 0, -16.9048)
+
+[node name="Spruce8" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.528702, 0, -16.1097)
+
+[node name="Spruce9" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07645, 0, -17.2146)
+
+[node name="Spruce10" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3093, 0, -8.24632)
+
+[node name="Spruce11" parent="NavigationRegion3D" instance=ExtResource("2_l074c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3093, 0, 2.29742)
+
+[node name="LevelGridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("3_wce7r")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65535, 655362, 0, 65535, 655362, 0, 0, 655362, 65535, 0, 655362, 65535, 65534, 655362, 0, 65534, 655362, 1, 65534, 655362, 1, 65535, 655362, 1, 0, 655362, 65528, 65530, 655362, 65528, 65531, 655362, 65528, 65532, 655362, 65528, 65533, 655362, 65528, 65534, 655362, 65528, 65535, 655362, 65528, 0, 655362, 65529, 65530, 655362, 65529, 65531, 655362, 65529, 65532, 655362, 65529, 65533, 655362, 65529, 65534, 655363, 65529, 65535, 655363, 65529, 0, 655362, 65530, 65530, 655362, 65530, 65531, 655362, 65530, 65532, 655362, 65530, 65533, 655362, 65530, 65534, 1048579, 65530, 65535, 1441795, 65530, 0, 655362, 65531, 65530, 655362, 65531, 65531, 655362, 65531, 65532, 655362, 65531, 65533, 655362, 65531, 65534, 1048579, 65531, 65535, 1441795, 65531, 0, 655362, 65532, 65530, 655362, 65532, 65531, 655362, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 3, 65532, 65535, 3, 65532, 0, 655362, 65533, 65530, 655362, 65533, 65531, 655362, 65533, 65532, 655362, 65533, 65533, 655362, 65533, 65534, 655362, 65533, 65535, 655362, 65533, 0, 655362, 65534, 65530, 655362, 65534, 65531, 655362, 65534, 65532, 655362, 65534, 65533, 655362, 65534, 65534, 655362, 65534, 65535, 655362, 65534, 0, 655362, 65535, 65530, 655362, 65535, 65531, 655362, 65535, 65532, 1048580, 65535, 65533, 655363, 0, 65530, 655362, 0, 65531, 655362, 0, 65532, 1048579, 0, 65533, 1441795, 1, 65530, 655362, 1, 65531, 655362, 1, 65532, 1048579, 1, 65533, 1048580, 131071, 65532, 9, 65536, 65532, 9, 65537, 65532, 9, 131071, 65533, 655369, 65536, 65533, 655369, 65537, 65533, 655369, 131068, 65534, 9, 131067, 65534, 9, 131066, 65534, 9, 131065, 65534, 9, 131065, 65535, 655369, 131066, 65535, 655369, 131067, 65535, 655369, 131068, 65535, 655369)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="FenceAndExtraGridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("3_wce7r")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(1, 1, 655360, 0, 1, 655361, 2, 0, 1441792, 2, 65535, 1441792, 2, 65534, 1441792, 2, 65533, 1441792, 2, 65532, 1441792, 2, 65531, 1441792, 2, 65530, 1441792, 1, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 65534, 65529, 0, 65533, 65529, 0, 65532, 65529, 0, 65531, 65529, 0, 65530, 65529, 0, 65529, 65529, 0, 65528, 65529, 0, 65527, 65530, 1048576, 65527, 65531, 1048576, 65527, 65532, 1048576, 65527, 65533, 1048576, 65527, 65534, 1048576, 65527, 65535, 1048576, 65527, 0, 1048576, 65528, 1, 655360, 65529, 1, 655360, 65530, 1, 655360, 65531, 1, 655360, 65532, 1, 655360, 65533, 1, 655360, 65534, 1, 655360, 65535, 1, 655360)
+}
+
+[node name="Player" parent="." instance=ExtResource("5_tslbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47989, 1, 2.22851)
+
+[node name="Snowman" parent="." instance=ExtResource("6_hyf8h")]
+transform = Transform3D(-0.366566, 0, -0.930392, 0, 1, 0, 0.930392, 0, -0.366566, 1.39412, 0, -4.98886)
+
+[node name="Snowman2" parent="." instance=ExtResource("6_hyf8h")]
+transform = Transform3D(-0.992095, 0, -0.125489, 0, 1, 0, 0.125489, 0, -0.992095, 4.39412, 0, -14.0759)
+
+[node name="Snowman3" parent="." instance=ExtResource("6_hyf8h")]
+transform = Transform3D(0.266784, 0, 0.963756, 0, 1, 0, -0.963756, 0, 0.266784, -20.0198, 0, -7.51544)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_ejxbt")]
+transform = Transform3D(0.895851, 0, 0.444354, 0, 1, 0, -0.444354, 0, 0.895851, -6.12908, 0, -6.61121)
+player_path = NodePath("../Player")
+player = NodePath("../Player")

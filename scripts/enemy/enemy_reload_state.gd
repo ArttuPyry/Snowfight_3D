@@ -10,7 +10,6 @@ func _ready():
 func _enter_state() -> void:
 	set_process(true)
 	
-	# Reset crosshair
 	animation_player.play("reload_snowball")
 	await animation_player.animation_finished
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_ritve"]
 [ext_resource type="Material" uid="uid://ut7kls6cn6jp" path="res://characters/material00.tres" id="2_8niek"]
-[ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://snowball_mesh_only.tscn" id="2_ebw5u"]
+[ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="2_ebw5u"]
 [ext_resource type="Script" path="res://scripts/actor componenets/energy_component.gd" id="3_e1jfi"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_vision.gd" id="4_nndq0"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="5_htq7q"]

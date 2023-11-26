@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
 [ext_resource type="PackedScene" uid="uid://clioeqkgwpgop" path="res://characters/meshes/player_hand_left.tscn" id="7_xv760"]
-[ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://snowball_mesh_only.tscn" id="8_72qf2"]
+[ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="8_72qf2"]
 [ext_resource type="Script" path="res://scripts/player/player_climb_state.gd" id="13_j1gxg"]
 [ext_resource type="Script" path="res://scripts/player/player_destroy_snowman_state.gd" id="16_tjaw8"]
 
@@ -490,7 +490,7 @@ script = ExtResource("5_bjqnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0172784, 0)
 
 [node name="RightHand" parent="Camera3D/Hands" instance=ExtResource("2_sgavc")]
-transform = Transform3D(-0.0202828, 0.57197, -0.820024, 0.999372, 0.035439, -4.34354e-08, 0.0290608, -0.819509, -0.572329, 0.244009, -0.331325, -0.299089)
+transform = Transform3D(-0.0202828, 0.57197, -0.820024, 0.999372, 0.0354389, -4.34354e-08, 0.0290608, -0.819509, -0.572329, 0.244009, -0.331325, -0.299089)
 
 [node name="LeftHand" parent="Camera3D/Hands" instance=ExtResource("7_xv760")]
 transform = Transform3D(-0.0165556, -0.466864, 0.884174, -0.999372, 0.0354389, -4.35585e-08, -0.0313342, -0.883618, -0.467158, -0.23499, -0.289747, -0.270079)

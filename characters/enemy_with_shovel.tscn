@@ -1970,7 +1970,7 @@ _data = {
 radius = 0.308544
 height = 1.22423
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="EnemyShovel" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_i5c3c")
 attack_range = 5.0
 attack_type = 1

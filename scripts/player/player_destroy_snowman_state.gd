@@ -4,6 +4,7 @@ extends PlayerState
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var hands = $"../../Camera3D/Hands"
 @onready var player = $"../.."
+@onready var snowball = $"../../Camera3D/Hands/snowball"
 
 func _ready() -> void:
 	hands.visible = false
@@ -17,6 +18,7 @@ func _enter_state() -> void:
 	hands.rotation.x = 0
 	hands.rotation.z = 0
 	hands.visible = true
+	snowball.visible = false
 	set_process(true)
 	set_physics_process(true)
 	player.set_process_unhandled_input(false)

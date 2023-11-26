@@ -6,6 +6,7 @@ extends EnemyState
 @onready var energy_component = $"../../EnergyComponent"
 
 func _enter_state() -> void:
+	# stun enemy wait and reset
 	animation_player.play("stunned_start")
 	await animation_player.animation_finished
 	animation_player.play("stunned")

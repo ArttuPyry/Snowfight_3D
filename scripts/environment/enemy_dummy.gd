@@ -14,6 +14,7 @@ var skin03 = preload("res://characters/material03.tres")
 var skin04 = preload("res://characters/material04.tres")
 var skin05 = preload("res://characters/material05.tres")
 
+# This is for random skin
 func _ready():
 	if randomize_skin:
 		randomize()

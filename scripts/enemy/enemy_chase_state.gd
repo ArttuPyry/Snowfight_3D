@@ -16,9 +16,10 @@ func _exit_state() -> void:
 	set_process(false)
 
 func _process(_delta):
-	if current_actor.is_stunned:
+	if current_actor.is_stunned: # Stun
 		state_transition.emit(self, "EnemyStunnedState")
 	
+	# Baisc movement with nav mesh
 	current_actor.velocity = Vector3.ZERO
 	
 	navigation_agent.set_target_position(current_actor.player.global_transform.origin)

@@ -11,9 +11,11 @@ var next_spot
 
 func _ready():
 	set_process(false)
+	# Set patrol points
 	patrol_points = current_actor.enemy_patrol_waypoints
 
 func _enter_state() -> void:
+	# Rotate between points
 	current_waypoint_index += 1
 	if current_waypoint_index == patrol_points.size():
 		current_waypoint_index = 0
@@ -28,9 +30,10 @@ func _process(delta):
 	if current_actor.is_stunned:
 		state_transition.emit(self, "EnemyStunnedState")
 	
-	if current_actor.seen_player:
+	if current_actor.seen_player: # If seen player attack
 		state_transition.emit(self, "EnemyChaseState")
 	
+	# Just walk
 	current_actor.velocity = Vector3.ZERO
 	
 	navigation_agent.set_target_position(next_spot.global_transform.origin)

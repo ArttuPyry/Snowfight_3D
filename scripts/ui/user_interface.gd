@@ -6,7 +6,6 @@ extends Control
 @onready var current_ammo = $Ammo/Current
 @onready var energy_bar = $Energy/EnergyBar
 
-
 var player
 
 func _ready():

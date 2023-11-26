@@ -1,0 +1,191 @@
+[gd_scene load_steps=18 format=3 uid="uid://ipfedegh6d1a"]
+
+[ext_resource type="PackedScene" uid="uid://b4up88kqplgm" path="res://ui/user_interface.tscn" id="1_08hxr"]
+[ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="2_qf7kp"]
+[ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="2_tbacs"]
+[ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_uv32d"]
+[ext_resource type="PackedScene" uid="uid://b4j3icq8jyte1" path="res://environment/stair_fix.tscn" id="4_bpf18"]
+[ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="6_ifn04"]
+[ext_resource type="PackedScene" uid="uid://cn0ypr2lfyvuf" path="res://environment/ladder.tscn" id="7_geo1t"]
+[ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_4toi4"]
+[ext_resource type="PackedScene" uid="uid://bnxloy30l5bnp" path="res://characters/enemy_with_shovel.tscn" id="9_8jr6r"]
+
+[sub_resource type="Shader" id="Shader_yk8oj"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's ProceduralSkyMaterial.
+
+shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+
+uniform sampler2D cloud_texture00;
+uniform sampler2D cloud_texture01;
+uniform vec2 cloud_direction00;
+uniform vec2 cloud_direction01;
+uniform vec2 cloud_scale;
+uniform vec2 cloud_distance;
+uniform float cloud_speed00;
+uniform float cloud_speed01;
+
+void sky() {
+	float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+	float c = (1.0 - v_angle / (PI * 0.5));
+	vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+	sky *= sky_energy;
+
+	if (LIGHT0_ENABLED) {
+		float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT0_SIZE) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+			sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT1_ENABLED) {
+		float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT1_SIZE) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+			sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT2_ENABLED) {
+		float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT2_SIZE) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+			sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT3_ENABLED) {
+		float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT3_SIZE) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+			sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+	sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
+
+	c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+	vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+	ground *= ground_energy;
+	
+	vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+	vec3 clouds = texture(cloud_texture00, (sky_uv * cloud_scale) + (TIME * cloud_direction00 * cloud_speed00 * 0.001)).rgb - texture(cloud_texture01, (sky_uv * cloud_scale) + (TIME * cloud_direction01 * cloud_speed01 * 0.01)).rgb;
+	clouds = clamp(clouds, 0.05, 1);
+	sky += clouds;
+	
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y));
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5y50"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7r4xh"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_a5y50")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pueg1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yudgp"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_pueg1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afitd"]
+shader = SubResource("Shader_yk8oj")
+shader_parameter/sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
+shader_parameter/sky_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/sky_curve = 0.15
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.772549, 0.85098, 0.894118, 1)
+shader_parameter/ground_horizon_color = Color(0.6463, 0.6558, 0.6708, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 0.523599
+shader_parameter/sun_curve = 0.15
+shader_parameter/cloud_direction00 = Vector2(-1, 1)
+shader_parameter/cloud_direction01 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.1, 0.1)
+shader_parameter/cloud_distance = Vector2(0.1, 0.1)
+shader_parameter/cloud_speed00 = 0.1
+shader_parameter/cloud_speed01 = 1.0
+shader_parameter/cloud_texture00 = SubResource("NoiseTexture2D_7r4xh")
+shader_parameter/cloud_texture01 = SubResource("NoiseTexture2D_yudgp")
+
+[sub_resource type="Sky" id="Sky_sj3r5"]
+sky_material = SubResource("ShaderMaterial_afitd")
+
+[sub_resource type="Environment" id="Environment_0jtjn"]
+background_mode = 2
+sky = SubResource("Sky_sj3r5")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_density = 0.003
+
+[node name="LevelTemplate" type="Node3D"]
+
+[node name="UserInterface" parent="." instance=ExtResource("1_08hxr")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0jtjn")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="Spruce" parent="NavigationRegion3D" instance=ExtResource("2_uv32d")]
+
+[node name="LevelGridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("2_tbacs")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65535, 1441794, 0, 65535, 1441794, 0, 0, 1441794, 65535, 0, 1441794, 0, 1, 655361, 65535, 1, 655360, 65535, 65534, 1441794, 0, 65534, 1441794, 1, 65534, 1441794, 1, 65535, 1441794, 1, 0, 1441794, 1, 1, 655360)
+}
+
+[node name="ExtrasGridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("2_tbacs")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+
+[node name="StairFix" parent="NavigationRegion3D" instance=ExtResource("4_bpf18")]
+
+[node name="Player" parent="." instance=ExtResource("2_qf7kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47989, 1, 2.22851)
+
+[node name="Snowman" parent="." instance=ExtResource("6_ifn04")]
+
+[node name="Ladder" parent="." instance=ExtResource("7_geo1t")]
+
+[node name="Enemy" parent="." instance=ExtResource("8_4toi4")]
+
+[node name="EnemyShovel" parent="." instance=ExtResource("9_8jr6r")]

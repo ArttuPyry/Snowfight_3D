@@ -6,7 +6,7 @@ extends Control
 
 
 func _on_continue_pressed():
-	get_tree().change_scene_to_file("res://temp/testworld.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_01.tscn")
 
 func _on_options_pressed():
 	main_buttons.visible = false

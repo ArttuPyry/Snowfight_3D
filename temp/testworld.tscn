@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://ckdi3myxfa0w0"]
 
 [ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="2_76oo2"]
-[ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://player.tscn" id="2_77a1h"]
+[ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="2_77a1h"]
 [ext_resource type="PackedScene" uid="uid://b4j3icq8jyte1" path="res://environment/stair_fix.tscn" id="3_6e31e"]
 [ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="4_oa0vr"]
 [ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="6_6kmmr"]

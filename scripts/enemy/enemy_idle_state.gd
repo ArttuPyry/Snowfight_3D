@@ -8,6 +8,8 @@ func _enter_state() -> void:
 	set_process(true)
 	await get_tree().create_timer(0.01, false).timeout
 	animation_player.play("idle")
+	
+	# Check if enemy is patrolling
 	if current_actor.patrolling:
 		state_transition.emit(self, "EnemyPatrolState")
 
