@@ -13,14 +13,15 @@ var current_snowball_count : int
 @export var leading_crosshair = false
 @export var horizontal_sensitivity : float = 5.0
 @export var vertical_sensitivity : float = 3.0
-@export var mouse_sensitivity : float = 0.01
+@export var hor_mouse_sensitivity : float = 0.01
+@export var ver_mouse_sensitivity : float = 0.01
 @onready var hands = $Camera3D/Hands
 
 var interactable
 var interactable_group
 var interact_look_at
 
-const CONFIG_SAVE_PATH := "user://usergameplaypreferences.tres"
+const CONFIG_SAVE_PATH := "user://usergameplaypreferences.cfg"
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -33,7 +34,15 @@ func _ready():
 	var mouse = config.get_value("gameplay_preferences", "mouse_bool", false)
 	var leading = config.get_value("gameplay_preferences", "leading_bool", false)
 	var fov = config.get_value("gameplay_preferences", "fov_index", 75)
+	var kb_h_sens = config.get_value("gameplay_preferences", "kb_hori_float", 5)
+	var kb_v_sens = config.get_value("gameplay_preferences", "kb_vert_float", 5)
+	var mouse_h_sens = config.get_value("gameplay_preferences", "mouse_hori_float", 5)
+	var mouse_v_sens = config.get_value("gameplay_preferences", "mouse_vert_float", 5)
 	
+	horizontal_sensitivity = kb_h_sens / 5
+	vertical_sensitivity = kb_v_sens / 5
+	hor_mouse_sensitivity = mouse_h_sens / 100
+	ver_mouse_sensitivity = mouse_v_sens / 100
 	mouse_enabled = mouse
 	leading_crosshair = leading
 	camera.fov = int(fov)
@@ -107,11 +116,11 @@ func _unhandled_input(event):
 		var max_offset_hor = get_viewport().get_visible_rect().size.x / 2 * 0.5
 		var max_offset_ver = get_viewport().get_visible_rect().size.y / 2 * 0.5
 		
-		self.rotate_y(-event.relative.x * mouse_sensitivity)
-		camera.rotate_x(-event.relative.y * mouse_sensitivity)
+		self.rotate_y(-event.relative.x * hor_mouse_sensitivity)
+		camera.rotate_x(-event.relative.y * ver_mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		
-		hands.rotate_y(event.relative.x * mouse_sensitivity)
+		hands.rotate_y(event.relative.x * hor_mouse_sensitivity)
 		
 		if leading_crosshair:
 			if event.relative.x < 0:

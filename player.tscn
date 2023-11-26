@@ -327,7 +327,7 @@ process_material = SubResource("ParticleProcessMaterial_cxxww")
 draw_pass_1 = SubResource("PlaneMesh_kvxm8")
 
 [node name="PlayerHandThrow" parent="Camera3D" instance=ExtResource("2_sgavc")]
-transform = Transform3D(-1, 1.40814e-06, -2.06521e-06, -5.07045e-08, 0.814622, 0.579992, 2.49908e-06, 0.579992, -0.814622, 0.215977, -0.475872, -0.20839)
+transform = Transform3D(-1, 1.40814e-06, -2.06521e-06, -5.07045e-08, 0.814622, 0.579992, 2.49908e-06, 0.579992, -0.814622, 0.111295, -0.475872, -0.256356)
 
 [node name="player_hand" parent="Camera3D/PlayerHandThrow" index="0"]
 transform = Transform3D(1, 2.98024e-08, 1.49012e-08, 0, 1, 2.98023e-08, -1.49014e-08, -2.98023e-08, 1, 2.38419e-07, -0.0493348, -0.0711613)

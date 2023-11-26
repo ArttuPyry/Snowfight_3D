@@ -213,6 +213,7 @@ size_flags_vertical = 1
 min_value = 50.0
 max_value = 110.0
 value = 50.0
+rounded = true
 
 [node name="CurFieldOfViewLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView"]
 layout_mode = 2
@@ -221,6 +222,186 @@ size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 18
 text = "75
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="KeyboardSensitivity" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 160.0
+offset_right = 301.0
+offset_bottom = 180.0
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 14
+text = "Keyboard camera sensitivity:"
+vertical_alignment = 2
+
+[node name="KeyboardHorizontalSens" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 180.0
+offset_right = 345.0
+offset_bottom = 213.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="KeyboardHorizontalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/KeyboardHorizontalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Horizontal"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="KeyboardHorizontalSensSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/KeyboardHorizontalSens"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="CurKeyboardHorizontalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/KeyboardHorizontalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "5.0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="KeyboardVerticalSens" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 215.0
+offset_right = 345.0
+offset_bottom = 248.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="KeyboardVerticalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/KeyboardVerticalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Vertical
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="KeyboardVerticalSensSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/KeyboardVerticalSens"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="CurKeyboardVerticalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/KeyboardVerticalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "5.0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MouseSensitivity" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 260.0
+offset_right = 301.0
+offset_bottom = 280.0
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 14
+text = "Mouse camera sensitivity:"
+vertical_alignment = 2
+
+[node name="MouseHorizontalSens" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 281.0
+offset_right = 345.0
+offset_bottom = 314.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="MouseHorizontalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Horizontal"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MouseHorizontalSensSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="CurMouseHorizontalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "5.0
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MouseVerticalSens" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Gameplay"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 316.0
+offset_right = 345.0
+offset_bottom = 349.0
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="MouseVerticalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "Vertical
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MouseVerticalSensSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="CurMouseVerticalSensLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 18
+text = "5.0
 "
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -738,6 +919,14 @@ vertical_alignment = 1
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair/LeadingCrosshairBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_leading_crosshair_box_toggled"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView/FieldOfViewSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_field_of_view_slider_drag_ended"]
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView/FieldOfViewSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_field_of_view_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/KeyboardHorizontalSens/KeyboardHorizontalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_keyboard_horizontal_sens_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/KeyboardHorizontalSens/KeyboardHorizontalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_keyboard_horizontal_sens_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/KeyboardVerticalSens/KeyboardVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_keyboard_vertical_sens_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/KeyboardVerticalSens/KeyboardVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_keyboard_vertical_sens_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens/MouseHorizontalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_horizontal_sens_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens/MouseHorizontalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_horizontal_sens_slider_value_changed"]
+[connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens/MouseVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_vertical_sens_slider_drag_ended"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens/MouseVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_vertical_sens_slider_value_changed"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_save_gameplay_settings_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_clear_gameplay_settings_button_pressed"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/VSync/VSyncCheckBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
