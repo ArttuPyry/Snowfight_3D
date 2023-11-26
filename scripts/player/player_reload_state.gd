@@ -12,10 +12,11 @@ func _enter_state() -> void:
 	hands.rotation.y = 0
 	hands.rotation.x = 0
 	hands.rotation.z = 0
-	player.mouse_enabled = false
 	set_process(true)
 	set_physics_process(true)
+	player.set_process_unhandled_input(false)
 	
+	# Reload if player has less ammo than max
 	if player.current_snowball_count < player.max_snowball_count:
 		hands.visible = true
 		animation_player.play("reload")
@@ -27,7 +28,7 @@ func _enter_state() -> void:
 	await get_tree().create_timer(0.1, false).timeout
 	state_transition.emit(self, "PlayerIdleState")
 
-
+# Just reset hands
 func _exit_state() -> void:
 	hands.rotation.y = 0
 	hands.rotation.x = 0
@@ -35,6 +36,6 @@ func _exit_state() -> void:
 	hands.visible = false
 	set_process(false)
 	set_physics_process(false)
-	player.mouse_enabled = true
+	player.set_process_unhandled_input(true)
 
 

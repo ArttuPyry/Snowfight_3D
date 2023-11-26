@@ -1,6 +1,7 @@
 class_name PlayerFallState
 extends PlayerState
 
+# Variables
 const SPEED = 2.0
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
@@ -18,13 +19,18 @@ func _ready() -> void:
 func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
+	# Reset fall famage and start timer
 	fall_damage = 0
 	fall_timer.start()
 
 func _exit_state() -> void:
+	# Stop fall damage timer
 	fall_timer.stop()
+	
+	# Proc the fall damage
 	if fall_damage > 0:
 		energy_component.inflict_damage(fall_damage)
+	
 	set_process(false)
 	set_physics_process(false)
 
@@ -35,6 +41,7 @@ func _physics_process(delta) -> void:
 	else:
 		state_transition.emit(self, "PlayerIdleState")
 	
+	# player moves with reduced speed compared to ground ms
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -49,6 +56,7 @@ func _physics_process(delta) -> void:
 func _process(delta):
 	player.aim_and_rotate(delta)
 
+# Every time timer timeouts add 1 dmage to fall damage and reset the timer
 func _on_fall_timer_timeout():
 	fall_damage += 1
 	fall_timer.start()

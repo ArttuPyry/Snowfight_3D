@@ -8,12 +8,14 @@ func _ready():
 	current_energy = actor.max_energy
 
 func inflict_damage(damage):
+	# Double damage when enemy haven't seen player
 	if actor.is_in_group("enemy") and not actor.seen_player:
 		damage = damage * 2
 		actor.seen_player = true
 	
 	current_energy -= damage
 	
+	# This is to update player health bar
 	if actor.is_in_group("player"):
 		actor.update_health_bar(damage)
 	

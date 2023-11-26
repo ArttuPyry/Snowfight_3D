@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+# Crosshari setup
 @onready var user_interface = $"../UserInterface"
 var crosshair
 @onready var camera = $Camera3D
@@ -11,26 +12,31 @@ var current_snowball_count : int
 
 @export var mouse_enabled = true
 @export var leading_crosshair = false
+# These are changed with gameplay prefernece settings but just in case @export
 @export var horizontal_sensitivity : float = 5.0
 @export var vertical_sensitivity : float = 3.0
 @export var hor_mouse_sensitivity : float = 0.01
 @export var ver_mouse_sensitivity : float = 0.01
 @onready var hands = $Camera3D/Hands
 
+# This is for ladders and snowmen, climb and destory
 var interactable
 var interactable_group
 var interact_look_at
 
+# User gameplay preference save
 const CONFIG_SAVE_PATH := "user://usergameplaypreferences.cfg"
 
 func _ready():
+	# Hides mouse and setups UI and snowball
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	current_snowball_count = max_snowball_count
 	user_interface.setup_ui(max_energy, max_snowball_count)
 	
+	# Load user gameplay preference settings
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
-	
+	# Load
 	var mouse = config.get_value("gameplay_preferences", "mouse_bool", false)
 	var leading = config.get_value("gameplay_preferences", "leading_bool", false)
 	var fov = config.get_value("gameplay_preferences", "fov_index", 75)
@@ -39,6 +45,7 @@ func _ready():
 	var mouse_h_sens = config.get_value("gameplay_preferences", "mouse_hori_float", 5)
 	var mouse_v_sens = config.get_value("gameplay_preferences", "mouse_vert_float", 5)
 	
+	# Setup
 	horizontal_sensitivity = kb_h_sens / 5
 	vertical_sensitivity = kb_v_sens / 5
 	hor_mouse_sensitivity = mouse_h_sens / 100
@@ -47,18 +54,24 @@ func _ready():
 	leading_crosshair = leading
 	camera.fov = int(fov)
 
-
+# Update UI - Health / Energy
 func update_health_bar(damage) -> void:
 	user_interface.update_energy(damage)
-
+# Update UI - Ammo
 func update_ammo_count() -> void:
 	user_interface.update_ammo()
 
+# Open settings
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+# Handle loseing (open u lose n00b menu)
+func no_health():
+	get_tree().quit()
+
+# This thing handles aiming setup in process! Much cleaner to keep this here than copy paste it to almost every state
 func aim_and_rotate(delta) -> void:
 	var max_offset_hor = get_viewport().get_visible_rect().size.x / 2 * 0.5
 	var max_offset_ver = get_viewport().get_visible_rect().size.y / 2 * 0.5
@@ -99,7 +112,7 @@ func aim_and_rotate(delta) -> void:
 	elif leading_crosshair and crosshair.position.y > 0 and not Input.is_action_pressed("look_down"):
 		crosshair.position.y -= 5
 
-
+# Mouse corsshair reset
 func _process(_delta):
 	if leading_crosshair and mouse_enabled:
 		if crosshair.position.x < 0 and not Input.get_last_mouse_velocity().x < 0:
@@ -111,6 +124,7 @@ func _process(_delta):
 		if crosshair.position.y > 0 and not Input.get_last_mouse_velocity().y > 0:
 			crosshair.position.y -= 5
 
+# Basic mouse input
 func _unhandled_input(event):
 	if mouse_enabled and event is InputEventMouseMotion:
 		var max_offset_hor = get_viewport().get_visible_rect().size.x / 2 * 0.5
@@ -135,6 +149,3 @@ func _unhandled_input(event):
 			if event.relative.y > 0:
 				if crosshair.position.y < max_offset_ver:
 					crosshair.position.y += get_viewport().get_visible_rect().size.y / 2 * 0.005
-
-func no_health():
-	get_tree().quit()

@@ -522,7 +522,6 @@ script = ExtResource("3_1dvix")
 script = ExtResource("5_2tupi")
 
 [node name="FallTimer" type="Timer" parent="PlayerFiniteStateMachine/PlayerFallState"]
-one_shot = true
 
 [node name="PlayerAttackState" type="Node" parent="PlayerFiniteStateMachine"]
 script = ExtResource("5_t6r3v")

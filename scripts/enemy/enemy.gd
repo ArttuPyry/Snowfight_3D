@@ -24,6 +24,7 @@ var seen_player : bool = false
 enum AttackType {snowball, shovel}
 @export var attack_type  :  AttackType
 
+# Preload skins
 var skin00 = preload("res://characters/material00.tres")
 var skin01 = preload("res://characters/material01.tres")
 var skin02 = preload("res://characters/material02.tres")
@@ -31,6 +32,7 @@ var skin03 = preload("res://characters/material03.tres")
 var skin04 = preload("res://characters/material04.tres")
 var skin05 = preload("res://characters/material05.tres")
 
+# Set skin
 func _ready() -> void:
 	current_snowball_count = max_snowball_count
 	match skin:
@@ -47,9 +49,10 @@ func _ready() -> void:
 		5:
 			enemy_mesh.material_override = skin05
 
-
+# Check if player is in range
 func target_in_range() -> bool:
 	return self.global_position.distance_to(player.global_position) < attack_range
 
+# Get stunned when no !ENERGY!!!
 func no_health() -> void:
 	is_stunned = true

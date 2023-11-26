@@ -19,6 +19,7 @@ func _exit_state() -> void:
 	set_process(false)
 	set_physics_process(false)
 
+# Just basic movement bit edited from Godot basic movement
 func _physics_process(delta) -> void:
 	if not player.is_on_floor():
 		state_transition.emit(self, "PlayerFallState")
@@ -39,8 +40,10 @@ func _physics_process(delta) -> void:
 	player.move_and_slide()
 
 func _process(delta):
+	# Camera stuff
 	player.aim_and_rotate(delta)
 	
+	# Interact stuff
 	if player.interactable and player.interactable_group == "snowman" and Input.is_action_pressed("interact"):
 		player.velocity.x = 0
 		player.velocity.z = 0
@@ -48,7 +51,7 @@ func _process(delta):
 		player.global_position.z = player.interactable.global_position.z
 		player.look_at(Vector3(player.interact_look_at.x, player.global_position.y, player.interact_look_at.z), Vector3.UP)
 		state_transition.emit(self, "PlayerDestroySnowmanState")
-	
+	# Interact stuff
 	if player.interactable and player.interactable_group == "ladder" and Input.is_action_pressed("interact"):
 		player.velocity.x = 0
 		player.velocity.z = 0
@@ -57,8 +60,9 @@ func _process(delta):
 		player.look_at(Vector3(player.interact_look_at.x, player.global_position.y, player.interact_look_at.z), Vector3.UP)
 		state_transition.emit(self, "PlayerClimbState")
 	
+	# Attack
 	if Input.is_action_just_pressed("attack"):
 		state_transition.emit(self, "PlayerAttackState")
-	
+	# Reload
 	if Input.is_action_just_pressed("reload") and player.current_snowball_count < player.max_snowball_count:
 		state_transition.emit(self, "PlayerReloadState")
