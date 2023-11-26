@@ -56,7 +56,6 @@ func _save_graphics_preferences(window_mode_index, resolution_index, vsync_bool,
 	config.set_value("graphics_preferences", "aa_index", aa_index)
 	config.set_value("graphics_preferences", "fps_index", fps_index)
 	
-	print(window_mode_index, resolution_index, vsync_bool,aa_index, fps_index)
 	
 	config.save(CONFIG_SAVE_PATH)
 
@@ -69,8 +68,6 @@ func _load_graphics_preferences(section):
 	var vsync = config.get_value(section, "vsync_bool", false)
 	var aa = config.get_value(section, "aa_index", 0)
 	var fps = config.get_value(section, "fps_index", 60)
-	
-	print(wm, res, vsync, aa, fps)
 	
 	# WINDOW MODE
 	if not wm == null:

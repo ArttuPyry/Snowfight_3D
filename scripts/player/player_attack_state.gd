@@ -21,7 +21,7 @@ func _enter_state() -> void:
 		var _snowball = Snowball.instantiate()
 		_snowball.attacking_actor = "player"
 		snowball_throw_spot.add_child(_snowball)
-		_snowball.apply_central_force(-snowball_throw_spot.global_transform.basis.z * 150)
+		_snowball.apply_central_force(-snowball_throw_spot.global_transform.basis.z * 200)
 		player.current_snowball_count -= 1
 		player.update_ammo_count()
 	await get_tree().create_timer(0.5, false).timeout

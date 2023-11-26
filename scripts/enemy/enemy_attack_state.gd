@@ -64,7 +64,6 @@ func _throw_snowball():
 	var predictive_dir = Vector3.FORWARD.rotated(Vector3.RIGHT, final_angle).rotated(Vector3.UP, y_rotation)
 	
 	current_actor.current_snowball_count -= 1
-	print("THROW")
 	_snowball.apply_central_force(projectile_start_pos + predictive_dir * 20.0 * 21)
 	await animation_player.animation_finished
 	is_attcking = false

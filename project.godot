@@ -99,7 +99,3 @@ interact={
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemies"
 3d_physics/layer_4="Ladder"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

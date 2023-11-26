@@ -2,26 +2,39 @@ class_name PlayerReloadState
 extends PlayerState
 
 @onready var player = $"../.."
+@onready var hands = $"../../Camera3D/Hands"
+@onready var animation_player = $"../../AnimationPlayer"
 
 func _ready() -> void:
 	set_process(false)
 
 func _enter_state() -> void:
-	set_process(true)
+	hands.rotation.y = 0
+	hands.rotation.x = 0
+	hands.rotation.z = 0
 	player.mouse_enabled = false
-	while player.current_snowball_count < player.max_snowball_count:
-		# Reset crosshair
-		player.crosshair.position.x = 0
-		player.crosshair.position.y = 0
-		
-		#Need to add animations and mby reload cancel
-		await get_tree().create_timer(1, false).timeout
-		
-		player.current_snowball_count += 1
+	set_process(true)
+	set_physics_process(true)
+	
+	if player.current_snowball_count < player.max_snowball_count:
+		hands.visible = true
+		animation_player.play("reload")
+		await animation_player.animation_finished
+		player.current_snowball_count = player.max_snowball_count
 		player.update_ammo_count()
-	await get_tree().create_timer(0.01, false).timeout
+		state_transition.emit(self, "PlayerIdleState")
+	
+	await get_tree().create_timer(0.1, false).timeout
 	state_transition.emit(self, "PlayerIdleState")
 
+
 func _exit_state() -> void:
+	hands.rotation.y = 0
+	hands.rotation.x = 0
+	hands.rotation.z = 0
+	hands.visible = false
 	set_process(false)
+	set_physics_process(false)
 	player.mouse_enabled = true
+
+

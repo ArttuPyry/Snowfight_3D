@@ -64,39 +64,39 @@ func aim_and_rotate(delta) -> void:
 	var max_offset_ver = get_viewport().get_visible_rect().size.y / 2 * 0.5
 	
 	if Input.is_action_pressed("look_left"):
-		if crosshair.position.x > -max_offset_hor:
+		if leading_crosshair and crosshair.position.x > -max_offset_hor:
 			crosshair.position.x -= get_viewport().get_visible_rect().size.x / 2 * 0.003
 		self.rotate_y(horizontal_sensitivity * delta)
-		hands.rotate_y(-0.03)
-	elif crosshair.position.x < 0 and not Input.is_action_pressed("look_left"):
+		hands.rotate_y(-horizontal_sensitivity * delta)
+	elif leading_crosshair and crosshair.position.x < 0 and not Input.is_action_pressed("look_left"):
 		crosshair.position.x += 5
 	
 	if Input.is_action_pressed("look_right"):
-		if crosshair.position.x < max_offset_hor:
+		if leading_crosshair and crosshair.position.x < max_offset_hor:
 			crosshair.position.x += get_viewport().get_visible_rect().size.x / 2 * 0.003
 		self.rotate_y(-horizontal_sensitivity * delta)
-		hands.rotate_y(0.03)
-	elif crosshair.position.x > 0 and not Input.is_action_pressed("look_right"):
+		hands.rotate_y(horizontal_sensitivity * delta)
+	elif leading_crosshair and crosshair.position.x > 0 and not Input.is_action_pressed("look_right"):
 		crosshair.position.x -= 5
 	
 	if Input.is_action_pressed("look_up"):
-		if crosshair.position.y > -max_offset_ver:
+		if leading_crosshair and crosshair.position.y > -max_offset_ver:
 			crosshair.position.y -= get_viewport().get_visible_rect().size.y / 2 * 0.003
 		camera.rotate_x(vertical_sensitivity * delta)
-		hands.rotate_x(-0.02)
+		hands.rotate_x(-vertical_sensitivity * delta)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		hands.rotation.x = clamp(hands.rotation.x, deg_to_rad(-40), deg_to_rad(40))
-	elif crosshair.position.y < 0 and not Input.is_action_pressed("look_up"):
+	elif leading_crosshair and crosshair.position.y < 0 and not Input.is_action_pressed("look_up"):
 		crosshair.position.y += 5
 	
 	if Input.is_action_pressed("look_down"):
-		if crosshair.position.y < max_offset_ver:
+		if leading_crosshair and crosshair.position.y < max_offset_ver:
 			crosshair.position.y += get_viewport().get_visible_rect().size.y / 2 * 0.003
 		camera.rotate_x(-vertical_sensitivity * delta)
-		hands.rotate_x(0.04)
+		hands.rotate_x(vertical_sensitivity * delta)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		hands.rotation.x = clamp(hands.rotation.x, deg_to_rad(-40), deg_to_rad(40))
-	elif crosshair.position.y > 0 and not Input.is_action_pressed("look_down"):
+	elif leading_crosshair and crosshair.position.y > 0 and not Input.is_action_pressed("look_down"):
 		crosshair.position.y -= 5
 
 

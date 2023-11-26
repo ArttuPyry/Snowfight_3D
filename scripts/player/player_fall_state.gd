@@ -4,8 +4,12 @@ extends PlayerState
 const SPEED = 2.0
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
+@onready var fall_timer = $FallTimer
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var energy_component = $"../../EnergyComponent"
+
+var fall_damage = 0
 
 func _ready() -> void:
 	set_process(false)
@@ -14,8 +18,13 @@ func _ready() -> void:
 func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
+	fall_damage = 0
+	fall_timer.start()
 
 func _exit_state() -> void:
+	fall_timer.stop()
+	if fall_damage > 0:
+		energy_component.inflict_damage(fall_damage)
 	set_process(false)
 	set_physics_process(false)
 
@@ -39,3 +48,7 @@ func _physics_process(delta) -> void:
 
 func _process(delta):
 	player.aim_and_rotate(delta)
+
+func _on_fall_timer_timeout():
+	fall_damage += 1
+	fall_timer.start()
