@@ -14,6 +14,8 @@ var skin03 = preload("res://characters/material03.tres")
 var skin04 = preload("res://characters/material04.tres")
 var skin05 = preload("res://characters/material05.tres")
 
+var skin99 = preload("res://characters/material99.tres")
+
 # This is for random skin
 func _ready():
 	if randomize_skin:
@@ -33,6 +35,8 @@ func _ready():
 				enemy_mesh.material_override = skin04
 			5:
 				enemy_mesh.material_override = skin05
+			99:
+				enemy_mesh.material_override = skin99
 	else:
 		match skin:
 			0:
@@ -47,5 +51,7 @@ func _ready():
 				enemy_mesh.material_override = skin04
 			5:
 				enemy_mesh.material_override = skin05
+			99:
+				enemy_mesh.material_override = skin99
 	
 	animation_player.play("idle")

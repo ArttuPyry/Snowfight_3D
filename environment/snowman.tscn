@@ -25,7 +25,7 @@ _surfaces = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ys7bj"]
 height = 0.160285
-radius = 0.604176
+radius = 0.685605
 
 [sub_resource type="Animation" id="Animation_4sloq"]
 length = 0.001
@@ -201,7 +201,7 @@ collision_mask = 2
 script = ExtResource("4_2fmj6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DestroySpot" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139165, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44409, 0.139165, 0)
 shape = SubResource("CylinderShape3D_ys7bj")
 
 [node name="snowman_destroyed" parent="." index="3" instance=ExtResource("5_rnvmx")]

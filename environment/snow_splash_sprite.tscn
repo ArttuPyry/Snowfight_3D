@@ -11,4 +11,5 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 billboard = 1
 shaded = true
 double_sided = false
+render_priority = 100
 texture = ExtResource("2_07c3v")

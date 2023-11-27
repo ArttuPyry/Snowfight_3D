@@ -222,11 +222,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94606, 0, -12.0194)
 
 [node name="Player" parent="." instance=ExtResource("2_77a1h")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.5075, 7, -3.98143)
+max_energy = 10
 max_snowball_count = 12
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -26)
 max_energy = 3
+max_snowball_count = 99
 attack_range = 10.0
 player_path = NodePath("../Player")
 player = NodePath("../Player")
@@ -240,6 +242,12 @@ size = Vector3(3, 0.3, 15)
 
 [node name="Ladder" parent="." instance=ExtResource("8_jnw3q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86571, 0, -6)
+
+[node name="Ladder2" parent="." instance=ExtResource("8_jnw3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86571, 3, -6)
+
+[node name="Ladder3" parent="." instance=ExtResource("8_jnw3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86571, 6, -6)
 
 [node name="snowman_destroyed" parent="." instance=ExtResource("9_eaiee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)

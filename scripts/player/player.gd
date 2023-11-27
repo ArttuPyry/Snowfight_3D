@@ -6,9 +6,10 @@ var crosshair
 @onready var camera = $Camera3D
 
 @export_category("Player stats")
-@export var max_energy : int = 20
+@export var max_energy : int = SaveManager.player_max_energy
 @export var max_snowball_count : int = 9
 var current_snowball_count : int
+var no_energy = false
 
 @export var mouse_enabled = true
 @export var leading_crosshair = false
@@ -27,12 +28,24 @@ var interact_look_at
 # User gameplay preference save
 const CONFIG_SAVE_PATH := "user://usergameplaypreferences.cfg"
 
-func _ready():
+
+func _ready() -> void:
+	var save : = ConfigFile.new()
+	save.load(SaveManager.SAVE_PATH)
+
 	# Hides mouse and setups UI and snowball
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	current_snowball_count = max_snowball_count
-	user_interface.setup_ui(max_energy, max_snowball_count)
+	user_interface.setup_ui(max_energy, save.get_value("save", "energy", max_energy), max_snowball_count)
 	
+	load_user_config()
+	
+	set_process_unhandled_input(false)
+	await get_tree().create_timer(0.5, false).timeout
+	set_process_unhandled_input(true)
+
+
+func load_user_config() -> void:
 	# Load user gameplay preference settings
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
@@ -53,7 +66,6 @@ func _ready():
 	mouse_enabled = mouse
 	leading_crosshair = leading
 	camera.fov = int(fov)
-
 # Update UI - Health / Energy
 func update_health_bar(damage) -> void:
 	user_interface.update_energy(damage)
@@ -61,15 +73,19 @@ func update_health_bar(damage) -> void:
 func update_ammo_count() -> void:
 	user_interface.update_ammo()
 
+func you_lost() -> void:
+	user_interface.you_lost()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 # Open settings
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	if Input.is_action_just_pressed("pause") and not get_tree().paused:
+		user_interface.open_pause_menu()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Handle loseing (open u lose n00b menu)
-func no_health():
-	get_tree().quit()
+func no_health() -> void:
+	no_energy = true
 
 # This thing handles aiming setup in process! Much cleaner to keep this here than copy paste it to almost every state
 func aim_and_rotate(delta) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=30 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="8_72qf2"]
 [ext_resource type="Script" path="res://scripts/player/player_climb_state.gd" id="13_j1gxg"]
 [ext_resource type="Script" path="res://scripts/player/player_destroy_snowman_state.gd" id="16_tjaw8"]
+[ext_resource type="Script" path="res://scripts/player/player_lose_state.gd" id="18_4vrwd"]
 
 [sub_resource type="Animation" id="Animation_w6sbb"]
 length = 0.001
@@ -152,6 +153,42 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera3D/GPUParticles3D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("HurtboxComponent/CollisionShape3D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.360641, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PlayerCollision:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.361438, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7asd4"]
 resource_name = "attack"
@@ -286,6 +323,69 @@ tracks/5/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.499339, 0, 0), Vector3(0, 0, 0), Vector3(-0.170571, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4stun"]
+resource_name = "lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0172784, 0), Vector3(0, 0.0172784, 0.181173), Vector3(0, -0.424852, 0.276201), Vector3(0, -0.424852, 0.276201)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.261799, 0, 0), Vector3(0.523599, 0, 0), Vector3(-0.261799, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/GPUParticles3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, -0.261799), Vector3(0, 1.5708, -0.523599), Vector3(0, 1.5708, 0.261799)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HurtboxComponent/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.360641, 0), Vector3(0, -0.994877, 0.202631)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.361438, 0), Vector3(0, -0.995674, 0.202631)]
+}
+
 [sub_resource type="Animation" id="Animation_m66xx"]
 resource_name = "reload"
 length = 4.1
@@ -397,6 +497,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HurtboxComponent/CollisionShape3D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.360641, 0), Vector3(0, -0.675595, 0), Vector3(0, -0.675595, 0), Vector3(0, -0.360641, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PlayerCollision:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.361438, 0), Vector3(0, -0.676392, 0), Vector3(0, -0.676392, 0), Vector3(0, -0.361438, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0asdr"]
 _data = {
@@ -404,6 +528,7 @@ _data = {
 "attack": SubResource("Animation_7asd4"),
 "climb": SubResource("Animation_r045y"),
 "destroy_snowman": SubResource("Animation_0swt8"),
+"lose": SubResource("Animation_4stun"),
 "reload": SubResource("Animation_m66xx")
 }
 
@@ -418,13 +543,13 @@ direction = Vector3(5, 0, 5)
 gravity = Vector3(0, -1, 0)
 collision_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hq7h"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um1ow"]
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("4_e5aie")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvxm8"]
-material = SubResource("StandardMaterial3D_3hq7h")
+material = SubResource("StandardMaterial3D_um1ow")
 size = Vector2(0.15, 0.15)
 orientation = 0
 
@@ -443,6 +568,10 @@ libraries = {
 transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 0, -0.876678, 0)
 target_position = Vector3(0, -2, 0)
 collision_mask = 8
+
+[node name="LoseRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.876678, 0)
+target_position = Vector3(0, -15, 0)
 
 [node name="EnergyComponent" type="Node3D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_t0c2o")
@@ -468,7 +597,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0172784, 0)
 current = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4, 0)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 4, 0)
 amount = 60000
 lifetime = 7.0
 preprocess = 5.0
@@ -534,6 +663,9 @@ script = ExtResource("13_j1gxg")
 
 [node name="PlayerDestroySnowmanState" type="Node" parent="PlayerFiniteStateMachine"]
 script = ExtResource("16_tjaw8")
+
+[node name="PlayerLoseState" type="Node" parent="PlayerFiniteStateMachine"]
+script = ExtResource("18_4vrwd")
 
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
 [connection signal="timeout" from="PlayerFiniteStateMachine/PlayerFallState/FallTimer" to="PlayerFiniteStateMachine/PlayerFallState" method="_on_fall_timer_timeout"]

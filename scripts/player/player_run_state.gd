@@ -66,3 +66,6 @@ func _process(delta):
 	# Reload
 	if Input.is_action_just_pressed("reload") and player.current_snowball_count < player.max_snowball_count:
 		state_transition.emit(self, "PlayerReloadState")
+	
+	if player.no_energy:
+		state_transition.emit(self, "PlayerLoseState")

@@ -36,7 +36,6 @@ func _enter_state() -> void:
 	
 	state_transition.emit(self, "PlayerIdleState")
 
-
 func _exit_state() -> void:
 	# Reset and invisible
 	hands.rotation.y = 0
@@ -47,3 +46,7 @@ func _exit_state() -> void:
 	set_process(false)
 	set_physics_process(false)
 	player.set_process_unhandled_input(true)
+
+func _process(_delta) -> void:
+	if player.no_energy:
+		state_transition.emit(self, "PlayerLoseState")

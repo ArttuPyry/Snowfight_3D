@@ -38,4 +38,6 @@ func _exit_state() -> void:
 	set_physics_process(false)
 	player.set_process_unhandled_input(true)
 
-
+func _process(_delta) -> void:
+	if player.no_energy:
+		state_transition.emit(self, "PlayerLoseState")

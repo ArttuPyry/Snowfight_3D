@@ -210,14 +210,11 @@ transform = Transform3D(0.0954288, 0, -0.995436, 0, 1, 0, 0.995436, 0, 0.0954288
 [node name="EnemyDummy" parent="." instance=ExtResource("7_cvxvx")]
 transform = Transform3D(-0.842358, 0, 0.538918, 0, 1, 0, -0.538918, 0, -0.842358, -0.0892906, 0, -5.41181)
 randomize_skin = true
-skin = 5
 
 [node name="EnemyDummy2" parent="." instance=ExtResource("7_cvxvx")]
 transform = Transform3D(-0.915712, 0, 0.401836, 0, 1, 0, -0.401836, 0, -0.915712, 0.800063, 0, -5.7028)
 randomize_skin = true
-skin = 3
 
 [node name="EnemyShovelDummy" parent="." instance=ExtResource("6_l2vq7")]
 transform = Transform3D(-0.749672, 0, 0.661809, 0, 1, 0, -0.661809, 0, -0.749672, -0.362153, 0, -5.99828)
 randomize_skin = true
-skin = 4

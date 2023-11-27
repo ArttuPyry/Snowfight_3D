@@ -1,0 +1,694 @@
+[gd_scene load_steps=23 format=3 uid="uid://cfagsa5iva2j"]
+
+[ext_resource type="Script" path="res://scripts/level/level_00.gd" id="1_hsgfo"]
+[ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_cph8o"]
+[ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="3_i4x7s"]
+[ext_resource type="PackedScene" uid="uid://csroersfvaeae" path="res://characters/meshes/player_hand.tscn" id="5_jyxtn"]
+[ext_resource type="PackedScene" uid="uid://dts04t6jmdoi3" path="res://environment/snowman_destroyed.tscn" id="5_xavq7"]
+[ext_resource type="PackedScene" uid="uid://cjmeo7de4f0yy" path="res://environment/snow_splash_sprite_no_script.tscn" id="6_cwh65"]
+[ext_resource type="PackedScene" uid="uid://clioeqkgwpgop" path="res://characters/meshes/player_hand_left.tscn" id="6_yeshp"]
+[ext_resource type="Texture2D" uid="uid://ckph4ytbs30b6" path="res://environment/textures/snowfall.png" id="8_jhnvt"]
+
+[sub_resource type="Animation" id="Animation_4e8j5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Full:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.28174, 0.802016, 2.91814)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Full:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/player_hand:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D/PlayerHandLeft:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D/PlayerHandLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.239708, -0.253921, -0.244297)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D/PlayerHandLeft:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.05375, -1.5708)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D/player_hand:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.74228e-08, -2.07523, 1.5708)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera3D/player_hand:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.238123, -0.281334, -0.244)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera3D/PlayerHandLeft/SnowSplash:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Camera3D/player_hand/SnowSplash:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Camera3D/player_hand/SnowSplash:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Camera3D/PlayerHandLeft/SnowSplash:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nhk14"]
+resource_name = "intro"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Full:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.447509, 2.91814)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.700959, 0.856922, 0), Vector3(-0.700959, 0.856922, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.0793427, -0.470837, 0), Vector3(-0.0793427, -0.470837, 0), Vector3(-0.048398, 0.316707, 0), Vector3(-0.048398, 0.316707, 0), Vector3(-0.087633, 0.895755, 0), Vector3(-0.087633, 0.895755, 0), Vector3(0, 0, 0), Vector3(0.356274, 0, 0), Vector3(-0.552257, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [75.0, 75.0, 75.0, 75.0, 28.0, 28.0, 15.2, 15.2, 29.9, 29.9, 75.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Full:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/player_hand:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D/PlayerHandLeft:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D/PlayerHandLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.239708, -0.253921, -0.244297), Vector3(-0.239708, -0.253921, -0.244297), Vector3(-0.239708, -0.256772, -0.235779), Vector3(-0.239708, -0.254513, -0.24016)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D/PlayerHandLeft:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.05375, -1.5708), Vector3(0, 2.05375, -1.5708), Vector3(-0.291633, 1.96142, -0.961264), Vector3(-0.140369, 2.03445, -1.29796)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D/player_hand:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-8.74228e-08, -2.07523, 1.5708), Vector3(-8.74228e-08, -2.07523, 1.5708), Vector3(-0.303885, -1.97988, 0.96668), Vector3(-0.146128, -2.05536, 1.30094)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera3D/player_hand:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.238123, -0.281334, -0.244), Vector3(0.238123, -0.281334, -0.244), Vector3(0.238123, -0.278483, -0.252517), Vector3(0.238123, -0.280741, -0.248136)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera3D/PlayerHandLeft/SnowSplash:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6.7, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Camera3D/player_hand/SnowSplash:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 6.7, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Camera3D/player_hand/SnowSplash:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(6.7, 6.9, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(0, 0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Camera3D/PlayerHandLeft/SnowSplash:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(6.7, 6.9, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imvxc"]
+_data = {
+"RESET": SubResource("Animation_4e8j5"),
+"intro": SubResource("Animation_nhk14")
+}
+
+[sub_resource type="Shader" id="Shader_yk8oj"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's ProceduralSkyMaterial.
+
+shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+
+uniform sampler2D cloud_texture00;
+uniform sampler2D cloud_texture01;
+uniform vec2 cloud_direction00;
+uniform vec2 cloud_direction01;
+uniform vec2 cloud_scale;
+uniform vec2 cloud_distance;
+uniform float cloud_speed00;
+uniform float cloud_speed01;
+
+void sky() {
+	float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+	float c = (1.0 - v_angle / (PI * 0.5));
+	vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+	sky *= sky_energy;
+
+	if (LIGHT0_ENABLED) {
+		float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT0_SIZE) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+			sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT1_ENABLED) {
+		float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT1_SIZE) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+			sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT2_ENABLED) {
+		float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT2_SIZE) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+			sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT3_ENABLED) {
+		float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+		if (sun_angle < LIGHT3_SIZE) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle < sun_angle_max) {
+			float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+			sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+		}
+	}
+
+	vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+	sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
+
+	c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+	vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+	ground *= ground_energy;
+	
+	vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+	vec3 clouds = texture(cloud_texture00, (sky_uv * cloud_scale) + (TIME * cloud_direction00 * cloud_speed00 * 0.001)).rgb - texture(cloud_texture01, (sky_uv * cloud_scale) + (TIME * cloud_direction01 * cloud_speed01 * 0.01)).rgb;
+	clouds = clamp(clouds, 0.05, 1);
+	sky += clouds;
+	
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y));
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5y50"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7r4xh"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_a5y50")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pueg1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yudgp"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 0.3
+noise = SubResource("FastNoiseLite_pueg1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afitd"]
+shader = SubResource("Shader_yk8oj")
+shader_parameter/sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
+shader_parameter/sky_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/sky_curve = 0.15
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.772549, 0.85098, 0.894118, 1)
+shader_parameter/ground_horizon_color = Color(0.6463, 0.6558, 0.6708, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 0.523599
+shader_parameter/sun_curve = 0.15
+shader_parameter/cloud_direction00 = Vector2(-1, 1)
+shader_parameter/cloud_direction01 = Vector2(1, -1)
+shader_parameter/cloud_scale = Vector2(0.1, 0.1)
+shader_parameter/cloud_distance = Vector2(0.1, 0.1)
+shader_parameter/cloud_speed00 = 0.1
+shader_parameter/cloud_speed01 = 1.0
+shader_parameter/cloud_texture00 = SubResource("NoiseTexture2D_7r4xh")
+shader_parameter/cloud_texture01 = SubResource("NoiseTexture2D_yudgp")
+
+[sub_resource type="Sky" id="Sky_sj3r5"]
+sky_material = SubResource("ShaderMaterial_afitd")
+
+[sub_resource type="Environment" id="Environment_0jtjn"]
+background_mode = 2
+sky = SubResource("Sky_sj3r5")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_density = 0.003
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2hiyl"]
+emission_shape = 3
+emission_box_extents = Vector3(35, 1, 35)
+direction = Vector3(5, 0, 5)
+gravity = Vector3(0, -1, 0)
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hq7h"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("8_jhnvt")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ost87"]
+material = SubResource("StandardMaterial3D_3hq7h")
+size = Vector2(0.15, 0.15)
+orientation = 0
+
+[node name="Level00" type="Node3D"]
+script = ExtResource("1_hsgfo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_imvxc")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0jtjn")
+
+[node name="level" type="Node3D" parent="."]
+
+[node name="Spruce" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0017, 0, 0)
+
+[node name="Spruce2" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25862, 0, -2.34124)
+
+[node name="Spruce3" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85297, 0, -6.21948)
+
+[node name="Spruce4" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16024, 0, -13.4859)
+
+[node name="Spruce5" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68094, 0, -9.95744)
+
+[node name="Spruce6" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 5.22334, 0, -12.7356)
+
+[node name="Spruce7" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 6.66027, 0, -10.5003)
+
+[node name="Spruce11" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 7.72005, 0, -8.04518)
+
+[node name="Spruce8" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 7.03272, 0, -5.77863)
+
+[node name="Spruce9" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 6.44066, 0, 0.696201)
+
+[node name="Spruce10" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 7.69367, 0, -2.86224)
+
+[node name="LevelGridMap" type="GridMap" parent="level"]
+mesh_library = ExtResource("3_i4x7s")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65535, 2, 0, 65535, 2, 0, 0, 2, 65535, 0, 2, 65535, 65534, 2, 0, 65534, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 0, 1, 3, 1, 1, 1048579, 65535, 1, 1048579, 2, 1, 1441795, 65534, 1, 1441795, 131070, 1, 9, 131071, 1, 9, 65536, 1, 9, 65537, 1, 9, 65538, 1, 9, 65532, 65528, 2, 65532, 65529, 2, 65532, 65530, 2, 65532, 65531, 2, 65532, 65532, 2, 65532, 65533, 2, 65532, 65534, 2, 65532, 65535, 2, 65532, 0, 2, 65533, 65528, 2, 65533, 65529, 2, 65533, 65530, 2, 65533, 65531, 2, 65533, 65532, 2, 65533, 65533, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 0, 2, 65534, 65528, 2, 65534, 65529, 2, 65534, 65530, 2, 65534, 65531, 2, 65534, 65532, 2, 65534, 65533, 2, 65534, 65534, 2, 65534, 65535, 2, 65534, 0, 2, 65535, 65528, 2, 65535, 65529, 2, 65535, 65530, 2, 65535, 65531, 2, 65535, 65532, 2, 65535, 65533, 2, 0, 65528, 2, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 1, 65528, 2, 1, 65529, 2, 1, 65530, 2, 1, 65531, 2, 1, 65532, 2, 1, 65533, 2, 2, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 3, 65528, 2, 3, 65529, 2, 3, 65530, 2, 3, 65531, 2, 3, 65532, 2, 3, 65533, 2, 3, 65534, 2, 3, 65535, 2, 3, 0, 2, 4, 65528, 2, 4, 65529, 2, 4, 65530, 2, 4, 65531, 2, 4, 65532, 2, 4, 65533, 2, 4, 65534, 2, 4, 65535, 2, 4, 0, 2, 65532, 65521, 1441794, 65532, 65522, 1441794, 65532, 65523, 1441794, 65532, 65524, 1441794, 65532, 65525, 1441794, 65532, 65526, 1441794, 65532, 65527, 1441794, 65533, 65521, 1441794, 65533, 65522, 1441794, 65533, 65523, 1441794, 65533, 65524, 1441794, 65533, 65525, 1441794, 65533, 65526, 1441794, 65533, 65527, 1441794, 65534, 65521, 1441794, 65534, 65522, 1441794, 65534, 65523, 1441794, 65534, 65524, 1441794, 65534, 65525, 1441794, 65534, 65526, 1441794, 65534, 65527, 1441794, 65535, 65521, 1441794, 65535, 65522, 1441794, 65535, 65523, 1441794, 65535, 65524, 1441794, 65535, 65525, 1441794, 65535, 65526, 1441794, 65535, 65527, 1441794, 0, 65521, 1441794, 0, 65522, 1441794, 0, 65523, 1441794, 0, 65524, 1441794, 0, 65525, 1441794, 0, 65526, 1441794, 0, 65527, 1441794, 1, 65521, 1441794, 1, 65522, 1441794, 1, 65523, 1441794, 1, 65524, 1441794, 1, 65525, 1441794, 1, 65526, 1441794, 1, 65527, 1441794, 2, 65521, 1441794, 2, 65522, 1441794, 2, 65523, 1441794, 2, 65524, 1441794, 2, 65525, 1441794, 2, 65526, 1441794, 2, 65527, 1441794, 3, 65521, 1441794, 3, 65522, 1441794, 3, 65523, 1441794, 3, 65524, 1441794, 3, 65525, 1441794, 3, 65526, 1441794, 3, 65527, 1441794)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="FenceAndExtraGridMap" type="GridMap" parent="level"]
+mesh_library = ExtResource("3_i4x7s")
+cell_size = Vector3(3, 3, 3)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(3, 0, 1441792, 3, 65535, 1441792, 3, 65534, 1441792, 3, 65533, 1441792, 65533, 0, 1048576, 65533, 65535, 1048576, 65533, 65534, 1048576, 65533, 65533, 1048576, 65535, 65532, 1, 65534, 65532, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65528, 1441795, 65532, 65528, 1441795, 65533, 65527, 3, 65533, 65526, 3, 65532, 65526, 3, 65532, 65527, 3, 131068, 65528, 1048585, 131068, 65527, 1048585, 131068, 65526, 1048585, 131069, 65526, 1441801, 131069, 65527, 1441801, 131069, 65528, 1441801)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="snowman_destroyed" parent="." instance=ExtResource("5_xavq7")]
+transform = Transform3D(0.560046, 0, -0.828461, 0, 1, 0, 0.828461, 0, 0.560046, -0.0799155, 4.76837e-07, -3.08501)
+
+[node name="snowman_destroyed2" parent="." instance=ExtResource("5_xavq7")]
+transform = Transform3D(0.743285, 0, 0.668975, 0, 1, 0, -0.668975, 0, 0.743285, 3.15821, 9.53674e-07, -5.19153)
+
+[node name="snowman_destroyed3" parent="." instance=ExtResource("5_xavq7")]
+transform = Transform3D(-0.509852, 0, -0.860262, 0, 1, 0, 0.860262, 0, -0.509852, 3.83602, 4.76837e-07, -1.69132)
+
+[node name="snowman_destroyed4" parent="." instance=ExtResource("5_xavq7")]
+transform = Transform3D(0.805215, 0, 0.592983, 0, 1, 0, -0.592983, 0, 0.805215, -2.4603, -9.53674e-07, -0.0525175)
+
+[node name="snowman_destroyed5" parent="." instance=ExtResource("5_xavq7")]
+transform = Transform3D(0.631718, 0, -0.775198, 0, 1, 0, 0.775198, 0, 0.631718, -2.9859, 0, -6.64128)
+
+[node name="snowman_destroyed6" parent="." instance=ExtResource("5_xavq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.879768, -9.53674e-07, -7.23256)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28174, 0.802016, 2.91814)
+
+[node name="player_hand" parent="Camera3D" instance=ExtResource("5_jyxtn")]
+transform = Transform3D(1.82612e-06, 0.483312, -0.875448, 1, -3.61999e-06, 8.74227e-08, -3.12686e-06, -0.875449, -0.483311, 0.238123, -0.281334, -0.244)
+visible = false
+
+[node name="SnowSplash" parent="Camera3D/player_hand" instance=ExtResource("6_cwh65")]
+transform = Transform3D(1, -2.22044e-15, 3.72529e-08, 0, 1, 5.96046e-08, -3.72529e-08, -5.96046e-08, 1, 0.0691392, 0.306965, 0.01316)
+visible = false
+
+[node name="PlayerHandLeft" parent="Camera3D" instance=ExtResource("6_yeshp")]
+transform = Transform3D(1.68111e-06, -0.464397, 0.885627, -1, -3.61999e-06, 0, 3.20596e-06, -0.885627, -0.464397, -0.239708, -0.253921, -0.244297)
+visible = false
+
+[node name="SnowSplash" parent="Camera3D/PlayerHandLeft" instance=ExtResource("6_cwh65")]
+transform = Transform3D(1, -5.96046e-08, -4.47035e-08, 5.96046e-08, 1, 1.49012e-07, 4.47035e-08, -1.49012e-07, 1, -0.0691392, 0.300251, 0.0197711)
+visible = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Bottom" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 80)
+color = Color(0, 0, 0, 1)
+
+[node name="Full" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 80)
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 4, 0)
+amount = 60000
+lifetime = 7.0
+preprocess = 5.0
+visibility_aabb = AABB(-11, -6, -13, 22, 12, 26)
+process_material = SubResource("ParticleProcessMaterial_2hiyl")
+draw_pass_1 = SubResource("PlaneMesh_ost87")

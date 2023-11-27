@@ -42,3 +42,6 @@ func _exit_state() -> void:
 
 func _process(delta):
 	player.aim_and_rotate(delta)
+	
+	if player.no_energy:
+		state_transition.emit(self, "PlayerLoseState")

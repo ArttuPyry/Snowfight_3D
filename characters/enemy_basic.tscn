@@ -1357,11 +1357,12 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s23b2"]
-radius = 0.28362
+radius = 0.33
 height = 1.36135
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_ritve")
+attack_range = 9.0
 
 [node name="Armature" type="Node3D" parent="."]
 

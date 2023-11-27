@@ -172,7 +172,7 @@ data = {
 "cells": PackedInt32Array(65535, 65535, 1441794, 0, 65535, 1441794, 0, 0, 1441794, 65535, 0, 1441794, 0, 1, 655361, 65535, 1, 655360, 65535, 65534, 1441794, 0, 65534, 1441794, 1, 65534, 1441794, 1, 65535, 1441794, 1, 0, 1441794, 1, 1, 655360)
 }
 
-[node name="ExtrasGridMap" type="GridMap" parent="NavigationRegion3D"]
+[node name="FenceAndExtraGridMap" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("2_tbacs")
 cell_size = Vector3(3, 3, 3)
 cell_center_y = false

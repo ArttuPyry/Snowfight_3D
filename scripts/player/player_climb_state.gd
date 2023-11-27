@@ -76,3 +76,6 @@ func _physics_process(_delta):
 
 func _process(delta):
 	player.aim_and_rotate(delta)
+	
+	if player.no_energy:
+		state_transition.emit(self, "PlayerLoseState")

@@ -1967,7 +1967,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck84w"]
-radius = 0.308544
+radius = 0.35
 height = 1.22423
 
 [node name="EnemyShovel" type="CharacterBody3D" groups=["enemy"]]
