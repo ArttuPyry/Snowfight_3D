@@ -8,6 +8,8 @@ extends Control
 @onready var delete_save_button = $MainButtons/VBoxContainer/Play/DeleteSaveButton
 @onready var play_label = $MainButtons/VBoxContainer/Play/Label
 
+@onready var logo = $Logo
+
 var skip_intro : bool
 var disable_tutorials : bool
 
@@ -30,10 +32,12 @@ func _ready() -> void:
 func _on_options_pressed():
 	main_buttons.visible = false
 	options.visible = true
+	logo.visible = false
 
 func _on_exit_options_menu_pressed():
 	main_buttons.visible = true
 	options.visible = false
+	logo.visible = true
 
 func _on_credits_pressed():
 	pass # Replace with function body.
@@ -42,6 +46,7 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_play_pressed():
+	logo.visible = false
 	if SaveManager.SAVE_PATH == null:
 		main_buttons.visible = false
 		difficulty.visible = true
@@ -59,6 +64,7 @@ func _on_play_pressed():
 func _on_exit_difficulty_menu_pressed():
 	main_buttons.visible = true
 	difficulty.visible = false
+	logo.visible = true
 
 # Epic hardcoded text stuff
 func _on_normal_mouse_entered():

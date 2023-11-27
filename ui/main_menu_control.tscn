@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh2ppcl37pcmh"]
+[gd_scene load_steps=16 format=3 uid="uid://dh2ppcl37pcmh"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_87cli"]
 [ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_7qt1i"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dr5pcj1i6inrq" path="res://ui/textures/menu_button_00_hover.png" id="9_57mo3"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay_settings.gd" id="11_fd13h"]
 [ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="12_mkh4d"]
+[ext_resource type="Texture2D" uid="uid://di567om76vida" path="res://ui/textures/logo.png" id="15_b0xki"]
 
 [node name="MainMenuControl" type="Control"]
 layout_mode = 3
@@ -1098,6 +1099,15 @@ theme_override_font_sizes/font_size = 15
 text = "Exit menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 369.0
+offset_bottom = 63.0
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("15_b0xki")
 
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play/DeleteSaveButton" to="." method="_on_delete_save_button_pressed"]
