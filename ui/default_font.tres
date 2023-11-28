@@ -1,10 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bu27hh1ndhvp5"]
-
-[ext_resource type="FontFile" uid="uid://ci54a6ivwme2h" path="res://ui/Fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="1_8bt3a"]
+[gd_resource type="Theme" format=3 uid="uid://bu27hh1ndhvp5"]
 
 [resource]
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 5
 Label/font_sizes/font_size = 15
-OptionButton/font_sizes/font_size = 15
-OptionButton/fonts/font = ExtResource("1_8bt3a")
+OptionButton/font_sizes/font_size = 18

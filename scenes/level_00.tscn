@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfagsa5iva2j"]
+[gd_scene load_steps=27 format=3 uid="uid://cfagsa5iva2j"]
 
 [ext_resource type="Script" path="res://scripts/level/level_00.gd" id="1_hsgfo"]
 [ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_cph8o"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cjmeo7de4f0yy" path="res://environment/snow_splash_sprite_no_script.tscn" id="6_cwh65"]
 [ext_resource type="PackedScene" uid="uid://clioeqkgwpgop" path="res://characters/meshes/player_hand_left.tscn" id="6_yeshp"]
 [ext_resource type="Texture2D" uid="uid://ckph4ytbs30b6" path="res://environment/textures/snowfall.png" id="8_jhnvt"]
+[ext_resource type="PackedScene" uid="uid://drxpeivnq00vs" path="res://characters/enemy_boss_cutscene.tscn" id="9_sphi5"]
+[ext_resource type="PackedScene" uid="uid://cjay0ru4omu24" path="res://characters/enemy_basic_dummy.tscn" id="10_tf21k"]
+[ext_resource type="PackedScene" uid="uid://bfxhugxhmbc6y" path="res://characters/enemy_with_shovel_dummy.tscn" id="11_jtrbe"]
+[ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="12_t1gml"]
 
 [sub_resource type="Animation" id="Animation_4e8j5"]
 length = 0.001
@@ -191,6 +195,114 @@ tracks/14/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("snowball:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.75054, 0.778873, 1.55137)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("snowball:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.44196, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("snowball:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SnowSplash:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SnowSplash:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("SnowSplash:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.94736, 0.488281, 2.66699)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("EnemyShovelDummy:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("EnemyDummy:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("enemy_boss:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_nhk14"]
 resource_name = "intro"
@@ -214,10 +326,10 @@ tracks/1/path = NodePath("Camera3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 6.5, 6.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 6.5, 6.7, 7.3, 8.1, 8.4, 8.8, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.447509, 2.91814)]
+"values": [Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.802016, 2.91814), Vector3(1.28174, 0.447509, 2.91814), Vector3(1.28174, 0.447509, 2.91814), Vector3(1.28174, 0.447509, 2.91814), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564), Vector3(1.28174, 0.447509, 2.75564)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -226,10 +338,10 @@ tracks/2/path = NodePath("Camera3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 6.5, 6.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 6.5, 6.7, 7.3, 8.1, 8.4, 8.8, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.700959, 0.856922, 0), Vector3(-0.700959, 0.856922, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.0793427, -0.470837, 0), Vector3(-0.0793427, -0.470837, 0), Vector3(-0.048398, 0.316707, 0), Vector3(-0.048398, 0.316707, 0), Vector3(-0.087633, 0.895755, 0), Vector3(-0.087633, 0.895755, 0), Vector3(0, 0, 0), Vector3(0.356274, 0, 0), Vector3(-0.552257, 0, 0)]
+"values": [Vector3(-0.700959, 0.856922, 0), Vector3(-0.700959, 0.856922, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.0793427, -0.470837, 0), Vector3(-0.0793427, -0.470837, 0), Vector3(-0.048398, 0.316707, 0), Vector3(-0.048398, 0.316707, 0), Vector3(-0.087633, 0.895755, 0), Vector3(-0.087633, 0.895755, 0), Vector3(0, 0, 0), Vector3(0.356274, 0, 0), Vector3(-0.552257, 0, 0), Vector3(-0.552257, 0, 0), Vector3(-0.552257, 0, 0), Vector3(0.127479, -1.22234, 5.4038e-09), Vector3(0.0891127, -1.42164, -0.00581135), Vector3(0.0891127, -1.42164, -0.00581135), Vector3(0.0891127, -1.47986, -0.00581135), Vector3(0.0891128, -1.39694, -0.00581135), Vector3(0.0891127, -1.47986, -0.00581135), Vector3(0.0891128, -1.39694, -0.00581135), Vector3(0.0891127, -1.47986, -0.00581135), Vector3(0.0891128, -1.39694, -0.00581135), Vector3(0.0891127, -1.42164, -0.00581135)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -238,10 +350,10 @@ tracks/3/path = NodePath("Camera3D:fov")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 2.7, 3.1, 3.8, 4.6, 4.7, 5.4, 5.5, 6.1, 6.2, 8.4, 8.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [75.0, 75.0, 75.0, 75.0, 28.0, 28.0, 15.2, 15.2, 29.9, 29.9, 75.0]
+"values": [75.0, 75.0, 75.0, 75.0, 28.0, 28.0, 15.2, 15.2, 29.9, 29.9, 75.0, 75.0, 16.8]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -286,10 +398,10 @@ tracks/7/path = NodePath("Camera3D/PlayerHandLeft:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7, 7.3, 8.1, 8.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.239708, -0.253921, -0.244297), Vector3(-0.239708, -0.253921, -0.244297), Vector3(-0.239708, -0.256772, -0.235779), Vector3(-0.239708, -0.254513, -0.24016)]
+"values": [Vector3(-0.239708, -0.253921, -0.244297), Vector3(-0.239708, -0.253921, -0.244297), Vector3(-0.239708, -0.256772, -0.235779), Vector3(-0.239708, -0.254513, -0.24016), Vector3(-0.239708, -0.254513, -0.24016), Vector3(-0.239708, -0.254513, -0.24016), Vector3(-0.221908, -0.228742, -0.00662488)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -298,10 +410,10 @@ tracks/8/path = NodePath("Camera3D/PlayerHandLeft:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7, 7.3, 8.1, 8.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 2.05375, -1.5708), Vector3(0, 2.05375, -1.5708), Vector3(-0.291633, 1.96142, -0.961264), Vector3(-0.140369, 2.03445, -1.29796)]
+"values": [Vector3(0, 2.05375, -1.5708), Vector3(0, 2.05375, -1.5708), Vector3(-0.291633, 1.96142, -0.961264), Vector3(-0.140369, 2.03445, -1.29796), Vector3(-0.140369, 2.03445, -1.29796), Vector3(-0.140369, 2.03445, -1.29796), Vector3(0.369967, 2.45628, -2.23914)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -310,10 +422,10 @@ tracks/9/path = NodePath("Camera3D/player_hand:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7, 7.3, 8.1, 8.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-8.74228e-08, -2.07523, 1.5708), Vector3(-8.74228e-08, -2.07523, 1.5708), Vector3(-0.303885, -1.97988, 0.96668), Vector3(-0.146128, -2.05536, 1.30094)]
+"values": [Vector3(-8.74228e-08, -2.07523, 1.5708), Vector3(-8.74228e-08, -2.07523, 1.5708), Vector3(-0.303885, -1.97988, 0.96668), Vector3(-0.146128, -2.05536, 1.30094), Vector3(-0.146128, -2.05536, 1.30094), Vector3(-0.146128, -2.05536, 1.30094), Vector3(0.286928, -1.4371, 2.27375)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -322,10 +434,10 @@ tracks/10/path = NodePath("Camera3D/player_hand:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 6.2, 6.5, 6.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 6.2, 6.5, 6.7, 7.3, 8.1, 8.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.238123, -0.281334, -0.244), Vector3(0.238123, -0.281334, -0.244), Vector3(0.238123, -0.278483, -0.252517), Vector3(0.238123, -0.280741, -0.248136)]
+"values": [Vector3(0.238123, -0.281334, -0.244), Vector3(0.238123, -0.281334, -0.244), Vector3(0.238123, -0.278483, -0.252517), Vector3(0.238123, -0.280741, -0.248136), Vector3(0.238123, -0.280741, -0.248136), Vector3(0.238123, -0.280741, -0.248136), Vector3(0.202459, -0.273408, -0.223401)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -334,7 +446,7 @@ tracks/11/path = NodePath("Camera3D/PlayerHandLeft/SnowSplash:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 6.7, 7.4),
+"times": PackedFloat32Array(0, 6.7, 7.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -346,7 +458,7 @@ tracks/12/path = NodePath("Camera3D/player_hand/SnowSplash:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 6.7, 7.4),
+"times": PackedFloat32Array(0, 6.7, 7.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -358,7 +470,7 @@ tracks/13/path = NodePath("Camera3D/player_hand/SnowSplash:scale")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(6.7, 6.9, 7.4),
+"times": PackedFloat32Array(6.7, 6.9, 7.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(0, 0, 0)]
@@ -370,10 +482,118 @@ tracks/14/path = NodePath("Camera3D/PlayerHandLeft/SnowSplash:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(6.7, 6.9, 7.4),
+"times": PackedFloat32Array(6.7, 6.9, 7.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(0, 0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("snowball:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(9.5, 9.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(8.75054, 0.778873, 1.55137), Vector3(1.74084, 0.494832, 2.67637)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("snowball:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(8.8, 9.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.44196, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("snowball:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 9.5, 9.7, 9.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SnowSplash:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(9.8, 11.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SnowSplash:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 9.8, 11.4, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("SnowSplash:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(9.8, 10.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.94736, 0.488281, 2.66699), Vector3(1.94736, 0.393712, 2.66699)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("EnemyShovelDummy:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("EnemyDummy:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("enemy_boss:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_imvxc"]
@@ -584,28 +804,103 @@ transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911
 transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 7.03272, 0, -5.77863)
 
 [node name="Spruce9" parent="level" instance=ExtResource("2_cph8o")]
-transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 6.44066, 0, 0.696201)
+transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 6.44066, 0, -1.14914)
 
 [node name="Spruce10" parent="level" instance=ExtResource("2_cph8o")]
 transform = Transform3D(-0.996911, 0, -0.078546, 0, 1, 0, 0.078546, 0, -0.996911, 7.69367, 0, -2.86224)
+
+[node name="Spruce12" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.0178015, 0, 0.999842, 0, 1, 0, -0.999842, 0, 0.0178015, 34.8276, 0, -15.7134)
+
+[node name="Spruce13" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.0178015, 0, 0.999842, 0, 1, 0, -0.999842, 0, 0.0178015, 32.2819, 0, -14.8949)
+
+[node name="Spruce14" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.0178015, 0, 0.999842, 0, 1, 0, -0.999842, 0, 0.0178015, 30.0921, 0, -15.7973)
+
+[node name="Spruce15" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.0178015, 0, 0.999842, 0, 1, 0, -0.999842, 0, 0.0178015, 23.7043, 0, -17.01)
+
+[node name="Spruce16" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.0178015, 0, 0.999842, 0, 1, 0, -0.999842, 0, 0.0178015, 27.1256, 0, -15.4202)
+
+[node name="Spruce17" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.723618, 0, 0.690201, 0, 1, 0, -0.690201, 0, -0.723618, -15.0163, 0, -21.6529)
+
+[node name="Spruce18" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.723618, 0, 0.690201, 0, 1, 0, -0.690201, 0, -0.723618, -16.1381, 0, -19.2255)
+
+[node name="Spruce19" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.723618, 0, 0.690201, 0, 1, 0, -0.690201, 0, -0.723618, -18.2851, 0, -18.2253)
+
+[node name="Spruce20" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.723618, 0, 0.690201, 0, 1, 0, -0.690201, 0, -0.723618, -23.5032, 0, -14.3465)
+
+[node name="Spruce21" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.723618, 0, 0.690201, 0, 1, 0, -0.690201, 0, -0.723618, -20.0165, 0, -15.7872)
+
+[node name="Spruce22" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.842114, 0, -0.5393, 0, 1, 0, 0.5393, 0, -0.842114, -18.9402, 0, -5.40161)
+
+[node name="Spruce23" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.842114, 0, -0.5393, 0, 1, 0, 0.5393, 0, -0.842114, -16.848, 0, -3.73618)
+
+[node name="Spruce24" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.842114, 0, -0.5393, 0, 1, 0, 0.5393, 0, -0.842114, -16.3855, 0, -1.41331)
+
+[node name="Spruce25" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.842114, 0, -0.5393, 0, 1, 0, 0.5393, 0, -0.842114, -13.8548, 0, 4.57581)
+
+[node name="Spruce26" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.842114, 0, -0.5393, 0, 1, 0, 0.5393, 0, -0.842114, -14.4276, 0, 0.846944)
+
+[node name="Spruce27" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.941471, 0, 0.337095, 0, 1, 0, -0.337095, 0, -0.941471, 38.0402, 0, -5.95475)
+
+[node name="Spruce28" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.941471, 0, 0.337095, 0, 1, 0, -0.337095, 0, -0.941471, 38.0002, 0, -3.28096)
+
+[node name="Spruce29" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.941471, 0, 0.337095, 0, 1, 0, -0.337095, 0, -0.941471, 36.444, 0, -1.49549)
+
+[node name="Spruce30" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.941471, 0, 0.337095, 0, 1, 0, -0.337095, 0, -0.941471, 33.2493, 0, 4.16736)
+
+[node name="Spruce31" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(-0.941471, 0, 0.337095, 0, 1, 0, -0.337095, 0, -0.941471, 35.8511, 0, 1.4355)
+
+[node name="Spruce32" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.990847, 0, 0.134989, 0, 1, 0, -0.134989, 0, 0.990847, 29.2221, 0, 14.1064)
+
+[node name="Spruce33" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.990847, 0, 0.134989, 0, 1, 0, -0.134989, 0, 0.990847, 28.0247, 0, 11.7153)
+
+[node name="Spruce34" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.990847, 0, 0.134989, 0, 1, 0, -0.134989, 0, 0.990847, 28.5823, 0, 9.41344)
+
+[node name="Spruce35" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.990847, 0, 0.134989, 0, 1, 0, -0.134989, 0, 0.990847, 28.806, 0, 2.91545)
+
+[node name="Spruce36" parent="level" instance=ExtResource("2_cph8o")]
+transform = Transform3D(0.990847, 0, 0.134989, 0, 1, 0, -0.134989, 0, 0.990847, 27.7569, 0, 6.53925)
 
 [node name="LevelGridMap" type="GridMap" parent="level"]
 mesh_library = ExtResource("3_i4x7s")
 cell_size = Vector3(3, 3, 3)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65535, 65535, 2, 0, 65535, 2, 0, 0, 2, 65535, 0, 2, 65535, 65534, 2, 0, 65534, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 0, 1, 3, 1, 1, 1048579, 65535, 1, 1048579, 2, 1, 1441795, 65534, 1, 1441795, 131070, 1, 9, 131071, 1, 9, 65536, 1, 9, 65537, 1, 9, 65538, 1, 9, 65532, 65528, 2, 65532, 65529, 2, 65532, 65530, 2, 65532, 65531, 2, 65532, 65532, 2, 65532, 65533, 2, 65532, 65534, 2, 65532, 65535, 2, 65532, 0, 2, 65533, 65528, 2, 65533, 65529, 2, 65533, 65530, 2, 65533, 65531, 2, 65533, 65532, 2, 65533, 65533, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 0, 2, 65534, 65528, 2, 65534, 65529, 2, 65534, 65530, 2, 65534, 65531, 2, 65534, 65532, 2, 65534, 65533, 2, 65534, 65534, 2, 65534, 65535, 2, 65534, 0, 2, 65535, 65528, 2, 65535, 65529, 2, 65535, 65530, 2, 65535, 65531, 2, 65535, 65532, 2, 65535, 65533, 2, 0, 65528, 2, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 1, 65528, 2, 1, 65529, 2, 1, 65530, 2, 1, 65531, 2, 1, 65532, 2, 1, 65533, 2, 2, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 3, 65528, 2, 3, 65529, 2, 3, 65530, 2, 3, 65531, 2, 3, 65532, 2, 3, 65533, 2, 3, 65534, 2, 3, 65535, 2, 3, 0, 2, 4, 65528, 2, 4, 65529, 2, 4, 65530, 2, 4, 65531, 2, 4, 65532, 2, 4, 65533, 2, 4, 65534, 2, 4, 65535, 2, 4, 0, 2, 65532, 65521, 1441794, 65532, 65522, 1441794, 65532, 65523, 1441794, 65532, 65524, 1441794, 65532, 65525, 1441794, 65532, 65526, 1441794, 65532, 65527, 1441794, 65533, 65521, 1441794, 65533, 65522, 1441794, 65533, 65523, 1441794, 65533, 65524, 1441794, 65533, 65525, 1441794, 65533, 65526, 1441794, 65533, 65527, 1441794, 65534, 65521, 1441794, 65534, 65522, 1441794, 65534, 65523, 1441794, 65534, 65524, 1441794, 65534, 65525, 1441794, 65534, 65526, 1441794, 65534, 65527, 1441794, 65535, 65521, 1441794, 65535, 65522, 1441794, 65535, 65523, 1441794, 65535, 65524, 1441794, 65535, 65525, 1441794, 65535, 65526, 1441794, 65535, 65527, 1441794, 0, 65521, 1441794, 0, 65522, 1441794, 0, 65523, 1441794, 0, 65524, 1441794, 0, 65525, 1441794, 0, 65526, 1441794, 0, 65527, 1441794, 1, 65521, 1441794, 1, 65522, 1441794, 1, 65523, 1441794, 1, 65524, 1441794, 1, 65525, 1441794, 1, 65526, 1441794, 1, 65527, 1441794, 2, 65521, 1441794, 2, 65522, 1441794, 2, 65523, 1441794, 2, 65524, 1441794, 2, 65525, 1441794, 2, 65526, 1441794, 2, 65527, 1441794, 3, 65521, 1441794, 3, 65522, 1441794, 3, 65523, 1441794, 3, 65524, 1441794, 3, 65525, 1441794, 3, 65526, 1441794, 3, 65527, 1441794)
+"cells": PackedInt32Array(65535, 65535, 2, 0, 65535, 2, 0, 0, 2, 65535, 0, 2, 65535, 65534, 2, 0, 65534, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 0, 1, 3, 1, 1, 1048579, 65535, 1, 1048579, 2, 1, 1441795, 65534, 1, 1441795, 131070, 1, 9, 131071, 1, 9, 65536, 1, 9, 65537, 1, 9, 65538, 1, 9, 65532, 65528, 2, 65532, 65529, 2, 65532, 65530, 2, 65532, 65531, 2, 65532, 65532, 2, 65532, 65533, 2, 65532, 65534, 2, 65532, 65535, 2, 65532, 0, 2, 65533, 65528, 2, 65533, 65529, 2, 65533, 65530, 2, 65533, 65531, 2, 65533, 65532, 2, 65533, 65533, 2, 65533, 65534, 2, 65533, 65535, 2, 65533, 0, 2, 65534, 65528, 2, 65534, 65529, 2, 65534, 65530, 2, 65534, 65531, 2, 65534, 65532, 2, 65534, 65533, 2, 65534, 65534, 2, 65534, 65535, 2, 65534, 0, 2, 65535, 65528, 2, 65535, 65529, 2, 65535, 65530, 2, 65535, 65531, 2, 65535, 65532, 2, 65535, 65533, 2, 0, 65528, 2, 0, 65529, 2, 0, 65530, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 1, 65528, 2, 1, 65529, 2, 1, 65530, 2, 1, 65531, 2, 1, 65532, 2, 1, 65533, 2, 2, 65528, 2, 2, 65529, 2, 2, 65530, 2, 2, 65531, 2, 2, 65532, 2, 2, 65533, 2, 2, 65534, 2, 2, 65535, 2, 2, 0, 2, 3, 65528, 2, 3, 65529, 2, 3, 65530, 2, 3, 65531, 2, 3, 65532, 2, 3, 65533, 2, 3, 65534, 2, 3, 65535, 2, 3, 0, 2, 4, 65528, 2, 4, 65529, 2, 4, 65530, 2, 4, 65531, 2, 4, 65532, 2, 4, 65533, 2, 4, 65534, 2, 4, 65535, 2, 4, 0, 2, 65532, 65521, 1441794, 65532, 65522, 1441794, 65532, 65523, 1441794, 65532, 65524, 1441794, 65532, 65525, 1441794, 65532, 65526, 1441794, 65532, 65527, 1441794, 65533, 65521, 1441794, 65533, 65522, 1441794, 65533, 65523, 1441794, 65533, 65524, 1441794, 65533, 65525, 1441794, 65533, 65526, 1441794, 65533, 65527, 1441794, 65534, 65521, 1441794, 65534, 65522, 1441794, 65534, 65523, 1441794, 65534, 65524, 1441794, 65534, 65525, 1441794, 65534, 65526, 1441794, 65534, 65527, 1441794, 65535, 65521, 1441794, 65535, 65522, 1441794, 65535, 65523, 1441794, 65535, 65524, 1441794, 65535, 65525, 1441794, 65535, 65526, 1441794, 65535, 65527, 1441794, 0, 65521, 1441794, 0, 65522, 1441794, 0, 65523, 1441794, 0, 65524, 1441794, 0, 65525, 1441794, 0, 65526, 1441794, 0, 65527, 1441794, 1, 65521, 1441794, 1, 65522, 1441794, 1, 65523, 1441794, 1, 65524, 1441794, 1, 65525, 1441794, 1, 65526, 1441794, 1, 65527, 1441794, 2, 65521, 1048579, 2, 65522, 1048579, 2, 65523, 1048579, 2, 65524, 1048579, 2, 65525, 1441794, 2, 65526, 1441794, 2, 65527, 1441794, 3, 65521, 1441794, 3, 65522, 1048579, 3, 65523, 1048579, 3, 65524, 1048579, 3, 65525, 1441794, 3, 65526, 1441794, 3, 65527, 1441794, 4, 65519, 2, 4, 65520, 2, 4, 65521, 2, 4, 65522, 2, 4, 65523, 2, 4, 65524, 2, 4, 65525, 2, 4, 65526, 2, 4, 65527, 2, 4, 1, 2, 4, 2, 2, 5, 65519, 2, 5, 65520, 2, 5, 65521, 2, 5, 65522, 2, 5, 65523, 2, 5, 65524, 2, 5, 65525, 2, 5, 65526, 2, 5, 65527, 2, 5, 65528, 655363, 5, 65529, 1441795, 5, 65530, 2, 5, 65531, 2, 5, 65532, 2, 5, 65533, 2, 5, 65534, 2, 5, 65535, 2, 5, 0, 2, 5, 1, 2, 5, 2, 2, 6, 65519, 2, 6, 65520, 2, 6, 65521, 2, 6, 65522, 2, 6, 65523, 2, 6, 65524, 2, 6, 65525, 2, 6, 65526, 2, 6, 65527, 2, 6, 65528, 655363, 6, 65529, 1441795, 6, 65530, 2, 6, 65531, 2, 6, 65532, 2, 6, 65533, 2, 6, 65534, 2, 6, 65535, 2, 6, 0, 2, 6, 1, 2, 6, 2, 2, 7, 65519, 2, 7, 65520, 2, 7, 65521, 2, 7, 65522, 2, 7, 65523, 2, 7, 65524, 2, 7, 65525, 2, 7, 65526, 2, 7, 65527, 2, 7, 65528, 655363, 7, 65529, 655363, 7, 65530, 2, 7, 65531, 2, 7, 65532, 2, 7, 65533, 2, 7, 65534, 2, 7, 65535, 2, 7, 0, 2, 7, 1, 2, 7, 2, 2, 8, 65519, 2, 8, 65520, 2, 8, 65521, 2, 8, 65522, 2, 8, 65523, 2, 8, 65524, 2, 8, 65525, 2, 8, 65526, 2, 8, 65527, 2, 8, 65528, 655363, 8, 65529, 1441795, 8, 65530, 2, 8, 65531, 2, 8, 65532, 2, 8, 65533, 2, 8, 65534, 2, 8, 65535, 2, 8, 0, 2, 8, 1, 2, 8, 2, 2, 9, 65519, 2, 9, 65520, 2, 9, 65521, 2, 9, 65522, 2, 9, 65523, 2, 9, 65524, 2, 9, 65525, 2, 9, 65526, 2, 9, 65527, 2, 9, 65528, 655363, 9, 65529, 1441795, 9, 65530, 2, 9, 65531, 2, 9, 65532, 2, 9, 65533, 2, 9, 65534, 2, 9, 65535, 2, 9, 0, 2, 9, 1, 2, 9, 2, 2, 10, 65519, 2, 10, 65520, 2, 10, 65521, 2, 10, 65522, 2, 10, 65523, 2, 10, 65524, 2, 10, 65525, 2, 10, 65526, 2, 10, 65527, 2, 10, 65528, 2, 10, 65529, 2, 10, 65530, 2, 10, 65531, 2, 10, 65532, 2, 10, 65533, 2, 10, 65534, 2, 10, 65535, 2, 10, 0, 2, 10, 1, 2, 10, 2, 2, 11, 65519, 2, 11, 65520, 2, 11, 65521, 2, 11, 65522, 2, 11, 65523, 2, 11, 65524, 2, 11, 65525, 2, 11, 65526, 2, 11, 65527, 2, 11, 65528, 2, 11, 65529, 2, 11, 65530, 2, 11, 65531, 2, 11, 65532, 2, 11, 65533, 2, 11, 65534, 2, 11, 65535, 2, 11, 0, 2, 11, 1, 2, 11, 2, 2, 12, 65519, 2, 12, 65520, 2, 12, 65521, 2, 12, 65522, 2, 12, 65523, 2, 12, 65524, 2, 12, 65525, 2, 12, 65526, 2, 12, 65527, 2, 12, 65528, 2, 12, 65529, 2, 12, 65530, 2, 12, 65531, 2, 12, 65532, 2, 12, 65533, 2, 12, 65534, 2, 12, 65535, 2, 12, 0, 2, 12, 1, 2, 12, 2, 2, 13, 65519, 2, 13, 65520, 2, 13, 65521, 2, 13, 65522, 2, 13, 65523, 2, 13, 65524, 2, 13, 65525, 2, 13, 65526, 2, 13, 65527, 2, 13, 65528, 2, 13, 65529, 2, 13, 65530, 2, 13, 65531, 2, 13, 65532, 2, 13, 65533, 2, 13, 65534, 2, 13, 65535, 2, 13, 0, 2, 13, 1, 2, 13, 2, 2, 14, 65519, 2, 14, 65520, 2, 14, 65521, 2, 14, 65522, 2, 14, 65523, 2, 14, 65524, 2, 14, 65525, 2, 14, 65526, 2, 14, 65527, 2, 14, 65528, 2, 14, 65529, 2, 14, 65530, 2, 14, 65531, 2, 14, 65532, 2, 14, 65533, 2, 14, 65534, 2, 14, 65535, 2, 14, 0, 2, 14, 1, 2, 14, 2, 2, 15, 65519, 2, 15, 65520, 2, 15, 65521, 2, 15, 65522, 2, 15, 65523, 2, 15, 65524, 2, 15, 65525, 2, 15, 65526, 2, 15, 65527, 2, 15, 65528, 2, 15, 65529, 2, 15, 65530, 2, 15, 65531, 2, 15, 65532, 2, 15, 65533, 2, 15, 65534, 2, 15, 65535, 2, 15, 0, 2, 15, 1, 2, 15, 2, 2, 16, 65519, 2, 16, 65520, 2, 16, 65521, 2, 16, 65522, 2, 16, 65523, 2, 16, 65524, 2, 16, 65525, 2, 16, 65526, 2, 16, 65527, 2, 16, 65528, 2, 16, 65529, 2, 16, 65530, 2, 16, 65531, 2, 16, 65532, 2, 16, 65533, 2, 16, 65534, 2, 16, 65535, 2, 16, 0, 2, 16, 1, 2, 16, 2, 2, 17, 65519, 2, 17, 65520, 2, 17, 65521, 2, 17, 65522, 2, 17, 65523, 2, 17, 65524, 2, 17, 65525, 2, 17, 65526, 2, 17, 65527, 2, 17, 65528, 2, 17, 65529, 2, 17, 65530, 2, 17, 65531, 2, 17, 65532, 2, 17, 65533, 2, 17, 65534, 2, 17, 65535, 2, 17, 0, 2, 17, 1, 2, 17, 2, 2, 18, 65519, 2, 18, 65520, 2, 18, 65521, 2, 18, 65522, 2, 18, 65523, 2, 18, 65524, 2, 18, 65525, 2, 18, 65526, 2, 18, 65527, 2, 18, 65528, 2, 18, 65529, 2, 18, 65530, 2, 18, 65531, 2, 18, 65532, 2, 18, 65533, 2, 18, 65534, 2, 18, 65535, 2, 18, 0, 2, 18, 1, 2, 18, 2, 2, 19, 65519, 2, 19, 65520, 2, 19, 65521, 2, 19, 65522, 2, 19, 65523, 2, 19, 65524, 2, 19, 65525, 2, 19, 65526, 2, 19, 65527, 2, 19, 65528, 2, 19, 65529, 2, 19, 65530, 2, 19, 65531, 2, 19, 65532, 2, 19, 65533, 2, 19, 65534, 2, 19, 65535, 2, 19, 0, 2, 19, 1, 2, 19, 2, 2, 65541, 65529, 655369, 65542, 65529, 655369, 65543, 65529, 655369, 65544, 65529, 655369, 65545, 65529, 655369, 65541, 65528, 9, 65542, 65528, 9, 65543, 65528, 9, 65544, 65528, 9, 65545, 65528, 9, 65538, 65524, 1048585, 65539, 65524, 1441801, 65539, 65523, 1441801, 65539, 65522, 1441801, 65538, 65523, 1048585, 65538, 65522, 1048585, 65539, 65521, 1441801, 65538, 65521, 1048585)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="FenceAndExtraGridMap" type="GridMap" parent="level"]
 mesh_library = ExtResource("3_i4x7s")
 cell_size = Vector3(3, 3, 3)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(3, 0, 1441792, 3, 65535, 1441792, 3, 65534, 1441792, 3, 65533, 1441792, 65533, 0, 1048576, 65533, 65535, 1048576, 65533, 65534, 1048576, 65533, 65533, 1048576, 65535, 65532, 1, 65534, 65532, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65528, 1441795, 65532, 65528, 1441795, 65533, 65527, 3, 65533, 65526, 3, 65532, 65526, 3, 65532, 65527, 3, 131068, 65528, 1048585, 131068, 65527, 1048585, 131068, 65526, 1048585, 131069, 65526, 1441801, 131069, 65527, 1441801, 131069, 65528, 1441801)
+"cells": PackedInt32Array(3, 65535, 1441792, 3, 65534, 1441792, 3, 65533, 1441792, 65533, 0, 1048576, 65533, 65535, 1048576, 65533, 65534, 1048576, 65533, 65533, 1048576, 65535, 65532, 1, 65534, 65532, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65528, 1441795, 65532, 65528, 1441795, 65533, 65527, 3, 65533, 65526, 3, 65532, 65526, 3, 65532, 65527, 3, 131068, 65528, 1048585, 131068, 65527, 1048585, 131068, 65526, 1048585, 131069, 65526, 1441801, 131069, 65527, 1441801, 131069, 65528, 1441801)
 }
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="snowman_destroyed" parent="." instance=ExtResource("5_xavq7")]
 transform = Transform3D(0.560046, 0, -0.828461, 0, 1, 0, 0.828461, 0, 0.560046, -0.0799155, 4.76837e-07, -3.08501)
@@ -629,19 +924,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.879768, -9.53674e-07, -7.23
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28174, 0.802016, 2.91814)
 
 [node name="player_hand" parent="Camera3D" instance=ExtResource("5_jyxtn")]
-transform = Transform3D(1.82612e-06, 0.483312, -0.875448, 1, -3.61999e-06, 8.74227e-08, -3.12686e-06, -0.875449, -0.483311, 0.238123, -0.281334, -0.244)
+transform = Transform3D(1.82612e-06, 0.483312, -0.875448, 0.999999, -3.61999e-06, 8.74227e-08, -3.12686e-06, -0.875449, -0.483311, 0.238123, -0.281334, -0.244)
 visible = false
 
 [node name="SnowSplash" parent="Camera3D/player_hand" instance=ExtResource("6_cwh65")]
-transform = Transform3D(1, -2.22044e-15, 3.72529e-08, 0, 1, 5.96046e-08, -3.72529e-08, -5.96046e-08, 1, 0.0691392, 0.306965, 0.01316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0691392, 0.306965, 0.01316)
 visible = false
 
 [node name="PlayerHandLeft" parent="Camera3D" instance=ExtResource("6_yeshp")]
-transform = Transform3D(1.68111e-06, -0.464397, 0.885627, -1, -3.61999e-06, 0, 3.20596e-06, -0.885627, -0.464397, -0.239708, -0.253921, -0.244297)
+transform = Transform3D(1.68111e-06, -0.464397, 0.885628, -0.999999, -3.61999e-06, 0, 3.20596e-06, -0.885627, -0.464397, -0.239708, -0.253921, -0.244297)
 visible = false
 
 [node name="SnowSplash" parent="Camera3D/PlayerHandLeft" instance=ExtResource("6_cwh65")]
-transform = Transform3D(1, -5.96046e-08, -4.47035e-08, 5.96046e-08, 1, 1.49012e-07, 4.47035e-08, -1.49012e-07, 1, -0.0691392, 0.300251, 0.0197711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691392, 0.300251, 0.0197711)
 visible = false
 
 [node name="Control" type="Control" parent="."]
@@ -692,3 +987,23 @@ preprocess = 5.0
 visibility_aabb = AABB(-11, -6, -13, 22, 12, 26)
 process_material = SubResource("ParticleProcessMaterial_2hiyl")
 draw_pass_1 = SubResource("PlaneMesh_ost87")
+
+[node name="enemy_boss" parent="." instance=ExtResource("9_sphi5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.51898, 0, 1.76462)
+visible = false
+
+[node name="EnemyDummy" parent="." instance=ExtResource("10_tf21k")]
+transform = Transform3D(0.120379, 0, 0.992728, 0, 1, 0, -0.992728, 0, 0.120379, 9.76149, 0, 2.43397)
+visible = false
+randomize_skin = true
+
+[node name="EnemyShovelDummy" parent="." instance=ExtResource("11_jtrbe")]
+transform = Transform3D(-0.199778, 0, 0.979841, 0, 1, 0, -0.979841, 0, -0.199778, 10.1843, 0, 1.01841)
+visible = false
+randomize_skin = true
+
+[node name="snowball" parent="." instance=ExtResource("12_t1gml")]
+transform = Transform3D(0.128484, 0, 0.991712, 0, 1, 0, -0.991712, 0, 0.128484, 8.75054, 0.778873, 1.55137)
+
+[node name="SnowSplash" parent="." instance=ExtResource("6_cwh65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94736, 0.488281, 2.66699)
