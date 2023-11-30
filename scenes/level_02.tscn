@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="5_qk7mf"]
 [ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="6_xdpal"]
 [ext_resource type="PackedScene" uid="uid://cn0ypr2lfyvuf" path="res://environment/ladder.tscn" id="7_seimh"]
-[ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_8jre4"]
+[ext_resource type="PackedScene" uid="uid://bb1toeopv0xiy" path="res://environment/escape.tscn" id="8_vtm3m"]
 
 [sub_resource type="Shader" id="Shader_yk8oj"]
 code = "
@@ -188,4 +188,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47989, 1, 2.22851)
 
 [node name="Ladder" parent="." instance=ExtResource("7_seimh")]
 
-[node name="Enemy" parent="." instance=ExtResource("8_8jre4")]
+[node name="Escape" parent="." instance=ExtResource("8_vtm3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53782, 1.52187, 2.74999)

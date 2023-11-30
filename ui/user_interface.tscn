@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="17_8v3uy"]
 [ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="18_s2s0h"]
 
-[node name="UserInterface" type="Control"]
+[node name="UserInterface" type="Control" groups=["ui"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,6 +186,89 @@ texture_normal = ExtResource("13_gm1ew")
 texture_hover = ExtResource("14_xg6jr")
 
 [node name="Label" type="Label" parent="LostPanel/VBoxContainer2/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 18
+text = "Main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="WinPanel" type="PanelContainer" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="LevelCompleted" type="Label" parent="WinPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ypige")
+theme_override_colors/font_color = Color(0.941176, 0.67451, 0.25098, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Level 1 Completed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="LevelTime" type="Label" parent="WinPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 25
+text = "Time: 99:99.99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="WinPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="NextLevel" type="TextureButton" parent="WinPanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("9_lql5m")
+texture_hover = ExtResource("10_0d2j0")
+
+[node name="Label" type="Label" parent="WinPanel/VBoxContainer/VBoxContainer/NextLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 18
+text = "Next level"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Quit" type="TextureButton" parent="WinPanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("9_lql5m")
+texture_hover = ExtResource("10_0d2j0")
+
+[node name="Label" type="Label" parent="WinPanel/VBoxContainer/VBoxContainer/Quit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1111,8 +1194,76 @@ text = "Options
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Objectives" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = 77.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objectives"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Objectives/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objectives/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Objective" type="Label" parent="Objectives/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ypige")
+text = "Objective:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="obj" type="Label" parent="Objectives/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 10
+text = "Destroy ALL snowmen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="amount" type="Label" parent="Objectives/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 10
+text = "Snowmen left: 99"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Objectives/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Min" type="Label" parent="Objectives/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_ypige")
+text = "01:"
+
+[node name="Sec" type="Label" parent="Objectives/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_ypige")
+text = "0.1."
+
+[node name="Msec" type="Label" parent="Objectives/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_ypige")
+text = "0.1
+"
+
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PauseMenu/MainButtons/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/MainButtons/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PauseMenu/MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

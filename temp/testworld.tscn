@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckdi3myxfa0w0"]
+[gd_scene load_steps=20 format=3 uid="uid://ckdi3myxfa0w0"]
 
 [ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="2_76oo2"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="2_77a1h"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="7_6pwac"]
 [ext_resource type="PackedScene" uid="uid://cn0ypr2lfyvuf" path="res://environment/ladder.tscn" id="8_jnw3q"]
 [ext_resource type="PackedScene" uid="uid://dts04t6jmdoi3" path="res://environment/snowman_destroyed.tscn" id="9_eaiee"]
+[ext_resource type="PackedScene" uid="uid://bnxloy30l5bnp" path="res://characters/enemy_with_shovel.tscn" id="10_8cvvx"]
 
 [sub_resource type="Shader" id="Shader_yk8oj"]
 code = "
@@ -228,7 +229,6 @@ max_snowball_count = 12
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -26)
 max_energy = 3
-max_snowball_count = 99
 attack_range = 10.0
 player_path = NodePath("../Player")
 player = NodePath("../Player")
@@ -251,3 +251,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86571, 6, -6)
 
 [node name="snowman_destroyed" parent="." instance=ExtResource("9_eaiee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="EnemyShovel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_8cvvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26866, 9.53674e-07, -27.8634)
+player_path = NodePath("../Player")
+player = NodePath("../Player")

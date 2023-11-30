@@ -1003,7 +1003,7 @@ visible = false
 randomize_skin = true
 
 [node name="snowball" parent="." instance=ExtResource("12_t1gml")]
-transform = Transform3D(0.128484, 0, 0.991712, 0, 1, 0, -0.991712, 0, 0.128484, 8.75054, 0.778873, 1.55137)
+transform = Transform3D(0.12848, 0, 0.991712, 0, 1, 0, -0.991712, 0, 0.12848, 8.75054, 0.778873, 1.55137)
 
 [node name="SnowSplash" parent="." instance=ExtResource("6_cwh65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94736, 0.488281, 2.66699)

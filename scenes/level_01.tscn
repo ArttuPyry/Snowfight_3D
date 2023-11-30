@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ditlfek3hdtik"]
+[gd_scene load_steps=18 format=3 uid="uid://ditlfek3hdtik"]
 
 [ext_resource type="PackedScene" uid="uid://b4up88kqplgm" path="res://ui/user_interface.tscn" id="1_6aknq"]
 [ext_resource type="Script" path="res://scripts/level/level_01.gd" id="1_in3gh"]
@@ -6,6 +6,7 @@
 [ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="3_wce7r"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="5_tslbj"]
 [ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="6_hyf8h"]
+[ext_resource type="PackedScene" uid="uid://bb1toeopv0xiy" path="res://environment/escape.tscn" id="8_4mfia"]
 [ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_ejxbt"]
 
 [sub_resource type="Shader" id="Shader_yk8oj"]
@@ -233,3 +234,11 @@ transform = Transform3D(0.266784, 0, 0.963756, 0, 1, 0, -0.963756, 0, 0.266784, 
 transform = Transform3D(0.895851, 0, 0.444354, 0, 1, 0, -0.444354, 0, 0.895851, -6.12908, 0, -6.61121)
 player_path = NodePath("../Player")
 player = NodePath("../Player")
+
+[node name="Escape" parent="." instance=ExtResource("8_4mfia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55688, 0.373801, 2)
+
+[node name="CollisionShape3D" parent="Escape" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.504377)
+
+[editable path="Escape"]

@@ -2,7 +2,6 @@ extends Node3D
 
 @onready var current_actor = $".."
 
-
 func _process(_delta) -> void:
 	
 	if _in_vision_range(current_actor.player.global_transform.origin) and _has_line_of_sight(current_actor.player.global_transform.origin):

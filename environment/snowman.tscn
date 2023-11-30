@@ -184,7 +184,7 @@ _data = {
 "destroy": SubResource("Animation_bwqlb")
 }
 
-[node name="Snowman" instance=ExtResource("1_8i2fi")]
+[node name="Snowman" groups=["snowman"] instance=ExtResource("1_8i2fi")]
 script = ExtResource("2_c1jsg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Snowman" index="1"]

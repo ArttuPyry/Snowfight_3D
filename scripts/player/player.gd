@@ -7,6 +7,7 @@ var crosshair
 
 @export_category("Player stats")
 @export var max_energy : int = SaveManager.player_max_energy
+var current_health
 @export var max_snowball_count : int = 9
 var current_snowball_count : int
 var no_energy = false
@@ -25,14 +26,18 @@ var interactable
 var interactable_group
 var interact_look_at
 
+var mission_completed = false
+
 # User gameplay preference save
 const CONFIG_SAVE_PATH := "user://usergameplaypreferences.cfg"
 
+var snowmen
 
 func _ready() -> void:
 	var save : = ConfigFile.new()
 	save.load(SaveManager.SAVE_PATH)
-
+	snowmen = get_tree().get_nodes_in_group("snowman").size()
+	
 	# Hides mouse and setups UI and snowball
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	current_snowball_count = max_snowball_count
@@ -40,10 +45,18 @@ func _ready() -> void:
 	
 	load_user_config()
 	
+	current_health = max_energy
+	
 	set_process_unhandled_input(false)
 	await get_tree().create_timer(0.5, false).timeout
 	set_process_unhandled_input(true)
 
+
+func snowman_destroyed() -> void:
+	snowmen -= 1
+	user_interface.update_mission()
+	if snowmen <= 0:
+		mission_completed = true
 
 func load_user_config() -> void:
 	# Load user gameplay preference settings
@@ -68,6 +81,7 @@ func load_user_config() -> void:
 	camera.fov = int(fov)
 # Update UI - Health / Energy
 func update_health_bar(damage) -> void:
+	current_health -= damage
 	user_interface.update_energy(damage)
 # Update UI - Ammo
 func update_ammo_count() -> void:

@@ -21,6 +21,8 @@ var seen_player : bool = false
 @export var player_path : NodePath
 @export var player : Node3D
 
+var is_attacking : bool = false
+
 enum AttackType {snowball, shovel}
 @export var attack_type  :  AttackType
 

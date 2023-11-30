@@ -11,19 +11,57 @@ extends Control
 @onready var pause_menu = $PauseMenu
 @onready var ammo = $Ammo
 @onready var retry = $LostPanel/VBoxContainer2/VBoxContainer/Retry
+@onready var obj = $Objectives/VBoxContainer/PanelContainer/VBoxContainer/obj
+@onready var amount = $Objectives/VBoxContainer/PanelContainer/VBoxContainer/amount
+@onready var objectives = $Objectives
 
+# Timer
+@onready var min_label = $Objectives/VBoxContainer/HBoxContainer/Min
+@onready var sec_label = $Objectives/VBoxContainer/HBoxContainer/Sec
+@onready var msec_label = $Objectives/VBoxContainer/HBoxContainer/Msec
+
+# Victory
+@onready var win_panel = $WinPanel
+@onready var level_time = $WinPanel/VBoxContainer/LevelTime
+
+
+var time : float = 0.0
+var minutes : float = 0
+var seconds : float = 0
+var mseconds : float = 0
 
 var player
 
-func _ready():
+func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	player.crosshair = crosshair
+
+func _process(delta) -> void:
+	time += delta
+	mseconds = fmod(time, 1) * 1000
+	seconds = fmod(time, 60)
+	minutes = fmod(time, 60 * 60) / 60
+	min_label.text = "%02d:" % minutes
+	sec_label.text = "%02d." % seconds
+	msec_label.text = "%03d" % mseconds
+
+func get_time_formatted() -> String:
+	return "%02d:%02d.%03d" % [minutes, seconds, mseconds]
 
 func setup_ui(max_energy, energy, ammo_c) -> void:
 	energy_bar.value = energy
 	energy_bar.max_value = max_energy
 	max_ammo.text = str(ammo_c)
 	current_ammo.text = str(ammo_c)
+	amount.text = "Snowmen left: " + str(player.snowmen)
+
+func update_mission() -> void:
+	if player.snowmen > 0:
+		amount.text = "Snowmen left: " + str(player.snowmen)
+	else:
+		amount.visible = false
+		obj.add_theme_color_override("font_color", Color.YELLOW)
+		obj.text = "Escape!"
 
 func update_energy(damage) -> void:
 	energy_bar.value -= damage
@@ -34,10 +72,11 @@ func update_ammo() -> void:
 func you_lost() -> void:
 	lost_panel.visible = true
 	get_tree().paused = true
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	energy_bar.visible = false
 	ammo.visible = false
 	crosshair.visible = false
+	objectives.visible = false
 	
 	var save : = ConfigFile.new()
 	save.load(SaveManager.SAVE_PATH)
@@ -50,12 +89,37 @@ func you_lost() -> void:
 		SaveManager.clear_savefile()
 		retry.visible = false
 
+func open_victory_screen() -> void:
+	print(minutes)
+	win_panel.visible = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	energy_bar.visible = false
+	ammo.visible = false
+	crosshair.visible = false
+	objectives.visible = false
+	level_time.text = get_time_formatted()
+	SaveManager.save_time(mseconds, seconds, minutes)
+	
+	var teste = ConfigFile.new()
+	teste.load(SaveManager.TIME_PATH)
+	var msecondstes = teste.get_value("time", "mseconds", 0)
+	var secondstes = teste.get_value("time", "seconds", 0)
+	var minutestes = teste.get_value("time", "minutes", 0)
+	print(minutestes, " ", secondstes, " ", msecondstes)
+	
+
+func _on_next_level_pressed():
+	get_tree().paused = false
+	LevelManager.load_level()
+
 func open_pause_menu() -> void:
 	get_tree().paused = true
 	pause_menu.visible = true
 	energy_bar.visible = false
 	ammo.visible = false
 	crosshair.visible = false
+	objectives.visible = false
 
 func _on_continue_pressed():
 	get_tree().paused = false
@@ -63,6 +127,7 @@ func _on_continue_pressed():
 	energy_bar.visible = true
 	ammo.visible = true
 	crosshair.visible = true
+	objectives.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_options_pressed() -> void:
@@ -80,5 +145,7 @@ func _on_quit_pressed() -> void:
 
 func _on_restart_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/level_01.tscn")
+	LevelManager.load_level()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+

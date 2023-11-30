@@ -55,7 +55,7 @@ func _on_play_pressed():
 		save.load(SaveManager.SAVE_PATH)
 		
 		if save.has_section("save"):
-			LevelManager.load_first_level(true, true)
+			LevelManager.load_level()
 		else:
 			main_buttons.visible = false
 			difficulty.visible = true
@@ -100,7 +100,6 @@ func _on_delete_save_button_pressed():
 	SaveManager.clear_savefile()
 	play_label.text = "Play"
 	delete_save_button.visible = false
-
 
 func _on_skip_intro_toggled(button_pressed):
 	if button_pressed:
