@@ -33,14 +33,22 @@ func clear_savefile() -> void:
 func save_time(msec, sec, mins) -> void:
 	var time : = ConfigFile.new()
 	time.load(TIME_PATH)
+	print(msec, " ", sec, " ", mins)
 	
 	var mseconds = msec + time.get_value("time", "mseconds", 0.0)
 	var seconds = sec + time.get_value("time", "seconds", 0.0)
 	var minutes = mins + time.get_value("time", "minutes", 0.0)
+	
 	print(mseconds, " ", seconds, " ", minutes)
 	
 	time.set_value("time", "mseconds", mseconds)
 	time.set_value("time", "seconds", seconds)
 	time.set_value("time", "minutes", minutes)
 	
+	time.save(TIME_PATH)
+
+func clear_timefile() -> void:
+	var time : = ConfigFile.new()
+	time.load(TIME_PATH)
+	time.clear()
 	time.save(TIME_PATH)

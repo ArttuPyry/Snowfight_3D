@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://cm0gdroi5jb8a"]
+[gd_scene load_steps=31 format=3 uid="uid://cm0gdroi5jb8a"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_ritve"]
 [ext_resource type="Material" uid="uid://ut7kls6cn6jp" path="res://characters/material00.tres" id="2_8niek"]
 [ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="2_ebw5u"]
 [ext_resource type="Script" path="res://scripts/actor componenets/energy_component.gd" id="3_e1jfi"]
+[ext_resource type="Script" path="res://scripts/enemy/snowball_throw_spot.gd" id="4_4n51h"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_vision.gd" id="4_nndq0"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="5_htq7q"]
 [ext_resource type="Script" path="res://scripts/enemy/shovel_attack.gd" id="6_dh418"]
@@ -1513,6 +1514,16 @@ visible = false
 
 [node name="SnowballThrowSpot" type="Node3D" parent="Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(-0.999285, -0.0349868, 0.0142973, 0.0231454, -0.865529, -0.500323, 0.0298794, -0.499635, 0.865721, 0.0403223, 0.147518, 0.00866207)
+
+[node name="FaceTargetY" type="Node3D" parent="Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("4_4n51h")
+
+[node name="FaceTargetX" type="Node3D" parent="Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot/FaceTargetY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("4_4n51h")
+
+[node name="FirePoint" type="Node3D" parent="Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot/FaceTargetY/FaceTargetX"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

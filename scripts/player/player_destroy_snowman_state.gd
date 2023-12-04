@@ -23,6 +23,9 @@ func _enter_state() -> void:
 	set_physics_process(true)
 	player.set_process_unhandled_input(false)
 	
+	player.velocity.x = 0
+	player.velocity.z = 0
+	
 	# Play animation
 	animation_player.play("destroy_snowman")
 	await get_tree().create_timer(1.1, false).timeout

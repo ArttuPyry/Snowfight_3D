@@ -26,9 +26,9 @@ extends Control
 
 
 var time : float = 0.0
-var minutes : float = 0
-var seconds : float = 0
-var mseconds : float = 0
+var minutes : int = 0
+var seconds : int = 0
+var mseconds : int = 0
 
 var player
 
@@ -90,7 +90,6 @@ func you_lost() -> void:
 		retry.visible = false
 
 func open_victory_screen() -> void:
-	print(minutes)
 	win_panel.visible = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -100,14 +99,6 @@ func open_victory_screen() -> void:
 	objectives.visible = false
 	level_time.text = get_time_formatted()
 	SaveManager.save_time(mseconds, seconds, minutes)
-	
-	var teste = ConfigFile.new()
-	teste.load(SaveManager.TIME_PATH)
-	var msecondstes = teste.get_value("time", "mseconds", 0)
-	var secondstes = teste.get_value("time", "seconds", 0)
-	var minutestes = teste.get_value("time", "minutes", 0)
-	print(minutestes, " ", secondstes, " ", msecondstes)
-	
 
 func _on_next_level_pressed():
 	get_tree().paused = false

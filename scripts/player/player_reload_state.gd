@@ -15,6 +15,8 @@ func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
 	player.set_process_unhandled_input(false)
+	player.velocity.x = 0
+	player.velocity.z = 0
 	
 	# Reload if player has less ammo than max
 	if player.current_snowball_count < player.max_snowball_count:

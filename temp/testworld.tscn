@@ -229,7 +229,6 @@ max_snowball_count = 12
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_oa0vr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -26)
 max_energy = 3
-attack_range = 10.0
 player_path = NodePath("../Player")
 player = NodePath("../Player")
 

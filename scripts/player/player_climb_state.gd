@@ -30,6 +30,9 @@ func _enter_state() -> void:
 	snowball.visible = false
 	set_process(true)
 	set_physics_process(true)
+	
+	player.velocity.x = 0
+	player.velocity.z = 0
 
 func _exit_state() -> void:
 	# Set hands to og spot and make em invisible
