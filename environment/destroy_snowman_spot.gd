@@ -5,6 +5,8 @@ extends Area3D
 @onready var snow_splashes = $"../SnowSplashes"
 @onready var animation_player = $"../AnimationPlayer"
 
+@onready var break_audio = $"../BreakAudio"
+
 var player
 
 func _ready() -> void:
@@ -12,6 +14,7 @@ func _ready() -> void:
 
 func play_snow_splash() -> void:
 	animation_player.play("destroy")
+	break_audio.play()
 
 func swap_to_destroyed() -> void:
 	snowman.visible = false

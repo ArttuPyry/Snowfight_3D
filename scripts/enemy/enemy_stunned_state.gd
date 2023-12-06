@@ -5,8 +5,11 @@ extends EnemyState
 @onready var current_actor = $"../.."
 @onready var energy_component = $"../../EnergyComponent"
 
+@onready var break_audio = $"../../BreakAudio"
+
 func _enter_state() -> void:
 	# stun enemy wait and reset
+	break_audio.play()
 	animation_player.play("stunned_start")
 	await animation_player.animation_finished
 	animation_player.play("stunned")

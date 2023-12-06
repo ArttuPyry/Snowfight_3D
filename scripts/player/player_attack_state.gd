@@ -8,6 +8,8 @@ const Snowball = preload("res://weapons and ammo/snowball_cb.tscn")
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var player_hand_throw = $"../../Camera3D/PlayerHandThrow"
 
+@onready var audio_throw = $"../../Throw"
+
 func _ready() -> void:
 	set_process(false)
 	set_physics_process(false)
@@ -25,7 +27,7 @@ func _enter_state() -> void:
 		# Starts attack animation and at perfect time 0.1 sec instantiate snowball and throw
 		animation_player.play("attack")
 		await get_tree().create_timer(0.1, false).timeout
-		
+		audio_throw.play()
 		# Instantiate, position and apply force
 		var _snowball = Snowball.instantiate()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dh2ppcl37pcmh"]
+[gd_scene load_steps=18 format=3 uid="uid://dh2ppcl37pcmh"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_87cli"]
 [ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_7qt1i"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://scripts/ui/gameplay_settings.gd" id="11_fd13h"]
 [ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="12_mkh4d"]
 [ext_resource type="Texture2D" uid="uid://di567om76vida" path="res://ui/textures/logo.png" id="15_b0xki"]
+[ext_resource type="AudioStream" uid="uid://dd0p36vl0h5yi" path="res://sounds/ui/menu_hover_click_shasha213131.mp3" id="16_1es4r"]
+[ext_resource type="Script" path="res://scripts/ui/menu_audio_control.gd" id="17_7nvdv"]
 
 [node name="MainMenuControl" type="Control"]
 layout_mode = 3
@@ -1109,11 +1111,26 @@ offset_bottom = 63.0
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("15_b0xki")
 
+[node name="Buttons" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_1es4r")
+
+[node name="AudioControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_7nvdv")
+
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Play" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play/DeleteSaveButton" to="." method="_on_delete_save_button_pressed"]
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Options" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Credits" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Quit" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="tab_clicked" from="Options/VBoxContainer/TabContainer" to="AudioControl" method="_on_tab_container_tab_clicked"]
+[connection signal="tab_hovered" from="Options/VBoxContainer/TabContainer" to="AudioControl" method="_on_tab_container_tab_hovered"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera/MouseControlledCameraBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_controlled_camera_box_toggled"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair/LeadingCrosshairBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_leading_crosshair_box_toggled"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView/FieldOfViewSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_field_of_view_slider_drag_ended"]
@@ -1126,13 +1143,21 @@ texture = ExtResource("15_b0xki")
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens/MouseHorizontalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_horizontal_sens_slider_value_changed"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens/MouseVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_vertical_sens_slider_drag_ended"]
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens/MouseVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_vertical_sens_slider_value_changed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_save_gameplay_settings_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_clear_gameplay_settings_button_pressed"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/WindowMode/WindowModeButton" to="AudioControl" method="_on_window_mode_button_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/Resolution/ResolutionButton" to="AudioControl" method="_on_resolution_button_toggled"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/VSync/VSyncCheckBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/Antialiasing/AntialiasingButton" to="AudioControl" method="_on_antialiasing_button_toggled"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_save_graphics_settings_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_clear_graphics_settings_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/ExitOptionsMenu" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/ExitOptionsMenu" to="." method="_on_exit_options_menu_pressed"]
 [connection signal="mouse_entered" from="Difficulty/VBoxContainer/Difficulty/VBoxContainer/Normal" to="." method="_on_normal_mouse_entered"]
 [connection signal="pressed" from="Difficulty/VBoxContainer/Difficulty/VBoxContainer/Normal" to="." method="_on_normal_pressed"]

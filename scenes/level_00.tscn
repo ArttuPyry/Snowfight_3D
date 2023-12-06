@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfagsa5iva2j"]
+[gd_scene load_steps=28 format=3 uid="uid://cfagsa5iva2j"]
 
 [ext_resource type="Script" path="res://scripts/level/level_00.gd" id="1_hsgfo"]
 [ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_cph8o"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cjay0ru4omu24" path="res://characters/enemy_basic_dummy.tscn" id="10_tf21k"]
 [ext_resource type="PackedScene" uid="uid://bfxhugxhmbc6y" path="res://characters/enemy_with_shovel_dummy.tscn" id="11_jtrbe"]
 [ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="12_t1gml"]
+[ext_resource type="AudioStream" uid="uid://8bkqqk56vvv5" path="res://sounds/environment/wind_worthahep88.mp3" id="13_qh320"]
 
 [sub_resource type="Animation" id="Animation_4e8j5"]
 length = 0.001
@@ -1007,3 +1008,8 @@ transform = Transform3D(0.12848, 0, 0.991712, 0, 1, 0, -0.991712, 0, 0.12848, 8.
 
 [node name="SnowSplash" parent="." instance=ExtResource("6_cwh65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94736, 0.488281, 2.66699)
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qh320")
+autoplay = true
+bus = &"Ambience"

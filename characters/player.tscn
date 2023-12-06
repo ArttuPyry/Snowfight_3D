@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=36 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -13,11 +13,16 @@
 [ext_resource type="Script" path="res://scripts/player/aim.gd" id="5_bjqnv"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
+[ext_resource type="AudioStream" uid="uid://ducr6yvwmyc6e" path="res://sounds/characters/throw_mateusboga.mp3" id="5_uo831"]
+[ext_resource type="AudioStream" uid="uid://cenq88ne8v028" path="res://sounds/ui/lose_themusicalnomad.mp3" id="6_pus7x"]
 [ext_resource type="PackedScene" uid="uid://clioeqkgwpgop" path="res://characters/meshes/player_hand_left.tscn" id="7_xv760"]
 [ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="8_72qf2"]
 [ext_resource type="Script" path="res://scripts/player/player_climb_state.gd" id="13_j1gxg"]
 [ext_resource type="Script" path="res://scripts/player/player_destroy_snowman_state.gd" id="16_tjaw8"]
 [ext_resource type="Script" path="res://scripts/player/player_lose_state.gd" id="18_4vrwd"]
+[ext_resource type="AudioStream" uid="uid://cfg4e28gykj05" path="res://sounds/characters/step_00_iliasflou.mp3" id="19_3sa5m"]
+[ext_resource type="Script" path="res://characters/run_audio_controller.gd" id="20_7nsg6"]
+[ext_resource type="AudioStream" uid="uid://61m1hxydv1ra" path="res://sounds/characters/reload_iliasflou.mp3" id="21_8kfvp"]
 
 [sub_resource type="Animation" id="Animation_w6sbb"]
 length = 0.001
@@ -188,6 +193,18 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, -0.361438, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Reload:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7asd4"]
@@ -521,6 +538,29 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(0, -0.361438, 0), Vector3(0, -0.676392, 0), Vector3(0, -0.676392, 0), Vector3(0, -0.361438, 0)]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Reload")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/11/use_blend = true
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Reload:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0asdr"]
 _data = {
@@ -532,8 +572,12 @@ _data = {
 "reload": SubResource("Animation_m66xx")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwt62"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mst4g"]
 radius = 0.260356
+height = 1.26419
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwt62"]
+radius = 0.24
 height = 1.26419
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxxww"]
@@ -564,6 +608,23 @@ libraries = {
 "": SubResource("AnimationLibrary_0asdr")
 }
 
+[node name="Steps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779751, 0)
+stream = ExtResource("19_3sa5m")
+bus = &"FootSteps"
+script = ExtResource("20_7nsg6")
+
+[node name="Reload" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841921, -0.829325)
+stream = ExtResource("21_8kfvp")
+
+[node name="Throw" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, -0.0565501, -0.378868)
+stream = ExtResource("5_uo831")
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pus7x")
+
 [node name="LadderRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, 0, -0.876678, 0)
 target_position = Vector3(0, -2, 0)
@@ -572,6 +633,16 @@ collision_mask = 8
 [node name="LoseRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.876678, 0)
 target_position = Vector3(0, -15, 0)
+
+[node name="ReloadFrontRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
+target_position = Vector3(0, -0.4, 0)
+collision_mask = 255
+
+[node name="ReloadGroundRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125339, -0.576362)
+target_position = Vector3(0, -2, 0)
+collision_mask = 255
 
 [node name="EnergyComponent" type="Node3D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_t0c2o")
@@ -586,7 +657,7 @@ current_actor = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360641, 0)
-shape = SubResource("CapsuleShape3D_dwt62")
+shape = SubResource("CapsuleShape3D_mst4g")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361438, 0)
@@ -667,6 +738,7 @@ script = ExtResource("16_tjaw8")
 [node name="PlayerLoseState" type="Node" parent="PlayerFiniteStateMachine"]
 script = ExtResource("18_4vrwd")
 
+[connection signal="finished" from="Steps" to="Steps" method="_on_finished"]
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
 [connection signal="timeout" from="PlayerFiniteStateMachine/PlayerFallState/FallTimer" to="PlayerFiniteStateMachine/PlayerFallState" method="_on_fall_timer_timeout"]
 

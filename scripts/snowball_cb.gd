@@ -27,10 +27,6 @@ func setup(move_speed):
 func _process(_delta):
 	snowball_mesh.rotate_x(-0.5)
 
-func _on_hitbox_component_body_entered(body):
-	pass
-
-
 func _on_area_3d_body_entered(body):
 	var ins_snow_splash = snow_splash.instantiate()
 	body.add_child(ins_snow_splash)

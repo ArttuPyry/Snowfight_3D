@@ -20,6 +20,7 @@ var seen_player : bool = false
 @export var patrolling : bool
 @export var player_path : NodePath
 @export var player : Node3D
+var los : bool = false
 
 var is_attacking : bool = false
 

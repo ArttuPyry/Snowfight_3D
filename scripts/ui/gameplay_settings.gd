@@ -15,6 +15,9 @@ extends TabBar
 @onready var mouse_vertical_sens_slider = $MouseVerticalSens/MouseVerticalSensSlider
 @onready var cur_mouse_vertical_sens_label = $MouseVerticalSens/CurMouseVerticalSensLabel
 
+@onready var audio_control = $"../../../../AudioControl"
+@onready var audio_buttons = $"../../../../Buttons"
+
 # Saving
 const CONFIG_SAVE_PATH := "user://usergameplaypreferences.cfg"
 var temp_mouse_bool
@@ -29,9 +32,11 @@ func _ready():
 	_load_gameplay_preferences("gameplay_preferences")
 
 func _on_save_gameplay_settings_button_pressed():
+	audio_control.play_click_sound()
 	_save_gameplay_preferences(temp_mouse_bool, temp_leading_bool, temp_fov_index, temp_kb_hori_float, temp_kb_vert_float, temp_mouse_hori_float, temp_mouse_vert_float)
 
 func _on_clear_gameplay_settings_button_pressed():
+	audio_control.play_click_sound()
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
 	config.clear()
@@ -105,12 +110,14 @@ func _load_gameplay_preferences(section) -> void:
 		temp_mouse_vert_float = mouse_v_sens
 
 func _on_mouse_controlled_camera_box_toggled(button_pressed):
+	audio_control.play_click_sound()
 	if button_pressed:
 		temp_mouse_bool = true
 	else: 
 		temp_mouse_bool = false
 
 func _on_leading_crosshair_box_toggled(button_pressed):
+	audio_control.play_click_sound()
 	if button_pressed:
 		temp_leading_bool = true
 	else: 
@@ -121,6 +128,7 @@ func _on_field_of_view_slider_value_changed(value):
 	cur_field_of_view_label.text = str(field_of_view_slider.value)
 
 func _on_field_of_view_slider_drag_ended(_value_changed):
+	audio_control.play_click_sound()
 	temp_fov_index = field_of_view_slider.value
 
 # Keyboard Horizontal sensitivity
@@ -128,6 +136,7 @@ func _on_keyboard_horizontal_sens_slider_value_changed(value):
 	cur_keyboard_horizontal_sens_label.text = str(keyboard_horizontal_sens_slider.value)
 
 func _on_keyboard_horizontal_sens_slider_drag_ended(_value_changed):
+	audio_control.play_click_sound()
 	temp_kb_hori_float = keyboard_horizontal_sens_slider.value
 
 # Keyboard Vertical sensitivity
@@ -135,6 +144,7 @@ func _on_keyboard_vertical_sens_slider_value_changed(value):
 	cur_keyboard_vertical_sens_label.text = str(keyboard_vertical_sens_slider.value)
 
 func _on_keyboard_vertical_sens_slider_drag_ended(_value_changed):
+	audio_control.play_click_sound()
 	temp_kb_vert_float = keyboard_vertical_sens_slider.value
 
 # Mouse Horizontal sensitivity
@@ -142,6 +152,7 @@ func _on_mouse_horizontal_sens_slider_value_changed(value):
 	cur_mouse_horizontal_sens_label.text = str(mouse_horizontal_sens_slider.value)
 
 func _on_mouse_horizontal_sens_slider_drag_ended(_value_changed):
+	audio_control.play_click_sound()
 	temp_mouse_hori_float = mouse_horizontal_sens_slider.value
 
 # Mouse Vertical sensitivity
@@ -149,4 +160,5 @@ func _on_mouse_vertical_sens_slider_value_changed(value):
 	cur_mouse_vertical_sens_label.text = str(mouse_vertical_sens_slider.value)
 
 func _on_mouse_vertical_sens_slider_drag_ended(_value_changed):
+	audio_control.play_click_sound()
 	temp_mouse_vert_float = mouse_vertical_sens_slider.value

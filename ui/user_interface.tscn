@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4up88kqplgm"]
+[gd_scene load_steps=24 format=3 uid="uid://b4up88kqplgm"]
 
 [ext_resource type="Script" path="res://scripts/ui/user_interface.gd" id="1_g0yvb"]
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://ui/textures/croshair.png" id="1_pk3wq"]
@@ -18,6 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://s6h4fdu4ccj3" path="res://ui/textures/menu_button_03.png" id="16_duunb"]
 [ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="17_8v3uy"]
 [ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="18_s2s0h"]
+[ext_resource type="AudioStream" uid="uid://dd0p36vl0h5yi" path="res://sounds/ui/menu_hover_click_shasha213131.mp3" id="19_fvthu"]
+[ext_resource type="Script" path="res://scripts/ui/menu_audio_control.gd" id="20_dsxo2"]
+[ext_resource type="AudioStream" uid="uid://tvbrdovapbtg" path="res://sounds/ui/level_completed_kenneth_cooney.mp3" id="20_pbxws"]
+[ext_resource type="AudioStream" uid="uid://cenq88ne8v028" path="res://sounds/ui/lose_themusicalnomad.mp3" id="21_ia4f1"]
+[ext_resource type="AudioStream" uid="uid://cx54rsl2s1bqf" path="res://sounds/ui/mission_chime_plasterbrain.mp3" id="22_xahsr"]
 
 [node name="UserInterface" type="Control" groups=["ui"]]
 layout_mode = 3
@@ -1260,13 +1265,44 @@ theme = ExtResource("3_ypige")
 text = "0.1
 "
 
+[node name="Buttons" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_fvthu")
+
+[node name="Victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_pbxws")
+bus = &"Music"
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_ia4f1")
+bus = &"Music"
+
+[node name="Chime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_xahsr")
+bus = &"Effects"
+
+[node name="AudioControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_dsxo2")
+
+[connection signal="mouse_entered" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="." method="_on_restart_pressed"]
+[connection signal="mouse_entered" from="LostPanel/VBoxContainer2/VBoxContainer/Quit" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="WinPanel/VBoxContainer/VBoxContainer/NextLevel" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="mouse_entered" from="WinPanel/VBoxContainer/VBoxContainer/Quit" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/MainButtons/VBoxContainer/Continue" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/MainButtons/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/MainButtons/VBoxContainer/Options" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/MainButtons/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/MainButtons/VBoxContainer/Quit" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="tab_hovered" from="Options/VBoxContainer/TabContainer" to="AudioControl" method="_on_tab_container_tab_hovered"]
+[connection signal="tab_selected" from="Options/VBoxContainer/TabContainer" to="AudioControl" method="_on_tab_container_tab_selected"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/MouseControlledCamera/MouseControlledCameraBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_controlled_camera_box_toggled"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Gameplay/LeadingCrosshair/LeadingCrosshairBox" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_leading_crosshair_box_toggled"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/FieldOfView/FieldOfViewSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_field_of_view_slider_drag_ended"]
@@ -1279,11 +1315,19 @@ text = "0.1
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/MouseHorizontalSens/MouseHorizontalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_horizontal_sens_slider_value_changed"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens/MouseVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_vertical_sens_slider_drag_ended"]
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Gameplay/MouseVerticalSens/MouseVerticalSensSlider" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_mouse_vertical_sens_slider_value_changed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/SaveGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_save_gameplay_settings_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Gameplay/SaveGameplay/ClearGameplaySettingsButton" to="Options/VBoxContainer/TabContainer/Gameplay" method="_on_clear_gameplay_settings_button_pressed"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/WindowMode/WindowModeButton" to="AudioControl" method="_on_window_mode_button_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/Resolution/ResolutionButton" to="AudioControl" method="_on_resolution_button_toggled"]
 [connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/VSync/VSyncCheckBox" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_v_sync_check_box_toggled"]
+[connection signal="toggled" from="Options/VBoxContainer/TabContainer/Graphics/Antialiasing/AntialiasingButton" to="AudioControl" method="_on_antialiasing_button_toggled"]
 [connection signal="drag_ended" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_drag_ended"]
 [connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Graphics/FPS/FPSSlider" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_fps_slider_value_changed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_save_graphics_settings_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_clear_graphics_settings_button_pressed"]
+[connection signal="mouse_entered" from="Options/VBoxContainer/ExitOptionsMenu" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/ExitOptionsMenu" to="." method="_on_exit_options_menu_pressed"]

@@ -1,6 +1,6 @@
 extends Node3D
 
-var turn_speed = 100.0
+var turn_speed = 1000.0
 func face_point(point: Vector3, delta: float):
 	var l_point = to_local(point)
 	l_point.y = 0.0

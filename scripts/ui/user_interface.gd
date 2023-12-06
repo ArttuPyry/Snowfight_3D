@@ -24,6 +24,12 @@ extends Control
 @onready var win_panel = $WinPanel
 @onready var level_time = $WinPanel/VBoxContainer/LevelTime
 
+# Audio
+@onready var audio_buttons = $Buttons
+@onready var audio_control = $AudioControl
+@onready var audio_victory = $Victory
+@onready var audio_lose = $Lose
+@onready var audio_chime = $Chime
 
 var time : float = 0.0
 var minutes : int = 0
@@ -59,7 +65,9 @@ func update_mission() -> void:
 	if player.snowmen > 0:
 		amount.text = "Snowmen left: " + str(player.snowmen)
 	else:
+		await get_tree().create_timer(0.5, false).timeout
 		amount.visible = false
+		audio_chime.play()
 		obj.add_theme_color_override("font_color", Color.YELLOW)
 		obj.text = "Escape!"
 
@@ -92,6 +100,7 @@ func you_lost() -> void:
 func open_victory_screen() -> void:
 	win_panel.visible = true
 	get_tree().paused = true
+	audio_victory.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	energy_bar.visible = false
 	ammo.visible = false
@@ -102,10 +111,13 @@ func open_victory_screen() -> void:
 
 func _on_next_level_pressed():
 	get_tree().paused = false
+	audio_control.play_click_sound()
+	await audio_buttons.finished
 	LevelManager.load_level()
 
 func open_pause_menu() -> void:
 	get_tree().paused = true
+	audio_control.play_click_sound()
 	pause_menu.visible = true
 	energy_bar.visible = false
 	ammo.visible = false
@@ -113,6 +125,7 @@ func open_pause_menu() -> void:
 	objectives.visible = false
 
 func _on_continue_pressed():
+	audio_control.play_click_sound()
 	get_tree().paused = false
 	pause_menu.visible = false
 	energy_bar.visible = true
@@ -122,20 +135,25 @@ func _on_continue_pressed():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_options_pressed() -> void:
+	audio_control.play_click_sound()
 	options.visible = true
 	main_buttons.visible = false
 	set_process(true)
 
 func _on_exit_options_menu_pressed() -> void:
+	audio_control.play_click_sound()
 	options.visible = false
 	main_buttons.visible = true
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
+	audio_control.play_click_sound()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_restart_pressed():
 	get_tree().paused = false
+	audio_control.play_click_sound()
+	await audio_buttons.finished
 	LevelManager.load_level()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

@@ -5,6 +5,11 @@ extends EnemyState
 @onready var current_actor = $"../.."
 @onready var animation_player = $"../../AnimationPlayer"
 
+@onready var vision = $"../../Vision"
+
+@onready var audio_steps = $"../../Steps"
+
+
 func _ready():
 	set_process(false)
 
@@ -28,9 +33,10 @@ func _process(_delta):
 	
 	current_actor.look_at(Vector3(current_actor.player.global_position.x, current_actor.global_position.y, current_actor.player.global_position.z), Vector3.UP)
 	
-	if current_actor.target_in_range():
+	if current_actor.target_in_range() and vision.has_line_of_sight(current_actor.player.global_transform.origin):
 		state_transition.emit(self, "EnemyAttackState")
 	
+	audio_steps.play_step_sound()
 	current_actor.move_and_slide()
 	
 

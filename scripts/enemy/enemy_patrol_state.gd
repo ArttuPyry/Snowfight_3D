@@ -5,6 +5,8 @@ extends EnemyState
 @onready var current_actor = $"../.."
 @onready var animation_player = $"../../AnimationPlayer"
 
+@onready var audio_steps = $"../../Steps"
+
 var current_waypoint_index = 0
 var patrol_points
 var next_spot
@@ -47,5 +49,6 @@ func _process(delta):
 	if current_actor.global_transform.origin.distance_to(next_spot.global_transform.origin) < 2:
 		state_transition.emit(self, "EnemyIdleState")
 	
+	audio_steps.play_step_sound()
 	current_actor.move_and_slide()
 	

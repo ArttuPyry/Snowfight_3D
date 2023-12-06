@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhwa8rnrx5rif"]
+[gd_scene load_steps=20 format=3 uid="uid://dhwa8rnrx5rif"]
 
 [ext_resource type="PackedScene" uid="uid://dh2ppcl37pcmh" path="res://ui/main_menu_control.tscn" id="1_via2y"]
 [ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="2_3ng6g"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="4_387tq"]
 [ext_resource type="PackedScene" uid="uid://bfxhugxhmbc6y" path="res://characters/enemy_with_shovel_dummy.tscn" id="6_l2vq7"]
 [ext_resource type="PackedScene" uid="uid://cjay0ru4omu24" path="res://characters/enemy_basic_dummy.tscn" id="7_cvxvx"]
+[ext_resource type="AudioStream" uid="uid://8bkqqk56vvv5" path="res://sounds/environment/wind_worthahep88.mp3" id="8_8wts3"]
 
 [sub_resource type="Shader" id="Shader_4yrp5"]
 code = "
@@ -218,3 +219,8 @@ randomize_skin = true
 [node name="EnemyShovelDummy" parent="." instance=ExtResource("6_l2vq7")]
 transform = Transform3D(-0.749672, 0, 0.661809, 0, 1, 0, -0.661809, 0, -0.749672, -0.362153, 0, -5.99828)
 randomize_skin = true
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8wts3")
+autoplay = true
+bus = &"Ambience"

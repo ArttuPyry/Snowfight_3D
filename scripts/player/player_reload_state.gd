@@ -5,6 +5,8 @@ extends PlayerState
 @onready var hands = $"../../Camera3D/Hands"
 @onready var animation_player = $"../../AnimationPlayer"
 
+@onready var audio_reload = $"../../Reload"
+
 func _ready() -> void:
 	set_process(false)
 

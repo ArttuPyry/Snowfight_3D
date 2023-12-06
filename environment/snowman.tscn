@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://be4khs6jnjhdt"]
+[gd_scene load_steps=14 format=3 uid="uid://be4khs6jnjhdt"]
 
 [ext_resource type="PackedScene" uid="uid://rl06f67vbn6j" path="res://environment/meshes/snowman.blend" id="1_8i2fi"]
 [ext_resource type="Script" path="res://scripts/environment/snowman.gd" id="2_c1jsg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://environment/destroy_snowman_spot.gd" id="4_2fmj6"]
 [ext_resource type="PackedScene" uid="uid://dts04t6jmdoi3" path="res://environment/snowman_destroyed.tscn" id="5_rnvmx"]
 [ext_resource type="Texture2D" uid="uid://c88llkumbrfcx" path="res://environment/textures/snow_splash.png" id="6_rnhx2"]
+[ext_resource type="AudioStream" uid="uid://dpa3omkf5g1b8" path="res://sounds/environment/break_snowman_iliasflou.mp3" id="7_phmky"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ib1vo"]
 albedo_color = Color(0, 0, 0, 1)
@@ -248,6 +249,9 @@ texture = ExtResource("6_rnhx2")
 libraries = {
 "": SubResource("AnimationLibrary_bp0jg")
 }
+
+[node name="BreakAudio" type="AudioStreamPlayer3D" parent="." index="6"]
+stream = ExtResource("7_phmky")
 
 [connection signal="body_entered" from="DestroySpot" to="." method="_on_destroy_spot_body_entered"]
 [connection signal="body_exited" from="DestroySpot" to="." method="_on_destroy_spot_body_exited"]

@@ -7,6 +7,9 @@ extends TabBar
 @onready var fps_slider = $FPS/FPSSlider
 @onready var cur_fps_label = $FPS/CurFPSLabel
 
+@onready var audio_buttons = $"../../../../Buttons"
+@onready var audio_control = $"../../../../AudioControl"
+
 # Saving settings
 const CONFIG_SAVE_PATH := "user://usergraphicspreferences.cfg"
 var temp_wp_index
@@ -99,9 +102,11 @@ func _load_graphics_preferences(section):
 		fps_slider.set_value_no_signal(fps)
 
 func _on_save_graphics_settings_button_pressed():
+	audio_control.play_click_sound()
 	_save_graphics_preferences(temp_wp_index, temp_res_index, temp_vsync_bool, temp_aa_index, temp_fps_index)
 
 func _on_clear_graphics_settings_button_pressed():
+	audio_control.play_click_sound()
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
 	config.clear()
@@ -185,6 +190,7 @@ func center_window() -> void:
 ############################## VSYNC ###################################################
 
 func _on_v_sync_check_box_toggled(button_pressed) -> void:
+	audio_control.play_click_sound()
 	if button_pressed:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		temp_vsync_bool = true
@@ -219,6 +225,7 @@ func _on_fps_slider_value_changed(value) -> void:
 	cur_fps_label.text = str(fps_slider.value)
 
 func _on_fps_slider_drag_ended(_value_changed) -> void:
+	audio_control.play_click_sound()
 	Engine.max_fps = fps_slider.value
 	temp_fps_index = fps_slider.value
 

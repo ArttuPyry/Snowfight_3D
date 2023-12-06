@@ -3,16 +3,18 @@ extends EnemyState
 
 const Snowball = preload("res://weapons and ammo/snowball_cb.tscn")
 @onready var current_actor = $"../.."
-@onready var snowball_throw_spot = $"../../Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot"
 
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var shovel_attack = $"../../ShovelAttack"
 
-@onready var face_target_y = $"../../Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot/FaceTargetY"
-@onready var face_target_x = $"../../Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot/FaceTargetY/FaceTargetX"
-@onready var fire_point = $"../../Armature/Skeleton3D/BoneAttachment3D/SnowballThrowSpot/FaceTargetY/FaceTargetX/FirePoint"
+@onready var snowball_throw_spot = $"../../SnowballThrowSpot"
+@onready var face_target_y = $"../../SnowballThrowSpot/FaceTargetY"
+@onready var face_target_x = $"../../SnowballThrowSpot/FaceTargetY/FaceTargetX"
+@onready var fire_point = $"../../SnowballThrowSpot/FaceTargetY/FaceTargetX/FirePoint"
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+@onready var audio_throw = $"../../Throw"
 
 var NUM_OF_ITERATIONS = 5
 
@@ -46,6 +48,7 @@ func _process(delta):
 		state_transition.emit(self, "EnemyStunnedState")
 
 func _shovel_snow() -> void:
+	shovel_attack.look_at(current_actor.player.global_transform.origin + Vector3(0, -1, 0))
 	animation_player.play("shovel_attack")
 	await animation_player.animation_finished
 	current_actor.is_attacking = false
@@ -54,6 +57,8 @@ func _shovel_snow() -> void:
 func _throw_snowball():
 	animation_player.play("throw_attack")
 	await get_tree().create_timer(0.6, false).timeout
+	
+	audio_throw.play()
 	
 	var _snowball = Snowball.instantiate()
 	_snowball.attacking_actor = "enemy"

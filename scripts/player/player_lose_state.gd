@@ -7,6 +7,8 @@ extends PlayerState
 @onready var player_hand_throw = $"../../Camera3D/PlayerHandThrow"
 @onready var ray_cast = $"../../LoseRayCast"
 
+@onready var audio_lose = $"../../Lose"
+
 func _enter_state() -> void:
 	player.set_process_unhandled_input(false)
 	hands.visible = false
@@ -19,5 +21,6 @@ func _enter_state() -> void:
 		TW.tween_property(player, "transform", player.transform.translated_local(Vector3.DOWN * distance_to_point), distance_to_point / 4)
 		await  TW.finished
 		animation_player.play("lose")
+		audio_lose.play()
 		await animation_player.animation_finished
 		player.you_lost()

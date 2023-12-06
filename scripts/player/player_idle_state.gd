@@ -5,6 +5,9 @@ extends PlayerState
 @onready var camera = $"../../Camera3D"
 @onready var snowball_throw_spot = $"../../Camera3D/PlayerHandThrow/player_hand/SnowballThrowSpot"
 
+@onready var reload_front_raycast = $"../../ReloadFrontRaycast"
+@onready var reload_ground_raycast = $"../../ReloadGroundRaycast"
+
 var cent_crosshair_x
 var cent_crosshair_y
 
@@ -48,7 +51,8 @@ func _process(delta) -> void:
 	if Input.is_action_just_pressed("attack"):
 		state_transition.emit(self, "PlayerAttackState")
 	
-	if Input.is_action_just_pressed("reload") and player.current_snowball_count < player.max_snowball_count:
+	if Input.is_action_just_pressed("reload") and player.current_snowball_count < player.max_snowball_count and not reload_front_raycast.is_colliding() and reload_ground_raycast.is_colliding():
+		
 		state_transition.emit(self, "PlayerReloadState")
 	
 	if player.no_energy:

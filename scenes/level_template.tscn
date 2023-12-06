@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ipfedegh6d1a"]
+[gd_scene load_steps=20 format=3 uid="uid://ipfedegh6d1a"]
 
 [ext_resource type="PackedScene" uid="uid://b4up88kqplgm" path="res://ui/user_interface.tscn" id="1_08hxr"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="2_qf7kp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cn0ypr2lfyvuf" path="res://environment/ladder.tscn" id="7_geo1t"]
 [ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_4toi4"]
 [ext_resource type="PackedScene" uid="uid://bnxloy30l5bnp" path="res://characters/enemy_with_shovel.tscn" id="9_8jr6r"]
+[ext_resource type="AudioStream" uid="uid://8bkqqk56vvv5" path="res://sounds/environment/wind_worthahep88.mp3" id="10_h0uic"]
 
 [sub_resource type="Shader" id="Shader_yk8oj"]
 code = "
@@ -153,6 +154,9 @@ glow_enabled = true
 fog_light_color = Color(1, 1, 1, 1)
 fog_density = 0.003
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_dyvrk"]
+agent_radius = 0.75
+
 [node name="LevelTemplate" type="Node3D"]
 
 [node name="UserInterface" parent="." instance=ExtResource("1_08hxr")]
@@ -161,6 +165,7 @@ fog_density = 0.003
 environment = SubResource("Environment_0jtjn")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_dyvrk")
 
 [node name="Spruce" parent="NavigationRegion3D" instance=ExtResource("2_uv32d")]
 
@@ -189,3 +194,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47989, 1, 2.22851)
 [node name="Enemy" parent="." instance=ExtResource("8_4toi4")]
 
 [node name="EnemyShovel" parent="." instance=ExtResource("9_8jr6r")]
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_h0uic")
+autoplay = true
+bus = &"Ambience"
