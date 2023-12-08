@@ -44,7 +44,7 @@ func _process(delta):
 		face_target_y.face_point(aim_at_point, delta)
 		face_target_x.face_point(aim_at_point, delta)
 	
-	if current_actor.is_stunned:
+	if current_actor.is_stunned and current_actor.attack_type == 0:
 		state_transition.emit(self, "EnemyStunnedState")
 
 func _shovel_snow() -> void:

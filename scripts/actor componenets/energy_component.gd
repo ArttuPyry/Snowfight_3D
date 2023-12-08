@@ -19,5 +19,8 @@ func inflict_damage(damage):
 	if actor.is_in_group("player"):
 		actor.update_health_bar(damage)
 	
+	if actor.is_in_group("boss"):
+		actor.update_health_bar(damage)
+	
 	if current_energy <= 0:
 		actor.no_health()

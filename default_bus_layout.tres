@@ -1,27 +1,27 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://q8h8ggo4fwe5"]
 
 [resource]
-bus/1/name = &"Effects"
+bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = -17.0211
 bus/1/send = &"Master"
-bus/2/name = &"FootSteps"
+bus/2/name = &"SoundEffect"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -17.0211
-bus/2/send = &"Effects"
-bus/3/name = &"Ambience"
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"Enivorment"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = -4.50411
-bus/3/send = &"Effects"
-bus/4/name = &"Music"
+bus/3/send = &"Master"
+bus/4/name = &"FootSteps"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
 bus/4/volume_db = -17.0211
-bus/4/send = &"Master"
+bus/4/send = &"SoundEffect"

@@ -3,6 +3,7 @@ extends Control
 @onready var main_buttons = $MainButtons
 @onready var options = $Options
 @onready var difficulty = $Difficulty
+@onready var credits = $Credits
 
 @onready var difficulty_explanation_label = $"Difficulty/VBoxContainer/Difficulty explanation/DifficultyExplanationLabel"
 @onready var delete_save_button = $MainButtons/VBoxContainer/Play/DeleteSaveButton
@@ -46,7 +47,9 @@ func _on_exit_options_menu_pressed():
 
 func _on_credits_pressed():
 	audio_control.play_click_sound()
-	pass # Replace with function body.
+	main_buttons.visible = false
+	credits.visible = true
+	logo.visible = false
 
 func _on_quit_pressed():
 	audio_control.play_click_sound()
@@ -132,3 +135,9 @@ func _on_disable_tutorials_toggled(button_pressed):
 		disable_tutorials = true
 	else:
 		disable_tutorials = false
+
+func _on_exit_credits_menu_pressed():
+	audio_control.play_click_sound()
+	main_buttons.visible = true
+	credits.visible = false
+	logo.visible = true

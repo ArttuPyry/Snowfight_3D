@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ipfedegh6d1a"]
+[gd_scene load_steps=22 format=3 uid="uid://ipfedegh6d1a"]
 
 [ext_resource type="PackedScene" uid="uid://b4up88kqplgm" path="res://ui/user_interface.tscn" id="1_08hxr"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="2_qf7kp"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_4toi4"]
 [ext_resource type="PackedScene" uid="uid://bnxloy30l5bnp" path="res://characters/enemy_with_shovel.tscn" id="9_8jr6r"]
 [ext_resource type="AudioStream" uid="uid://8bkqqk56vvv5" path="res://sounds/environment/wind_worthahep88.mp3" id="10_h0uic"]
+[ext_resource type="AudioStream" uid="uid://betuo4ro3p6ax" path="res://sounds/music/end_game_josefpres.mp3" id="11_tg1x8"]
+[ext_resource type="PackedScene" uid="uid://bb1toeopv0xiy" path="res://environment/escape.tscn" id="12_q6704"]
 
 [sub_resource type="Shader" id="Shader_yk8oj"]
 code = "
@@ -152,7 +154,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
 fog_light_color = Color(1, 1, 1, 1)
-fog_density = 0.003
+fog_density = 0.002
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dyvrk"]
 agent_radius = 0.75
@@ -184,18 +186,30 @@ cell_center_y = false
 
 [node name="StairFix" parent="NavigationRegion3D" instance=ExtResource("4_bpf18")]
 
+[node name="Snowman" parent="NavigationRegion3D" instance=ExtResource("6_ifn04")]
+
+[node name="Ladder" parent="NavigationRegion3D" instance=ExtResource("7_geo1t")]
+
 [node name="Player" parent="." instance=ExtResource("2_qf7kp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47989, 1, 2.22851)
 
-[node name="Snowman" parent="." instance=ExtResource("6_ifn04")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_4toi4")]
+player_path = NodePath("../Player")
+player = NodePath("../Player")
 
-[node name="Ladder" parent="." instance=ExtResource("7_geo1t")]
-
-[node name="Enemy" parent="." instance=ExtResource("8_4toi4")]
-
-[node name="EnemyShovel" parent="." instance=ExtResource("9_8jr6r")]
+[node name="EnemyShovel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_8jr6r")]
+player_path = NodePath("../Player")
+player = NodePath("../Player")
 
 [node name="Wind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_h0uic")
 autoplay = true
-bus = &"Ambience"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_tg1x8")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+
+[node name="Escape" parent="." instance=ExtResource("12_q6704")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55149, 0, 1.83678)

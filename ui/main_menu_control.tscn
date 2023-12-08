@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dh2ppcl37pcmh"]
+[gd_scene load_steps=20 format=3 uid="uid://dh2ppcl37pcmh"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_87cli"]
 [ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_7qt1i"]
@@ -15,8 +15,10 @@
 [ext_resource type="Script" path="res://scripts/ui/gameplay_settings.gd" id="11_fd13h"]
 [ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="12_mkh4d"]
 [ext_resource type="Texture2D" uid="uid://di567om76vida" path="res://ui/textures/logo.png" id="15_b0xki"]
+[ext_resource type="Script" path="res://scripts/ui/audio_settings.gd" id="15_ht8es"]
 [ext_resource type="AudioStream" uid="uid://dd0p36vl0h5yi" path="res://sounds/ui/menu_hover_click_shasha213131.mp3" id="16_1es4r"]
 [ext_resource type="Script" path="res://scripts/ui/menu_audio_control.gd" id="17_7nvdv"]
+[ext_resource type="AudioStream" uid="uid://dsvxiikn8h1lq" path="res://sounds/music/menu_josefpres.mp3" id="17_nhbdm"]
 
 [node name="MainMenuControl" type="Control"]
 layout_mode = 3
@@ -707,11 +709,12 @@ GRAPHICS SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sound" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
+[node name="Audio" type="TabBar" parent="Options/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
+script = ExtResource("15_ht8es")
 
-[node name="Master" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+[node name="Master" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Audio"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 25.0
@@ -721,7 +724,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="MasterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/Master"]
+[node name="MasterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/Master"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -731,14 +734,14 @@ text = "Master volume"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="MasterSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/Master"]
+[node name="MasterSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Audio/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 value = 100.0
 rounded = true
 
-[node name="CurMasterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/Master"]
+[node name="CurMasterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/Master"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -749,7 +752,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="CharacterVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+[node name="MusicVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Audio"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 65.0
@@ -759,24 +762,24 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="CharacterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/CharacterVolume"]
+[node name="MusicLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/MusicVolume"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 18
-text = "Character volume"
+text = "Music volume"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="CharacterSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/CharacterVolume"]
+[node name="MusicSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Audio/MusicVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 value = 100.0
 rounded = true
 
-[node name="CurCharacterLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/CharacterVolume"]
+[node name="CurMusicLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/MusicVolume"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -787,7 +790,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="EffectVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+[node name="EffectVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Audio"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 105.0
@@ -797,25 +800,25 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="EffectLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EffectVolume"]
+[node name="EffectLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/EffectVolume"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 18
-text = "Effect volume
+text = "Sound Effect volume
 "
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="EffectSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/EffectVolume"]
+[node name="EffectSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Audio/EffectVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 value = 100.0
 rounded = true
 
-[node name="CurEffectLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EffectVolume"]
+[node name="CurEffectLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/EffectVolume"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -826,7 +829,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="EnvironmentVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+[node name="EnvironmentVolume" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Audio"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 145.0
@@ -836,7 +839,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="EnvironmentLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume"]
+[node name="EnvironmentLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/EnvironmentVolume"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -846,14 +849,14 @@ text = "Environment volume"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="EnvironmentSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume"]
+[node name="EnvironmentSlider" type="HSlider" parent="Options/VBoxContainer/TabContainer/Audio/EnvironmentVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 value = 100.0
 rounded = true
 
-[node name="CurEnvironmentLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/EnvironmentVolume"]
+[node name="CurEnvironmentLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/EnvironmentVolume"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -864,7 +867,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="SaveGraphics" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Sound"]
+[node name="SaveAudio" type="HBoxContainer" parent="Options/VBoxContainer/TabContainer/Audio"]
 layout_mode = 0
 offset_top = 425.0
 offset_right = 293.0
@@ -874,14 +877,14 @@ size_flags_vertical = 0
 theme_override_constants/separation = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="SaveSoundSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics"]
+[node name="SaveSoundSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Audio/SaveAudio"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_7qt1i")
 texture_hover = ExtResource("3_a2e86")
 
-[node name="SaveSoundSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics/SaveSoundSettingsButton"]
+[node name="SaveSoundSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/SaveAudio/SaveSoundSettingsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -897,14 +900,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ClearSoundSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics"]
+[node name="ClearSoundSettingsButton" type="TextureButton" parent="Options/VBoxContainer/TabContainer/Audio/SaveAudio"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("6_e05vf")
 texture_hover = ExtResource("7_kpbvr")
 
-[node name="ClearSoundSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Sound/SaveGraphics/ClearSoundSettingsButton"]
+[node name="ClearSoundSettingsLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Audio/SaveAudio/ClearSoundSettingsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1102,6 +1105,146 @@ text = "Exit menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Credits" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Credits/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -2
+
+[node name="Created" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 20
+text = "Game created by
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Me" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "Pyry Viitajylhä - orc hugs
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+
+[node name="ColorPalette" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 20
+text = "Color palette
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Palette" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "ENDESGA 64 PALETTE
+https://lospec.com/palette-list/endesga-64"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+
+[node name="Music" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 20
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Musicas" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "josefpres
+https://freesound.org/people/josefpres/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+
+[node name="Sound effects" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 20
+text = "Sound effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="effect" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "MindlessTrails
+Christopherderp
+IENBA
+plasterbrain
+themusicalnomad
+Kenneth_Cooney
+mateusboga
+worthahep88
+IliasFlou
+saha213131"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitCreditsMenu" type="TextureButton" parent="Credits/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("8_fnnfm")
+texture_hover = ExtResource("9_57mo3")
+
+[node name="ExitCreditsMenuLabel" type="Label" parent="Credits/VBoxContainer/ExitCreditsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 15
+text = "Exit menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -15.0
@@ -1113,6 +1256,11 @@ texture = ExtResource("15_b0xki")
 
 [node name="Buttons" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_1es4r")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_nhbdm")
+autoplay = true
+bus = &"Music"
 
 [node name="AudioControl" type="Control" parent="."]
 anchors_preset = 0
@@ -1157,6 +1305,12 @@ script = ExtResource("17_7nvdv")
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/SaveGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_save_graphics_settings_button_pressed"]
 [connection signal="mouse_entered" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/TabContainer/Graphics/SaveGraphics/ClearGraphicsSettingsButton" to="Options/VBoxContainer/TabContainer/Graphics" method="_on_clear_graphics_settings_button_pressed"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Audio/Master/MasterSlider" to="Options/VBoxContainer/TabContainer/Audio" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Audio/MusicVolume/MusicSlider" to="Options/VBoxContainer/TabContainer/Audio" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Audio/EffectVolume/EffectSlider" to="Options/VBoxContainer/TabContainer/Audio" method="_on_effect_slider_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/TabContainer/Audio/EnvironmentVolume/EnvironmentSlider" to="Options/VBoxContainer/TabContainer/Audio" method="_on_environment_slider_value_changed"]
+[connection signal="pressed" from="Options/VBoxContainer/TabContainer/Audio/SaveAudio/SaveSoundSettingsButton" to="Options/VBoxContainer/TabContainer/Audio" method="_on_save_sound_settings_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/TabContainer/Audio/SaveAudio/ClearSoundSettingsButton" to="Options/VBoxContainer/TabContainer/Audio" method="_on_clear_sound_settings_button_pressed"]
 [connection signal="mouse_entered" from="Options/VBoxContainer/ExitOptionsMenu" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="Options/VBoxContainer/ExitOptionsMenu" to="." method="_on_exit_options_menu_pressed"]
 [connection signal="mouse_entered" from="Difficulty/VBoxContainer/Difficulty/VBoxContainer/Normal" to="." method="_on_normal_mouse_entered"]
@@ -1168,3 +1322,4 @@ script = ExtResource("17_7nvdv")
 [connection signal="toggled" from="Difficulty/VBoxContainer/Difficulty/VBoxContainer/HBoxContainer/SkipIntro" to="." method="_on_skip_intro_toggled"]
 [connection signal="toggled" from="Difficulty/VBoxContainer/Difficulty/VBoxContainer/HBoxContainer/DisableTutorials" to="." method="_on_disable_tutorials_toggled"]
 [connection signal="pressed" from="Difficulty/VBoxContainer/ExitDifficultyMenu" to="." method="_on_exit_difficulty_menu_pressed"]
+[connection signal="pressed" from="Credits/VBoxContainer/ExitCreditsMenu" to="." method="_on_exit_credits_menu_pressed"]

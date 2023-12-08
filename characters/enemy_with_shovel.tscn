@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bnxloy30l5bnp"]
+[gd_scene load_steps=39 format=3 uid="uid://bnxloy30l5bnp"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_i5c3c"]
 [ext_resource type="Material" uid="uid://ut7kls6cn6jp" path="res://characters/material00.tres" id="2_1ren6"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://scripts/enemy/enemy_attack_state.gd" id="12_7h5ve"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_reload_state.gd" id="13_3s0dn"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_stunned_state.gd" id="14_2pj85"]
+[ext_resource type="AudioStream" uid="uid://bwh2ddm532akj" path="res://sounds/characters/take_hit_christopherderp.mp3" id="14_v2gdj"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ami3y"]
 resource_local_to_scene = true
@@ -2027,7 +2028,9 @@ height = 1.22423
 
 [node name="EnemyShovel" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_i5c3c")
+max_energy = 4
 attack_range = 5.0
+stun_duration = 20
 attack_type = 1
 
 [node name="Armature" type="Node3D" parent="."]
@@ -2252,6 +2255,10 @@ current_actor = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616178, -0.0938117)
 shape = SubResource("CapsuleShape3D_ck84w")
 
+[node name="Hurt" type="AudioStreamPlayer3D" parent="HurtboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779751, 0)
+stream = ExtResource("14_v2gdj")
+
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -2.77556e-17, 0.01, -0.074)
 texture = ExtResource("7_b3ahl")
@@ -2268,6 +2275,17 @@ script = ExtResource("9_s1bxg")
 
 [node name="FirePoint" type="Node3D" parent="SnowballThrowSpot/FaceTargetY/FaceTargetX"]
 transform = Transform3D(1, -3.37604e-09, 3.72529e-09, -2.21189e-09, 1, 7.45058e-09, -3.72529e-09, 7.45058e-09, 1, -0.00182343, 0.00307643, -0.0688562)
+
+[node name="StunLabel" type="Label3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 1.28034, 0)
+visible = false
+billboard = 2
+render_priority = 120
+outline_render_priority = 120
+modulate = Color(0.85098, 0, 0, 1)
+text = "99"
+font_size = 85
+outline_size = 10
 
 [node name="EnemyFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_sw3hp")
@@ -2291,5 +2309,9 @@ script = ExtResource("13_3s0dn")
 [node name="EnemyStunnedState" type="Node" parent="EnemyFiniteStateMachine"]
 script = ExtResource("14_2pj85")
 
+[node name="Timer" type="Timer" parent="EnemyFiniteStateMachine/EnemyStunnedState"]
+one_shot = true
+
 [connection signal="finished" from="Steps" to="Steps" method="_on_finished"]
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
+[connection signal="timeout" from="EnemyFiniteStateMachine/EnemyStunnedState/Timer" to="EnemyFiniteStateMachine/EnemyStunnedState" method="_on_timer_timeout"]

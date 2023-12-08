@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export_category("Enemy look")
+@export var randomize_skin : bool = true
 @export var skin : int = 0
 @onready var enemy_mesh = $Armature/Skeleton3D/enemy
 
@@ -8,9 +9,10 @@ extends CharacterBody3D
 @export var max_energy : int = 5
 @export var max_snowball_count : int = 3
 var current_snowball_count : int
-@export var vision_arc = 90.0
+@export var vision_arc = 70.0
 @export var speed = 5.0
 @export var attack_range = 2.5
+@export var stun_duration : int = 15
 
 var is_stunned = false
 
@@ -35,22 +37,46 @@ var skin03 = preload("res://characters/material03.tres")
 var skin04 = preload("res://characters/material04.tres")
 var skin05 = preload("res://characters/material05.tres")
 
+var skin99 = preload("res://characters/material99.tres")
+
 # Set skin
 func _ready() -> void:
 	current_snowball_count = max_snowball_count
-	match skin:
-		0:
-			enemy_mesh.material_override = skin00
-		1:
-			enemy_mesh.material_override = skin01
-		2:
-			enemy_mesh.material_override = skin02
-		3:
-			enemy_mesh.material_override = skin03
-		4:
-			enemy_mesh.material_override = skin04
-		5:
-			enemy_mesh.material_override = skin05
+	if randomize_skin:
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		var random_skin = rng.randi_range(1, 6)
+		match random_skin:
+			0:
+				enemy_mesh.material_override = skin00
+			1:
+				enemy_mesh.material_override = skin01
+			2:
+				enemy_mesh.material_override = skin02
+			3:
+				enemy_mesh.material_override = skin03
+			4:
+				enemy_mesh.material_override = skin04
+			5:
+				enemy_mesh.material_override = skin05
+			99:
+				enemy_mesh.material_override = skin99
+	else:
+		match skin:
+			0:
+				enemy_mesh.material_override = skin00
+			1:
+				enemy_mesh.material_override = skin01
+			2:
+				enemy_mesh.material_override = skin02
+			3:
+				enemy_mesh.material_override = skin03
+			4:
+				enemy_mesh.material_override = skin04
+			5:
+				enemy_mesh.material_override = skin05
+			99:
+				enemy_mesh.material_override = skin99
 
 # Check if player is in range
 func target_in_range() -> bool:

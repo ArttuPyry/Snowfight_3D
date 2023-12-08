@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ds1w0oqvkv5gp"]
 
-[ext_resource type="Script" path="res://scripts/snowball.gd" id="1_6kipd"]
+[ext_resource type="Script" path="res://scripts/weapons and ammo/snowball.gd" id="1_6kipd"]
 [ext_resource type="Texture2D" uid="uid://dbdrukjj51yvb" path="res://weapons and ammo/textures/snowball.png" id="2_hinf3"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hitbox_component.gd" id="3_3etox"]
 

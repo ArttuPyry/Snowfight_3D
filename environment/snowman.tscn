@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rl06f67vbn6j" path="res://environment/meshes/snowman.blend" id="1_8i2fi"]
 [ext_resource type="Script" path="res://scripts/environment/snowman.gd" id="2_c1jsg"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="2_uojag"]
-[ext_resource type="Script" path="res://environment/destroy_snowman_spot.gd" id="4_2fmj6"]
+[ext_resource type="Script" path="res://scripts/environment/destroy_snowman_spot.gd" id="4_2fmj6"]
 [ext_resource type="PackedScene" uid="uid://dts04t6jmdoi3" path="res://environment/snowman_destroyed.tscn" id="5_rnvmx"]
 [ext_resource type="Texture2D" uid="uid://c88llkumbrfcx" path="res://environment/textures/snow_splash.png" id="6_rnhx2"]
 [ext_resource type="AudioStream" uid="uid://dpa3omkf5g1b8" path="res://sounds/environment/break_snowman_iliasflou.mp3" id="7_phmky"]
@@ -213,36 +213,42 @@ visible = false
 [node name="SnowSplash01" type="Sprite3D" parent="SnowSplashes" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.444448, 1.10822, 0)
 modulate = Color(1, 1, 1, 0)
+render_priority = 127
 texture = ExtResource("6_rnhx2")
 
 [node name="SnowSplash02" type="Sprite3D" parent="SnowSplashes" index="1"]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, 0.323153, 1.37479, -0.106413)
 modulate = Color(1, 1, 1, 0)
 billboard = 2
+render_priority = 127
 texture = ExtResource("6_rnhx2")
 
 [node name="SnowSplash03" type="Sprite3D" parent="SnowSplashes" index="2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.376955, 0.768691, -0.204721)
 modulate = Color(1, 1, 1, 0)
 billboard = 2
+render_priority = 127
 texture = ExtResource("6_rnhx2")
 
 [node name="SnowSplash04" type="Sprite3D" parent="SnowSplashes" index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.301764, 0.626422, 0.183021)
 modulate = Color(1, 1, 1, 0)
 billboard = 2
+render_priority = 127
 texture = ExtResource("6_rnhx2")
 
 [node name="SnowSplash05" type="Sprite3D" parent="SnowSplashes" index="4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.323153, 0.417138, -0.204721)
 modulate = Color(1, 1, 1, 0)
 billboard = 2
+render_priority = 127
 texture = ExtResource("6_rnhx2")
 
 [node name="SnowSplash06" type="Sprite3D" parent="SnowSplashes" index="5"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.405921, 0.226292, 0.163281)
 modulate = Color(1, 1, 1, 0)
 billboard = 2
+render_priority = 127
 texture = ExtResource("6_rnhx2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]

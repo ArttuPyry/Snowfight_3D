@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4up88kqplgm"]
+[gd_scene load_steps=29 format=3 uid="uid://b4up88kqplgm"]
 
 [ext_resource type="Script" path="res://scripts/ui/user_interface.gd" id="1_g0yvb"]
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://ui/textures/croshair.png" id="1_pk3wq"]
@@ -23,6 +23,69 @@
 [ext_resource type="AudioStream" uid="uid://tvbrdovapbtg" path="res://sounds/ui/level_completed_kenneth_cooney.mp3" id="20_pbxws"]
 [ext_resource type="AudioStream" uid="uid://cenq88ne8v028" path="res://sounds/ui/lose_themusicalnomad.mp3" id="21_ia4f1"]
 [ext_resource type="AudioStream" uid="uid://cx54rsl2s1bqf" path="res://sounds/ui/mission_chime_plasterbrain.mp3" id="22_xahsr"]
+[ext_resource type="Texture2D" uid="uid://dvndmjj08ofit" path="res://ui/textures/player_hit_00.png" id="24_gihsd"]
+[ext_resource type="Texture2D" uid="uid://bab5mgqsvolke" path="res://ui/textures/player_hit_01.png" id="25_adefn"]
+
+[sub_resource type="Animation" id="Animation_nwmln"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit00:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hit01:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tfl5w"]
+resource_name = "player_hit"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit00:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hit01:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyx5u"]
+_data = {
+"RESET": SubResource("Animation_nwmln"),
+"player_hit": SubResource("Animation_tfl5w")
+}
 
 [node name="UserInterface" type="Control" groups=["ui"]]
 layout_mode = 3
@@ -78,9 +141,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -128.0
+offset_left = -209.0
 offset_top = 35.0
-offset_right = 128.0
+offset_right = 47.0
 offset_bottom = 51.0
 grow_horizontal = 2
 scale = Vector2(2, 2)
@@ -232,6 +295,15 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="LevelTime" type="Label" parent="WinPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 25
+text = "Time: 99:99.99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTime" type="Label" parent="WinPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_ypige")
 theme_override_font_sizes/font_size = 25
@@ -1278,7 +1350,6 @@ bus = &"Music"
 
 [node name="Chime" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_xahsr")
-bus = &"Effects"
 
 [node name="AudioControl" type="Control" parent="."]
 layout_mode = 3
@@ -1286,6 +1357,35 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("20_dsxo2")
+
+[node name="Hit00" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("24_gihsd")
+
+[node name="Hit01" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("25_adefn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nyx5u")
+}
 
 [connection signal="mouse_entered" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="." method="_on_restart_pressed"]

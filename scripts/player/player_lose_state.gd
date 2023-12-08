@@ -21,6 +21,5 @@ func _enter_state() -> void:
 		TW.tween_property(player, "transform", player.transform.translated_local(Vector3.DOWN * distance_to_point), distance_to_point / 4)
 		await  TW.finished
 		animation_player.play("lose")
-		audio_lose.play()
 		await animation_player.animation_finished
 		player.you_lost()

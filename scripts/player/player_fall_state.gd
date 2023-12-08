@@ -10,6 +10,8 @@ const SPEED = 2.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var energy_component = $"../../EnergyComponent"
 
+@onready var break_audio = $"../../BreakAudio"
+
 var fall_damage = 0
 
 func _ready() -> void:
@@ -20,6 +22,7 @@ func _enter_state() -> void:
 	set_process(true)
 	set_physics_process(true)
 	# Reset fall famage and start timer
+	break_audio.volume_db = -70
 	fall_damage = 0
 	fall_timer.start()
 
@@ -31,6 +34,7 @@ func _exit_state() -> void:
 	if fall_damage > 0:
 		energy_component.inflict_damage(fall_damage)
 	
+	break_audio.play()
 	set_process(false)
 	set_physics_process(false)
 
@@ -58,5 +62,6 @@ func _process(delta):
 
 # Every time timer timeouts add 1 dmage to fall damage and reset the timer
 func _on_fall_timer_timeout():
+	break_audio.volume_db += 20
 	fall_damage += 1
 	fall_timer.start()
