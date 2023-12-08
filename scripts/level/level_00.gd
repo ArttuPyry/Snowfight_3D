@@ -8,3 +8,4 @@ func _ready():
 	await animation_player.animation_finished
 	LevelManager.load_level()
 
+	

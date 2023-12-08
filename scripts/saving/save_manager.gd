@@ -3,7 +3,7 @@ extends Node
 const SAVE_PATH := "user://save.tres"
 const TIME_PATH := "user://time.tres"
 
-var player_max_energy = 20
+var player_max_energy = 99
 
 func save_savefile(difficulty, level, energy) -> void:
 	var save : = ConfigFile.new()

@@ -816,7 +816,7 @@ tracks/30/keys = {
 "times": PackedFloat32Array(0, 4.6, 6.2, 7.9, 9.4, 10, 12.6, 13.6, 15.7, 19.6, 21.6, 21.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["", "You: NO.....!", "You: My beautiful snowmen!", "You: NOOOOOOOOOOOOOOOOOOOO!!!!!", "", "Bully: Hey loser! Nice snowmen!", "", "Bully: Cya loser!", "", "You: I will....", "", "You: ...Have my revenge!"]
+"values": ["", "Kid: NO.....!", "Kid: My beautiful snowmen!", "Kid: NOOOOOOOOOOOOOOOOOOOO!!!!!", "", "Bully: Hey loser! Nice snowmen!", "", "Bully: Cya loser!", "", "Kid: I will....", "", "Kid: ...Have my revenge!"]
 }
 tracks/31/type = "value"
 tracks/31/imported = false

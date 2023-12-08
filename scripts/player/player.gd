@@ -8,7 +8,7 @@ var crosshair
 @export_category("Player stats")
 @export var max_energy : int = SaveManager.player_max_energy
 var current_health
-@export var max_snowball_count : int = 9
+@export var max_snowball_count : int = 12
 var current_snowball_count : int
 var no_energy = false
 

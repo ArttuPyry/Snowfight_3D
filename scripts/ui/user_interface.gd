@@ -118,11 +118,6 @@ func you_lost() -> void:
 		retry.visible = false
 
 func open_victory_screen() -> void:
-	var save : = ConfigFile.new()
-	save.load(SaveManager.SAVE_PATH)
-	
-	var level = save.get_value("save", "level", 1)
-	
 	win_panel.visible = true
 	get_tree().paused = true
 	audio_victory.play()
@@ -131,7 +126,7 @@ func open_victory_screen() -> void:
 	ammo.visible = false
 	crosshair.visible = false
 	objectives.visible = false
-	level_time.text = get_time_formatted()
+	level_time.text = "Time: " + get_time_formatted()
 	level_completed.text = "Level Completed!"
 	SaveManager.save_time(mseconds, seconds, minutes)
 
@@ -214,7 +209,7 @@ func boss_defeated() -> void:
 	
 	audio_victory.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	level_time.text = get_time_formatted()
+	level_time.text = "Time: " + get_time_formatted()
 	level_completed.text = "Level Completed!
 	Thank you for playing!"
 	SaveManager.save_time(mseconds, seconds, minutes)

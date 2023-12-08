@@ -419,6 +419,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1659, 3, -50.6072)
 
 [node name="Player" parent="." instance=ExtResource("5_yhpd6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47989, 1, 2.22851)
+max_snowball_count = 12
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_2rvyb")]
 transform = Transform3D(0.174697, 0, 0.984622, 0, 1, 0, -0.984622, 0, 0.174697, 33.0349, 0, -33)

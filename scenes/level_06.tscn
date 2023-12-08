@@ -169,190 +169,6 @@ vertices = PackedVector3Array(2.25, 4, -51.75, 2.25, 4, -56.25, -4.5, 4, -56.25,
 polygons = [PackedInt32Array(1, 4, 2), PackedInt32Array(2, 4, 5), PackedInt32Array(5, 4, 0), PackedInt32Array(5, 0, 3), PackedInt32Array(7, 6, 11), PackedInt32Array(11, 6, 10), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(22, 21, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 35), PackedInt32Array(32, 35, 34), PackedInt32Array(32, 34, 33), PackedInt32Array(38, 37, 36), PackedInt32Array(41, 40, 39), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(48, 47, 46), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 56), PackedInt32Array(59, 58, 57), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 63), PackedInt32Array(63, 60, 64), PackedInt32Array(64, 60, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(71, 70, 69), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 75), PackedInt32Array(78, 77, 76), PackedInt32Array(81, 80, 79), PackedInt32Array(84, 83, 82), PackedInt32Array(85, 88, 86), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 89), PackedInt32Array(94, 93, 95), PackedInt32Array(95, 93, 96), PackedInt32Array(99, 98, 97), PackedInt32Array(101, 100, 102), PackedInt32Array(102, 100, 103), PackedInt32Array(103, 100, 104), PackedInt32Array(104, 100, 105), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 109), PackedInt32Array(109, 106, 111), PackedInt32Array(109, 111, 110), PackedInt32Array(114, 113, 112), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 118), PackedInt32Array(118, 115, 119), PackedInt32Array(121, 120, 122), PackedInt32Array(122, 120, 124), PackedInt32Array(122, 124, 123), PackedInt32Array(127, 126, 125), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(134, 133, 132), PackedInt32Array(136, 135, 137), PackedInt32Array(137, 135, 138), PackedInt32Array(141, 140, 139), PackedInt32Array(143, 142, 144), PackedInt32Array(144, 142, 146), PackedInt32Array(144, 146, 145), PackedInt32Array(148, 147, 149), PackedInt32Array(149, 147, 150), PackedInt32Array(154, 153, 151), PackedInt32Array(151, 153, 152), PackedInt32Array(158, 157, 155), PackedInt32Array(155, 157, 156), PackedInt32Array(162, 161, 159), PackedInt32Array(159, 161, 160), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 169, 167), PackedInt32Array(167, 169, 168), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(177, 176, 175), PackedInt32Array(179, 178, 180), PackedInt32Array(180, 178, 181), PackedInt32Array(184, 183, 182), PackedInt32Array(186, 185, 187), PackedInt32Array(187, 185, 189), PackedInt32Array(187, 189, 188), PackedInt32Array(190, 192, 191), PackedInt32Array(195, 194, 193), PackedInt32Array(197, 196, 198), PackedInt32Array(198, 196, 199), PackedInt32Array(202, 201, 200), PackedInt32Array(204, 203, 205), PackedInt32Array(205, 203, 208), PackedInt32Array(205, 208, 206), PackedInt32Array(206, 208, 207), PackedInt32Array(210, 209, 211), PackedInt32Array(211, 209, 212), PackedInt32Array(215, 214, 213), PackedInt32Array(217, 216, 218), PackedInt32Array(218, 216, 219), PackedInt32Array(219, 216, 221), PackedInt32Array(219, 221, 220), PackedInt32Array(224, 223, 222), PackedInt32Array(226, 225, 227), PackedInt32Array(227, 225, 228), PackedInt32Array(229, 231, 230), PackedInt32Array(234, 233, 232), PackedInt32Array(237, 236, 235), PackedInt32Array(239, 238, 240), PackedInt32Array(240, 238, 241), PackedInt32Array(241, 238, 243), PackedInt32Array(241, 243, 242), PackedInt32Array(245, 244, 246), PackedInt32Array(250, 249, 247), PackedInt32Array(247, 249, 248), PackedInt32Array(253, 252, 254), PackedInt32Array(254, 252, 251), PackedInt32Array(254, 251, 255), PackedInt32Array(258, 257, 256), PackedInt32Array(260, 259, 261), PackedInt32Array(261, 259, 262), PackedInt32Array(265, 264, 263), PackedInt32Array(268, 267, 266), PackedInt32Array(271, 270, 269), PackedInt32Array(274, 273, 272), PackedInt32Array(277, 276, 275), PackedInt32Array(280, 279, 278), PackedInt32Array(282, 281, 283), PackedInt32Array(283, 281, 284), PackedInt32Array(286, 285, 287), PackedInt32Array(287, 285, 288), PackedInt32Array(288, 285, 289), PackedInt32Array(291, 290, 292), PackedInt32Array(292, 290, 294), PackedInt32Array(292, 294, 293), PackedInt32Array(296, 295, 297), PackedInt32Array(297, 295, 298), PackedInt32Array(301, 300, 299), PackedInt32Array(304, 303, 302), PackedInt32Array(306, 305, 307), PackedInt32Array(307, 305, 308), PackedInt32Array(310, 309, 311), PackedInt32Array(311, 309, 312), PackedInt32Array(312, 309, 313), PackedInt32Array(313, 309, 314), PackedInt32Array(317, 316, 315), PackedInt32Array(320, 319, 318), PackedInt32Array(322, 321, 323), PackedInt32Array(323, 321, 324), PackedInt32Array(327, 326, 325), PackedInt32Array(330, 329, 328), PackedInt32Array(332, 331, 333), PackedInt32Array(333, 331, 335), PackedInt32Array(333, 335, 334), PackedInt32Array(338, 337, 336), PackedInt32Array(341, 340, 339), PackedInt32Array(342, 345, 343), PackedInt32Array(343, 345, 344), PackedInt32Array(347, 346, 348), PackedInt32Array(348, 346, 349), PackedInt32Array(352, 351, 350), PackedInt32Array(355, 354, 353), PackedInt32Array(356, 359, 357), PackedInt32Array(357, 359, 358), PackedInt32Array(361, 360, 362), PackedInt32Array(362, 360, 363), PackedInt32Array(366, 365, 364), PackedInt32Array(368, 367, 369), PackedInt32Array(369, 367, 370), PackedInt32Array(372, 371, 373), PackedInt32Array(373, 371, 374), PackedInt32Array(376, 375, 377), PackedInt32Array(377, 375, 378), PackedInt32Array(378, 375, 379), PackedInt32Array(379, 375, 380), PackedInt32Array(382, 381, 383), PackedInt32Array(383, 381, 384), PackedInt32Array(386, 385, 387), PackedInt32Array(387, 385, 388), PackedInt32Array(388, 385, 389), PackedInt32Array(392, 391, 390), PackedInt32Array(394, 393, 395), PackedInt32Array(395, 393, 396), PackedInt32Array(398, 397, 399), PackedInt32Array(399, 397, 402), PackedInt32Array(399, 402, 400), PackedInt32Array(400, 402, 401), PackedInt32Array(405, 404, 403), PackedInt32Array(407, 406, 408), PackedInt32Array(408, 406, 409), PackedInt32Array(411, 410, 412), PackedInt32Array(412, 410, 413), PackedInt32Array(415, 414, 416), PackedInt32Array(416, 414, 417), PackedInt32Array(420, 419, 418), PackedInt32Array(422, 421, 423), PackedInt32Array(423, 421, 424), PackedInt32Array(424, 421, 425), PackedInt32Array(427, 426, 428), PackedInt32Array(428, 426, 429), PackedInt32Array(432, 431, 430), PackedInt32Array(434, 433, 435), PackedInt32Array(435, 433, 436), PackedInt32Array(437, 440, 438), PackedInt32Array(438, 440, 439), PackedInt32Array(442, 441, 443), PackedInt32Array(443, 441, 444), PackedInt32Array(447, 446, 445), PackedInt32Array(450, 449, 448), PackedInt32Array(453, 452, 451), PackedInt32Array(456, 455, 454), PackedInt32Array(458, 457, 459), PackedInt32Array(459, 457, 460), PackedInt32Array(462, 461, 463), PackedInt32Array(463, 461, 464), PackedInt32Array(467, 466, 465), PackedInt32Array(470, 469, 468), PackedInt32Array(473, 472, 471), PackedInt32Array(476, 475, 477), PackedInt32Array(477, 475, 474), PackedInt32Array(477, 474, 479), PackedInt32Array(477, 479, 478), PackedInt32Array(482, 481, 480), PackedInt32Array(484, 483, 485), PackedInt32Array(485, 483, 486), PackedInt32Array(488, 487, 489), PackedInt32Array(489, 487, 490), PackedInt32Array(490, 487, 491), PackedInt32Array(491, 487, 492), PackedInt32Array(495, 494, 493), PackedInt32Array(497, 496, 498), PackedInt32Array(498, 496, 499), PackedInt32Array(500, 503, 501), PackedInt32Array(501, 503, 502), PackedInt32Array(506, 505, 504), PackedInt32Array(509, 508, 507), PackedInt32Array(512, 511, 510), PackedInt32Array(515, 514, 513)]
 agent_radius = 0.75
 
-[sub_resource type="Animation" id="Animation_4h2ts"]
-resource_name = "boss_cutscene"
-length = 12.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Top:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 12.4, 12.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Bottom:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 12.4, 12.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/Label:text")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.3, 4.5, 5, 8, 8.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": ["", "Bully: Wait...!", "Bully: Wait...!", "", "Bully: ...You are not going anywhere!", "Bully: ...You are not going anywhere!", ""]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Control/Full:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_boss_dummy:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.2, 12.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Camera3D:current")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 12.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Camera3D:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 9.5, 9.7, 9.9, 10.1, 10.3, 10.5, 10.7, 10.9, 11),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(2.37754, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.37754, 0.20273, -6.26795)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Camera3D:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.341386, 0.242985, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SnowBlocks:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(9.5, 11),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(2.04593, -3.77184, 1.34728), Vector3(2.04593, -0.147877, 1.34728)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Player:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(12.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.42455, 1, -4.29401)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Player:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(12.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("enemy_boss:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(12.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Throw:playing")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(9.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("BreakAudio:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(9.5, 9.9, 10.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, true]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("UserInterface:visible")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 12.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="Animation" id="Animation_mcd6k"]
 length = 0.001
 tracks/0/type = "value"
@@ -546,6 +362,190 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4h2ts"]
+resource_name = "boss_cutscene"
+length = 12.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12.4, 12.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Bottom:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 12.4, 12.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.3, 4.5, 5, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": ["", "Bully: Wait...!", "Bully: Wait...!", "", "Bully: ...You are not going anywhere!", "Bully: ...You are not going anywhere!", ""]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Full:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_boss_dummy:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2, 12.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 9.5, 9.7, 9.9, 10.1, 10.3, 10.5, 10.7, 10.9, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.37754, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.23284, 0.20273, -6.26795), Vector3(2.66795, 0.20273, -6.26795), Vector3(2.37754, 0.20273, -6.26795)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.341386, 0.242985, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SnowBlocks:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(9.5, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.04593, -3.77184, 1.34728), Vector3(2.04593, -0.147877, 1.34728)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Player:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(12.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.42455, 1, -4.29401)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Player:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(12.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("enemy_boss:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(12.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Throw:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(9.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("BreakAudio:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(9.5, 9.9, 10.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("UserInterface:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 12.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_eqv3r"]
@@ -839,6 +839,7 @@ transform = Transform3D(-1, 0, 5.86125e-08, 0, 1, 0, -5.86125e-08, 0, -1, 13.115
 
 [node name="Player" parent="." instance=ExtResource("7_c304a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54915, 1, 2.05878)
+max_snowball_count = 12
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_jclev")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -3, 0, -40)
@@ -942,7 +943,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.970624, 0.0805516, 0.226716, 0, 0.942291, -0.334794, -0.240601, 0.324959, 0.914611, 5.57506, 0, -10.0539)
+transform = Transform3D(0.970624, 0.0805516, 0.226716, 0, 0.942291, -0.334793, -0.240601, 0.324958, 0.914611, 5.57506, 0, -10.0539)
 
 [node name="SnowBlocks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04593, -3.77184, 1.34728)

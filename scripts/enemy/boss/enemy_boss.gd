@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var user_interface = $"../UserInterface"
 
-@export var max_energy : int = 24
+@export var max_energy : int = 36
 var seen_player = true
 var enabled = false
 
