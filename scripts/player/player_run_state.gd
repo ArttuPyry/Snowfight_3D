@@ -1,7 +1,7 @@
 class_name PlayerRunState
 extends PlayerState
 
-const SPEED = 5.0
+const SPEED = 4.0
 @onready var player = $"../.."
 @onready var camera = $"../../Camera3D"
 

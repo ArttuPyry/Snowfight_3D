@@ -160,6 +160,7 @@ func _unhandled_input(event):
 		var max_offset_hor = get_viewport().get_visible_rect().size.x / 2 * 0.5
 		var max_offset_ver = get_viewport().get_visible_rect().size.y / 2 * 0.5
 		
+		print(-event.relative.x * hor_mouse_sensitivity)
 		self.rotate_y(-event.relative.x * hor_mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * ver_mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))

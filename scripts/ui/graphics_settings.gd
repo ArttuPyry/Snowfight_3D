@@ -7,7 +7,6 @@ extends TabBar
 @onready var fps_slider = $FPS/FPSSlider
 @onready var cur_fps_label = $FPS/CurFPSLabel
 
-@onready var audio_buttons = $"../../../../Buttons"
 @onready var audio_control = $"../../../../AudioControl"
 
 # Saving settings

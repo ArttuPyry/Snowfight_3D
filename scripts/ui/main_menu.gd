@@ -12,7 +12,8 @@ extends Control
 @onready var logo = $Logo
 
 @onready var audio_control = $AudioControl
-@onready var audio_buttons = $Buttons
+@onready var hover = $Hover
+@onready var press = $Press
 
 var skip_intro : bool
 var disable_tutorials : bool
@@ -53,7 +54,7 @@ func _on_credits_pressed():
 
 func _on_quit_pressed():
 	audio_control.play_click_sound()
-	await audio_buttons.finished
+	await press.finished
 	get_tree().quit()
 
 func _on_play_pressed():
@@ -67,7 +68,7 @@ func _on_play_pressed():
 		save.load(SaveManager.SAVE_PATH)
 		
 		if save.has_section("save"):
-			await audio_buttons.finished
+			await press.finished
 			LevelManager.load_level()
 		else:
 			main_buttons.visible = false
@@ -99,19 +100,19 @@ func _on_super_hardcore_mouse_entered():
 # Difficulty buttons
 func _on_normal_pressed():
 	audio_control.play_click_sound()
-	await audio_buttons.finished
+	await press.finished
 	SaveManager.save_savefile("normal", 1, SaveManager.player_max_energy)
 	LevelManager.load_first_level(skip_intro, disable_tutorials)
 
 func _on_hardcore_pressed():
 	audio_control.play_click_sound()
-	await audio_buttons.finished
+	await press.finished
 	SaveManager.save_savefile("hardcore", 1, SaveManager.player_max_energy)
 	LevelManager.load_first_level(skip_intro, disable_tutorials)
 
 func _on_super_hardcore_pressed():
 	audio_control.play_click_sound()
-	await audio_buttons.finished
+	await press.finished
 	SaveManager.save_savefile("super_hardcore", 1, SaveManager.player_max_energy)
 	LevelManager.load_first_level(skip_intro, disable_tutorials)
 

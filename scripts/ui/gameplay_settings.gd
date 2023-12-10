@@ -16,7 +16,6 @@ extends TabBar
 @onready var cur_mouse_vertical_sens_label = $MouseVerticalSens/CurMouseVerticalSensLabel
 
 @onready var audio_control = $"../../../../AudioControl"
-@onready var audio_buttons = $"../../../../Buttons"
 
 # Saving
 const CONFIG_SAVE_PATH := "user://usergameplaypreferences.cfg"

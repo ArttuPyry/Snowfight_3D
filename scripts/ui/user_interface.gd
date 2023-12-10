@@ -18,7 +18,6 @@ extends Control
 @onready var boss_energy = $BossEnergy
 @onready var boss_energy_bar = $BossEnergy/EnergyBar
 
-
 # Timer
 @onready var min_label = $Objectives/VBoxContainer/HBoxContainer/Min
 @onready var sec_label = $Objectives/VBoxContainer/HBoxContainer/Sec
@@ -33,7 +32,8 @@ extends Control
 var escape
 
 # Audio
-@onready var audio_buttons = $Buttons
+@onready var hover = $Hover
+@onready var press = $Press
 @onready var audio_control = $AudioControl
 @onready var audio_victory = $Victory
 @onready var audio_lose = $Lose
@@ -133,7 +133,7 @@ func open_victory_screen() -> void:
 func _on_next_level_pressed():
 	get_tree().paused = false
 	audio_control.play_click_sound()
-	await audio_buttons.finished
+	await press.finished
 	LevelManager.load_level()
 
 func open_pause_menu() -> void:
@@ -175,7 +175,7 @@ func _on_quit_pressed() -> void:
 func _on_restart_pressed():
 	get_tree().paused = false
 	audio_control.play_click_sound()
-	await audio_buttons.finished
+	await press.finished
 	LevelManager.load_level()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4up88kqplgm"]
+[gd_scene load_steps=30 format=3 uid="uid://b4up88kqplgm"]
 
 [ext_resource type="Script" path="res://scripts/ui/user_interface.gd" id="1_g0yvb"]
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://ui/textures/croshair.png" id="1_pk3wq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://0bm6f5ccowjb" path="res://ui/textures/menu_button_03_hover.png" id="17_8v3uy"]
 [ext_resource type="Script" path="res://scripts/ui/graphics_settings.gd" id="18_s2s0h"]
 [ext_resource type="AudioStream" uid="uid://dd0p36vl0h5yi" path="res://sounds/ui/menu_hover_click_shasha213131.mp3" id="19_fvthu"]
+[ext_resource type="AudioStream" uid="uid://gihlytlt648r" path="res://sounds/ui/click_shasha213131.mp3" id="20_1n1w4"]
 [ext_resource type="Script" path="res://scripts/ui/menu_audio_control.gd" id="20_dsxo2"]
 [ext_resource type="AudioStream" uid="uid://tvbrdovapbtg" path="res://sounds/ui/level_completed_kenneth_cooney.mp3" id="20_pbxws"]
 [ext_resource type="AudioStream" uid="uid://cenq88ne8v028" path="res://sounds/ui/lose_themusicalnomad.mp3" id="21_ia4f1"]
@@ -1337,8 +1338,12 @@ theme = ExtResource("3_ypige")
 text = "0.1
 "
 
-[node name="Buttons" type="AudioStreamPlayer" parent="."]
+[node name="Hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_fvthu")
+
+[node name="Press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_1n1w4")
+volume_db = -20.0
 
 [node name="Victory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_pbxws")
