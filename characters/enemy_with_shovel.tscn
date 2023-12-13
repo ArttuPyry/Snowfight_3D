@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bnxloy30l5bnp"]
+[gd_scene load_steps=44 format=3 uid="uid://bnxloy30l5bnp"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_i5c3c"]
 [ext_resource type="Material" uid="uid://ut7kls6cn6jp" path="res://characters/material00.tres" id="2_1ren6"]
@@ -8,15 +8,20 @@
 [ext_resource type="Script" path="res://characters/run_audio_controller.gd" id="4_3j0yt"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="4_wbaig"]
 [ext_resource type="Script" path="res://scripts/enemy/shovel_attack.gd" id="5_1ryn2"]
+[ext_resource type="AudioStream" uid="uid://cw0jkm8835fmx" path="res://sounds/characters/step_01_iliasflou.mp3" id="5_08dv7"]
 [ext_resource type="AudioStream" uid="uid://61m1hxydv1ra" path="res://sounds/characters/reload_iliasflou.mp3" id="5_8u047"]
 [ext_resource type="PackedScene" uid="uid://bamqt8mypngip" path="res://weapons and ammo/snow_shovel_splash.tscn" id="6_5wblg"]
 [ext_resource type="AudioStream" uid="uid://ducr6yvwmyc6e" path="res://sounds/characters/throw_mateusboga.mp3" id="6_cyj41"]
+[ext_resource type="AudioStream" uid="uid://blyrravp4icfw" path="res://sounds/characters/step_02_iliasflou.mp3" id="6_hgt03"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="7_b3ahl"]
+[ext_resource type="AudioStream" uid="uid://q8pqun6rgswd" path="res://sounds/characters/step_03_iliasflou.mp3" id="7_eueaf"]
 [ext_resource type="AudioStream" uid="uid://dpa3omkf5g1b8" path="res://sounds/environment/break_snowman_iliasflou.mp3" id="7_fvahx"]
 [ext_resource type="AudioStream" uid="uid://dpghvkw4knelt" path="res://sounds/ui/shoveling_iliasflou.mp3" id="8_jetga"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_finite_state_machine.gd" id="8_sw3hp"]
+[ext_resource type="AudioStream" uid="uid://pmtnvkqi3jj0" path="res://sounds/characters/step_04_iliasflou.mp3" id="8_yhb66"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_idle_state.gd" id="9_6gnc7"]
 [ext_resource type="Script" path="res://scripts/enemy/snowball_throw_spot.gd" id="9_s1bxg"]
+[ext_resource type="AudioStream" uid="uid://bporqdic42jo8" path="res://sounds/characters/step_05_iliasflou.mp3" id="9_wineq"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_patrol_state.gd" id="10_xru54"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_chase_state.gd" id="11_v4580"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_attack_state.gd" id="12_7h5ve"]
@@ -2188,10 +2193,33 @@ libraries = {
 "": SubResource("AnimationLibrary_0pbl4")
 }
 
-[node name="Steps" type="AudioStreamPlayer3D" parent="."]
+[node name="StepAudio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779751, 0)
+script = ExtResource("4_3j0yt")
+
+[node name="Steps1" type="AudioStreamPlayer3D" parent="StepAudio"]
 stream = ExtResource("3_07d5i")
 bus = &"FootSteps"
-script = ExtResource("4_3j0yt")
+
+[node name="Steps2" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("5_08dv7")
+bus = &"FootSteps"
+
+[node name="Steps3" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("6_hgt03")
+bus = &"FootSteps"
+
+[node name="Steps4" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("7_eueaf")
+bus = &"FootSteps"
+
+[node name="Steps5" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("8_yhb66")
+bus = &"FootSteps"
+
+[node name="Steps6" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("9_wineq")
+bus = &"FootSteps"
 
 [node name="Reload" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_8u047")
@@ -2312,6 +2340,5 @@ script = ExtResource("14_2pj85")
 [node name="Timer" type="Timer" parent="EnemyFiniteStateMachine/EnemyStunnedState"]
 one_shot = true
 
-[connection signal="finished" from="Steps" to="Steps" method="_on_finished"]
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
 [connection signal="timeout" from="EnemyFiniteStateMachine/EnemyStunnedState/Timer" to="EnemyFiniteStateMachine/EnemyStunnedState" method="_on_timer_timeout"]

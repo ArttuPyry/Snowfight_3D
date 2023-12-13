@@ -7,8 +7,7 @@ extends EnemyState
 
 @onready var vision = $"../../Vision"
 
-@onready var audio_steps = $"../../Steps"
-
+@onready var step_audio = $"../../StepAudio"
 
 func _ready():
 	set_process(false)
@@ -36,7 +35,7 @@ func _process(_delta):
 	if current_actor.target_in_range() and vision.has_line_of_sight(current_actor.player.global_transform.origin):
 		state_transition.emit(self, "EnemyAttackState")
 	
-	audio_steps.play_step_sound()
+	step_audio.play_step_sound()
 	current_actor.move_and_slide()
 	
 

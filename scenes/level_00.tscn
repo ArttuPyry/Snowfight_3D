@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfagsa5iva2j"]
+[gd_scene load_steps=39 format=3 uid="uid://cfagsa5iva2j"]
 
 [ext_resource type="Script" path="res://scripts/level/level_00.gd" id="1_hsgfo"]
 [ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_cph8o"]
@@ -18,7 +18,12 @@
 [ext_resource type="AudioStream" uid="uid://cfg4e28gykj05" path="res://sounds/characters/step_00_iliasflou.mp3" id="16_ywmf8"]
 [ext_resource type="Script" path="res://characters/run_audio_controller.gd" id="17_74ii0"]
 [ext_resource type="AudioStream" uid="uid://ducr6yvwmyc6e" path="res://sounds/characters/throw_mateusboga.mp3" id="18_j8ss4"]
+[ext_resource type="AudioStream" uid="uid://cw0jkm8835fmx" path="res://sounds/characters/step_01_iliasflou.mp3" id="18_lxu8w"]
 [ext_resource type="AudioStream" uid="uid://deps7abugc755" path="res://sounds/environment/door_mindlesstrails.mp3" id="19_0ok3b"]
+[ext_resource type="AudioStream" uid="uid://blyrravp4icfw" path="res://sounds/characters/step_02_iliasflou.mp3" id="19_ica5s"]
+[ext_resource type="AudioStream" uid="uid://q8pqun6rgswd" path="res://sounds/characters/step_03_iliasflou.mp3" id="20_7k5f2"]
+[ext_resource type="AudioStream" uid="uid://pmtnvkqi3jj0" path="res://sounds/characters/step_04_iliasflou.mp3" id="21_n6e7c"]
+[ext_resource type="AudioStream" uid="uid://bporqdic42jo8" path="res://sounds/characters/step_05_iliasflou.mp3" id="22_82pey"]
 
 [sub_resource type="Animation" id="Animation_4e8j5"]
 length = 0.001
@@ -337,43 +342,43 @@ tracks/25/keys = {
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("Steps:playing")
+tracks/26/path = NodePath("Control/Label:text")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [""]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("Steps:position")
+tracks/27/path = NodePath("Throw:playing")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(10.1704, -0.779751, 1.99963)]
+"update": 1,
+"values": [false]
 }
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("Steps2:position")
+tracks/28/path = NodePath("Throw2:playing")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(9.56538, -0.779751, 2.66935)]
+"update": 1,
+"values": [false]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("Steps2:playing")
+tracks/29/path = NodePath("Door:playing")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
@@ -385,62 +390,38 @@ tracks/29/keys = {
 tracks/30/type = "value"
 tracks/30/imported = false
 tracks/30/enabled = true
-tracks/30/path = NodePath("Control/Label:text")
+tracks/30/path = NodePath("Control/Label:modulate")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/31/type = "value"
 tracks/31/imported = false
 tracks/31/enabled = true
-tracks/31/path = NodePath("Throw:playing")
+tracks/31/path = NodePath("StepAudio:position")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(9.04588, -0.779751, 1.5862)]
 }
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("Throw2:playing")
+tracks/32/path = NodePath("StepAudio2:position")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/33/type = "value"
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/path = NodePath("Door:playing")
-tracks/33/interp = 1
-tracks/33/loop_wrap = true
-tracks/33/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/34/type = "value"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath("Control/Label:modulate")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(9.95507, -0.779751, 2.62973)]
 }
 
 [sub_resource type="Animation" id="Animation_nhk14"]
@@ -761,110 +742,234 @@ tracks/25/keys = {
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("Steps:playing")
+tracks/26/path = NodePath("Control/Label:text")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(13.3, 13.5, 13.7, 13.9, 14.1, 14.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, true, true, true, true, true]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("Steps:position")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(13.3, 14.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(10.1704, -0.779751, 1.99963), Vector3(10.1704, -0.779751, 19.3384)]
-}
-tracks/28/type = "value"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath("Steps2:position")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
-"times": PackedFloat32Array(13.3, 14.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(9.56538, -0.779751, 2.66935), Vector3(9.56538, -0.779751, 33.3837)]
-}
-tracks/29/type = "value"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath("Steps2:playing")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(13.3, 13.5, 13.7, 13.9, 14.1, 14.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, true, true, true, true, true]
-}
-tracks/30/type = "value"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath("Control/Label:text")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
 "times": PackedFloat32Array(0, 4.6, 6.2, 7.9, 9.4, 10, 12.6, 13.6, 15.7, 19.6, 21.6, 21.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["", "Kid: NO.....!", "Kid: My beautiful snowmen!", "Kid: NOOOOOOOOOOOOOOOOOOOO!!!!!", "", "Bully: Hey loser! Nice snowmen!", "", "Bully: Cya loser!", "", "Kid: I will....", "", "Kid: ...Have my revenge!"]
 }
-tracks/31/type = "value"
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/path = NodePath("Throw:playing")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/keys = {
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Throw:playing")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
 "times": PackedFloat32Array(4.4, 5.9, 6.8, 7.9, 8.2, 10, 13.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, true, true, true, true, true, true]
 }
-tracks/32/type = "value"
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/path = NodePath("Throw2:playing")
-tracks/32/interp = 1
-tracks/32/loop_wrap = true
-tracks/32/keys = {
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Throw2:playing")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
 "times": PackedFloat32Array(12.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/33/type = "value"
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/path = NodePath("Door:playing")
-tracks/33/interp = 1
-tracks/33/loop_wrap = true
-tracks/33/keys = {
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Door:playing")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
 "times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/34/type = "value"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath("Control/Label:modulate")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Control/Label:modulate")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
 "times": PackedFloat32Array(24.8, 26.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/31/type = "method"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("StepAudio")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(13.3, 13.4, 13.5, 13.6, 13.7, 13.8, 13.9, 14, 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 14.9, 15, 15.1, 15.2, 15.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}]
+}
+tracks/32/type = "method"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("StepAudio2")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(13.3, 13.4, 13.5, 13.6, 13.7, 13.8, 13.9, 14, 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 14.9, 15, 15.1, 15.2, 15.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}, {
+"args": [],
+"method": &"play_step_sound"
+}]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("StepAudio:position")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(13.3, 15.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(9.04588, -0.779751, 1.5862), Vector3(9.04588, -0.779751, 51.909)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("StepAudio2:position")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(13.3, 15.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(9.95507, -0.779751, 2.62973), Vector3(9.95507, -0.779751, 56.7624)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_imvxc"]
@@ -1303,17 +1408,61 @@ stream = ExtResource("14_7kjhv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22626, 0, 2.48994)
 stream = ExtResource("15_kk51g")
 
-[node name="Steps" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1704, -0.779751, 1.99963)
-stream = ExtResource("16_ywmf8")
-bus = &"FootSteps"
+[node name="StepAudio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.04588, -0.779751, 1.5862)
 script = ExtResource("17_74ii0")
 
-[node name="Steps2" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.56538, -0.779751, 2.66935)
+[node name="Steps1" type="AudioStreamPlayer3D" parent="StepAudio"]
 stream = ExtResource("16_ywmf8")
 bus = &"FootSteps"
+
+[node name="Steps2" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("18_lxu8w")
+bus = &"FootSteps"
+
+[node name="Steps3" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("19_ica5s")
+bus = &"FootSteps"
+
+[node name="Steps4" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("20_7k5f2")
+bus = &"FootSteps"
+
+[node name="Steps5" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("21_n6e7c")
+bus = &"FootSteps"
+
+[node name="Steps6" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("22_82pey")
+bus = &"FootSteps"
+
+[node name="StepAudio2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95507, -0.779751, 2.62973)
 script = ExtResource("17_74ii0")
+
+[node name="Steps1" type="AudioStreamPlayer3D" parent="StepAudio2"]
+stream = ExtResource("16_ywmf8")
+bus = &"FootSteps"
+
+[node name="Steps2" type="AudioStreamPlayer3D" parent="StepAudio2"]
+stream = ExtResource("18_lxu8w")
+bus = &"FootSteps"
+
+[node name="Steps3" type="AudioStreamPlayer3D" parent="StepAudio2"]
+stream = ExtResource("19_ica5s")
+bus = &"FootSteps"
+
+[node name="Steps4" type="AudioStreamPlayer3D" parent="StepAudio2"]
+stream = ExtResource("20_7k5f2")
+bus = &"FootSteps"
+
+[node name="Steps5" type="AudioStreamPlayer3D" parent="StepAudio2"]
+stream = ExtResource("21_n6e7c")
+bus = &"FootSteps"
+
+[node name="Steps6" type="AudioStreamPlayer3D" parent="StepAudio2"]
+stream = ExtResource("22_82pey")
+bus = &"FootSteps"
 
 [node name="Throw" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57342, -0.0565501, 2.15911)
@@ -1329,6 +1478,3 @@ volume_db = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30693, 0.811647, 3.01124)
 stream = ExtResource("19_0ok3b")
 volume_db = -45.0
-
-[connection signal="finished" from="Steps" to="Steps" method="_on_finished"]
-[connection signal="finished" from="Steps2" to="Steps2" method="_on_finished"]

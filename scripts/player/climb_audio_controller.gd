@@ -1,32 +1,34 @@
-extends AudioStreamPlayer3D
+extends Node3D
 
-@onready var climb00 = preload("res://sounds/characters/ladder_climb_00_ienba.mp3")
-@onready var climb01 = preload("res://sounds/characters/ladder_climb_01_ienba.mp3")
-@onready var climb02 = preload("res://sounds/characters/ladder_climb_02_ienba.mp3")
-@onready var climb03 = preload("res://sounds/characters/ladder_climb_03_ienba.mp3")
-@onready var climb04 = preload("res://sounds/characters/ladder_climb_04_ienba.mp3")
-@onready var climb05 = preload("res://sounds/characters/ladder_climb_05_ienba.mp3")
+@onready var climb_1 = $Climb1
+@onready var climb_2 = $Climb2
+@onready var climb_3 = $Climb3
+@onready var climb_4 = $Climb4
+@onready var climb_5 = $Climb5
+@onready var climb_6 = $Climb6
 
 func _ready():
 	randomize()
 
-func _on_finished():
+func play_climb_sound() -> void:
 	var rng = RandomNumberGenerator.new()
+	
 	var random_sound = rng.randi_range(0, 5)
+	
+	var sound
+	
 	match random_sound:
 		0:
-			self.stream = climb00
+			sound = climb_1
 		1:
-			self.stream = climb01
+			sound = climb_2
 		2:
-			self.stream = climb02
+			sound = climb_3
 		3:
-			self.stream = climb03
+			sound = climb_4
 		4:
-			self.stream = climb04
+			sound = climb_5
 		5:
-			self.stream = climb05
-
-func play_climb_sound() -> void:
-	if not self.playing:
-		self.play()
+			sound = climb_6
+	
+	sound.play()

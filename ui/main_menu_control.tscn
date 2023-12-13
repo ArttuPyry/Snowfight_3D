@@ -1151,9 +1151,52 @@ text = "Pyry Viitajylhä - orc hugs
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VSeparator4" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+
+[node name="Testers" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 20
+text = "Testers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TesterNames" type="HBoxContainer" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Testers1" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer/TesterNames"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "dkhfgbkasdgbfk
+sdljghlshdf
+lfshhglshdö
+salökdghlkshd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Testers2" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer/TesterNames"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "dkhfgbkasdgbfk
+sdljghlshdf
+lfshhglshdö
+salökdghlkshd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VSeparator" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(100, 25)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 
 [node name="ColorPalette" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
@@ -1176,7 +1219,7 @@ vertical_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(100, 25)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 
 [node name="Music" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
@@ -1198,7 +1241,7 @@ vertical_alignment = 1
 
 [node name="VSeparator3" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(100, 25)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 
 [node name="Sound effects" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
@@ -1209,8 +1252,15 @@ text = "Sound effects"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="effect" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="effect" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 10
 text = "MindlessTrails
@@ -1218,7 +1268,16 @@ Christopherderp
 IENBA
 plasterbrain
 themusicalnomad
-Kenneth_Cooney
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="effect2" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_lvk54")
+theme_override_font_sizes/font_size = 10
+text = "Kenneth_Cooney
 mateusboga
 worthahep88
 IliasFlou

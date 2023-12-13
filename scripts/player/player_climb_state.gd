@@ -9,6 +9,7 @@ const SPEED = 3
 @onready var snowball = $"../../Camera3D/Hands/snowball"
 @onready var right_hand = $"../../Camera3D/Hands/RightHand"
 
+@onready var climb_audio = $"../../ClimbAudio"
 
 func _ready() -> void:
 	hands.visible = false

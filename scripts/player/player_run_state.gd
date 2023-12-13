@@ -7,8 +7,7 @@ const SPEED = 4.0
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var audio_steps = $"../../Steps"
-
+@onready var step_audio = $"../../StepAudio"
 
 func _ready() -> void:
 	set_process(false)
@@ -30,7 +29,7 @@ func _physics_process(delta) -> void:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		audio_steps.play_step_sound()
+		step_audio.play_step_sound()
 		player.velocity.x = direction.x * SPEED
 		player.velocity.z = direction.z * SPEED
 	else:

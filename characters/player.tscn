@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://def8ntasw0w85"]
+[gd_scene load_steps=51 format=3 uid="uid://def8ntasw0w85"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_0katy"]
 [ext_resource type="Script" path="res://scripts/player/player_finite_state_machine.gd" id="1_0mk6b"]
@@ -9,17 +9,27 @@
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="3_4vy8l"]
 [ext_resource type="Script" path="res://scripts/player/player_reload_state.gd" id="4_3n4r1"]
 [ext_resource type="Texture2D" uid="uid://ckph4ytbs30b6" path="res://environment/textures/snowfall.png" id="4_e5aie"]
+[ext_resource type="AudioStream" uid="uid://cw0jkm8835fmx" path="res://sounds/characters/step_01_iliasflou.mp3" id="4_gxfbq"]
 [ext_resource type="Script" path="res://scripts/player/player_fall_state.gd" id="5_2tupi"]
+[ext_resource type="AudioStream" uid="uid://blyrravp4icfw" path="res://sounds/characters/step_02_iliasflou.mp3" id="5_53kcw"]
 [ext_resource type="Script" path="res://scripts/player/aim.gd" id="5_bjqnv"]
 [ext_resource type="Texture2D" uid="uid://biv8njbjpjpxx" path="res://environment/textures/round_shadow.png" id="5_f3exl"]
 [ext_resource type="Script" path="res://scripts/player/player_attack_state.gd" id="5_t6r3v"]
 [ext_resource type="AudioStream" uid="uid://ducr6yvwmyc6e" path="res://sounds/characters/throw_mateusboga.mp3" id="5_uo831"]
+[ext_resource type="AudioStream" uid="uid://iquuk1sijyf" path="res://sounds/characters/ladder_climb_01_ienba.mp3" id="5_wdplp"]
+[ext_resource type="AudioStream" uid="uid://cwig05mu64hul" path="res://sounds/characters/ladder_climb_02_ienba.mp3" id="6_dcsbc"]
 [ext_resource type="AudioStream" uid="uid://dgjq0xs8tvlrr" path="res://sounds/characters/ladder_climb_00_ienba.mp3" id="6_e10w0"]
 [ext_resource type="AudioStream" uid="uid://cenq88ne8v028" path="res://sounds/ui/lose_themusicalnomad.mp3" id="6_pus7x"]
+[ext_resource type="AudioStream" uid="uid://q8pqun6rgswd" path="res://sounds/characters/step_03_iliasflou.mp3" id="6_s2w5o"]
 [ext_resource type="Script" path="res://scripts/player/climb_audio_controller.gd" id="7_mrejs"]
+[ext_resource type="AudioStream" uid="uid://d1i7bdcp5mmi7" path="res://sounds/characters/ladder_climb_03_ienba.mp3" id="7_n8h8c"]
+[ext_resource type="AudioStream" uid="uid://pmtnvkqi3jj0" path="res://sounds/characters/step_04_iliasflou.mp3" id="7_ofpf7"]
 [ext_resource type="PackedScene" uid="uid://clioeqkgwpgop" path="res://characters/meshes/player_hand_left.tscn" id="7_xv760"]
 [ext_resource type="PackedScene" uid="uid://bo1b5elmja8fj" path="res://weapons and ammo/snowball_mesh_only.tscn" id="8_72qf2"]
+[ext_resource type="AudioStream" uid="uid://br525tii71nmc" path="res://sounds/characters/ladder_climb_04_ienba.mp3" id="8_oip02"]
+[ext_resource type="AudioStream" uid="uid://bporqdic42jo8" path="res://sounds/characters/step_05_iliasflou.mp3" id="8_q0hit"]
 [ext_resource type="AudioStream" uid="uid://dpa3omkf5g1b8" path="res://sounds/environment/break_snowman_iliasflou.mp3" id="8_uarb1"]
+[ext_resource type="AudioStream" uid="uid://5ycbepykx8i3" path="res://sounds/characters/ladder_climb_05_ienba.mp3" id="9_x740l"]
 [ext_resource type="AudioStream" uid="uid://bwh2ddm532akj" path="res://sounds/characters/take_hit_christopherderp.mp3" id="12_11vys"]
 [ext_resource type="Script" path="res://scripts/player/player_climb_state.gd" id="13_j1gxg"]
 [ext_resource type="Script" path="res://scripts/player/player_destroy_snowman_state.gd" id="16_tjaw8"]
@@ -211,18 +221,6 @@ tracks/14/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Climb:playing")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_7asd4"]
 resource_name = "attack"
@@ -280,17 +278,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.212608, 2.01129, -1.95623), Vector3(4.35585e-08, 2.05687, -1.53535), Vector3(-0.302772, 1.9571, -0.902774), Vector3(4.35585e-08, 2.05687, -1.53535), Vector3(0.212608, 2.01129, -1.95623)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Climb:playing")
+tracks/2/path = NodePath("ClimbAudio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, true]
+"values": [{
+"args": [],
+"method": &"play_climb_sound"
+}, {
+"args": [],
+"method": &"play_climb_sound"
+}, {
+"args": [],
+"method": &"play_climb_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0swt8"]
@@ -638,11 +644,73 @@ libraries = {
 "": SubResource("AnimationLibrary_0asdr")
 }
 
-[node name="Steps" type="AudioStreamPlayer3D" parent="."]
+[node name="StepAudio" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779751, 0)
+script = ExtResource("20_7nsg6")
+
+[node name="Steps1" type="AudioStreamPlayer3D" parent="StepAudio"]
 stream = ExtResource("19_3sa5m")
 bus = &"FootSteps"
-script = ExtResource("20_7nsg6")
+
+[node name="Steps2" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("4_gxfbq")
+bus = &"FootSteps"
+
+[node name="Steps3" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("5_53kcw")
+bus = &"FootSteps"
+
+[node name="Steps4" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("6_s2w5o")
+bus = &"FootSteps"
+
+[node name="Steps5" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("7_ofpf7")
+bus = &"FootSteps"
+
+[node name="Steps6" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("8_q0hit")
+bus = &"FootSteps"
+
+[node name="ClimbAudio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779751, 0)
+script = ExtResource("7_mrejs")
+
+[node name="Climb1" type="AudioStreamPlayer3D" parent="ClimbAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, 0.570922, -0.520967)
+stream = ExtResource("6_e10w0")
+volume_db = 50.0
+bus = &"SoundEffect"
+
+[node name="Climb2" type="AudioStreamPlayer3D" parent="ClimbAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, 0.570922, -0.520967)
+stream = ExtResource("5_wdplp")
+volume_db = 50.0
+bus = &"SoundEffect"
+
+[node name="Climb3" type="AudioStreamPlayer3D" parent="ClimbAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, 0.570922, -0.520967)
+stream = ExtResource("6_dcsbc")
+volume_db = 50.0
+bus = &"SoundEffect"
+
+[node name="Climb4" type="AudioStreamPlayer3D" parent="ClimbAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, 0.570922, -0.520967)
+stream = ExtResource("7_n8h8c")
+volume_db = 50.0
+bus = &"SoundEffect"
+
+[node name="Climb5" type="AudioStreamPlayer3D" parent="ClimbAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, 0.570922, -0.520967)
+stream = ExtResource("8_oip02")
+volume_db = 50.0
+bus = &"SoundEffect"
+
+[node name="Climb6" type="AudioStreamPlayer3D" parent="ClimbAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, 0.570922, -0.520967)
+stream = ExtResource("9_x740l")
+volume_db = 50.0
+bus = &"SoundEffect"
 
 [node name="Reload" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841921, -0.829325)
@@ -651,11 +719,6 @@ stream = ExtResource("21_8kfvp")
 [node name="Throw" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, -0.0565501, -0.378868)
 stream = ExtResource("5_uo831")
-
-[node name="Climb" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247187, -0.0565501, -0.378868)
-stream = ExtResource("6_e10w0")
-script = ExtResource("7_mrejs")
 
 [node name="BreakAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_uarb1")
@@ -783,8 +846,6 @@ script = ExtResource("16_tjaw8")
 [node name="PlayerLoseState" type="Node" parent="PlayerFiniteStateMachine"]
 script = ExtResource("18_4vrwd")
 
-[connection signal="finished" from="Steps" to="Steps" method="_on_finished"]
-[connection signal="finished" from="Climb" to="Climb" method="_on_finished"]
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
 [connection signal="timeout" from="PlayerFiniteStateMachine/PlayerFallState/FallTimer" to="PlayerFiniteStateMachine/PlayerFallState" method="_on_fall_timer_timeout"]
 
