@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="KeybindResource" load_steps=14 format=3 uid="uid://cvg4c67dhi1wb"]
+
+[ext_resource type="Script" path="res://scripts/ui/keybind_resource.gd" id="1_vp07s"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wgpff"]
+device = -1
+physical_keycode = 69
+unicode = 101
+
+[sub_resource type="InputEventKey" id="InputEventKey_85apw"]
+device = -1
+physical_keycode = 70
+unicode = 102
+
+[sub_resource type="InputEventKey" id="InputEventKey_hymhq"]
+device = -1
+physical_keycode = 4194322
+
+[sub_resource type="InputEventKey" id="InputEventKey_77km3"]
+device = -1
+physical_keycode = 4194319
+
+[sub_resource type="InputEventKey" id="InputEventKey_wiiiv"]
+device = -1
+physical_keycode = 4194321
+
+[sub_resource type="InputEventKey" id="InputEventKey_1suv8"]
+device = -1
+physical_keycode = 4194320
+
+[sub_resource type="InputEventKey" id="InputEventKey_rilhy"]
+device = -1
+physical_keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_ofsgg"]
+device = -1
+physical_keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_hhlja"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_x16hv"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_3sbkw"]
+device = -1
+physical_keycode = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_88fdr"]
+device = -1
+physical_keycode = 82
+unicode = 114
+
+[resource]
+script = ExtResource("1_vp07s")
+DEFAULT_LOOK_UP_KEY = SubResource("InputEventKey_1suv8")
+DEFAULT_LOOK_DOWN_KEY = SubResource("InputEventKey_hymhq")
+DEFAULT_LOOK_LEFT_KEY = SubResource("InputEventKey_77km3")
+DEFAULT_LOOK_RIGHT_KEY = SubResource("InputEventKey_wiiiv")
+DEFAULT_MOVE_UP_KEY = SubResource("InputEventKey_x16hv")
+DEFAULT_MOVE_DOWN_KEY = SubResource("InputEventKey_rilhy")
+DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_ofsgg")
+DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_hhlja")
+DEFAULT_ATTACK_KEY = SubResource("InputEventKey_wgpff")
+DEFAULT_RELOAD_KEY = SubResource("InputEventKey_88fdr")
+DEFAULT_INTERACT_KEY = SubResource("InputEventKey_85apw")
+DEFAULT_PAUSE_KEY = SubResource("InputEventKey_3sbkw")

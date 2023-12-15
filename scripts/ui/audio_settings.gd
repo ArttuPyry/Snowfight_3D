@@ -22,6 +22,8 @@ var temp_eniv_index
 @onready var environment_slider = $EnvironmentVolume/EnvironmentSlider
 @onready var cur_environment_label = $EnvironmentVolume/CurEnvironmentLabel
 
+@onready var audio_control = $"../../../../AudioControl"
+
 func _save_audio_preferences(master, music, effect, environment) -> void:
 	var config : = ConfigFile.new()
 	config.load(CONFIG_SAVE_PATH)
@@ -72,9 +74,11 @@ func _ready():
 	_load_audio_preferences("audio_preferences")
 
 func _on_save_sound_settings_button_pressed():
+	audio_control.play_click_sound()
 	_save_audio_preferences(temp_master_index, temp_music_index, temp_effect_index, temp_eniv_index)
 
 func _on_clear_sound_settings_button_pressed():
+	audio_control.play_click_sound()
 	_clear_audio_preferences()
 
 func _on_master_slider_value_changed(value):
@@ -96,3 +100,9 @@ func _on_environment_slider_value_changed(value):
 	temp_eniv_index = value / 100
 	AudioServer.set_bus_volume_db(3, linear_to_db(temp_eniv_index))
 	cur_environment_label.text = str(value)
+
+func _on_save_sound_settings_button_mouse_entered():
+	audio_control.play_hover_sound()
+
+func _on_clear_sound_settings_button_mouse_entered():
+	audio_control.play_hover_sound()
