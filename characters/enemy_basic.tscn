@@ -1401,6 +1401,7 @@ height = 1.36135
 script = ExtResource("1_ritve")
 max_energy = 3
 attack_range = 9.0
+stun_duration = 20
 
 [node name="Armature" type="Node3D" parent="."]
 

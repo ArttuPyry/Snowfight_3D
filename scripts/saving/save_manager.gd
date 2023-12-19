@@ -3,7 +3,7 @@ extends Node
 const SAVE_PATH := "user://save.tres"
 const TIME_PATH := "user://time.tres"
 
-var player_max_energy = 99
+var player_max_energy = 30
 
 func save_savefile(difficulty, level, energy) -> void:
 	var save : = ConfigFile.new()
@@ -37,6 +37,14 @@ func save_time(msec, sec, mins) -> void:
 	var mseconds = msec + time.get_value("time", "mseconds", 0.0)
 	var seconds = sec + time.get_value("time", "seconds", 0.0)
 	var minutes = mins + time.get_value("time", "minutes", 0.0)
+	
+	if mseconds > 999:
+		mseconds -= 1000
+		seconds += 1
+	
+	if seconds > 59:
+		seconds -= 70
+		minutes += 1
 	
 	time.set_value("time", "mseconds", mseconds)
 	time.set_value("time", "seconds", seconds)

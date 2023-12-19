@@ -62,10 +62,10 @@ func _load_gameplay_preferences(section) -> void:
 	var mouse = config.get_value(section, "mouse_bool", false)
 	var leading = config.get_value(section, "leading_bool", false)
 	var fov = config.get_value(section, "fov_index", 75)
-	var kb_h_sens = config.get_value(section, "kb_hori_float", 5)
-	var kb_v_sens = config.get_value(section, "kb_vert_float", 5)
-	var mouse_h_sens = config.get_value(section, "mouse_hori_float", 5)
-	var mouse_v_sens = config.get_value(section, "mouse_vert_float", 5)
+	var kb_h_sens = config.get_value(section, "kb_hori_float", 50.0)
+	var kb_v_sens = config.get_value(section, "kb_vert_float", 50.0)
+	var mouse_h_sens = config.get_value(section, "mouse_hori_float", 50.0)
+	var mouse_v_sens = config.get_value(section, "mouse_vert_float", 50.0)
 	
 	if not mouse == null:
 		if mouse == true:

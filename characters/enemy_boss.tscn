@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://wwrgxqmlso2m"]
+[gd_scene load_steps=36 format=3 uid="uid://wwrgxqmlso2m"]
 
 [ext_resource type="Texture2D" uid="uid://bwwkkejqa73v5" path="res://characters/textures/boss_00.png" id="1_rc8ih"]
 [ext_resource type="Script" path="res://scripts/enemy/boss/enemy_boss.gd" id="1_tev24"]
@@ -8,11 +8,16 @@
 [ext_resource type="Script" path="res://characters/run_audio_controller.gd" id="3_xceya"]
 [ext_resource type="Script" path="res://scripts/enemy/boss/boss_spin_attack_state.gd" id="4_i705v"]
 [ext_resource type="AudioStream" uid="uid://61m1hxydv1ra" path="res://sounds/characters/reload_iliasflou.mp3" id="4_v2n5w"]
+[ext_resource type="AudioStream" uid="uid://cw0jkm8835fmx" path="res://sounds/characters/step_01_iliasflou.mp3" id="5_i437b"]
 [ext_resource type="Script" path="res://scripts/enemy/boss/boss_stunned_state.gd" id="5_m0nq3"]
 [ext_resource type="AudioStream" uid="uid://ducr6yvwmyc6e" path="res://sounds/characters/throw_mateusboga.mp3" id="5_wgf74"]
 [ext_resource type="AudioStream" uid="uid://dpa3omkf5g1b8" path="res://sounds/environment/break_snowman_iliasflou.mp3" id="6_88r32"]
+[ext_resource type="AudioStream" uid="uid://blyrravp4icfw" path="res://sounds/characters/step_02_iliasflou.mp3" id="6_dgmc5"]
+[ext_resource type="AudioStream" uid="uid://q8pqun6rgswd" path="res://sounds/characters/step_03_iliasflou.mp3" id="7_1okv5"]
 [ext_resource type="Script" path="res://scripts/actor componenets/hurtbox_component.gd" id="7_8axat"]
+[ext_resource type="AudioStream" uid="uid://pmtnvkqi3jj0" path="res://sounds/characters/step_04_iliasflou.mp3" id="8_djagw"]
 [ext_resource type="Script" path="res://scripts/actor componenets/energy_component.gd" id="8_oimxw"]
+[ext_resource type="AudioStream" uid="uid://bporqdic42jo8" path="res://sounds/characters/step_05_iliasflou.mp3" id="9_6vq1j"]
 [ext_resource type="AudioStream" uid="uid://bwh2ddm532akj" path="res://sounds/characters/take_hit_christopherderp.mp3" id="9_qd2p6"]
 [ext_resource type="Script" path="res://scripts/enemy/boss/boss_cross_attack_state.gd" id="10_h8jln"]
 
@@ -1396,10 +1401,33 @@ libraries = {
 "": SubResource("AnimationLibrary_46jj3")
 }
 
-[node name="Steps" type="AudioStreamPlayer3D" parent="."]
+[node name="StepAudio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779751, 0)
+script = ExtResource("3_xceya")
+
+[node name="Steps1" type="AudioStreamPlayer3D" parent="StepAudio"]
 stream = ExtResource("2_5s0gf")
 bus = &"FootSteps"
-script = ExtResource("3_xceya")
+
+[node name="Steps2" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("5_i437b")
+bus = &"FootSteps"
+
+[node name="Steps3" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("6_dgmc5")
+bus = &"FootSteps"
+
+[node name="Steps4" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("7_1okv5")
+bus = &"FootSteps"
+
+[node name="Steps5" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("8_djagw")
+bus = &"FootSteps"
+
+[node name="Steps6" type="AudioStreamPlayer3D" parent="StepAudio"]
+stream = ExtResource("9_6vq1j")
+bus = &"FootSteps"
 
 [node name="Reload" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.56567)
@@ -1465,43 +1493,60 @@ remote_path = NodePath(".")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.530318, 0.607, 7.1)
 
 [node name="FireSpot2" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.469682, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884746, 0.607, 7.1)
 
 [node name="FireSpot3" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46968, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3755, 0.607, 7.1)
 
 [node name="FireSpot4" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46968, 0.607, 7.1)
-
-[node name="FireSpot5" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46968, 0.607, 7.1)
-
-[node name="FireSpot6" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46968, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93493, 0.607, 7.1)
 
 [node name="FireSpot7" type="Node3D" parent="Behind"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46968, 0.607, 7.1)
 
-[node name="FireSpot8" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46968, 0.607, 7.1)
-
 [node name="FireSpot10" type="Node3D" parent="Behind"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53032, 0.607, 7.1)
 
-[node name="FireSpot11" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53032, 0.607, 7.1)
-
-[node name="FireSpot12" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.53032, 0.607, 7.1)
-
 [node name="FireSpot13" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53032, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05356, 0.607, 7.1)
 
 [node name="FireSpot14" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53032, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53929, 0.607, 7.1)
 
 [node name="FireSpot15" type="Node3D" parent="Behind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53032, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06891, 0.607, 7.1)
+
+[node name="Left" type="RemoteTransform3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+top_level = true
+remote_path = NodePath(".")
+
+[node name="FireSpot" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.530318, 0.607, 7.1)
+
+[node name="FireSpot2" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884746, 0.607, 7.1)
+
+[node name="FireSpot3" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3755, 0.607, 7.1)
+
+[node name="FireSpot4" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93493, 0.607, 7.1)
+
+[node name="FireSpot7" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46968, 0.607, 7.1)
+
+[node name="FireSpot10" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53032, 0.607, 7.1)
+
+[node name="FireSpot13" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05356, 0.607, 7.1)
+
+[node name="FireSpot14" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53929, 0.607, 7.1)
+
+[node name="FireSpot15" type="Node3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06891, 0.607, 7.1)
 
 [node name="Right" type="RemoteTransform3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -1509,49 +1554,31 @@ top_level = true
 remote_path = NodePath(".")
 
 [node name="FireSpot" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.530318, 0.607, 7.1)
 
 [node name="FireSpot2" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884746, 0.607, 7.1)
 
 [node name="FireSpot3" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3755, 0.607, 7.1)
 
 [node name="FireSpot4" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.607, 7.1)
-
-[node name="FireSpot5" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.607, 7.1)
-
-[node name="FireSpot6" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93493, 0.607, 7.1)
 
 [node name="FireSpot7" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.607, 7.1)
-
-[node name="FireSpot8" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.607, 7.1)
-
-[node name="FireSpot9" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46968, 0.607, 7.1)
 
 [node name="FireSpot10" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.607, 7.1)
-
-[node name="FireSpot11" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.607, 7.1)
-
-[node name="FireSpot12" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53032, 0.607, 7.1)
 
 [node name="FireSpot13" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05356, 0.607, 7.1)
 
 [node name="FireSpot14" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53929, 0.607, 7.1)
 
 [node name="FireSpot15" type="Node3D" parent="Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06891, 0.607, 7.1)
 
 [node name="Front" type="RemoteTransform3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -1559,96 +1586,31 @@ top_level = true
 remote_path = NodePath(".")
 
 [node name="FireSpot" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.530318, 0.607, 7.1)
 
 [node name="FireSpot2" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.884746, 0.607, 7.1)
 
 [node name="FireSpot3" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3755, 0.607, 7.1)
 
 [node name="FireSpot4" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.607, 7.1)
-
-[node name="FireSpot5" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.607, 7.1)
-
-[node name="FireSpot6" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93493, 0.607, 7.1)
 
 [node name="FireSpot7" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.607, 7.1)
-
-[node name="FireSpot8" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.607, 7.1)
-
-[node name="FireSpot9" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46968, 0.607, 7.1)
 
 [node name="FireSpot10" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.607, 7.1)
-
-[node name="FireSpot11" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.607, 7.1)
-
-[node name="FireSpot12" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.53032, 0.607, 7.1)
 
 [node name="FireSpot13" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05356, 0.607, 7.1)
 
 [node name="FireSpot14" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53929, 0.607, 7.1)
 
 [node name="FireSpot15" type="Node3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.607, 7.1)
-
-[node name="Left" type="RemoteTransform3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
-top_level = true
-remote_path = NodePath(".")
-
-[node name="FireSpot" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.466413, 0.607, 7.1)
-
-[node name="FireSpot2" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533587, 0.607, 7.1)
-
-[node name="FireSpot3" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53359, 0.607, 7.1)
-
-[node name="FireSpot4" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53359, 0.607, 7.1)
-
-[node name="FireSpot5" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53359, 0.607, 7.1)
-
-[node name="FireSpot6" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53359, 0.607, 7.1)
-
-[node name="FireSpot7" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53359, 0.607, 7.1)
-
-[node name="FireSpot8" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53359, 0.607, 7.1)
-
-[node name="FireSpot10" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46641, 0.607, 7.1)
-
-[node name="FireSpot11" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46641, 0.607, 7.1)
-
-[node name="FireSpot12" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.46641, 0.607, 7.1)
-
-[node name="FireSpot13" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46641, 0.607, 7.1)
-
-[node name="FireSpot14" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46641, 0.607, 7.1)
-
-[node name="FireSpot15" type="Node3D" parent="Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46641, 0.607, 7.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06891, 0.607, 7.1)
 
 [node name="EnemyFiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_fvoyu")
@@ -1667,15 +1629,14 @@ one_shot = true
 
 [node name="BossCrossAttackState" type="Node" parent="EnemyFiniteStateMachine" node_paths=PackedStringArray("fire_spots_behind", "fire_spots_right", "fire_spots_left", "fire_spots_front")]
 script = ExtResource("10_h8jln")
-fire_spots_behind = [NodePath("../../Behind/FireSpot"), NodePath("../../Behind/FireSpot2"), NodePath("../../Behind/FireSpot3"), NodePath("../../Behind/FireSpot4"), NodePath("../../Behind/FireSpot5"), NodePath("../../Behind/FireSpot6"), NodePath("../../Behind/FireSpot7"), NodePath("../../Behind/FireSpot8"), NodePath("../../Behind/FireSpot10"), NodePath("../../Behind/FireSpot11"), NodePath("../../Behind/FireSpot12"), NodePath("../../Behind/FireSpot13"), NodePath("../../Behind/FireSpot14"), NodePath("../../Behind/FireSpot15")]
-fire_spots_right = [NodePath("../../Right/FireSpot"), NodePath("../../Right/FireSpot2"), NodePath("../../Right/FireSpot3"), NodePath("../../Right/FireSpot4"), NodePath("../../Right/FireSpot5"), NodePath("../../Right/FireSpot6"), NodePath("../../Right/FireSpot7"), NodePath("../../Right/FireSpot8"), NodePath("../../Right/FireSpot9"), NodePath("../../Right/FireSpot10"), NodePath("../../Right/FireSpot11"), NodePath("../../Right/FireSpot12"), NodePath("../../Right/FireSpot13"), NodePath("../../Right/FireSpot14"), NodePath("../../Right/FireSpot15")]
-fire_spots_left = [NodePath("../../Front/FireSpot"), NodePath("../../Front/FireSpot2"), NodePath("../../Front/FireSpot3"), NodePath("../../Front/FireSpot4"), NodePath("../../Front/FireSpot5"), NodePath("../../Front/FireSpot6"), NodePath("../../Front/FireSpot7"), NodePath("../../Front/FireSpot8"), NodePath("../../Front/FireSpot9"), NodePath("../../Front/FireSpot10"), NodePath("../../Front/FireSpot11"), NodePath("../../Front/FireSpot12"), NodePath("../../Front/FireSpot13"), NodePath("../../Front/FireSpot14"), NodePath("../../Front/FireSpot15")]
-fire_spots_front = [NodePath("../../Left/FireSpot"), NodePath("../../Left/FireSpot2"), NodePath("../../Left/FireSpot3"), NodePath("../../Left/FireSpot4"), NodePath("../../Left/FireSpot5"), NodePath("../../Left/FireSpot6"), NodePath("../../Left/FireSpot7"), NodePath("../../Left/FireSpot8"), NodePath("../../Left/FireSpot10"), NodePath("../../Left/FireSpot11"), NodePath("../../Left/FireSpot12"), NodePath("../../Left/FireSpot13"), NodePath("../../Left/FireSpot14"), NodePath("../../Left/FireSpot15")]
+fire_spots_behind = [NodePath("../../Behind/FireSpot"), NodePath("../../Behind/FireSpot2"), NodePath("../../Behind/FireSpot3"), NodePath("../../Behind/FireSpot4"), NodePath("../../Behind/FireSpot7"), NodePath("../../Behind/FireSpot10"), NodePath("../../Behind/FireSpot13"), NodePath("../../Behind/FireSpot14"), NodePath("../../Behind/FireSpot15")]
+fire_spots_right = [NodePath("../../Right/FireSpot"), NodePath("../../Right/FireSpot2"), NodePath("../../Right/FireSpot3"), NodePath("../../Right/FireSpot4"), NodePath("../../Right/FireSpot7"), NodePath("../../Right/FireSpot10"), NodePath("../../Right/FireSpot13"), NodePath("../../Right/FireSpot14"), NodePath("../../Right/FireSpot15")]
+fire_spots_left = [NodePath("../../Front/FireSpot"), NodePath("../../Front/FireSpot2"), NodePath("../../Front/FireSpot3"), NodePath("../../Front/FireSpot4"), NodePath("../../Front/FireSpot7"), NodePath("../../Front/FireSpot10"), NodePath("../../Front/FireSpot13"), NodePath("../../Front/FireSpot14"), NodePath("../../Front/FireSpot15")]
+fire_spots_front = [NodePath("../../Left/FireSpot"), NodePath("../../Left/FireSpot2"), NodePath("../../Left/FireSpot3"), NodePath("../../Left/FireSpot4"), NodePath("../../Left/FireSpot7"), NodePath("../../Left/FireSpot10"), NodePath("../../Left/FireSpot13"), NodePath("../../Left/FireSpot14"), NodePath("../../Left/FireSpot15")]
 
 [node name="BossStunnedState" type="Node" parent="EnemyFiniteStateMachine"]
 script = ExtResource("5_m0nq3")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="finished" from="Steps" to="Steps" method="_on_finished"]
 [connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
 [connection signal="timeout" from="EnemyFiniteStateMachine/BossSpinAttackState/SpinAttackTimer" to="EnemyFiniteStateMachine/BossSpinAttackState" method="_on_spin_attack_timer_timeout"]

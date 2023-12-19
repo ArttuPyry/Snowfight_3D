@@ -10,6 +10,10 @@ const Snowball = preload("res://weapons and ammo/snowball_cb.tscn")
 
 @onready var audio_throw = $"../../Throw"
 
+const SPEED = 2.5
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var step_audio = $"../../StepAudio"
+
 func _ready() -> void:
 	set_process(false)
 	set_physics_process(false)
@@ -52,3 +56,23 @@ func _process(delta):
 	
 	if player.no_energy:
 		state_transition.emit(self, "PlayerLoseState")
+
+# Just basic movement bit edited from Godot basic movement
+func _physics_process(delta) -> void:
+	if not player.is_on_floor():
+		state_transition.emit(self, "PlayerFallState")
+	
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
+	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		step_audio.play_step_sound()
+		player.velocity.x = direction.x * SPEED
+		player.velocity.z = direction.z * SPEED
+	else:
+		player.velocity.x = lerp(player.velocity.x, direction.x * SPEED, delta * 3.5)
+		player.velocity.z = lerp(player.velocity.z, direction.z * SPEED, delta * 3.5)
+		if player.velocity.x < 0.1 and player.velocity.z < 0.1:
+			player.velocity.x = 0
+			player.velocity.z = 0
+	
+	player.move_and_slide()

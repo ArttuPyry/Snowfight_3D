@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ditlfek3hdtik"]
+[gd_scene load_steps=25 format=3 uid="uid://ditlfek3hdtik"]
 
 [ext_resource type="PackedScene" uid="uid://b4up88kqplgm" path="res://ui/user_interface.tscn" id="1_6aknq"]
 [ext_resource type="Script" path="res://scripts/level/level_01.gd" id="1_in3gh"]
+[ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="2_aw40o"]
 [ext_resource type="PackedScene" uid="uid://cjgf5on2oppby" path="res://environment/spruce.tscn" id="2_l074c"]
+[ext_resource type="Theme" uid="uid://bu27hh1ndhvp5" path="res://ui/default_font.tres" id="3_kjc7j"]
 [ext_resource type="MeshLibrary" uid="uid://duaovcsv83fgq" path="res://environment/environment.tres" id="3_wce7r"]
 [ext_resource type="PackedScene" uid="uid://def8ntasw0w85" path="res://characters/player.tscn" id="5_tslbj"]
 [ext_resource type="PackedScene" uid="uid://be4khs6jnjhdt" path="res://environment/snowman.tscn" id="6_hyf8h"]
@@ -10,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cm0gdroi5jb8a" path="res://characters/enemy_basic.tscn" id="8_ejxbt"]
 [ext_resource type="AudioStream" uid="uid://8bkqqk56vvv5" path="res://sounds/environment/wind_worthahep88.mp3" id="9_y6tfs"]
 [ext_resource type="AudioStream" uid="uid://d4ffhqi6pya4v" path="res://sounds/music/game_josefpres.mp3" id="10_pwmwm"]
+[ext_resource type="AudioStream" uid="uid://dd0p36vl0h5yi" path="res://sounds/ui/menu_hover_click_shasha213131.mp3" id="13_14qw0"]
+[ext_resource type="AudioStream" uid="uid://gihlytlt648r" path="res://sounds/ui/click_shasha213131.mp3" id="14_7ldvg"]
 
 [sub_resource type="Shader" id="Shader_yk8oj"]
 code = "
@@ -160,8 +164,82 @@ vertices = PackedVector3Array(-23, 0.305386, -17, -23, 0.305386, -15.75, -22.25,
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(14, 16, 15), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(35, 34, 31), PackedInt32Array(31, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 44), PackedInt32Array(48, 50, 49), PackedInt32Array(53, 52, 51), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 59), PackedInt32Array(56, 59, 57), PackedInt32Array(57, 59, 58), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 63), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(67, 64, 68), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(72, 69, 73), PackedInt32Array(76, 75, 74), PackedInt32Array(78, 77, 79), PackedInt32Array(79, 77, 80), PackedInt32Array(81, 83, 82), PackedInt32Array(87, 89, 84), PackedInt32Array(84, 89, 88), PackedInt32Array(88, 89, 86), PackedInt32Array(88, 86, 85), PackedInt32Array(93, 92, 90), PackedInt32Array(90, 92, 91), PackedInt32Array(94, 97, 95), PackedInt32Array(95, 97, 96), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 101), PackedInt32Array(105, 104, 102), PackedInt32Array(102, 104, 103), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 110), PackedInt32Array(108, 110, 109), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 114), PackedInt32Array(114, 111, 115), PackedInt32Array(117, 116, 118), PackedInt32Array(118, 116, 119), PackedInt32Array(122, 121, 120), PackedInt32Array(125, 124, 123), PackedInt32Array(128, 127, 126), PackedInt32Array(131, 130, 129), PackedInt32Array(133, 132, 134), PackedInt32Array(134, 132, 137), PackedInt32Array(134, 137, 136), PackedInt32Array(134, 136, 135), PackedInt32Array(140, 139, 138), PackedInt32Array(142, 141, 143), PackedInt32Array(143, 141, 146), PackedInt32Array(143, 146, 145), PackedInt32Array(143, 145, 144), PackedInt32Array(149, 148, 147), PackedInt32Array(152, 151, 150), PackedInt32Array(155, 154, 153), PackedInt32Array(156, 158, 157), PackedInt32Array(162, 164, 159), PackedInt32Array(159, 164, 163), PackedInt32Array(163, 164, 161), PackedInt32Array(163, 161, 160)]
 agent_radius = 0.75
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nftx"]
+size = Vector3(32.1666, 1, 0.4)
+
 [node name="Level01" type="Node3D"]
 script = ExtResource("1_in3gh")
+
+[node name="TutorialAndText" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialAndText"]
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="TutorialAndText/MarginContainer"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TutorialAndText/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 14
+text = "They destroyed all
+your snowmen!
+All that hard work wasted!
+Time to take your revenge!
+Go and destory their
+snowmen and show them
+who they are dealing with!
+
+But be careful...
+they will fight back...
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="TutorialAndText/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("2_aw40o")
+
+[node name="Label" type="Label" parent="TutorialAndText/MarginContainer/PanelContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -15.5
+offset_right = 20.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_kjc7j")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 20
+text = "OK!"
+horizontal_alignment = 1
 
 [node name="UserInterface" parent="." instance=ExtResource("1_6aknq")]
 
@@ -209,7 +287,7 @@ mesh_library = ExtResource("3_wce7r")
 cell_size = Vector3(3, 3, 3)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65535, 65535, 655362, 0, 65535, 655362, 0, 0, 655362, 65535, 0, 655362, 65535, 65534, 655362, 0, 65534, 655362, 1, 65534, 655362, 1, 65535, 655362, 1, 0, 655362, 65528, 65530, 655362, 65528, 65531, 655362, 65528, 65532, 655362, 65528, 65533, 655362, 65528, 65534, 655362, 65528, 65535, 655362, 65528, 0, 655362, 65529, 65530, 655362, 65529, 65531, 655362, 65529, 65532, 655362, 65529, 65533, 655362, 65529, 65534, 655363, 65529, 65535, 655363, 65529, 0, 655362, 65530, 65530, 655362, 65530, 65531, 655362, 65530, 65532, 655362, 65530, 65533, 655362, 65530, 65534, 1048579, 65530, 65535, 1441795, 65530, 0, 655362, 65531, 65530, 655362, 65531, 65531, 655362, 65531, 65532, 655362, 65531, 65533, 655362, 65531, 65534, 1048579, 65531, 65535, 1441795, 65531, 0, 655362, 65532, 65530, 655362, 65532, 65531, 655362, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 3, 65532, 65535, 3, 65532, 0, 655362, 65533, 65530, 655362, 65533, 65531, 655362, 65533, 65532, 655362, 65533, 65533, 655362, 65533, 65534, 655362, 65533, 65535, 655362, 65533, 0, 655362, 65534, 65530, 655362, 65534, 65531, 655362, 65534, 65532, 655362, 65534, 65533, 655362, 65534, 65534, 655362, 65534, 65535, 655362, 65534, 0, 655362, 65535, 65530, 655362, 65535, 65531, 655362, 65535, 65532, 1048580, 65535, 65533, 655363, 0, 65530, 655362, 0, 65531, 655362, 0, 65532, 1048579, 0, 65533, 1441795, 1, 65530, 655362, 1, 65531, 655362, 1, 65532, 1048579, 1, 65533, 1048580, 131071, 65532, 9, 65536, 65532, 9, 65537, 65532, 9, 131071, 65533, 655369, 65536, 65533, 655369, 65537, 65533, 655369, 131068, 65534, 9, 131067, 65534, 9, 131066, 65534, 9, 131065, 65534, 9, 131065, 65535, 655369, 131066, 65535, 655369, 131067, 65535, 655369, 131068, 65535, 655369)
+"cells": PackedInt32Array(65535, 65535, 655362, 0, 65535, 655362, 0, 0, 655362, 65535, 0, 655362, 65535, 65534, 655362, 0, 65534, 655362, 1, 65534, 655362, 1, 65535, 655362, 1, 0, 655362, 65528, 65530, 655362, 65528, 65531, 655362, 65528, 65532, 655362, 65528, 65533, 655362, 65528, 65534, 655362, 65528, 65535, 655362, 65528, 0, 655362, 65529, 65530, 655362, 65529, 65531, 655362, 65529, 65532, 655362, 65529, 65533, 655362, 65529, 65534, 655363, 65529, 65535, 655363, 65529, 0, 655362, 65530, 65530, 655362, 65530, 65531, 655362, 65530, 65532, 655362, 65530, 65533, 655362, 65530, 65534, 1048579, 65530, 65535, 1441795, 65530, 0, 655362, 65531, 65530, 655362, 65531, 65531, 655362, 65531, 65532, 655362, 65531, 65533, 655362, 65531, 65534, 1048579, 65531, 65535, 1441795, 65531, 0, 655362, 65532, 65530, 655362, 65532, 65531, 655362, 65532, 65532, 655362, 65532, 65534, 3, 65532, 65535, 3, 65532, 0, 655362, 65533, 65530, 655362, 65533, 65531, 655362, 65533, 65532, 655362, 65533, 65534, 655362, 65533, 65535, 655362, 65533, 0, 655362, 65534, 65530, 655362, 65534, 65531, 655362, 65534, 65532, 655362, 65534, 65533, 655362, 65534, 65534, 655362, 65534, 65535, 655362, 65534, 0, 655362, 65535, 65530, 655362, 65535, 65531, 655362, 65535, 65532, 1048580, 65535, 65533, 655363, 0, 65530, 655362, 0, 65531, 655362, 0, 65532, 1048579, 0, 65533, 1441795, 1, 65530, 655362, 1, 65531, 655362, 1, 65532, 1048579, 1, 65533, 1048580, 131071, 65532, 9, 65536, 65532, 9, 65537, 65532, 9, 131071, 65533, 655369, 65536, 65533, 655369, 65537, 65533, 655369, 131068, 65534, 9, 131067, 65534, 9, 131066, 65534, 9, 131065, 65534, 9, 131065, 65535, 655369, 131066, 65535, 655369, 131067, 65535, 655369, 131068, 65535, 655369, 65532, 65533, 655362, 65533, 65533, 655362)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -220,6 +298,25 @@ cell_center_y = false
 data = {
 "cells": PackedInt32Array(1, 1, 655360, 0, 1, 655361, 2, 0, 1441792, 2, 65535, 1441792, 2, 65534, 1441792, 2, 65533, 1441792, 2, 65532, 1441792, 2, 65531, 1441792, 2, 65530, 1441792, 1, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 65534, 65529, 0, 65533, 65529, 0, 65532, 65529, 0, 65531, 65529, 0, 65530, 65529, 0, 65529, 65529, 0, 65528, 65529, 0, 65527, 65530, 1048576, 65527, 65531, 1048576, 65527, 65532, 1048576, 65527, 65533, 1048576, 65527, 65534, 1048576, 65527, 65535, 1048576, 65527, 0, 1048576, 65528, 1, 655360, 65529, 1, 655360, 65530, 1, 655360, 65531, 1, 655360, 65532, 1, 655360, 65533, 1, 655360, 65534, 1, 655360, 65535, 1, 655360)
 }
+
+[node name="FenceFix" type="StaticBody3D" parent="NavigationRegion3D/FenceAndExtraGridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26121, 0, 3.44183)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/FenceAndExtraGridMap/FenceFix"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.306261)
+shape = SubResource("BoxShape3D_2nftx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/FenceAndExtraGridMap/FenceFix"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.5951)
+shape = SubResource("BoxShape3D_2nftx")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/FenceAndExtraGridMap/FenceFix"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.3877, 0, -8.61252)
+shape = SubResource("BoxShape3D_2nftx")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/FenceAndExtraGridMap/FenceFix"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9014, 0, -8.61252)
+shape = SubResource("BoxShape3D_2nftx")
 
 [node name="Snowman" parent="NavigationRegion3D" instance=ExtResource("6_hyf8h")]
 transform = Transform3D(-0.366566, 0, -0.930392, 0, 1, 0, 0.930392, 0, -0.366566, 1.39412, 0, -4.98886)
@@ -249,9 +346,20 @@ stream = ExtResource("9_y6tfs")
 autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_pwmwm")
 volume_db = -5.0
 autoplay = true
 bus = &"Music"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_14qw0")
+
+[node name="Press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_7ldvg")
+volume_db = -20.0
+
+[connection signal="mouse_entered" from="TutorialAndText/MarginContainer/PanelContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="pressed" from="TutorialAndText/MarginContainer/PanelContainer/TextureButton" to="." method="_on_texture_button_pressed"]
 
 [editable path="Escape"]

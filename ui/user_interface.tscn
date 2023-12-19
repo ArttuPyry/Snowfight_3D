@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4up88kqplgm"]
+[gd_scene load_steps=32 format=3 uid="uid://b4up88kqplgm"]
 
 [ext_resource type="Script" path="res://scripts/ui/user_interface.gd" id="1_g0yvb"]
 [ext_resource type="Texture2D" uid="uid://cglfvs0avblra" path="res://ui/textures/croshair.png" id="1_pk3wq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://csvo337sjpclx" path="res://ui/textures/boss_energy_bg.png" id="5_8nykw"]
 [ext_resource type="Texture2D" uid="uid://bfw34nk4451uo" path="res://ui/textures/energy.png" id="5_ojy65"]
 [ext_resource type="Texture2D" uid="uid://pot5dy5kqady" path="res://ui/textures/boss_energy.png" id="6_akhbg"]
+[ext_resource type="Texture2D" uid="uid://wrwiyujom3ab" path="res://ui/textures/victory_screen.png" id="9_dwyw1"]
 [ext_resource type="Texture2D" uid="uid://gxkyi0p04ky6" path="res://ui/textures/menu_button_02.png" id="9_lql5m"]
 [ext_resource type="Texture2D" uid="uid://bx1v7ke6n4krw" path="res://ui/textures/menu_button_02_hover.png" id="10_0d2j0"]
 [ext_resource type="Texture2D" uid="uid://b83r3m6la7v2v" path="res://ui/textures/menu_button_01.png" id="11_6rhdb"]
@@ -53,6 +54,226 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Game completed/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Game completed/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Game completed/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Game completed/Victory:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Game completed/Cost:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Game completed/Victory:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Game completed/Cost:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Game completed/Quit:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Game completed/GameTime:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_paop8"]
+resource_name = "game_completed"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game completed/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game completed/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Game completed/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 3.5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Game completed/Victory:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Game completed/Cost:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Game completed/Victory:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.6, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Game completed/Cost:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5.5, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Game completed/Quit:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Game completed/GameTime:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_tfl5w"]
 resource_name = "player_hit"
@@ -85,6 +306,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyx5u"]
 _data = {
 "RESET": SubResource("Animation_nwmln"),
+"game_completed": SubResource("Animation_paop8"),
 "player_hit": SubResource("Animation_tfl5w")
 }
 
@@ -192,6 +414,99 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("3_ypige")
 text = "99"
+
+[node name="Game completed" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Game completed"]
+visible = false
+layout_mode = 2
+offset_right = 800.0
+offset_bottom = 600.0
+texture = ExtResource("9_dwyw1")
+
+[node name="ColorRect" type="ColorRect" parent="Game completed"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_right = 800.0
+offset_bottom = 600.0
+color = Color(0, 0, 0, 1)
+
+[node name="Victory" type="Label" parent="Game completed"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_right = 408.0
+offset_bottom = 113.0
+theme = ExtResource("3_ypige")
+theme_override_colors/font_color = Color(0.941176, 0.67451, 0.25098, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 80
+text = "Victory!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Cost" type="Label" parent="Game completed"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 90.0
+offset_right = 398.0
+offset_bottom = 148.0
+theme = ExtResource("3_ypige")
+theme_override_colors/font_color = Color(0.819608, 0.235294, 0.188235, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+text = "But at what cost...."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Quit" type="TextureButton" parent="Game completed"]
+visible = false
+layout_mode = 0
+offset_left = 587.0
+offset_top = 525.0
+offset_right = 731.0
+offset_bottom = 573.0
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("13_gm1ew")
+texture_hover = ExtResource("14_xg6jr")
+
+[node name="Label" type="Label" parent="Game completed/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 18
+text = "Main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GameTime" type="Label" parent="Game completed"]
+visible = false
+layout_mode = 2
+offset_left = 204.0
+offset_top = 558.0
+offset_right = 607.0
+offset_bottom = 596.0
+theme = ExtResource("3_ypige")
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Game time: 99:99.99"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LostPanel" type="PanelContainer" parent="."]
 process_mode = 2
@@ -303,15 +618,6 @@ text = "Time: 99:99.99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameTime" type="Label" parent="WinPanel/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme = ExtResource("3_ypige")
-theme_override_font_sizes/font_size = 25
-text = "Gmae time: 99:99.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="VBoxContainer" type="HBoxContainer" parent="WinPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -335,6 +641,28 @@ grow_vertical = 2
 theme = ExtResource("3_ypige")
 theme_override_font_sizes/font_size = 18
 text = "Next level"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Victory" type="TextureButton" parent="WinPanel/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("9_lql5m")
+texture_hover = ExtResource("10_0d2j0")
+
+[node name="Label" type="Label" parent="WinPanel/VBoxContainer/VBoxContainer/Victory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ypige")
+theme_override_font_sizes/font_size = 18
+text = "VICTORY!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -959,9 +1287,9 @@ vertical_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-min_value = 5.0
+min_value = 24.0
 max_value = 144.0
-value = 5.0
+value = 75.0
 rounded = true
 
 [node name="CurFPSLabel" type="Label" parent="Options/VBoxContainer/TabContainer/Graphics/FPS"]
@@ -1392,12 +1720,16 @@ libraries = {
 "": SubResource("AnimationLibrary_nyx5u")
 }
 
+[connection signal="mouse_entered" from="Game completed/Quit" to="AudioControl" method="_on_mouse_entered"]
+[connection signal="pressed" from="Game completed/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Retry" to="." method="_on_restart_pressed"]
 [connection signal="mouse_entered" from="LostPanel/VBoxContainer2/VBoxContainer/Quit" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="LostPanel/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="WinPanel/VBoxContainer/VBoxContainer/NextLevel" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="mouse_entered" from="WinPanel/VBoxContainer/VBoxContainer/Victory" to="AudioControl" method="_on_mouse_entered"]
+[connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/Victory" to="." method="_on_victory_pressed"]
 [connection signal="mouse_entered" from="WinPanel/VBoxContainer/VBoxContainer/Quit" to="AudioControl" method="_on_mouse_entered"]
 [connection signal="pressed" from="WinPanel/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="PauseMenu/MainButtons/VBoxContainer/Continue" to="AudioControl" method="_on_mouse_entered"]

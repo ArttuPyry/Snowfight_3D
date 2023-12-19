@@ -2035,7 +2035,7 @@ height = 1.22423
 script = ExtResource("1_i5c3c")
 max_energy = 4
 attack_range = 5.0
-stun_duration = 20
+stun_duration = 25
 attack_type = 1
 
 [node name="Armature" type="Node3D" parent="."]

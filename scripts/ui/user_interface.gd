@@ -27,9 +27,12 @@ extends Control
 @onready var win_panel = $WinPanel
 @onready var level_time = $WinPanel/VBoxContainer/LevelTime
 @onready var level_completed = $WinPanel/VBoxContainer/LevelCompleted
-@onready var game_time = $WinPanel/VBoxContainer/GameTime
+@onready var game_time = $"Game completed/GameTime"
 @onready var next_level = $WinPanel/VBoxContainer/VBoxContainer/NextLevel
+@onready var quit_win = $WinPanel/VBoxContainer/VBoxContainer/Quit
+@onready var victory = $WinPanel/VBoxContainer/VBoxContainer/Victory
 var escape
+
 
 # Audio
 @onready var hover = $Hover
@@ -202,16 +205,35 @@ func boss_defeated() -> void:
 	await get_tree().create_timer(6, false).timeout
 	
 	win_panel.visible = true
-	game_time.visible = true
 	get_tree().paused = true
 	
 	next_level.visible = false
+	quit_win.visible = false
+	victory.visible = true
+	
+	SaveManager.save_time(mseconds, seconds, minutes)
+	
+	var saved_time : = ConfigFile.new()
+	saved_time.load(SaveManager.TIME_PATH)
+	
+	var msecs = saved_time.get_value("time", "mseconds", 0.0)
+	var secs = saved_time.get_value("time", "seconds", 0.0)
+	var mins = saved_time.get_value("time", "minutes", 0.0)
 	
 	audio_victory.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	level_time.text = "Time: " + get_time_formatted()
-	level_completed.text = "Level Completed!
-	Thank you for playing!"
-	SaveManager.save_time(mseconds, seconds, minutes)
+	game_time.text = "Game time: " + str(mins) + ":" + str(secs) + "." + str(msecs)
+	level_completed.text = "Level Completed!"
 	
 	SaveManager.clear_savefile()
+
+func _on_victory_pressed():
+	var lvl_6_control = get_tree().get_first_node_in_group("lvl6control")
+	
+	lvl_6_control.visible = false
+	
+	win_panel.visible = false
+	get_tree().paused = false
+	animation_player.play("game_completed")
+
