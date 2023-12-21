@@ -29,6 +29,10 @@ func _on_body_entered(body):
 				var animation_player = get_tree().get_first_node_in_group("animation_player_lvl6")
 				var audio_music = get_tree().get_first_node_in_group("music_lvl6")
 				
+				var player = get_tree().get_first_node_in_group("player")
+				
+				player.set_process_input(false)
+				
 				for i in enemies.size():
 					enemies[i].queue_free()
 				
@@ -37,6 +41,9 @@ func _on_body_entered(body):
 				audio_music.stream = boss_music
 				audio_music.play()
 				ui.mission_boss_update()
+				
+				await animation_player.animation_finished
+				player.set_process_input(true)
 			else:
 				level += 1
 				SaveManager.save_savefile(difficulty, level, energy)

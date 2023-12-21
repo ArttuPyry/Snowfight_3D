@@ -11,6 +11,7 @@ var current_health
 @export var max_snowball_count : int = 12
 var current_snowball_count : int
 var no_energy = false
+@onready var snowball_throw_spot = $Camera3D/PlayerHandThrow/player_hand/SnowballThrowSpot
 
 @export var mouse_enabled = true
 @export var leading_crosshair = false
@@ -72,13 +73,32 @@ func load_user_config() -> void:
 	var mouse_v_sens = config.get_value("gameplay_preferences", "mouse_vert_float", 5)
 	
 	# Setup
-	horizontal_sensitivity = kb_h_sens / 5
-	vertical_sensitivity = kb_v_sens / 5
-	hor_mouse_sensitivity = mouse_h_sens / 100
-	ver_mouse_sensitivity = mouse_v_sens / 100
+	horizontal_sensitivity = kb_h_sens / 10
+	vertical_sensitivity = kb_v_sens / 10
+	hor_mouse_sensitivity = mouse_h_sens / 500
+	ver_mouse_sensitivity = mouse_v_sens / 500
 	mouse_enabled = mouse
 	leading_crosshair = leading
 	camera.fov = int(fov)
+	
+	var x
+	var y
+	if fov == 75:
+		x = 46
+		y = 0
+	elif fov > 75:
+		var inc_fov = fov - 75
+		x = 46 - (0.4 * inc_fov)
+		y = 0 + (0.457 * inc_fov)
+	elif fov < 75:
+		var dec_fov = 75 - fov
+		x = 46 + (1.04 * dec_fov)
+		y = 0 - (1.28 * dec_fov)
+	
+	snowball_throw_spot.x_aim = x
+	snowball_throw_spot.y_aim = y
+
+
 # Update UI - Health / Energy
 func update_health_bar(damage) -> void:
 	current_health -= damage

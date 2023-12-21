@@ -153,7 +153,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(1, 1, 1, 1)
+fog_light_color = Color(0.823529, 0.839216, 0.870588, 1)
 fog_density = 0.002
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dyvrk"]
@@ -196,37 +196,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7623, 0, 2.05263)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1231, 0, -6.39391)
 
 [node name="Spruce11" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4178, 0.380579, -7.72391)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4178, 0, -7.72391)
 
 [node name="Spruce12" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7468, 0.380579, -8.88779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7468, 0, -8.88779)
 
 [node name="Spruce13" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7468, 0.380579, -7.24841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7468, 0, -7.24841)
 
 [node name="Spruce14" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5558, 0.380579, -14.4131)
-
-[node name="Spruce26" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2151, 0.380579, -42.8021)
-
-[node name="Spruce30" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9173, 0.380579, -43.8423)
-
-[node name="Spruce31" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7761, 0.380579, -43.0552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5558, 0, -14.4131)
 
 [node name="Spruce32" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12519, 0.380579, -32.0569)
-
-[node name="Spruce27" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5158, 0.380579, -40.63)
-
-[node name="Spruce28" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0684, 0.380579, -38.6731)
-
-[node name="Spruce29" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4218, 0.380579, -36.7054)
 
 [node name="Spruce2" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8349, 0, 2.05263)
@@ -239,6 +221,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0989, 0, 1.84672)
 
 [node name="Spruce5" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4409, 0, 0.290484)
+
+[node name="Spruce26" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2151, 0, -42.8021)
+
+[node name="Spruce30" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9173, 0, -43.8423)
+
+[node name="Spruce31" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7761, 0, -43.0552)
+
+[node name="Spruce27" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5158, 0, -40.63)
+
+[node name="Spruce28" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0684, 0, -38.6731)
+
+[node name="Spruce29" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4218, 0, -36.7054)
 
 [node name="Spruce6" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8476, 0, -1.58498)
@@ -259,28 +259,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9007, 0, -17.3677)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8465, 0, -19.6654)
 
 [node name="Spruce15" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 19.0527, -0.267397, -42.46)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 19.0527, 0, -42.46)
 
 [node name="Spruce16" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 16.5127, -0.267397, -42.0921)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 16.5127, 0, -42.0921)
 
 [node name="Spruce17" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 19.6701, -0.267397, -39.7867)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 19.6701, 0, -39.7867)
 
 [node name="Spruce18" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 18.3802, -0.267397, -38.6955)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 18.3802, 0, -38.6955)
 
 [node name="Spruce19" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 15.8736, -0.267397, -40.4352)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 15.8736, 0, -40.4352)
 
 [node name="Spruce20" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 20.1377, -0.267397, -36.3009)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 20.1377, 0, -36.3009)
 
 [node name="Spruce21" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 11.5523, -0.267397, -40.1774)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 11.5523, 0, -40.1774)
 
 [node name="Spruce22" parent="NavigationRegion3D" instance=ExtResource("2_noayx")]
-transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 15.2823, -0.267397, -42.93)
+transform = Transform3D(-0.297525, 0, 0.954714, 0, 1, 0, -0.954714, 0, -0.297525, 15.2823, 0, -42.93)
 
 [node name="LevelGridMap" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("3_lmcu7")

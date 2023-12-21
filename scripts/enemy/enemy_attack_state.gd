@@ -16,7 +16,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var audio_throw = $"../../Throw"
 
-var NUM_OF_ITERATIONS = 5
+var NUM_OF_ITERATIONS = 1
 
 var speedy = 20.0
 
@@ -44,7 +44,9 @@ func _process(delta):
 		face_target_y.face_point(aim_at_point, delta)
 		face_target_x.face_point(aim_at_point, delta)
 	
-	if current_actor.is_stunned and current_actor.attack_type == 0:
+	if current_actor.is_stunned:
+		if current_actor.attack_type == 1:
+			animation_player.stop()
 		state_transition.emit(self, "EnemyStunnedState")
 
 func _shovel_snow() -> void:

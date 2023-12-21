@@ -154,7 +154,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(1, 1, 1, 1)
+fog_light_color = Color(0.823529, 0.839216, 0.870588, 1)
 fog_density = 0.002
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dyvrk"]

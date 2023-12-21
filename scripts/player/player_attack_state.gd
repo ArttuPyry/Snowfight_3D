@@ -34,7 +34,7 @@ func _enter_state() -> void:
 		audio_throw.play()
 		# Instantiate, position and apply force
 		var _snowball = Snowball.instantiate()
-
+		_snowball.attacking_actor = "player"
 		get_tree().get_root().add_child(_snowball)
 		_snowball.global_transform = snowball_throw_spot.global_transform
 		_snowball.setup(20.0)

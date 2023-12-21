@@ -164,7 +164,8 @@ sky = SubResource("Sky_sj3r5")
 ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
-fog_light_color = Color(1, 1, 1, 1)
+fog_enabled = true
+fog_light_color = Color(0.823529, 0.839216, 0.870588, 1)
 fog_density = 0.002
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dyvrk"]
@@ -372,6 +373,78 @@ tracks/15/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("enemy_boss_dummy:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5226, -9, -8.74268)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("enemy_boss_dummy:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("enemy_boss:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.543, -4, -8.764)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("enemy_boss:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("enemy_boss_stunned_dummy:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.04156, -4, -11.703)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("enemy_boss_stunned_dummy:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.9466, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4h2ts"]
 resource_name = "boss_cutscene"
@@ -556,6 +629,54 @@ tracks/14/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("enemy_boss_dummy:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5226, 0, -8.74268)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("enemy_boss_dummy:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("enemy_boss:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.54286, 0, -8.76355)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("enemy_boss:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_eqv3r"]
 resource_name = "victory"
@@ -643,6 +764,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("enemy_boss_stunned_dummy:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5.04156, 4.76837e-07, -11.703)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("enemy_boss_stunned_dummy:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.9466, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7jba0"]
@@ -973,7 +1118,7 @@ libraries = {
 }
 
 [node name="enemy_boss_dummy" parent="." instance=ExtResource("12_6feao")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5226, 0, -8.74268)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.5226, -9, -8.74268)
 visible = false
 
 [node name="Control" type="Control" parent="." groups=["lvl6control"]]
@@ -1102,7 +1247,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69822, -0.0718975, -18)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69822, -0.0718975, -18)
 
 [node name="enemy_boss" parent="." instance=ExtResource("14_e0oj2")]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 1.43301, 0, -8.7378)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.543, -4, -8.764)
 visible = false
 
 [node name="Reload" type="AudioStreamPlayer3D" parent="."]
@@ -1118,7 +1263,7 @@ stream = ExtResource("18_pl8nr")
 stream = ExtResource("19_sud5t")
 
 [node name="enemy_boss_stunned_dummy" parent="." instance=ExtResource("20_81hhk")]
-transform = Transform3D(-0.98105, 0, 0.193755, 0, 1, 0, -0.193755, 0, -0.98105, 5.04156, 4.76837e-07, -11.703)
+transform = Transform3D(-0.98105, 0, 0.193755, 0, 1, 0, -0.193755, 0, -0.98105, 5.04156, -4, -11.703)
 visible = false
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]

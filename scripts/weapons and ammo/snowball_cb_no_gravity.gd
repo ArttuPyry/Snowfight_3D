@@ -10,6 +10,7 @@ func _ready():
 func _physics_process(delta):
 	var coll = move_and_collide(velocity * delta)
 	if coll:
+		print("Collider")
 		await get_tree().create_timer(0.1, false).timeout
 		queue_free()
 

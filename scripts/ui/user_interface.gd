@@ -172,11 +172,13 @@ func _on_exit_options_menu_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
+	SaveManager.save_time(mseconds, seconds, minutes)
 	audio_control.play_click_sound()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_restart_pressed():
 	get_tree().paused = false
+	SaveManager.save_time(mseconds, seconds, minutes)
 	audio_control.play_click_sound()
 	await press.finished
 	LevelManager.load_level()
