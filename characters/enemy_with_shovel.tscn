@@ -2236,7 +2236,6 @@ stream = ExtResource("8_jetga")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 1.0
-avoidance_enabled = true
 
 [node name="EnergyComponent" type="Node3D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_a4ah5")

@@ -1176,9 +1176,7 @@ size_flags_horizontal = 4
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 10
 text = "- Dinofarmi
-- Tiduzka
-- Lauri
-- seksipommieero"
+- Tiduzka"
 vertical_alignment = 1
 
 [node name="Testers2" type="Label" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer/TesterNames"]
@@ -1186,10 +1184,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_lvk54")
 theme_override_font_sizes/font_size = 10
-text = "- DEEZ NUTS
-- 
-- 
-- "
+text = "- Lauri
+- seksipommieero"
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="Credits/VBoxContainer/PanelContainer/VBoxContainer"]

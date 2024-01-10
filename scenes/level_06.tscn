@@ -1118,7 +1118,7 @@ libraries = {
 }
 
 [node name="enemy_boss_dummy" parent="." instance=ExtResource("12_6feao")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.5226, -9, -8.74268)
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 1.5226, -9, -8.74268)
 visible = false
 
 [node name="Control" type="Control" parent="." groups=["lvl6control"]]
@@ -1247,7 +1247,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69822, -0.0718975, -18)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69822, -0.0718975, -18)
 
 [node name="enemy_boss" parent="." instance=ExtResource("14_e0oj2")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.543, -4, -8.764)
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 1.543, -4, -8.764)
 visible = false
 
 [node name="Reload" type="AudioStreamPlayer3D" parent="."]
@@ -1263,7 +1263,7 @@ stream = ExtResource("18_pl8nr")
 stream = ExtResource("19_sud5t")
 
 [node name="enemy_boss_stunned_dummy" parent="." instance=ExtResource("20_81hhk")]
-transform = Transform3D(-0.98105, 0, 0.193755, 0, 1, 0, -0.193755, 0, -0.98105, 5.04156, -4, -11.703)
+transform = Transform3D(-0.981049, 0, 0.193759, 0, 1, 0, -0.193759, 0, -0.981049, 5.04156, -4, -11.703)
 visible = false
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]
